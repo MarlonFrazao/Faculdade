@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<link rel="stylesheet" href = "Estilos.css"/>
+</head>
+<body>
+	
+	<h3 class="centralizarTitulo">Login</h3>
+	<div class = "div">
+		<input type="text" placeholder="Digite a matrícula" class ="campos" id="txtMatricula"  />
+	</div>
+	
+	<div class = "div">
+		<input type="password" placeholder= "Digite a senha" class = "campos" id="txtSenha"/>
+	</div>
+	
+	<div class = "div">
+	
+		<input type="button" value="Login" class="botoes" id="btnLogin" onclick="Logar();" />
+		
+	</div>
+		
+	<script type="text/javascript">	
+	
+		function Logar(){
+		
+			var txtMat = document.getElementById("txtMatricula").value;
+			var txtSen = document.getElementById("txtSenha").value;
+		
+			if(txtMat != ""){				
+				
+			}else {		
+				alert ('Digite a matricula');
+				txtMatricula.focus();
+				
+			}
+			if(txtSen !=""){
+				
+			}else {
+				alert ('Digite a senha');
+				txtSenha.focus();
+			} 
+			var urllog = "http://localhost:8080/PrjIntegradorIII/rest/funcionario/login/?matricula="+txtMat+"&senha="+txtSen;
+			window.location=urllog;
+			//location.href="Menu.html";
+			
+		
+			
+			
+		}
+		function Sair(){
+			
+			
+		}
+		
+		</script>
+
+		</body>
+</html>
