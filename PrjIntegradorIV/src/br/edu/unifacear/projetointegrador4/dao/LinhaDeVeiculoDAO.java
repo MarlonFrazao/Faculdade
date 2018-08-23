@@ -7,9 +7,10 @@ import javax.persistence.EntityManager;
 import br.edu.unifacear.projetointegrador4.connection.ConnectionFactory;
 import br.edu.unifacear.projetointegrador4.entity.LinhaDeVeiculo;
 
-public class LinhaDeVeiculoDAO {
+public class LinhaDeVeiculoDAO implements DAO<LinhaDeVeiculo>{
 	
-	public LinhaDeVeiculo inserir(LinhaDeVeiculo ldv) {
+	@Override
+	public void inserir(LinhaDeVeiculo ldv) {
 		
 		EntityManager em = new ConnectionFactory().getConnection();
 		
@@ -29,10 +30,10 @@ public class LinhaDeVeiculoDAO {
 		}finally {
 			em.close();
 		}
-		return ldv;
 		
 	}
 	
+	@Override
 	public LinhaDeVeiculo obter(Long id) {
 		EntityManager em = new ConnectionFactory().getConnection();
 		LinhaDeVeiculo ldv = null;
@@ -61,6 +62,7 @@ public class LinhaDeVeiculoDAO {
 		return lista;
 	}
 	
+	@Override
 	public List<LinhaDeVeiculo> listar(){
 		EntityManager em = new ConnectionFactory().getConnection();
 		List<LinhaDeVeiculo> lista = null;
@@ -72,6 +74,48 @@ public class LinhaDeVeiculoDAO {
 			em.close();
 		}
 		return lista;
+	}
+
+	@Override
+	public void atualizar(LinhaDeVeiculo ldv) {
+		EntityManager em = new ConnectionFactory().getConnection();
+		
+		try {
+			em.getTransaction().begin();
+
+			em.merge(ldv);
+
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			System.err.println(e);
+
+			em.getTransaction().rollback();
+		} finally {
+
+			em.close();
+		}
+	}
+
+	@Override
+	public void excluir(LinhaDeVeiculo ldv) {
+		EntityManager em = new ConnectionFactory().getConnection();
+		
+		ldv.setStatus(false);
+		
+		try {
+			em.getTransaction().begin();
+
+			em.merge(ldv);
+
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			System.err.println(e);
+
+			em.getTransaction().rollback();
+		} finally {
+			em.close();
+		}
+		
 	}
 
 }

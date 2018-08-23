@@ -7,9 +7,10 @@ import javax.persistence.EntityManager;
 import br.edu.unifacear.projetointegrador4.connection.ConnectionFactory;
 import br.edu.unifacear.projetointegrador4.entity.Aplicacao;
 
-public class AplicacaoDAO {
+public class AplicacaoDAO implements DAO<Aplicacao> {
 	
-	public Aplicacao inserir (Aplicacao aplicacao) {
+	@Override
+	public void inserir (Aplicacao aplicacao) {
 		EntityManager em = new ConnectionFactory().getConnection();
 		
 		try {
@@ -29,9 +30,10 @@ public class AplicacaoDAO {
 		}finally {
 			em.close();
 		}
-		return aplicacao;
+		
 	}
 	
+	@Override
 	public Aplicacao obter(Long id) {
 		EntityManager em = new ConnectionFactory().getConnection();
 		Aplicacao aplicacao = null;
@@ -48,6 +50,7 @@ public class AplicacaoDAO {
 		return aplicacao;
 	}
 	
+	
 	public List<Aplicacao> obter(String descricao){
 		EntityManager em = new ConnectionFactory().getConnection();
 		List<Aplicacao> lista = null;		
@@ -62,6 +65,7 @@ public class AplicacaoDAO {
 		return lista;
 	}
 	
+	@Override
 	public List<Aplicacao> listar(){
 		EntityManager em = new ConnectionFactory().getConnection();
 		List<Aplicacao> lista = null;
@@ -74,6 +78,47 @@ public class AplicacaoDAO {
 			em.close();
 		}
 		return lista;
+	}
+
+	@Override
+	public void atualizar(Aplicacao a) {
+		EntityManager em = new ConnectionFactory().getConnection();
+		
+		try {
+			em.getTransaction().begin();
+
+			em.merge(a);
+
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			System.err.println(e);
+
+			em.getTransaction().rollback();
+		} finally {
+			em.close();
+		}
+	}
+
+	@Override
+	public void excluir(Aplicacao a) {
+		EntityManager em = new ConnectionFactory().getConnection();
+		
+		a.setStatus(false);
+		
+		try {
+			em.getTransaction().begin();
+
+			em.merge(a);
+
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			System.err.println(e);
+
+			em.getTransaction().rollback();
+		} finally {
+			em.close();
+		}
+		
 	}
 
 }

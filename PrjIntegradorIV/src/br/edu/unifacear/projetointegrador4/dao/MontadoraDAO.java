@@ -9,9 +9,10 @@ import javax.persistence.Query;
 import br.edu.unifacear.projetointegrador4.connection.ConnectionFactory;
 import br.edu.unifacear.projetointegrador4.entity.Montadora;
 
-public class MontadoraDAO {
+public class MontadoraDAO implements DAO<Montadora> {
 	
-	public Montadora inserir (Montadora montadora) {
+	@Override
+	public void inserir (Montadora montadora) {
 		//criando de fado o entityManager
 		EntityManager em = new ConnectionFactory().getConnection();
 		
@@ -31,9 +32,10 @@ public class MontadoraDAO {
 		}finally{
 			em.close();//fechando a conexão
 		}
-		return montadora;
+		
 	}
 	
+	@Override
 	public Montadora obter(Long id) {
 		
 		//criando de fado o entityManager
@@ -74,7 +76,7 @@ public class MontadoraDAO {
 		return lista;//= (Montadora) query.getSingleResult();	
 	}
 	
-	
+	@Override
 	public List<Montadora> listar(){
 		EntityManager em = new ConnectionFactory().getConnection();
 		List<Montadora> lista = new ArrayList<Montadora>();
@@ -90,5 +92,47 @@ public class MontadoraDAO {
 		}
 		return lista;	
 	}
+
+	@Override
+	public void atualizar(Montadora m) {
+		EntityManager em = new ConnectionFactory().getConnection();
+		
+		try {
+			em.getTransaction().begin();
+			
+			em.merge(m);
+			
+			em.getTransaction().commit();
+		} catch(Exception e) {
+			System.err.println(e);
+			em.getTransaction().rollback();
+		} finally {
+			em.close();
+		}
+		
+	}
+
+	@Override
+	public void excluir(Montadora m) {
+		EntityManager em = new ConnectionFactory().getConnection();
+		
+		m.setStatus(false);
+		
+		try {
+			em.getTransaction().begin();
+			
+			em.merge(m);
+			
+			em.getTransaction().commit();
+		} catch(Exception e) {
+			System.err.println(e);
+			em.getTransaction().rollback();
+		} finally {
+			em.close();
+		}
+		
+	}
+	
+	
 
 }

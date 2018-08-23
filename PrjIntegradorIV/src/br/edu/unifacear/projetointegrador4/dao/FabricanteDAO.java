@@ -7,9 +7,10 @@ import javax.persistence.EntityManager;
 import br.edu.unifacear.projetointegrador4.connection.ConnectionFactory;
 import br.edu.unifacear.projetointegrador4.entity.Fabricante;
 
-public class FabricanteDAO {
+public class FabricanteDAO implements DAO<Fabricante> {
 	
-	public Fabricante inserir(Fabricante fabricante) {
+	@Override
+	public void inserir(Fabricante fabricante) {
 		EntityManager em = new ConnectionFactory().getConnection();
 		
 		try {
@@ -27,9 +28,10 @@ public class FabricanteDAO {
 		}finally {
 			em.close();
 		}
-		return fabricante;
+		
 	}
 	
+	@Override
 	public Fabricante obter(Long id) {
 		EntityManager em = new ConnectionFactory().getConnection();
 		Fabricante fabricante = null;
@@ -45,6 +47,7 @@ public class FabricanteDAO {
 		
 	}
 	
+	@Override
 	public List<Fabricante> listar(){
 		EntityManager em = new ConnectionFactory().getConnection();
 		List<Fabricante> lista = null;
@@ -75,6 +78,47 @@ public class FabricanteDAO {
 			em.close();
 		}
 		return lista;
+	}
+
+	@Override
+	public void atualizar(Fabricante f) {
+		EntityManager em = new ConnectionFactory().getConnection();
+
+		try {
+			em.getTransaction().begin();
+
+			em.merge(f);
+
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			System.err.println(e);
+
+			em.getTransaction().rollback();
+		} finally {
+			em.close();
+		}
+	}
+
+	@Override
+	public void excluir(Fabricante f) {
+		EntityManager em = new ConnectionFactory().getConnection();
+
+		f.setStatus(false);
+		try {
+			em.getTransaction().begin();
+
+			em.merge(f);
+
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			System.err.println(e);
+
+			em.getTransaction().rollback();
+		} finally {
+
+			em.close();
+		}
+		
 	}
 
 }
