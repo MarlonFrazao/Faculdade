@@ -1,45 +1,94 @@
 package br.edu.unifacear.projetointegrador4.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
+import br.edu.unifacear.projetointegrador4.connection.ConnectionFactory;
 import br.edu.unifacear.projetointegrador4.entity.Montadora;
 
-public class MontadoraDAO implements DAO<Montadora>{
-
-	@Override
-	public void inserir(Montadora m) {
-		EntityManager em = Conexao.creatEntityManager();
+public class MontadoraDAO {
+	
+	public Montadora inserir (Montadora montadora) {
+		//criando de fado o entityManager
+		EntityManager em = new ConnectionFactory().getConnection();
 		
-		em.getTransaction().begin();
-		em.persist(m);
-		em.getTransaction().commit();
-		
-	}
-
-	@Override
-	public void alterar(Montadora m) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void excluir(Montadora m) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public List<Montadora> listar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Montadora buscarPorId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		try {
+			em.getTransaction().begin();// iniciando a tranzação com o banco
+			
+			//essa verificação é para fazer o Update e excluir
+			if(montadora.getId()==null) {
+				em.persist(montadora);// persistindo os dados passando a montadora por parametro
+			}else {
+				em.merge(montadora);// se o ID for existente ele dará um UPDATE
+			}
+			em.getTransaction().commit();// salvando os dados
+		}catch (Exception e) {
+			System.err.println(e);//imprimindo o erro no console
+			em.getTransaction().rollback();//caso der errado a tranzação ele desfaz a operação
+		}finally{
+			em.close();//fechando a conexão
+		}
+		return montadora;
 	}
 	
+	public Montadora obter(Long id) {
+		
+		//criando de fado o entityManager
+		EntityManager em = new ConnectionFactory().getConnection();
+		Montadora montadora = null;
+		
+		try {
+			montadora = em.find(Montadora.class, id);// busca o id com a referência da classe
+			
+		}catch (Exception e) {
+			System.err.println(e);//imprimindo o erro no console
+		}finally{
+			em.close();//fechando a conexão
+		}
+		return montadora;	
+		
+	}
+	
+	public List<Montadora> obter(String descricao) {
+		EntityManager em = new ConnectionFactory().getConnection();
+		Montadora montadora = null;
+		List<Montadora> lista = null;
+		try {
+			//montadora = em.find(Montadora.class, descricao);// busca o id com a referência da classe
+			//query = em.createQuery("from Montadora WHERE descricao like '%"+descricao+"%'");
+			//query.getSingleResult();
+			lista = em.createQuery("from Montadora WHERE descricao like '%"+descricao+"%'").getResultList();
+			//System.out.println("Desc: "+montadora.getDescricao());
+			//montadora = query;
+			//System.out.println("Query: "+query.getSingleResult().toString());
+					//em.createNativeQuery("from Montadora WHERE descricao like %"+descricao+"%").getSingleResult();
+			
+		}catch (Exception e) {
+			System.err.println(e);//imprimindo o erro no console
+		}finally{
+			em.close();//fechando a conexão
+		}
+		return lista;//= (Montadora) query.getSingleResult();	
+	}
+	
+	
+	public List<Montadora> listar(){
+		EntityManager em = new ConnectionFactory().getConnection();
+		List<Montadora> lista = new ArrayList<Montadora>();
+		Montadora montadora = null;
+		
+		try {
+			lista = em.createQuery("from Montadora").getResultList();// busca uma lista
+			
+		}catch (Exception e) {
+			System.err.println(e);//imprimindo o erro no console
+		}finally{
+			em.close();//fechando a conexão
+		}
+		return lista;	
+	}
+
 }

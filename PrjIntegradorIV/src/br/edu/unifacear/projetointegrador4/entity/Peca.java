@@ -8,16 +8,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-//@Entity
+
 public class Peca {
 	
-	//@Id
-	//@GeneratedValue(strategy=GenerationType.AUTO)
+	
+
 	private Long id;
 	private String descricao;
 	private List<Modelo> modelo;
 	private Aplicacao aplicacao;
-	private Fabricante fabricante;
 	private Long qtdeTotal;
 	private String adicional;
 	private Date dataCadastro;
@@ -29,16 +28,14 @@ public class Peca {
 	
 	public Peca() {}
 
-	public Peca(Long id, String descricao, List<Modelo> modelo, Aplicacao aplicacao, 
-			Fabricante fabricante, Long qtdeTotal, String adicional,Date dataCadastro, 
-			Long totalAvaliacao, Float mediaAvaliacao, Long numVisualizacao, String foto,
+	public Peca(Long id, String descricao, List<Modelo> modelo, Aplicacao aplicacao, Long qtdeTotal, String adicional,
+			Date dataCadastro, Long totalAvaliacao, Float mediaAvaliacao, Long numVisualizacao, String foto,
 			Boolean status) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
 		this.modelo = modelo;
 		this.aplicacao = aplicacao;
-		this.fabricante = fabricante;
 		this.qtdeTotal = qtdeTotal;
 		this.adicional = adicional;
 		this.dataCadastro = dataCadastro;
@@ -79,14 +76,6 @@ public class Peca {
 
 	public void setAplicacao(Aplicacao aplicacao) {
 		this.aplicacao = aplicacao;
-	}
-
-	public Fabricante getFabricante() {
-		return fabricante;
-	}
-
-	public void setFabricante(Fabricante fabricante) {
-		this.fabricante = fabricante;
 	}
 
 	public Long getQtdeTotal() {

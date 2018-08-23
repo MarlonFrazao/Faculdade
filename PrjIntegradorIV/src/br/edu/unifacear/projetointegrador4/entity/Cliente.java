@@ -2,12 +2,23 @@ package br.edu.unifacear.projetointegrador4.entity;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 public class Cliente {
+	
+	
 	private String cpf;
 	private String nome;
 	private String endereco;
 	private String email;
+
 	private List<Telefone> telefone;
+
 	private TipoCliente tipo;
 	
 	public Cliente() {}

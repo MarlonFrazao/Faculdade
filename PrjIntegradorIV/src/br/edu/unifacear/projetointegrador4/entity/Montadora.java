@@ -5,11 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+
+@Entity //Essa anotação diz que a classe é uma tabela do BD
 public class Montadora {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	
+	@Id //Essa anotação diz que o id é a chave primaria
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // Essa anotação diz que o id é auto increment e o strategy se refere ao BD do MySql
 	private Long id;
 	private String descricao;
 	private Boolean status;

@@ -2,7 +2,15 @@ package br.edu.unifacear.projetointegrador4.entity;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+
 public class Funcionario {
+	
+
 	private Long matricula;
 	private String nome;
 	private String cpf;
