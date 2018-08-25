@@ -13,7 +13,7 @@ public class MontadoraDAO implements DAO<Montadora> {
 	
 	@Override
 	public void inserir (Montadora montadora) {
-		//criando de fado o entityManager
+		//criando de fado o entityManager 
 		EntityManager em = new ConnectionFactory().getConnection();
 		
 		try {
