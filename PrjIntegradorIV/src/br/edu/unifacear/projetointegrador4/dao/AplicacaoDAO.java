@@ -55,7 +55,7 @@ public class AplicacaoDAO implements DAO<Aplicacao> {
 		EntityManager em = new ConnectionFactory().getConnection();
 		List<Aplicacao> lista = null;		
 		try {
-			lista = em.createQuery("from Aplicacao WHERE descricao like '"+descricao+"'").getResultList();
+			lista = em.createQuery("from Aplicacao WHERE descricao like '%"+descricao+"%'").getResultList();
 			
 		}catch(Exception e) {
 			System.err.println(e);

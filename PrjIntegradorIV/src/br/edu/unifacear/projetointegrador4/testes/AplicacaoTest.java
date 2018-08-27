@@ -32,8 +32,8 @@ public class AplicacaoTest {
 	@Test
 	public void testeObterPorDescricao() {
 		List<Aplicacao> la = null;
-		try {
-			la = new FacadeBusiness().obterAplicacao("%t%");
+		try { 
+			la = new FacadeBusiness().obterAplicacao("t");
 		} catch(BusinessException e) {
 			e.printStackTrace();
 		}
@@ -41,7 +41,8 @@ public class AplicacaoTest {
 		assertEquals(true, la.get(0).getId() != null);
 		
 		for(int i = 0; i < la.size(); i++) {
-			System.out.println("id: " + la.get(i).getId() + "\nDescricao:  " + la.get(i).getDescricao());
+			System.out.println("id: " + la.get(i).getId() + 
+					"\nDescricao:  " + la.get(i).getDescricao());
 		}
 		
 	}
