@@ -12,11 +12,12 @@ import br.edu.unifacear.projetointegrador4.entity.Aplicacao;
 
 public class AplicacaoTest {
 	//JUnit Build Path - add library - JUnit - JUnit 4 
-	/*@Test //Indica que é um teste
+/*	@Test //Indica que é um teste
 	public void testeInserir() {
 		
 		Aplicacao a = new Aplicacao();
-		a.setDescricao("teste");
+		a.setDescricao("teste3");
+		System.out.println("testeInserir: "+a.getDescricao());
 		
 		try {
 			new FacadeBusiness().inserirAplicacao(a);

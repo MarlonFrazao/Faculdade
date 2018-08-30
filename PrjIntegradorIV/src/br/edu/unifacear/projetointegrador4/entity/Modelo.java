@@ -6,8 +6,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import br.edu.unifacear.projetointegrador4.dao.DAO;
+
 @Entity
-public class Modelo {
+public class Modelo implements DAO {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +33,7 @@ public class Modelo {
 		this.ano = ano;
 		this.status = status;
 	}
-
+	@Override
 	public Long getId() {
 		return id;
 	}
@@ -75,7 +77,7 @@ public class Modelo {
 	public Boolean getStatus() {
 		return status;
 	}
-
+	@Override
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}

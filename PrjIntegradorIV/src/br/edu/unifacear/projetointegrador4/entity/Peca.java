@@ -8,8 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.edu.unifacear.projetointegrador4.dao.DAO;
 
-public class Peca {
+
+public class Peca implements DAO{
 	
 	
 
@@ -45,7 +47,7 @@ public class Peca {
 		this.foto = foto;
 		this.status = status;
 	}
-
+	@Override
 	public Long getId() {
 		return id;
 	}
@@ -137,7 +139,7 @@ public class Peca {
 	public Boolean getStatus() {
 		return status;
 	}
-
+	@Override
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}

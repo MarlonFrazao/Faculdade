@@ -9,29 +9,47 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
-public class Cliente {
+import br.edu.unifacear.projetointegrador4.dao.DAO;
+
+//@Entity
+public class Cliente implements DAO{
 	
-	
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String cpf;
 	private String nome;
 	private String endereco;
 	private String email;
-
+	//@ManyToOne
 	private List<Telefone> telefone;
-
+	//@OneToOne
 	private TipoCliente tipo;
 	
+	private Boolean status;
+	
 	public Cliente() {}
-
-	public Cliente(String cpf, String nome, String endereco, String email, 
-			List<Telefone> telefone, TipoCliente tipo) {
+	
+	public Cliente(Long id, String cpf, String nome, String endereco, String email, List<Telefone> telefone,
+			TipoCliente tipo, Boolean status) {
 		super();
+		this.id = id;
 		this.cpf = cpf;
 		this.nome = nome;
 		this.endereco = endereco;
 		this.email = email;
 		this.telefone = telefone;
 		this.tipo = tipo;
+		this.status = status;
+	}
+	
+	@Override
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getCpf() {
@@ -80,6 +98,16 @@ public class Cliente {
 
 	public void setTipo(TipoCliente tipo) {
 		this.tipo = tipo;
+	}
+	
+	public Boolean status() {
+		return status;
+	}
+
+	@Override
+	public void setStatus(Boolean status) {
+		this.status = status;
+		
 	}
 	
 }

@@ -5,9 +5,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.edu.unifacear.projetointegrador4.dao.DAO;
+
+
 
 @Entity //Essa anotação diz que a classe é uma tabela do BD
-public class Montadora {
+public class Montadora implements DAO {
 	
 	
 	@Id //Essa anotação diz que o id é a chave primaria
@@ -25,6 +28,7 @@ public class Montadora {
 		this.status = status;
 	}
 	
+	@Override
 	public Long getId() {
 		return id;
 	}
@@ -40,8 +44,8 @@ public class Montadora {
 	public Boolean getStatus() {
 		return status;
 	}
+	@Override
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
-		
 }

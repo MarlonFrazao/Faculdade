@@ -1,9 +1,7 @@
 package br.edu.unifacear.projetointegrador4.testes;
 
-import br.edu.unifacear.projetointegrador4.dao.LinhaDeVeiculoDAO;
-import br.edu.unifacear.projetointegrador4.dao.MontadoraDAO;
-import br.edu.unifacear.projetointegrador4.entity.LinhaDeVeiculo;
-import br.edu.unifacear.projetointegrador4.entity.Montadora;
+
+
 
 //a Pasta META-INF com o arquivo persistence.xml é obrigatório estar dentro da pasta src
 
@@ -17,13 +15,13 @@ public class Teste {
 		//MontadoraDAO dao = new MontadoraDAO();
 		//não é necessario setar ID pq vai ser gerado automaticamente
 		
-		Montadora m = new Montadora();
+		/*Montadora m = new Montadora();
 		
 		m.setDescricao("Chevrolet");
 		m.setStatus(true);
 		
 		new MontadoraDAO().inserir(m);
-		
+		*/
 		
 		
 		/*
@@ -155,7 +153,7 @@ public class Teste {
 		//----------------------------------------------------------------------//
 		//criando e testando a tabela LINHA DE VEICULO
 		
-		LinhaDeVeiculoDAO dao = new LinhaDeVeiculoDAO();
+	//	LinhaDeVeiculoDAO dao = new LinhaDeVeiculoDAO();
 		
 		/*
 		LinhaDeVeiculo ldv = new LinhaDeVeiculo();
@@ -196,6 +194,8 @@ public class Teste {
 			System.out.println("Status: "+ldvL.getStatus());
 		}
 		*/
+		
+		
 		
 		
 	}
