@@ -5,26 +5,31 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.edu.unifacear.projetointegrador4.dao.DAO;
 
-public class StatusPV {
+//@Entity
+public class StatusPV implements DAO{
 	
-	
-	private Integer id;
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String descricao;
+	private Boolean status;
 	
 	public StatusPV() {}
 
-	public StatusPV(Integer id, String descricao) {
+	public StatusPV(Long id, String descricao, Boolean status) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
+		this.status = status;
 	}
-
-	public Integer getId() {
+	@Override
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -35,5 +40,14 @@ public class StatusPV {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
+	public Boolean getStatus() {
+		return status;
+	}
+	@Override
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+	
 	
 }

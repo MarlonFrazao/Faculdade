@@ -12,11 +12,11 @@ import br.edu.unifacear.projetointegrador4.entity.Aplicacao;
 
 public class AplicacaoTest {
 	//JUnit Build Path - add library - JUnit - JUnit 4 
-	/*@Test //Indica que é um teste
+	@Test //Indica que é um teste
 	public void testeInserir() {
 		
 		Aplicacao a = new Aplicacao();
-		a.setDescricao("teste");
+		a.setDescricao("Motor");
 		
 		try {
 			new FacadeBusiness().inserirAplicacao(a);
@@ -25,11 +25,11 @@ public class AplicacaoTest {
 		}
 		
 		assertEquals(true, a.getId() != null);
-	}*/
+	}
 	
 	//para testar: clicar com direito - Run As - JUnit
 	
-	@Test
+	/*@Test
 	public void testeObterPorDescricao() {
 		List<Aplicacao> la = null;
 		try { 
@@ -45,6 +45,6 @@ public class AplicacaoTest {
 					"\nDescricao:  " + la.get(i).getDescricao());
 		}
 		
-	}
+	}*/
 	
 }

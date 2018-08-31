@@ -8,36 +8,50 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import br.edu.unifacear.projetointegrador4.dao.DAO;
 
 
 
-public class PedidoDeVenda {
+//@Entity
+public class PedidoDeVenda implements DAO{
 	
-	
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;	
-
+	//@OneToMany
 	private Cliente cliente;
-
+	//@ManyToOne
 	private List<Peca> peca;
 	private Date data;
-
+	//@ManyToOne
 	private StatusPV statusPV;
+	private Boolean status;
 	
 	public PedidoDeVenda() {}
 
-	public PedidoDeVenda(Long id, Cliente cliente, List<Peca> peca, Date data, StatusPV statusPV) {
+	public PedidoDeVenda(Long id, Cliente cliente, List<Peca> peca, Date data, StatusPV statusPV, Boolean status) {
 		super();
 		this.id = id;
 		this.cliente = cliente;
 		this.peca = peca;
 		this.data = data;
 		this.statusPV = statusPV;
+		this.status = status;
 	}
-
+	@Override
 	public Long getId() {
 		return id;
+	}
+
+	public Boolean getStatus() {
+		return status;
+	}
+	@Override
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
 
 	public void setId(Long id) {

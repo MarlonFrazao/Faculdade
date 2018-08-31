@@ -7,11 +7,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.edu.unifacear.projetointegrador4.dao.DAO;
 
-public class Funcionario {
+//@Entity
+public class Funcionario implements DAO{
 	
-
-	private Long matricula;
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String nome;
 	private String cpf;
 	private List<Telefone> telefone;
@@ -23,20 +26,20 @@ public class Funcionario {
 	public Funcionario(Long matricula, String nome, String cpf, List<Telefone> telefone, 
 			Cargo cargo, Boolean status) {
 		super();
-		this.matricula = matricula;
+		this.id = matricula;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.telefone = telefone;
 		this.cargo = cargo;
 		this.status = status;
 	}
-
-	public Long getMatricula() {
-		return matricula;
+	@Override
+	public Long getId() {
+		return id;
 	}
 
 	public void setMatricula(Long matricula) {
-		this.matricula = matricula;
+		this.id = matricula;
 	}
 
 	public String getNome() {
@@ -74,7 +77,7 @@ public class Funcionario {
 	public Boolean getStatus() {
 		return status;
 	}
-
+	@Override
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}

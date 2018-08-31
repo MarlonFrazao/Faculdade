@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
 import br.edu.unifacear.projetointegrador4.connection.ConnectionFactory;
-import br.edu.unifacear.projetointegrador4.entity.Montadora;
+import br.edu.unifacear.projetointegrador4.entity.Cargo;
+import br.edu.unifacear.projetointegrador4.entity.Cliente;
 
-public class MontadoraDAO extends DAOGenerico<Montadora> {
-		
-	public List<Montadora> obter(String descricao) {
+public class CargoDAO extends DAOGenerico<Cargo>{
+	
+	public List<Cargo> obter(String descricao) {
 		EntityManager em = new ConnectionFactory().getConnection();
-		Montadora montadora = null;
-		List<Montadora> lista = null;
+		Cargo cargo = null;
+		List<Cargo> lista = null;
 		try {
-			lista = em.createQuery("from Montadora WHERE descricao like '%"+descricao+"%'").getResultList();			
+			lista = em.createQuery("from Cargo WHERE nome like '%"+descricao+"%'").getResultList();			
 		}catch (Exception e) {
 			System.err.println(e);//imprimindo o erro no console
 		}finally{
@@ -26,13 +26,13 @@ public class MontadoraDAO extends DAOGenerico<Montadora> {
 	}
 	
 	
-	public List<Montadora> listar(){
+	public List<Cargo> listar(){
 		EntityManager em = new ConnectionFactory().getConnection();
-		List<Montadora> lista = new ArrayList<Montadora>();
-		Montadora montadora = null;
+		List<Cargo> lista = new ArrayList<Cargo>();
+		Cargo cargo = null;
 		
 		try {
-			lista = em.createQuery("from Montadora").getResultList();// busca uma lista
+			lista = em.createQuery("from Cargo").getResultList();// busca uma lista
 			
 		}catch (Exception e) {
 			System.err.println(e);//imprimindo o erro no console
@@ -41,5 +41,4 @@ public class MontadoraDAO extends DAOGenerico<Montadora> {
 		}
 		return lista;	
 	}
-
 }

@@ -8,45 +8,9 @@ import br.edu.unifacear.projetointegrador4.connection.ConnectionFactory;
 import br.edu.unifacear.projetointegrador4.entity.LinhaDeVeiculo;
 import br.edu.unifacear.projetointegrador4.entity.Modelo;
 import br.edu.unifacear.projetointegrador4.entity.Montadora;
+import br.edu.unifacear.projetointegrador4.entity.Peca;
 
-public class ModeloDAO implements DAO<Modelo> {
-	
-	@Override
-	public void inserir(Modelo modelo) {
-		EntityManager em = new ConnectionFactory().getConnection();
-		
-		try {
-			em.getTransaction().begin();
-			if(modelo.getId()==null) {
-				em.persist(modelo);
-			}else {
-				em.merge(modelo);
-			}
-			em.getTransaction().commit();
-			
-		}catch(Exception e) {
-			System.err.println(e);
-			em.getTransaction().rollback();
-		}finally {
-			em.close();
-		}
-		
-	}
-	
-	@Override
-	public Modelo obter (Long id) {
-		EntityManager em = new ConnectionFactory().getConnection();
-		Modelo modelo = null;
-		
-		try {
-			modelo = em.find(Modelo.class, id);
-		}catch(Exception e) {
-			System.err.println(e);
-		}finally {
-			em.close();
-		}
-		return modelo;
-	}
+public class ModeloDAO extends DAOGenerico<Modelo> {
 	
 	public List<Modelo> obter(String descricao){
 		EntityManager em = new ConnectionFactory().getConnection();
@@ -62,7 +26,6 @@ public class ModeloDAO implements DAO<Modelo> {
 		return lista;
 	}
 	
-	@Override
 	public List<Modelo> listar(){
 		EntityManager em = new ConnectionFactory().getConnection();
 		List<Modelo> lista = null;
@@ -118,50 +81,18 @@ public class ModeloDAO implements DAO<Modelo> {
 		}
 		return lista;
 	}
-
-	@Override
-	public void atualizar(Modelo m) {
-		EntityManager em = new ConnectionFactory().getConnection();
-		
-		try {
-			em.getTransaction().begin();
-
-			em.merge(m);
-
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			System.err.println(e);
-
-			em.getTransaction().rollback();
-		} finally {
-
-			em.close();
-		}
-		
-	}
-
-	@Override
-	public void excluir(Modelo m) {
-		EntityManager em = new ConnectionFactory().getConnection();
-		
-		m.setStatus(false);
-		
-		try {
-			em.getTransaction().begin();
-
-			em.merge(m);
-
-			em.getTransaction().commit();
-		} catch (Exception e) {
-			System.err.println(e);
-
-			em.getTransaction().rollback();
-		} finally {
-
-			em.close();
-		}
-		
-	}
 	
+	public List<Modelo> obter(Peca peca) {
+		EntityManager em = new ConnectionFactory().getConnection();
+		List<Modelo> lista = null;
 
+		try {
+			lista = em.createQuery("from Peca_modelo WHERE peca_id =" + peca.getId()).getResultList();
+		} catch (Exception e) {
+			System.err.println(e);
+		} finally {
+			em.close();
+		}
+		return lista;
+	}
 }

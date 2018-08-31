@@ -7,9 +7,9 @@ import javax.persistence.EntityManager;
 import br.edu.unifacear.projetointegrador4.connection.ConnectionFactory;
 import br.edu.unifacear.projetointegrador4.entity.Fabricante;
 
-public class FabricanteDAO implements DAO<Fabricante> {
+public class FabricanteDAO  {
 	
-	@Override
+	
 	public void inserir(Fabricante fabricante) {
 		EntityManager em = new ConnectionFactory().getConnection();
 		
@@ -31,7 +31,7 @@ public class FabricanteDAO implements DAO<Fabricante> {
 		
 	}
 	
-	@Override
+	
 	public Fabricante obter(Long id) {
 		EntityManager em = new ConnectionFactory().getConnection();
 		Fabricante fabricante = null;
@@ -47,7 +47,7 @@ public class FabricanteDAO implements DAO<Fabricante> {
 		
 	}
 	
-	@Override
+	
 	public List<Fabricante> listar(){
 		EntityManager em = new ConnectionFactory().getConnection();
 		List<Fabricante> lista = null;
@@ -80,7 +80,7 @@ public class FabricanteDAO implements DAO<Fabricante> {
 		return lista;
 	}
 
-	@Override
+	
 	public void atualizar(Fabricante f) {
 		EntityManager em = new ConnectionFactory().getConnection();
 
@@ -99,7 +99,7 @@ public class FabricanteDAO implements DAO<Fabricante> {
 		}
 	}
 
-	@Override
+	
 	public void excluir(Fabricante f) {
 		EntityManager em = new ConnectionFactory().getConnection();
 

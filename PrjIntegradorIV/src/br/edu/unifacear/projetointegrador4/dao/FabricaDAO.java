@@ -5,12 +5,7 @@ public class FabricaDAO {
 	public static AplicacaoDAO criarAplicacaoDAO() {
 		return new AplicacaoDAO();
 	}
-	
-	public static FabricanteDAO criarFabricanteDAO() {
-		return new FabricanteDAO();
-	}
-	
-	public static LinhaDeVeiculoDAO criarLinhaDeVeiculoDAO() {
+	/*public static LinhaDeVeiculoDAO criarLinhaDeVeiculoDAO() {
 		return new LinhaDeVeiculoDAO();
 	}
 	
@@ -25,4 +20,16 @@ public class FabricaDAO {
 	public static PecaDAO criarPecaDAO() {
 		return new PecaDAO();
 	}
+	public static FuncionarioDAO criarFuncionarioDAO() {
+		return new FuncionarioDAO();
+	}
+	public static PedidoDeVendaDAO criarPedidoDeVendaDAO() {
+		return new PedidoDeVendaDAO();
+	}
+	public static StatusPVDAO criarStatusPVDAO() {
+		return new StatusPVDAO();
+	}
+	public static TipoClienteDAO criarTipoClienteDAO() {
+		return new TipoClienteDAO();
+	}*/
 }

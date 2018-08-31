@@ -1,9 +1,14 @@
 package br.edu.unifacear.projetointegrador4.testes;
 
-import br.edu.unifacear.projetointegrador4.dao.LinhaDeVeiculoDAO;
-import br.edu.unifacear.projetointegrador4.dao.MontadoraDAO;
-import br.edu.unifacear.projetointegrador4.entity.LinhaDeVeiculo;
-import br.edu.unifacear.projetointegrador4.entity.Montadora;
+import java.util.ArrayList;
+import java.util.List;
+
+import br.edu.unifacear.projetointegrador4.dao.AplicacaoDAO;
+import br.edu.unifacear.projetointegrador4.dao.ModeloDAO;
+import br.edu.unifacear.projetointegrador4.dao.PecaDAO;
+import br.edu.unifacear.projetointegrador4.entity.Aplicacao;
+import br.edu.unifacear.projetointegrador4.entity.Modelo;
+import br.edu.unifacear.projetointegrador4.entity.Peca;
 
 //a Pasta META-INF com o arquivo persistence.xml é obrigatório estar dentro da pasta src
 
@@ -16,14 +21,14 @@ public class Teste {
 		
 		//MontadoraDAO dao = new MontadoraDAO();
 		//não é necessario setar ID pq vai ser gerado automaticamente
-		
+		/*
 		Montadora m = new Montadora();
 		
-		m.setDescricao("Chevrolet");
+		m.setDescricao("Honda");
 		m.setStatus(true);
 		
 		new MontadoraDAO().inserir(m);
-		
+		*/
 		
 		
 		/*
@@ -31,35 +36,35 @@ public class Teste {
 		Montadora m2 = new Montadora();
 				
 		m.setId((long) 2);
-		m.setDescricao("Fiat");
+		m.setDescricao("Yamaha");
 		m.setStatus(true);
 		
 		MontadoraDAO dao = new MontadoraDAO();
-		m2 = dao.inserir(m);
+		dao.atualizar(m);
 				
 		System.out.println("Descrição: "+m2.getDescricao());
 		*/
 		
-		
 		/*
+		MontadoraDAO dao = new MontadoraDAO();
 		Montadora m = new Montadora();
-		m.setDescricao("f");
+		m.setDescricao("a");
 		for(Montadora mL: dao.obter(m.getDescricao())) {
 			System.out.println("=============================");
 			System.out.println("Id: "+mL.getId());
 			System.out.println("Descrição: "+mL.getDescricao());
 			System.out.println("Status: "+mL.getStatus());
 			
-		}
-		*/
+		}*/
 		
 		
 		/*
+		MontadoraDAO dao = new MontadoraDAO();
 		for(Montadora m: dao.listar()) {
 			System.out.println("Descrição: "+m.getDescricao());
 		}
-		*/
 		
+		*/
 		
 		
 		//----------------------------------------------------------------------//
@@ -69,7 +74,7 @@ public class Teste {
 		
 		/*
 		Aplicacao a = new Aplicacao();
-		a.setDescricao("Lataria");
+		a.setDescricao("Iluminação");
 		a.setStatus(true);
 		dao.inserir(a);
 		*/
@@ -85,11 +90,11 @@ public class Teste {
 		*/
 		
 		
-		/* 
+		/*
 		 Aplicacao a = new Aplicacao();
 		 Aplicacao a2 = new Aplicacao();
 		 a.setId((long) 2);
-		 a2 = dao.obter(a.getId());
+		 a2 = dao.obter(Aplicacao.class, a.getId());
 		 
 		System.out.println("Descrição: "+a2.getDescricao());
 		*/
@@ -108,58 +113,13 @@ public class Teste {
 		*/
 		
 		//----------------------------------------------------------------------//
-				//criando e testando a tabela FABRICANTE
-				
-				//FabricanteDAO dao = new FabricanteDAO();
-				
-				/*
-				Fabricante f = new Fabricante();
-				f.setDescricao("Zagalo");
-				f.setStatus(true);
-				dao.inserir(f);
-				*/
-				
-				
-				/*
-				for(Fabricante f: dao.listar()) {
-					System.out.println("=============================");
-					System.out.println("Id: "+f.getId());
-					System.out.println("Descricao: "+f.getDescricao());
-					System.out.println("Status: "+f.getStatus());
-				}
-				*/
-				
-				
-				/* 
-				 Fabricante f = new Fabricante();
-				 Fabricante f2 = new Fabricante();
-				 f.setId((long) 2);
-				 f2 = dao.obter(a.getId());
-				 
-				System.out.println("Descrição: "+f2.getDescricao());
-				*/
-				
-				
-				/*
-				Fabricante f = new Fabricante();
-				f.setDescricao("l");
-				
-				for(Fabricante fL: dao.obter(f.getDescricao())) {
-					System.out.println("=============================");
-					System.out.println("Id: "+fL.getId());
-					System.out.println("Descricao: "+fL.getDescricao());
-					System.out.println("Status: "+fL.getStatus());
-				}
-				*/
-		
-		//----------------------------------------------------------------------//
 		//criando e testando a tabela LINHA DE VEICULO
 		
-		LinhaDeVeiculoDAO dao = new LinhaDeVeiculoDAO();
+		/*LinhaDeVeiculoDAO dao = new LinhaDeVeiculoDAO();
 		
-		/*
+		
 		LinhaDeVeiculo ldv = new LinhaDeVeiculo();
-		ldv.setDescricao("Ret");
+		ldv.setDescricao("Leve");
 		ldv.setStatus(true);
 		dao.inserir(ldv);
 		*/
@@ -175,11 +135,11 @@ public class Teste {
 		*/
 		
 		
-		/* 
+		/*
 		 LinhaDeVeiculo ldv = new LinhaDeVeiculo();
 		 LinhaDeVeiculo ldv2 = new LinhaDeVeiculo();
 		 ldv.setId((long) 2);
-		 ldv2 = dao.obter(ldv.getId());
+		 ldv2 = dao.obter(LinhaDeVeiculo.class, ldv.getId());
 		 
 		System.out.println("Descrição: "+ldv2.getDescricao());
 		*/
@@ -197,7 +157,140 @@ public class Teste {
 		}
 		*/
 		
+		//----------------------------------------------------------------------//
+				//criando e testando a tabela Modelo
+				/*
+				ModeloDAO dao = new ModeloDAO();
+				MontadoraDAO montDao = new MontadoraDAO();
+				Montadora mont = new Montadora();
+				mont = montDao.obter(Montadora.class, (long) 1);
+				LinhaDeVeiculoDAO linDao = new LinhaDeVeiculoDAO();
+				LinhaDeVeiculo linha = new LinhaDeVeiculo();
+				linha = linDao.obter(LinhaDeVeiculo.class, (long) 1);
+				PecaDAO peDAO = new PecaDAO();
+				List<Peca> listaPe = new ArrayList<Peca>();
+				//listaPe = peDAO.listar();
+				
+				Modelo modelo = new Modelo();
+				
+				modelo.setDescricao("Torto");
+				modelo.setMontadora(mont);
+				modelo.setLinha(linha);
+				//modelo.setPecas(listaPe);
+				modelo.setAno(2016);
+				modelo.setStatus(true);
+				dao.inserir(modelo);
+				*/
+				//modelo = dao.obter(Modelo.class, (long) 1);
+				/*
+				modelo.setPecas(listaPe);
+				dao.atualizar(modelo);
+				*/
+				
 		
+		//Modelo mod = new Modelo();
+		//Peca peca = new Peca();
+		//ModeloDAO modDAO = new ModeloDAO();
+		//PecaDAO pecaDAO = new PecaDAO();
+				
+				
+				/*
+				for(LinhaDeVeiculo ldv: dao.listar()) {
+					System.out.println("=============================");
+					System.out.println("Id: "+ldv.getId());
+					System.out.println("Descricao: "+ldv.getDescricao());
+					System.out.println("Status: "+ldv.getStatus());
+				}
+				*/
+				
+				
+				/* 
+				 LinhaDeVeiculo ldv = new LinhaDeVeiculo();
+				 LinhaDeVeiculo ldv2 = new LinhaDeVeiculo();
+				 ldv.setId((long) 2);
+				 ldv2 = dao.obter(ldv.getId());
+				 
+				System.out.println("Descrição: "+ldv2.getDescricao());
+				*/
+				
+				
+				/*
+				LinhaDeVeiculo ldv = new LinhaDeVeiculo();
+				ldv.setDescricao("l");
+				
+				for(LinhaDeVeiculo ldvL: dao.obter(ldv.getDescricao())) {
+					System.out.println("=============================");
+					System.out.println("Id: "+ldvL.getId());
+					System.out.println("Descricao: "+ldvL.getDescricao());
+					System.out.println("Status: "+ldvL.getStatus());
+				}
+				*/
+		
+				//----------------------------------------------------------------------//
+				//criando e testando a tabela PECA
+				
+				//PecaDAO dao = new PecaDAO();
+				/*
+				AplicacaoDAO apDAO = new AplicacaoDAO();
+				Aplicacao apli = new Aplicacao();
+				apli = apDAO.obter(Aplicacao.class, (long) 2);
+				ModeloDAO modDAO = new ModeloDAO();
+				List<Modelo> listaMod = new ArrayList<Modelo>();
+				listaMod = modDAO.listar();
+				//GregorianCalendar data = new GregorianCalendar();
+				
+				Peca peca = new Peca();
+				peca.setDescricao("Carburador");
+				peca.setAplicacao(apli);
+				peca.setAdicional(" ");
+				
+				peca.setMediaAvaliacao((float) 2);
+				//peca.setDataCadastro((java.sql.Date) data.getTime());
+				peca.setNumVisualizacao((long) 5);
+				peca.setModelo(listaMod);
+				peca.setQtdeTotal((long) 15);
+				peca.setTotalAvaliacao((long) 2);
+				peca.setStatus(true);
+				dao.inserir(peca);
+				*/
+				
+		
+		PecaDAO dao = new PecaDAO();
+		List<Peca> lista = new ArrayList<Peca>();
+		Modelo mod = new Modelo();
+		ModeloDAO modDAO = new ModeloDAO();
+		mod = modDAO.obter(Modelo.class, (long) 1);
+		
+		lista = dao.obter(mod);
+		//]System.out.println("testãoo: "+lista.get(1).getDescricao());
+		
+		
+		for(int i = 0; i< lista.size(); i++) {
+			System.out.println("=============================");
+			System.out.println("Id: "+lista.get(i).getId());
+			System.out.println("Descricao: "+lista.get(i).getDescricao());
+			System.out.println("Status: "+lista.get(i).getStatus());
+			System.out.println("Adicional: "+lista.get(i).getAdicional());
+			System.out.println("Media: "+lista.get(i).getMediaAvaliacao());
+			System.out.println("Vizualiz: "+lista.get(i).getNumVisualizacao());
+			System.out.println("QTDA: "+lista.get(i).getQtdeTotal());
+			System.out.println("Desc Modelo: "+mod.getDescricao());
+			System.out.println("Id Modelo: "+mod.getId());
+		
+		}
+		
+		
+		/*
+		Peca peca = new Peca();
+		PecaDAO dao = new PecaDAO();
+		ModeloDAO modDAO = new ModeloDAO();
+		List<Modelo> lista = new ArrayList<Modelo>();
+		lista = modDAO.listar();
+		
+		peca.setId((long) 1);
+		peca.setModelo(lista);
+		dao.atualizar(peca);
+		*/
 	}
 
 }

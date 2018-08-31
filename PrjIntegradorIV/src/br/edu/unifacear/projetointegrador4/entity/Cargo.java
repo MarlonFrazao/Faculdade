@@ -5,10 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.edu.unifacear.projetointegrador4.dao.DAO;
 
-public class Cargo {
+//@Entity
+public class Cargo implements DAO{
 	
-	
+	//@Id
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String descricao;
 	private Boolean status;
@@ -21,7 +24,7 @@ public class Cargo {
 		this.descricao = descricao;
 		this.status = status;
 	}
-
+	@Override
 	public Long getId() {
 		return id;
 	}
@@ -41,7 +44,7 @@ public class Cargo {
 	public Boolean getStatus() {
 		return status;
 	}
-
+	@Override
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
