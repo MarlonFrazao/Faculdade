@@ -1,6 +1,6 @@
 package br.edu.unifacear.projetointegrador4.testes;
 
-<<<<<<< HEAD
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,10 +10,10 @@ import br.edu.unifacear.projetointegrador4.dao.PecaDAO;
 import br.edu.unifacear.projetointegrador4.entity.Aplicacao;
 import br.edu.unifacear.projetointegrador4.entity.Modelo;
 import br.edu.unifacear.projetointegrador4.entity.Peca;
-=======
 
 
->>>>>>> refs/remotes/origin/master
+
+
 
 //a Pasta META-INF com o arquivo persistence.xml é obrigatório estar dentro da pasta src
 
@@ -26,13 +26,12 @@ public class Teste {
 		
 		//MontadoraDAO dao = new MontadoraDAO();
 		//não é necessario setar ID pq vai ser gerado automaticamente
-<<<<<<< HEAD
+
 		/*
 		Montadora m = new Montadora();
-=======
+
 		
 		/*Montadora m = new Montadora();
->>>>>>> refs/remotes/origin/master
 		
 		m.setDescricao("Honda");
 		m.setStatus(true);
@@ -125,11 +124,11 @@ public class Teste {
 		//----------------------------------------------------------------------//
 		//criando e testando a tabela LINHA DE VEICULO
 		
-<<<<<<< HEAD
+
 		/*LinhaDeVeiculoDAO dao = new LinhaDeVeiculoDAO();
-=======
+
 	//	LinhaDeVeiculoDAO dao = new LinhaDeVeiculoDAO();
->>>>>>> refs/remotes/origin/master
+
 		
 		
 		LinhaDeVeiculo ldv = new LinhaDeVeiculo();
@@ -202,7 +201,7 @@ public class Teste {
 				*/
 				
 		
-<<<<<<< HEAD
+
 		//Modelo mod = new Modelo();
 		//Peca peca = new Peca();
 		//ModeloDAO modDAO = new ModeloDAO();
@@ -306,10 +305,9 @@ public class Teste {
 		peca.setModelo(lista);
 		dao.atualizar(peca);
 		*/
-=======
 		
 		
->>>>>>> refs/remotes/origin/master
+
 	}
 
 }

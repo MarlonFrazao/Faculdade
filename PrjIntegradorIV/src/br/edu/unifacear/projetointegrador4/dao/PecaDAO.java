@@ -60,9 +60,7 @@ public class PecaDAO extends DAOGenerico<Peca> {
 		}
 		return lista;
 	}	
-<<<<<<< HEAD
-	
-=======
+
 	public List<Modelo> obter(Peca peca) {
 		EntityManager em = new ConnectionFactory().getConnection();
 		List<Modelo> lista = null;
@@ -76,5 +74,5 @@ public class PecaDAO extends DAOGenerico<Peca> {
 		}
 		return lista;
 	}
->>>>>>> refs/remotes/origin/master
+
 }
