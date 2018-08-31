@@ -60,5 +60,21 @@ public class PecaDAO extends DAOGenerico<Peca> {
 		}
 		return lista;
 	}	
+<<<<<<< HEAD
 	
+=======
+	public List<Modelo> obter(Peca peca) {
+		EntityManager em = new ConnectionFactory().getConnection();
+		List<Modelo> lista = null;
+
+		try {
+			lista = em.createQuery("from Peca_modelo WHERE peca_id =" + peca.getId()).getResultList();
+		} catch (Exception e) {
+			System.err.println(e);
+		} finally {
+			em.close();
+		}
+		return lista;
+	}
+>>>>>>> refs/remotes/origin/master
 }

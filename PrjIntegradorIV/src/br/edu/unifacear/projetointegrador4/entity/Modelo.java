@@ -44,8 +44,11 @@ public class Modelo implements DAO {
 		this.status = status;
 		this.pecas = pecas;
 	}
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> refs/remotes/origin/master
 	@Override
 	public Long getId() {
 		return id;

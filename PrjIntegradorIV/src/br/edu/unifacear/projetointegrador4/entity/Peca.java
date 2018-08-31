@@ -15,7 +15,11 @@ import javax.persistence.OneToMany;
 
 import br.edu.unifacear.projetointegrador4.dao.DAO;
 
+<<<<<<< HEAD
 @Entity
+=======
+
+>>>>>>> refs/remotes/origin/master
 public class Peca implements DAO{
 	
 	
