@@ -15,18 +15,18 @@ import br.edu.unifacear.projetointegrador4.dao.DAO;
 
 
 
-//@Entity
+@Entity
 public class PedidoDeVenda implements DAO{
 	
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;	
-	//@OneToMany
+	@ManyToOne
 	private Cliente cliente;
-	//@ManyToOne
+	@OneToMany
 	private List<Peca> peca;
 	private Date data;
-	//@ManyToOne
+	@ManyToOne
 	private StatusPV statusPV;
 	private Boolean status;
 	

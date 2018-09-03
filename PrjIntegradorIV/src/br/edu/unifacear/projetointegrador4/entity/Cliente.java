@@ -7,23 +7,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import br.edu.unifacear.projetointegrador4.dao.DAO;
 
-//@Entity
+@Entity
 public class Cliente implements DAO{
 	
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String cpf;
 	private String nome;
 	private String endereco;
 	private String email;
-	//@ManyToOne
+	@OneToMany
 	private List<Telefone> telefone;
-	//@OneToOne
+	@OneToOne
 	private TipoCliente tipo;
 	
 	private Boolean status;

@@ -74,13 +74,13 @@ public class AplicacaoTest {
 						" descricao: " + lista.get(i).getDescricao());
 			}
 		}
-	}
+	}*/
 	
 	@Test
 	public void testeObterPorId() {
 		Aplicacao a = null;
 		try { 
-			a = new FacadeBusiness().obterAplicacao((long) 6);
+			a = new FacadeBusiness().obterAplicacao((long) 2);
 		} catch(BusinessException e) {
 			e.printStackTrace();
 		}
@@ -92,6 +92,7 @@ public class AplicacaoTest {
 					"\nDescricao:  " + a.getDescricao());
 		
 	}
+	/*
 	@Test
 	public void testeObterPorDescricao() {
 		List<Aplicacao> la = null;
@@ -110,11 +111,12 @@ public class AplicacaoTest {
 		
 	}*/
 	
+	/*
 	@Test
 	public void testeExcluir() throws BusinessException {
 		Aplicacao a = new FacadeBusiness().obterAplicacao((long) 1);
 		
 		new FacadeBusiness().excluirAplicacao(a);
-	}
+	}*/
 	
 }

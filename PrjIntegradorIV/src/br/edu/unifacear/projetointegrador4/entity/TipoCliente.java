@@ -7,11 +7,11 @@ import javax.persistence.Id;
 
 import br.edu.unifacear.projetointegrador4.dao.DAO;
 
-//@Entity
+@Entity
 public class TipoCliente implements DAO {
 	
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String descricao;
 	private Boolean status;
