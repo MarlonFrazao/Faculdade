@@ -37,4 +37,8 @@ public class FabricaDAO {
 	public static TipoClienteDAO criarTipoClienteDAO() {
 		return new TipoClienteDAO();
 	}
+	
+	public static CargoDAO criarCargoDAO() {
+		return new CargoDAO();
+	}
 }

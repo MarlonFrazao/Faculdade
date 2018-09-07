@@ -3,7 +3,9 @@ package br.edu.unifacear.projetointegrador4.business;
 import java.util.List;
 
 import br.edu.unifacear.projetointegrador4.entity.Aplicacao;
+import br.edu.unifacear.projetointegrador4.entity.Cargo;
 import br.edu.unifacear.projetointegrador4.entity.LinhaDeVeiculo;
+import br.edu.unifacear.projetointegrador4.entity.Montadora;
 
 public class FacadeBusiness {
 	
@@ -55,5 +57,55 @@ public class FacadeBusiness {
 	
 	public void excluirLinhaDeVeiculo(LinhaDeVeiculo ldv) throws BusinessException {
 		new LinhaDeVeiculoBusiness().excluir(ldv);
+	}
+	
+	//Montadora
+	public void inserirMontadora(Montadora m) throws BusinessException {
+		new MontadoraBusiness().inserir(m);
+	}
+	
+	public void atualizarMontadora(Montadora m) throws BusinessException {
+		new MontadoraBusiness().atualizar(m);
+	}
+	
+	public List<Montadora> listarMontadora() {
+		return new MontadoraBusiness().listar();
+	}
+	
+	public Montadora obterMontadora(Long id) throws BusinessException {
+		return new MontadoraBusiness().obter(id);
+	}
+	
+	public List<Montadora> obterMontadora(String descricao) throws BusinessException {
+		return new MontadoraBusiness().obter(descricao);
+	}
+	
+	public void excluirMontadora(Montadora m) throws BusinessException {
+		new MontadoraBusiness().excluir(m);
+	}
+	
+	//Cargo
+	public void inserirCargo(Cargo c) throws BusinessException {
+		new CargoBusiness().inserir(c);
+	}
+	
+	public void atualizarCargo(Cargo c) throws BusinessException {
+		new CargoBusiness().atualizar(c);
+	}
+	
+	public List<Cargo> listarCargo() {
+		return new CargoBusiness().listar();
+	}
+	
+	public Cargo obterCargo(Long id) throws BusinessException {
+		return new CargoBusiness().obter(id);
+	}
+	
+	public List<Cargo> obterCargo(String descricao) throws BusinessException {
+		return new CargoBusiness().obter(descricao);
+	}
+	
+	public void excluirCargo(Cargo c) throws BusinessException {
+		new CargoBusiness().excluir(c);
 	}
 }
