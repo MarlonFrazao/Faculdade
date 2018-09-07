@@ -1,8 +1,10 @@
 package br.edu.unifacear.projetointegrador4.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.edu.unifacear.projetointegrador4.dao.FabricaDAO;
+import br.edu.unifacear.projetointegrador4.entity.Aplicacao;
 import br.edu.unifacear.projetointegrador4.entity.LinhaDeVeiculo;
 
 public class LinhaDeVeiculoBusiness {
@@ -32,5 +34,47 @@ public class LinhaDeVeiculoBusiness {
 				}
 			}
 		}
+	}
+	
+	public void atualizar(LinhaDeVeiculo ldv) {
+		
+		FabricaDAO.criarLinhaDeVeiculoDAO().atualizar(ldv);
+	}
+	
+	public List<LinhaDeVeiculo> listar() {
+		
+		return FabricaDAO.criarLinhaDeVeiculoDAO().listar();
+	}
+	
+	public LinhaDeVeiculo obter(Long id) throws BusinessException {
+		LinhaDeVeiculo ldv = new LinhaDeVeiculo();
+		
+		if(id == null) {
+			ldv = null;
+			throw new BusinessException("Erro: Necessário informar código.");
+		} else {
+			ldv = FabricaDAO.criarLinhaDeVeiculoDAO().obter(LinhaDeVeiculo.class, id);
+		}
+		
+		return ldv;
+	}
+	
+	public List<LinhaDeVeiculo> obter(String descricao) throws BusinessException {
+		
+		List<LinhaDeVeiculo> lista = new ArrayList<LinhaDeVeiculo>();
+		
+		if (descricao == null) {
+			lista = null;
+			throw new BusinessException("Erro: Necessário informar descrição.");
+		} else {
+			lista = FabricaDAO.criarLinhaDeVeiculoDAO().obter(descricao);
+		} 
+		
+		return lista;
+	}
+	
+	public void excluir(LinhaDeVeiculo ldv) {
+		
+		FabricaDAO.criarLinhaDeVeiculoDAO().excluir(ldv);
 	}
 }
