@@ -6,6 +6,7 @@ import br.edu.unifacear.projetointegrador4.entity.Aplicacao;
 import br.edu.unifacear.projetointegrador4.entity.Cargo;
 import br.edu.unifacear.projetointegrador4.entity.LinhaDeVeiculo;
 import br.edu.unifacear.projetointegrador4.entity.Montadora;
+import br.edu.unifacear.projetointegrador4.entity.StatusPV;
 
 public class FacadeBusiness {
 	
@@ -107,5 +108,30 @@ public class FacadeBusiness {
 	
 	public void excluirCargo(Cargo c) throws BusinessException {
 		new CargoBusiness().excluir(c);
+	}
+	
+	//StatusPV
+	public void inserirStatusPV(StatusPV s) throws BusinessException {
+		new StatusPVBusiness().inserir(s);
+	}
+	
+	public void atualizarStatusPV(StatusPV s) throws BusinessException {
+		new StatusPVBusiness().atualizar(s);
+	}
+	
+	public List<StatusPV> listarStatusPV() {
+		return new StatusPVBusiness().listar();
+	}
+	
+	public StatusPV obterStatusPV(Long id) throws BusinessException {
+		return new StatusPVBusiness().obter(id);
+	}
+	
+	public List<StatusPV> obterStatusPV(String descricao) throws BusinessException {
+		return new StatusPVBusiness().obter(descricao);
+	}
+	
+	public void excluirStatusPV(StatusPV s) throws BusinessException {
+		new StatusPVBusiness().excluir(s);
 	}
 }

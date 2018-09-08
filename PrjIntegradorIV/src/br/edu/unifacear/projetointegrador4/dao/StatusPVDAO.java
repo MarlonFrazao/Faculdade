@@ -16,7 +16,7 @@ public class StatusPVDAO extends DAOGenerico<StatusPV>{
 		StatusPV statusPV = null;
 		List<StatusPV> lista = null;
 		try {
-			lista = em.createQuery("from StatusPV WHERE nome like '%"+descricao+"%'").getResultList();			
+			lista = em.createQuery("from StatusPV WHERE descricao like '%"+descricao+"%'").getResultList();			
 		}catch (Exception e) {
 			System.err.println(e);//imprimindo o erro no console
 		}finally{
