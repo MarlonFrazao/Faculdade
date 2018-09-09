@@ -9,16 +9,29 @@ import javax.persistence.Id;
 public class Telefone {
 	
 	@Id
+	private Long id;
 	private String cpf;
 	private Long telefone;
+	private String tipo;
+	
 	
 	
 	public Telefone() {}
 
-	public Telefone(String cpf, Long telefone) {
+	public Telefone(Long id, String cpf, Long telefone, String tipo) {
 		super();
+		this.id = id;
 		this.cpf = cpf;
 		this.telefone = telefone;
+		this.tipo = tipo;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getCpf() {
@@ -35,6 +48,14 @@ public class Telefone {
 
 	public void setTelefone(Long telefone) {
 		this.telefone = telefone;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 	
 }
