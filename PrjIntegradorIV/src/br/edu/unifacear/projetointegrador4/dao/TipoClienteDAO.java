@@ -16,7 +16,7 @@ public class TipoClienteDAO extends DAOGenerico<TipoCliente>{
 		TipoCliente tipoCliente = null;
 		List<TipoCliente> lista = null;
 		try {
-			lista = em.createQuery("from TipoCliente WHERE nome like '%"+descricao+"%'").getResultList();			
+			lista = em.createQuery("from TipoCliente WHERE descricao like '%"+descricao+"%'").getResultList();			
 		}catch (Exception e) {
 			System.err.println(e);//imprimindo o erro no console
 		}finally{

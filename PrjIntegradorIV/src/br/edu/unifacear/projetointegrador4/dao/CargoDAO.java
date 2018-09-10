@@ -16,7 +16,7 @@ public class CargoDAO extends DAOGenerico<Cargo>{
 		Cargo cargo = null;
 		List<Cargo> lista = null;
 		try {
-			lista = em.createQuery("from Cargo WHERE nome like '%"+descricao+"%'").getResultList();			
+			lista = em.createQuery("from Cargo WHERE descricao like '%"+descricao+"%'").getResultList();			
 		}catch (Exception e) {
 			System.err.println(e);//imprimindo o erro no console
 		}finally{
