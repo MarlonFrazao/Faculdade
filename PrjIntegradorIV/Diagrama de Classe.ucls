@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.1" icons="false" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <package id="1" language="java" name="br.edu.unifacear.projetointegrador4.entity" project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/entity" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="626" width="1715" x="90" y="145"/>    
+    <display autosize="false" stereotype="false" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="2" language="java" name="br.edu.unifacear.projetointegrador4.dao" project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/dao" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="920" width="1655" x="148" y="918"/>    
+    <display autosize="false" stereotype="false" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="3" language="java" name="br.edu.unifacear.projetointegrador4.business" project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/business" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1686" width="1109" x="86" y="1914"/>    
+    <display autosize="false" stereotype="false" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="4" language="java" name="br.edu.unifacear.projetointegrador4.connection" project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/connection" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="440" width="398" x="1893" y="157"/>    
+    <display autosize="false" stereotype="false" sort-features="false" accessors="true"/>  
+  </package>  
+  <package id="5" language="java" name="br.edu.unifacear.projetointegrador4.testes" project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/testes" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="765" width="1062" x="1954" y="994"/>    
+    <display autosize="false" stereotype="false" sort-features="false" accessors="true"/>  
+  </package>  
+  <class id="6" language="java" name="br.edu.unifacear.projetointegrador4.entity.Montadora" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/entity/Montadora.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="566" y="507"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="br.edu.unifacear.projetointegrador4.entity.Modelo" project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/entity/Modelo.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="215" y="502"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="br.edu.unifacear.projetointegrador4.entity.TipoCliente" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/entity/TipoCliente.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1404" y="441"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="br.edu.unifacear.projetointegrador4.entity.Telefone" project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/entity/Telefone.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1671" y="453"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="br.edu.unifacear.projetointegrador4.entity.Funcionario" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/entity/Funcionario.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1661" y="642"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="br.edu.unifacear.projetointegrador4.entity.Peca_Modelo" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/entity/Peca_Modelo.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="211" y="226"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="br.edu.unifacear.projetointegrador4.entity.Cliente" project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/entity/Cliente.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1452" y="258"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="br.edu.unifacear.projetointegrador4.entity.LinhaDeVeiculo" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/entity/LinhaDeVeiculo.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="212" y="663"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="br.edu.unifacear.projetointegrador4.entity.Aplicacao" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/entity/Aplicacao.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="856" y="399"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="br.edu.unifacear.projetointegrador4.entity.Cargo" project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/entity/Cargo.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1355" y="646"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="br.edu.unifacear.projetointegrador4.entity.PedidoDeVenda" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/entity/PedidoDeVenda.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="856" y="244"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="br.edu.unifacear.projetointegrador4.entity.StatusPV" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/entity/StatusPV.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1151" y="399"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="br.edu.unifacear.projetointegrador4.entity.Peca" project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/entity/Peca.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="532" y="302"/>    
+    <display autosize="true" stereotype="false" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="false" package="false" protected="false" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="br.edu.unifacear.projetointegrador4.dao.ClienteDAO" project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/dao/ClienteDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="657" y="1065"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="br.edu.unifacear.projetointegrador4.dao.PedidoDeVendaDAO" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/dao/PedidoDeVendaDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="662" y="1199"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="false" protected="true" private="true" static="true"/>      
+      <operations public="true" package="false" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="br.edu.unifacear.projetointegrador4.dao.PecaDAO" project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/dao/PecaDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="667" y="1370"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="false" protected="true" private="true" static="true"/>      
+      <operations public="true" package="false" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="br.edu.unifacear.projetointegrador4.dao.LinhaDeVeiculoDAO" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/dao/LinhaDeVeiculoDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="710" y="1553"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="false" protected="true" private="true" static="true"/>      
+      <operations public="true" package="false" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="br.edu.unifacear.projetointegrador4.dao.StatusPVDAO" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/dao/StatusPVDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="891" y="1691"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="br.edu.unifacear.projetointegrador4.dao.TelefoneDAO" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/dao/TelefoneDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="278" y="1047"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="false" protected="true" private="true" static="true"/>      
+      <operations public="true" package="false" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="br.edu.unifacear.projetointegrador4.dao.ModeloDAO" project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/dao/ModeloDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1573" y="1065"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="br.edu.unifacear.projetointegrador4.dao.FabricaDAO" project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/dao/FabricaDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="308" y="1258"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="false" protected="true" private="true" static="true"/>      
+      <operations public="true" package="false" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="br.edu.unifacear.projetointegrador4.dao.DAOGenerico" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/dao/DAOGenerico.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1118" y="1107"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="br.edu.unifacear.projetointegrador4.dao.FuncionarioDAO" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/dao/FuncionarioDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1135" y="1699"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="br.edu.unifacear.projetointegrador4.dao.TipoClienteDAO" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/dao/TipoClienteDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1372" y="1703"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="br.edu.unifacear.projetointegrador4.dao.MontadoraDAO" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/dao/MontadoraDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1487" y="1569"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="br.edu.unifacear.projetointegrador4.dao.AplicacaoDAO" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/dao/AplicacaoDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1578" y="1419"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="br.edu.unifacear.projetointegrador4.dao.CargoDAO" project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/dao/CargoDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1573" y="1259"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="br.edu.unifacear.projetointegrador4.connection.ConnectionFactory" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/connection/ConnectionFactory.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2073" y="340"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="br.edu.unifacear.projetointegrador4.business.TipoClienteBusiness" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/business/TipoClienteBusiness.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="265" y="2068"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="br.edu.unifacear.projetointegrador4.business.BusinessException" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/business/BusinessException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="281" y="2247"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="br.edu.unifacear.projetointegrador4.business.CargoBusiness" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/business/CargoBusiness.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="264" y="2434"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="br.edu.unifacear.projetointegrador4.business.FacadeBusiness" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/business/FacadeBusiness.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="954" y="2639"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="br.edu.unifacear.projetointegrador4.business.AplicacaoBusiness" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/business/AplicacaoBusiness.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="565" y="2068"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="br.edu.unifacear.projetointegrador4.business.LinhaDeVeiculoBusiness" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/business/LinhaDeVeiculoBusiness.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="575" y="2301"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="br.edu.unifacear.projetointegrador4.business.ModeloBusiness" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/business/ModeloBusiness.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="611" y="2563"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="br.edu.unifacear.projetointegrador4.business.StatusPVBusiness" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/business/StatusPVBusiness.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="620" y="2848"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="br.edu.unifacear.projetointegrador4.business.PecaBusiness" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/business/PecaBusiness.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="602" y="3156"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="br.edu.unifacear.projetointegrador4.business.MontadoraBusiness" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/business/MontadoraBusiness.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="265" y="2688"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="br.edu.unifacear.projetointegrador4.business.FuncionarioBusiness" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/business/FuncionarioBusiness.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="261" y="2934"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="br.edu.unifacear.projetointegrador4.business.ClienteBusiness" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/business/ClienteBusiness.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="277" y="3174"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="br.edu.unifacear.projetointegrador4.business.PedidoDeVendaBusiness" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/business/PedidoDeVendaBusiness.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="287" y="3428"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="47" language="java" name="br.edu.unifacear.projetointegrador4.testes.LinhaDeVeiculoTest" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/testes/LinhaDeVeiculoTest.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2131" y="1159"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="48" language="java" name="br.edu.unifacear.projetointegrador4.testes.Teste" project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/testes/Teste.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2136" y="1388"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="49" language="java" name="br.edu.unifacear.projetointegrador4.testes.AplicacaoTest" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/testes/AplicacaoTest.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2127" y="1574"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="50" language="java" name="br.edu.unifacear.projetointegrador4.testes.CargoTest" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/testes/CargoTest.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2465" y="1166"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="51" language="java" name="br.edu.unifacear.projetointegrador4.testes.StatusPVTest" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/testes/StatusPVTest.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2463" y="1426"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="52" language="java" name="br.edu.unifacear.projetointegrador4.testes.MontadoraTest" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/testes/MontadoraTest.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2808" y="1186"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="53" language="java" name="br.edu.unifacear.projetointegrador4.testes.TipoClienteTest" 
+    project="ProjetoIntegradorIV" 
+    file="/ProjetoIntegradorIV/src/br/edu/unifacear/projetointegrador4/testes/TipoClienteTest.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="2799" y="1419"/>    
+    <display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <generalization id="54">    
+    <end type="SOURCE" refId="29"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <generalization id="55">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="56">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="57" name="modelo_id"/>      
+      <multiplicity id="58" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="59">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="60" name="montadora"/>      
+      <multiplicity id="61" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="62">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="63">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="64" name="modelo"/>      
+      <multiplicity id="65" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="66">    
+    <end type="SOURCE" refId="25"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="67">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="68" name="peca"/>      
+      <multiplicity id="69" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="70">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="71" name="telefone"/>      
+      <multiplicity id="72" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="73">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="74" name="cliente"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="76">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="77" name="pecas"/>      
+      <multiplicity id="78" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="79">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="80">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="81" name="cargo"/>      
+      <multiplicity id="82" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="83">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <generalization id="84">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="85">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="86" name="statusPV"/>      
+      <multiplicity id="87" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="88">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="89">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="90" name="linha"/>      
+      <multiplicity id="91" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="92">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="93" name="peca_id"/>      
+      <multiplicity id="94" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="18" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="95">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="96">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="97" name="tipo"/>      
+      <multiplicity id="98" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="99">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="100">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="101" name="aplicacao"/>      
+      <multiplicity id="102" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="103">    
+    <end type="SOURCE" refId="30"/>    
+    <end type="TARGET" refId="27"/>  
+  </generalization>  
+  <association id="104">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="105" name="telefone"/>      
+      <multiplicity id="106" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="false" package="false" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
