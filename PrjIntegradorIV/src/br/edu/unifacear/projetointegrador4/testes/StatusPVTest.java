@@ -18,7 +18,7 @@ public class StatusPVTest {
 		StatusPV s = new StatusPV();
 		
 		s.setDescricao("Confirmadi");
-		
+		System.out.println("============= Inserir =============");
 		System.out.println("inserindo descrição errada: " + s.getDescricao());
 		
 		try {
@@ -40,7 +40,7 @@ public class StatusPVTest {
 		new FacadeBusiness().atualizarStatusPV(s);
 		
 		s = new FacadeBusiness().obterStatusPV((long) 2);
-		
+		System.out.println("============= Atualizar =============");
 		System.out.println("Corrigindo descrição: " + s.getDescricao());
 		
 		assertEquals(true, s.getId() != null);
@@ -49,7 +49,7 @@ public class StatusPVTest {
 	@Test
 	public void testeListar() {
 		List<StatusPV> lista = new FacadeBusiness().listarStatusPV();
-		
+		System.out.println("============= Listar =============");
 		if(lista.size() < 1) {
 			System.out.println(":(");
 		} else {
@@ -57,8 +57,8 @@ public class StatusPVTest {
 			
 			for(int i = 0; i < lista.size(); i ++) {
 				System.out.println("ID: " + lista.get(i).getId() + 
-						"/nDescrição: " + lista.get(i).getDescricao() + 
-						"/nStatus: " + lista.get(i).getStatus());
+						"\nDescrição: " + lista.get(i).getDescricao() + 
+						"\nStatus: " + lista.get(i).getStatus());
 			}
 		}
 	}
@@ -73,9 +73,9 @@ public class StatusPVTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		System.out.println("============= Obter por Id =============");
 		System.out.println("Buscando por id");
-		System.out.println("Id: " + s.getId() + "/nDescricao: " + s.getDescricao());
+		System.out.println("Id: " + s.getId() + "\nDescricao: " + s.getDescricao());
 	}
 	
 	@Test
@@ -87,7 +87,7 @@ public class StatusPVTest {
 			e.printStackTrace();
 		}
 		
-		//assertEquals(true, lista.get(0).getId() != null);
+		System.out.println("============= Obter por Descrição =============");
 		System.out.println("teste obter por descricao");
 		for(int i = 0; i < lista.size(); i++) {
 			System.out.println("id: " + lista.get(i).getId() + 

@@ -18,7 +18,7 @@ public class LinhaDeVeiculoTest {
 		LinhaDeVeiculo ldv = new LinhaDeVeiculo();
 		
 		ldv.setDescricao("Pesadp");
-		
+		System.out.println("============= Inserir =============");
 		System.out.println("inserindo descrição errada: " + ldv.getDescricao());
 		
 		try {
@@ -40,7 +40,7 @@ public class LinhaDeVeiculoTest {
 		new FacadeBusiness().atualizarLinhaDeVeiculo(ldv);
 		
 		ldv = new FacadeBusiness().obterLinhaDeVeiculo((long) 2);
-		
+		System.out.println("============= Atualizar =============");
 		System.out.println("Corrigindo descrição: " + ldv.getDescricao());
 		
 		assertEquals(true, ldv.getId() != null);
@@ -49,7 +49,7 @@ public class LinhaDeVeiculoTest {
 	@Test
 	public void testeListar() {
 		List<LinhaDeVeiculo> lista = new FacadeBusiness().listarLinhaDeVeiculo();
-		
+		System.out.println("============= Listar =============");
 		if(lista.size() < 1) {
 			System.out.println(":(");
 		} else {
@@ -57,8 +57,8 @@ public class LinhaDeVeiculoTest {
 			
 			for(int i = 0; i < lista.size(); i ++) {
 				System.out.println("ID: " + lista.get(i).getId() + 
-						"/nDescrição: " + lista.get(i).getDescricao() + 
-						"/nStatus: " + lista.get(i).getStatus());
+						"\nDescrição: " + lista.get(i).getDescricao() + 
+						"\nStatus: " + lista.get(i).getStatus());
 			}
 		}
 	}
@@ -73,9 +73,9 @@ public class LinhaDeVeiculoTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		System.out.println("============= Obter por Id =============");
 		System.out.println("Buscando por id");
-		System.out.println("Id: " + ldv.getId() + "/nDescricao: " + ldv.getDescricao());
+		System.out.println("Id: " + ldv.getId() + "\nDescricao: " + ldv.getDescricao());
 	}
 	
 	@Test
@@ -86,7 +86,7 @@ public class LinhaDeVeiculoTest {
 		} catch(BusinessException e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println("============= Obter por Descrição =============");
 		assertEquals(true, lista.get(0).getId() != null);
 		System.out.println("teste obter por descricao");
 		for(int i = 0; i < lista.size(); i++) {

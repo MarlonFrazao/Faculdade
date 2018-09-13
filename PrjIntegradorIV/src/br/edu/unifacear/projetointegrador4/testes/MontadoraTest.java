@@ -15,10 +15,12 @@ public class MontadoraTest {
 	@Test
 	public void testeInserir() {
 		
+		
+		
 		Montadora m = new Montadora();
 		
-		m.setDescricao("Ronda");
-		
+		m.setDescricao("Kawasaki");
+		System.out.println("============= Inserir =============");
 		System.out.println("inserindo descrição errada: " + m.getDescricao());
 		
 		try {
@@ -33,14 +35,15 @@ public class MontadoraTest {
 	
 	@Test
 	public void testeAtualizar() throws BusinessException {
-		Montadora m = new FacadeBusiness().obterMontadora((long) 2 );
 		
-		m.setDescricao("Honda");
+		Montadora m = new FacadeBusiness().obterMontadora((long) 5 );
+		
+		m.setDescricao("Troller");
 		
 		new FacadeBusiness().atualizarMontadora(m);
 		
-		m = new FacadeBusiness().obterMontadora((long) 2);
-		
+		m = new FacadeBusiness().obterMontadora((long) 5);
+		System.out.println("============= Atualizar =============");
 		System.out.println("Corrigindo descrição: " + m.getDescricao());
 		
 		assertEquals(true, m.getId() != null);
@@ -48,6 +51,7 @@ public class MontadoraTest {
 	
 	@Test
 	public void testeListar() {
+		System.out.println("============= Listar =============");
 		List<Montadora> lista = new FacadeBusiness().listarMontadora();
 		
 		if(lista.size() < 1) {
@@ -57,14 +61,15 @@ public class MontadoraTest {
 			
 			for(int i = 0; i < lista.size(); i ++) {
 				System.out.println("ID: " + lista.get(i).getId() + 
-						"/nDescrição: " + lista.get(i).getDescricao() + 
-						"/nStatus: " + lista.get(i).getStatus());
+						"\nDescrição: " + lista.get(i).getDescricao() + 
+						"\nStatus: " + lista.get(i).getStatus());
 			}
 		}
 	}
 	
 	@Test
 	public void testeObterPorId() {
+		
 		Montadora m = null;
 		
 		try {
@@ -73,20 +78,21 @@ public class MontadoraTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		System.out.println("============= Obter por Id =============");
 		System.out.println("Buscando por id");
-		System.out.println("Id: " + m.getId() + "/nDescricao: " + m.getDescricao());
+		System.out.println("Id: " + m.getId() + "\nDescricao: " + m.getDescricao());
 	}
 	
 	@Test
 	public void testeObterPorDescricao() {
+		
 		List<Montadora> lista = null;
 		try { 
 			lista = new FacadeBusiness().obterMontadora("on");
 		} catch(BusinessException e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println("============= Obter por Descrição =============");
 		assertEquals(true, lista.get(0).getId() != null);
 		System.out.println("teste obter por descricao");
 		for(int i = 0; i < lista.size(); i++) {
@@ -98,6 +104,7 @@ public class MontadoraTest {
 	
 	@Test
 	public void testeExcluir() throws BusinessException {
+		
 		Montadora m = new FacadeBusiness().obterMontadora((long) 1);
 		
 		new FacadeBusiness().excluirMontadora(m);

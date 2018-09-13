@@ -297,5 +297,7 @@ public class FacadeBusiness {
 	public void excluirPedidoDeVenda(PedidoDeVenda pdv) throws BusinessException {
 		new PedidoDeVendaBusiness().excluir(pdv);
 	}
+	
+	//Telefone
 
 }

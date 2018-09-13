@@ -18,7 +18,7 @@ public class TipoClienteTest {
 		TipoCliente tc = new TipoCliente();
 		
 		tc.setDescricao("Ourrr");
-		
+		System.out.println("============= Inserir =============");
 		System.out.println("inserindo descrição errada: " + tc.getDescricao());
 		
 		try {
@@ -40,7 +40,7 @@ public class TipoClienteTest {
 		new FacadeBusiness().atualizarTipoCliente(tc);
 		
 		tc = new FacadeBusiness().obterTipoCliente((long) 1);
-		
+		System.out.println("============= Atualizar =============");
 		System.out.println("Corrigindo descrição: " + tc.getDescricao());
 		
 		assertEquals(true, tc.getId() != null);
@@ -49,7 +49,7 @@ public class TipoClienteTest {
 	@Test
 	public void testeListar() {
 		List<TipoCliente> lista = new FacadeBusiness().listarTipoCliente();
-		
+		System.out.println("============= Listar =============");
 		if(lista.size() < 1) {
 			System.out.println(":(");
 		} else {
@@ -57,8 +57,8 @@ public class TipoClienteTest {
 			
 			for(int i = 0; i < lista.size(); i ++) {
 				System.out.println("ID: " + lista.get(i).getId() + 
-						"/nDescrição: " + lista.get(i).getDescricao() + 
-						"/nStatus: " + lista.get(i).getStatus());
+						"\nDescrição: " + lista.get(i).getDescricao() + 
+						"\nStatus: " + lista.get(i).getStatus());
 			}
 		}
 	}
@@ -73,9 +73,9 @@ public class TipoClienteTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		System.out.println("============= Obter por Id =============");
 		System.out.println("Buscando por id");
-		System.out.println("Id: " + tc.getId() + "/nDescricao: " + tc.getDescricao());
+		System.out.println("Id: " + tc.getId() + "\nDescricao: " + tc.getDescricao());
 	}
 	
 	@Test
@@ -87,7 +87,7 @@ public class TipoClienteTest {
 			e.printStackTrace();
 		}
 		
-		//assertEquals(true, lista.get(0).getId() != null);
+		System.out.println("============= Obter por Descrição =============");
 		System.out.println("teste obter por descricao");
 		for(int i = 0; i < lista.size(); i++) {
 			System.out.println("id: " + lista.get(i).getId() + 

@@ -14,7 +14,7 @@ public class AplicacaoTest {
 	//JUnit Build Path - add library - JUnit - JUnit 4 
 
 	//Indica que é um teste
-	/*
+	
 	@Test //Indica que é um teste
 
 	public void testeInserir() {
@@ -23,7 +23,7 @@ public class AplicacaoTest {
 
 		a.setDescricao("Freio");
 
-		
+		System.out.println("============= Inserir =============");
 		System.out.println("testeInserir: "+a.getDescricao());
 
 		
@@ -54,7 +54,7 @@ public class AplicacaoTest {
 			e.printStackTrace();
 		}
 		a = new FacadeBusiness().obterAplicacao((long) 6);
-		
+		System.out.println("============= Atualizar =============");
 		System.out.println("testeAtualizar: "+a.getDescricao());
 		
 		assertEquals(true, a.getId() != null);
@@ -63,18 +63,18 @@ public class AplicacaoTest {
 	@Test 
 	public void testeListar() throws BusinessException {
 		List<Aplicacao> lista = new FacadeBusiness().listarAplicacao();
-		
+		System.out.println("============= Listar =============");
 		if(lista.size() < 1) {
 			System.out.println("Deu ruim! :(");
 		} else {
-			System.out.println("Deu boa! :)/n/nTesteListar!");
+			System.out.println("Deu boa! :)\n\nTesteListar!");
 			
 			for(int i = 0; i < lista.size(); i++) {
 				System.out.println("Id: " + lista.get(i).getId() + 
 						" descricao: " + lista.get(i).getDescricao());
 			}
 		}
-	}*/
+	}
 	
 	@Test
 	public void testeObterPorId() {
@@ -85,14 +85,14 @@ public class AplicacaoTest {
 			e.printStackTrace();
 		}
 		
-		//assertEquals(true, a.getId() != null);
+		System.out.println("============= Obter por Id =============");
 		System.out.println("teste obter por id");
 		
 		System.out.println("id: " + a.getId() + 
 					"\nDescricao:  " + a.getDescricao());
 		
 	}
-	/*
+	
 	@Test
 	public void testeObterPorDescricao() {
 		List<Aplicacao> la = null;
@@ -101,7 +101,7 @@ public class AplicacaoTest {
 		} catch(BusinessException e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println("============= Obter por Descrição =============");
 		assertEquals(true, la.get(0).getId() != null);
 		System.out.println("teste obter por descricao");
 		for(int i = 0; i < la.size(); i++) {
@@ -109,14 +109,14 @@ public class AplicacaoTest {
 					"\nDescricao:  " + la.get(i).getDescricao());
 		}
 		
-	}*/
+	}
 	
-	/*
+	
 	@Test
 	public void testeExcluir() throws BusinessException {
 		Aplicacao a = new FacadeBusiness().obterAplicacao((long) 1);
 		
 		new FacadeBusiness().excluirAplicacao(a);
-	}*/
+	}
 	
 }

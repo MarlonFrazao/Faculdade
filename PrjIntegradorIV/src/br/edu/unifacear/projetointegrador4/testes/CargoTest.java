@@ -18,7 +18,7 @@ public class CargoTest {
 		Cargo c = new Cargo();
 		
 		c.setDescricao("Administradr");
-		
+		System.out.println("============= Inserir =============");
 		System.out.println("inserindo descrição errada: " + c.getDescricao());
 		
 		try {
@@ -40,7 +40,7 @@ public class CargoTest {
 		new FacadeBusiness().atualizarCargo(c);
 		
 		c = new FacadeBusiness().obterCargo((long) 1);
-		
+		System.out.println("============= Atualizar =============");
 		System.out.println("Corrigindo descrição: " + c.getDescricao());
 		
 		assertEquals(true, c.getId() != null);
@@ -48,6 +48,7 @@ public class CargoTest {
 	
 	@Test
 	public void testeListar() {
+		System.out.println("============= Listar =============");
 		List<Cargo> lista = new FacadeBusiness().listarCargo();
 		
 		if(lista.size() < 1) {
@@ -57,8 +58,8 @@ public class CargoTest {
 			
 			for(int i = 0; i < lista.size(); i ++) {
 				System.out.println("ID: " + lista.get(i).getId() + 
-						"/nDescrição: " + lista.get(i).getDescricao() + 
-						"/nStatus: " + lista.get(i).getStatus());
+						"\nDescrição: " + lista.get(i).getDescricao() + 
+						"\nStatus: " + lista.get(i).getStatus());
 			}
 		}
 	}
@@ -73,9 +74,9 @@ public class CargoTest {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		System.out.println("============= Obter por Id =============");
 		System.out.println("Buscando por id");
-		System.out.println("Id: " + c.getId() + "/nDescricao: " + c.getDescricao());
+		System.out.println("Id: " + c.getId() + "\nDescricao: " + c.getDescricao());
 	}
 	
 	@Test
@@ -86,7 +87,7 @@ public class CargoTest {
 		} catch(BusinessException e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println("============= Obter por Descrição =============");
 		assertEquals(true, lista.get(0).getId() != null);
 		System.out.println("teste obter por descricao");
 		for(int i = 0; i < lista.size(); i++) {
