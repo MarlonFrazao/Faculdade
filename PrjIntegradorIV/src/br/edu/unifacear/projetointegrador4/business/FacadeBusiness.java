@@ -12,6 +12,7 @@ import br.edu.unifacear.projetointegrador4.entity.Montadora;
 import br.edu.unifacear.projetointegrador4.entity.Peca;
 import br.edu.unifacear.projetointegrador4.entity.PedidoDeVenda;
 import br.edu.unifacear.projetointegrador4.entity.StatusPV;
+import br.edu.unifacear.projetointegrador4.entity.Telefone;
 import br.edu.unifacear.projetointegrador4.entity.TipoCliente;
 
 public class FacadeBusiness {
@@ -299,5 +300,19 @@ public class FacadeBusiness {
 	}
 	
 	//Telefone
+	
+	public void inserirTelefone () throws BusinessException {
+		new TelefoneBusiness().inserir(null);
+		
+	}
+	public void atualizarTelefone(Telefone tel) throws BusinessException{
+		new TelefoneBusiness().atualizar(tel);
+	}
+	public List<Telefone> listarTelefone(){
+		return new TelefoneBusiness().listar();
+	}
+	public void excluirTelefone(Telefone t) throws BusinessException{
+		new TelefoneBusiness().excluir(t);
+	}
 
 }

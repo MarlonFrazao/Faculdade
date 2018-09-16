@@ -14,7 +14,7 @@ public class AplicacaoTest {
 	//JUnit Build Path - add library - JUnit - JUnit 4 
 
 	//Indica que é um teste
-	
+	/*
 	@Test //Indica que é um teste
 
 	public void testeInserir() {
@@ -59,7 +59,7 @@ public class AplicacaoTest {
 		
 		assertEquals(true, a.getId() != null);
 	}
-	
+	*/
 	@Test 
 	public void testeListar() throws BusinessException {
 		List<Aplicacao> lista = new FacadeBusiness().listarAplicacao();
@@ -111,12 +111,12 @@ public class AplicacaoTest {
 		
 	}
 	
-	
+	/*
 	@Test
 	public void testeExcluir() throws BusinessException {
 		Aplicacao a = new FacadeBusiness().obterAplicacao((long) 1);
 		
 		new FacadeBusiness().excluirAplicacao(a);
-	}
+	}*/
 	
 }

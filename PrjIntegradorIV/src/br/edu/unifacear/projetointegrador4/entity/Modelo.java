@@ -2,7 +2,9 @@ package br.edu.unifacear.projetointegrador4.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import br.edu.unifacear.projetointegrador4.dao.DAO;
 
@@ -27,14 +30,23 @@ public class Modelo implements DAO {
 	private Integer ano;
 	private Boolean status;
 	
-	@ManyToMany(mappedBy = "modelo")
-	private List<Peca> pecas;
+	@OneToMany(mappedBy = "id_modelo", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
+	private List<Peca_Modelo> peca_modelo;
 	
 	public Modelo() {}
-
+	
+	public void adicionarPeca_Modelo(Peca_Modelo peca_modelo) {
+		peca_modelo.setModelo(this);
+		this.peca_modelo.add(peca_modelo);
+	}
+	
+	public void removerPeca_Modelo(int index) {
+		Peca_Modelo peca_modelo = this.peca_modelo.get(index);
+		this.peca_modelo.remove(index);
+	}
 	
 	public Modelo(Long id, String descricao, Montadora montadora, LinhaDeVeiculo linha, Integer ano, Boolean status
-			, List<Peca> pecas) {
+			, List<Peca_Modelo> peca_modelo) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
@@ -42,7 +54,7 @@ public class Modelo implements DAO {
 		this.linha = linha;
 		this.ano = ano;
 		this.status = status;
-		this.pecas = pecas;
+		this.peca_modelo = peca_modelo;
 	}
 
 	@Override
@@ -95,13 +107,13 @@ public class Modelo implements DAO {
 	}
 
 
-	public List<Peca> getPecas() {
-		return pecas;
+	public List<Peca_Modelo> getPecas() {
+		return peca_modelo;
 	}
 
 
-	public void setPecas(List<Peca> pecas) {
-		this.pecas = pecas;
+	public void setPecas(List<Peca_Modelo> pecas) {
+		this.peca_modelo = pecas;
 	}
 	
 	

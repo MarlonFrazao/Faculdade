@@ -21,6 +21,7 @@
     <class>br.edu.unifacear.projetointegrador4.entity.StatusPV</class>
     <class>br.edu.unifacear.projetointegrador4.entity.Telefone</class>
     <class>br.edu.unifacear.projetointegrador4.entity.TipoCliente</class>
+    <class>br.edu.unifacear.projetointegrador4.entity.Peca_Modelo</class>
    
     <properties>
       <!-- Propriedades JDBC -->
@@ -32,7 +33,7 @@
       <!-- Configurações específicas do Hibernate -->
       <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
       <property name="hibernate.hbm2ddl.auto" value="update"/>
-      <property name="hibernate.show_sql" value="false"/>
+      <property name="hibernate.show_sql" value="true"/>
       <property name="hibernate.format_sql" value="true"/>
     </properties>
   </persistence-unit>

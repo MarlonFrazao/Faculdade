@@ -1,48 +1,71 @@
 package br.edu.unifacear.projetointegrador4.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
-//@Entity
-public class Peca_Modelo {
+import br.edu.unifacear.projetointegrador4.dao.DAO;
 
+@Entity
+public class Peca_Modelo implements DAO{
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@Column(name = "id",unique=true, nullable = false)
+	private Long id;
+	@ManyToOne
+	@JoinColumn(name="peca_id", referencedColumnName = "id")
+	private Peca id_peca;
 	//@Id
-	//@ManyToOne
-	//@JoinTable(name = "peca", joinColumns = @JoinColumn(name = "peca_id"), inverseJoinColumns = @JoinColumn(name = "id"))
-	private Peca peca_id;
-	//@Id
-	//@ManyToOne
-	//@JoinTable(name = "modelo", joinColumns = @JoinColumn(name = "modelo_id"), inverseJoinColumns = @JoinColumn(name = "modelo_id"))
-	private Modelo modelo_id;
-
+	@ManyToOne
+	@JoinColumn(name="modelo_id", referencedColumnName = "id")
+	private Modelo id_modelo;
 	public Peca_Modelo() {
 
 	}
 
-	public Peca_Modelo(Peca peca, Modelo modelo) {
+	public Peca_Modelo(Peca peca, Modelo modelo, Long id) {
 		super();
-		this.peca_id = peca;
-		this.modelo_id = modelo;
+		this.id_peca = peca;
+		this.id_modelo = modelo;
+		this.id = id;
 	}
 
 	public Peca getPeca() {
-		return peca_id;
+		return id_peca;
 	}
 
 	public void setPeca(Peca peca) {
-		this.peca_id = peca;
+		this.id_peca = peca;
 	}
 
 	public Modelo getModelo() {
-		return modelo_id;
+		return id_modelo;
 	}
 
 	public void setModelo(Modelo modelo) {
-		this.modelo_id = modelo;
+		this.id_modelo = modelo;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@Override
+	public void setStatus(Boolean status) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

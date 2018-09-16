@@ -1,15 +1,15 @@
 package br.edu.unifacear.projetointegrador4.entity;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -26,10 +26,8 @@ public class Peca implements DAO{
 	private String descricao;
 	
 	
-	@ManyToMany
-	@JoinTable(name = "peca_modelo", joinColumns = @JoinColumn (name = "peca_id"), 
-				inverseJoinColumns = @JoinColumn(name ="modelo_id"))
-	private List<Modelo> modelo;
+	@OneToMany(mappedBy = "id_peca", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
+	private List<Peca_Modelo> peca_modelo = new ArrayList<>();;
 	@ManyToOne
 	private Aplicacao aplicacao;
 	private Long qtdeTotal;
@@ -41,15 +39,28 @@ public class Peca implements DAO{
 	private String foto;
 	private Boolean status;
 	
+	public void adicionarPeca_Modelo(Peca_Modelo peca_modelo) {
+		
+		peca_modelo.setPeca(this);
+		System.out.println("this: "+this.getId());
+		System.out.println("peca_modelo: "+peca_modelo.getId());
+		this.peca_modelo.add(peca_modelo);
+	}
+	
+	public void removerPeca_Modelo(int index) {
+		Peca_Modelo peca_modelo = this.peca_modelo.get(index);
+		this.peca_modelo.remove(index);
+	}
+	
 	public Peca() {}
 
-	public Peca(Long id, String descricao, List<Modelo> modelo, Aplicacao aplicacao, Long qtdeTotal, String adicional,
+	public Peca(Long id, String descricao, List<Peca_Modelo> peca_modelo, Aplicacao aplicacao, Long qtdeTotal, String adicional,
 			Date dataCadastro, Long totalAvaliacao, Float mediaAvaliacao, Long numVisualizacao, String foto,
 			Boolean status) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
-		this.modelo = modelo;
+		this.peca_modelo = peca_modelo;
 		this.aplicacao = aplicacao;
 		this.qtdeTotal = qtdeTotal;
 		this.adicional = adicional;
@@ -77,12 +88,12 @@ public class Peca implements DAO{
 		this.descricao = descricao;
 	}
 
-	public List<Modelo> getModelo() {
-		return modelo;
+	public List<Peca_Modelo> getModelo() {
+		return peca_modelo;
 	}
 
-	public void setModelo(List<Modelo> modelo) {
-		this.modelo = modelo;
+	public void setModelo(List<Peca_Modelo> peca_modelo) {
+		this.peca_modelo = peca_modelo;
 	}
 
 	public Aplicacao getAplicacao() {

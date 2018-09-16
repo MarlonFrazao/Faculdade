@@ -44,4 +44,8 @@ public class FabricaDAO {
 	public static ClienteDAO criarClienteDAO() {
 		return new ClienteDAO();
 	}
+
+	public static TelefoneDAO criarTelefoneDAO() {		
+		return new TelefoneDAO();
+	}
 }

@@ -2,14 +2,17 @@ package br.edu.unifacear.projetointegrador4.testes;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import br.edu.unifacear.projetointegrador4.dao.AplicacaoDAO;
 import br.edu.unifacear.projetointegrador4.dao.ModeloDAO;
 import br.edu.unifacear.projetointegrador4.dao.PecaDAO;
+import br.edu.unifacear.projetointegrador4.dao.Peca_ModeloDAO;
 import br.edu.unifacear.projetointegrador4.entity.Aplicacao;
 import br.edu.unifacear.projetointegrador4.entity.Modelo;
 import br.edu.unifacear.projetointegrador4.entity.Peca;
+import br.edu.unifacear.projetointegrador4.entity.Peca_Modelo;
 
 
 
@@ -243,36 +246,65 @@ public class Teste {
 				//----------------------------------------------------------------------//
 				//criando e testando a tabela PECA
 				
-				//PecaDAO dao = new PecaDAO();
-				/*
+				PecaDAO dao = new PecaDAO();
+				
 				AplicacaoDAO apDAO = new AplicacaoDAO();
 				Aplicacao apli = new Aplicacao();
 				apli = apDAO.obter(Aplicacao.class, (long) 2);
 				ModeloDAO modDAO = new ModeloDAO();
-				List<Modelo> listaMod = new ArrayList<Modelo>();
-				listaMod = modDAO.listar();
-				//GregorianCalendar data = new GregorianCalendar();
-				
+				List<Peca_Modelo> listaMod = new ArrayList<Peca_Modelo>();
+				Peca_Modelo peca_modelo = new Peca_Modelo();
+				Calendar data = Calendar.getInstance();
+				Modelo modpeca = new Modelo();
+				modpeca = modDAO.obter(Modelo.class, (long) 2);
 				Peca peca = new Peca();
 				peca.setDescricao("Carburador");
 				peca.setAplicacao(apli);
-				peca.setAdicional(" ");
+				peca.setAdicional(" ");		
+				
+				
 				
 				peca.setMediaAvaliacao((float) 2);
-				//peca.setDataCadastro((java.sql.Date) data.getTime());
+				//peca.setDataCadastro(data);
 				peca.setNumVisualizacao((long) 5);
-				peca.setModelo(listaMod);
+				
 				peca.setQtdeTotal((long) 15);
 				peca.setTotalAvaliacao((long) 2);
 				peca.setStatus(true);
-				dao.inserir(peca);
-				*/
 				
-		
-		PecaDAO dao = new PecaDAO();
+				peca_modelo.setModelo(modpeca);
+				System.out.println("Modelo que ta sendo add: "+peca_modelo.getModelo().getDescricao());
+				peca_modelo.setPeca(peca);
+				System.out.println("Peca que ta sendo add: "+peca_modelo.getPeca().getDescricao());
+				
+				
+				//peca.adicionarPeca_Modelo(peca_modelo);
+				//listaMod.add(peca_modelo);
+				modpeca = modDAO.obter(Modelo.class, (long) 3);
+				peca_modelo.setModelo(modpeca);
+				System.out.println("teste pecaModelo: "+peca_modelo.getModelo().getDescricao());
+				peca.adicionarPeca_Modelo(peca_modelo);
+				modpeca = modDAO.obter(Modelo.class, (long) 4);
+				peca_modelo.setModelo(modpeca);
+				peca.adicionarPeca_Modelo(peca_modelo);
+				
+				//listaMod.add(peca_modelo);
+				
+				//listaMod.add(peca_modelo);
+				//peca.setModelo(listaMod);
+				
+				dao.inserir(peca);
+				
+				//Peca_ModeloDAO daopm = new Peca_ModeloDAO();
+				
+				//daopm.inserir(peca_modelo);
+				
+				
+		/*
+		PecaDAO dao2 = new PecaDAO();
 		List<Peca> lista = new ArrayList<Peca>();
 		Modelo mod = new Modelo();
-		ModeloDAO modDAO = new ModeloDAO();
+		ModeloDAO modDAO2 = new ModeloDAO();
 		mod = modDAO.obter(Modelo.class, (long) 1);
 		
 		lista = dao.obter(mod);
@@ -292,7 +324,7 @@ public class Teste {
 			System.out.println("Id Modelo: "+mod.getId());
 		
 		}
-		
+		*/
 		
 		/*
 		Peca peca = new Peca();
