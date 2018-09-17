@@ -245,69 +245,63 @@ public class Teste {
 		
 				//----------------------------------------------------------------------//
 				//criando e testando a tabela PECA
-				
+				/*
 				PecaDAO dao = new PecaDAO();
 				
 				AplicacaoDAO apDAO = new AplicacaoDAO();
 				Aplicacao apli = new Aplicacao();
 				apli = apDAO.obter(Aplicacao.class, (long) 2);
 				ModeloDAO modDAO = new ModeloDAO();
-				List<Peca_Modelo> listaMod = new ArrayList<Peca_Modelo>();
 				Peca_Modelo peca_modelo = new Peca_Modelo();
+				Peca_Modelo peca_modelo2 = new Peca_Modelo();
+				Peca_Modelo peca_modelo3 = new Peca_Modelo();
 				Calendar data = Calendar.getInstance();
 				Modelo modpeca = new Modelo();
-				modpeca = modDAO.obter(Modelo.class, (long) 2);
+				
 				Peca peca = new Peca();
-				peca.setDescricao("Carburador");
+				peca.setDescricao("Arruela");
 				peca.setAplicacao(apli);
-				peca.setAdicional(" ");		
-				
-				
-				
-				peca.setMediaAvaliacao((float) 2);
-				//peca.setDataCadastro(data);
-				peca.setNumVisualizacao((long) 5);
-				
+				peca.setAdicional(" ");					
+				peca.setMediaAvaliacao((float) 2);			
+				peca.setNumVisualizacao((long) 5);				
 				peca.setQtdeTotal((long) 15);
 				peca.setTotalAvaliacao((long) 2);
 				peca.setStatus(true);
 				
-				peca_modelo.setModelo(modpeca);
-				System.out.println("Modelo que ta sendo add: "+peca_modelo.getModelo().getDescricao());
-				peca_modelo.setPeca(peca);
-				System.out.println("Peca que ta sendo add: "+peca_modelo.getPeca().getDescricao());
+				// primeiro modelo da peça
+				modpeca = modDAO.obter(Modelo.class, (long) 2);				
+				peca_modelo.setModelo(modpeca);				
+				peca_modelo.setPeca(peca);				
 				
-				
-				//peca.adicionarPeca_Modelo(peca_modelo);
-				//listaMod.add(peca_modelo);
+				//segundo modelo da peça
 				modpeca = modDAO.obter(Modelo.class, (long) 3);
-				peca_modelo.setModelo(modpeca);
-				System.out.println("teste pecaModelo: "+peca_modelo.getModelo().getDescricao());
-				peca.adicionarPeca_Modelo(peca_modelo);
+				peca_modelo2.setModelo(modpeca);
+				peca_modelo2.setPeca(peca);
+				
+				//terceiro modelo da peca
 				modpeca = modDAO.obter(Modelo.class, (long) 4);
-				peca_modelo.setModelo(modpeca);
-				peca.adicionarPeca_Modelo(peca_modelo);
+				peca_modelo3.setModelo(modpeca);
+				peca_modelo3.setPeca(peca);	
 				
-				//listaMod.add(peca_modelo);
 				
-				//listaMod.add(peca_modelo);
-				//peca.setModelo(listaMod);
+				//adicionando para a lista de modelos
+				peca.adicionarPeca_Modelo(peca_modelo2);
+				peca.adicionarPeca_Modelo(peca_modelo);	
+				peca.adicionarPeca_Modelo(peca_modelo3);
 				
+				// persistindo no banco de dados				
 				dao.inserir(peca);
+			*/
 				
-				//Peca_ModeloDAO daopm = new Peca_ModeloDAO();
-				
-				//daopm.inserir(peca_modelo);
-				
-				
-		/*
+		/*		
+		
 		PecaDAO dao2 = new PecaDAO();
 		List<Peca> lista = new ArrayList<Peca>();
 		Modelo mod = new Modelo();
 		ModeloDAO modDAO2 = new ModeloDAO();
-		mod = modDAO.obter(Modelo.class, (long) 1);
+		mod = modDAO2.obter(Modelo.class, (long) 2);
 		
-		lista = dao.obter(mod);
+		lista = dao2.obter(mod);
 		//]System.out.println("testãoo: "+lista.get(1).getDescricao());
 		
 		

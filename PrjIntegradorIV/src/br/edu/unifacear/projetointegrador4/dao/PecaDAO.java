@@ -52,7 +52,7 @@ public class PecaDAO extends DAOGenerico<Peca> {
 		EntityManager em = new ConnectionFactory().getConnection();
 		List<Peca> lista = null;
 		try {
-			lista = em.createQuery("from Peca p join fetch p.modelo m WHERE m.id = " +  modelo.getId()).getResultList();
+			lista = em.createQuery("from Peca p join fetch p.peca_modelo m WHERE modelo_id = " +  modelo.getId()).getResultList();
 			//em.setProperty("id", modelo.getId());
 		} catch (Exception e) {
 			System.err.println(e);

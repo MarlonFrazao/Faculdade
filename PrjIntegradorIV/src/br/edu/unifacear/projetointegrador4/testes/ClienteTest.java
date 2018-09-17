@@ -14,7 +14,7 @@ import br.edu.unifacear.projetointegrador4.entity.Cliente;
 import br.edu.unifacear.projetointegrador4.entity.Telefone;
 import br.edu.unifacear.projetointegrador4.entity.TipoCliente;
 
-public class ClienteBusinessTest {
+public class ClienteTest {
 
 	@Test
 	public void testInserir() throws BusinessException {

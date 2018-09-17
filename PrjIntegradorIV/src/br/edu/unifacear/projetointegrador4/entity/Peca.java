@@ -39,12 +39,9 @@ public class Peca implements DAO{
 	private String foto;
 	private Boolean status;
 	
-	public void adicionarPeca_Modelo(Peca_Modelo peca_modelo) {
-		
-		peca_modelo.setPeca(this);
-		System.out.println("this: "+this.getId());
-		System.out.println("peca_modelo: "+peca_modelo.getId());
-		this.peca_modelo.add(peca_modelo);
+	public void adicionarPeca_Modelo(Peca_Modelo peca_modelo) {			
+		peca_modelo.setPeca(this);		
+		this.peca_modelo.add(peca_modelo);		
 	}
 	
 	public void removerPeca_Modelo(int index) {
@@ -88,11 +85,19 @@ public class Peca implements DAO{
 		this.descricao = descricao;
 	}
 
-	public List<Peca_Modelo> getModelo() {
+	public List<Peca_Modelo> getPeca_Modelo() {
 		return peca_modelo;
 	}
 
-	public void setModelo(List<Peca_Modelo> peca_modelo) {
+	public void setPeca_Modelo(List<Peca_Modelo> peca_modelo) {
+		
+		
+		System.out.println("lista na classe peca =========  ");
+		for(int i = 0; i< peca_modelo.size(); i++) {
+			System.out.println("Modelo da lista: "+peca_modelo.get(i).getModelo().getDescricao());
+			System.out.println("Peca da lista add: "+peca_modelo.get(i).getPeca().getDescricao());
+		}
+		
 		this.peca_modelo = peca_modelo;
 	}
 
