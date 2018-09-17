@@ -2,15 +2,15 @@ package br.edu.unifacear.projetointegrador4.testes;
 
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
-import br.edu.unifacear.projetointegrador4.dao.AplicacaoDAO;
+import br.edu.unifacear.projetointegrador4.dao.LinhaDeVeiculoDAO;
 import br.edu.unifacear.projetointegrador4.dao.ModeloDAO;
+import br.edu.unifacear.projetointegrador4.dao.MontadoraDAO;
 import br.edu.unifacear.projetointegrador4.dao.PecaDAO;
-import br.edu.unifacear.projetointegrador4.dao.Peca_ModeloDAO;
-import br.edu.unifacear.projetointegrador4.entity.Aplicacao;
+import br.edu.unifacear.projetointegrador4.entity.LinhaDeVeiculo;
 import br.edu.unifacear.projetointegrador4.entity.Modelo;
+import br.edu.unifacear.projetointegrador4.entity.Montadora;
 import br.edu.unifacear.projetointegrador4.entity.Peca;
 import br.edu.unifacear.projetointegrador4.entity.Peca_Modelo;
 
@@ -185,6 +185,9 @@ public class Teste {
 				linha = linDao.obter(LinhaDeVeiculo.class, (long) 1);
 				PecaDAO peDAO = new PecaDAO();
 				List<Peca> listaPe = new ArrayList<Peca>();
+				Peca_Modelo peca_modelo = new Peca_Modelo();
+				Peca_Modelo peca_modelo2 = new Peca_Modelo();
+				Peca_Modelo peca_modelo3 = new Peca_Modelo();
 				//listaPe = peDAO.listar();
 				
 				Modelo modelo = new Modelo();
@@ -195,8 +198,47 @@ public class Teste {
 				//modelo.setPecas(listaPe);
 				modelo.setAno(2016);
 				modelo.setStatus(true);
+				
+				// primeira peca do modelo
+				peca_modelo.setPeca(peDAO.obter(Peca.class, (long) 7));				
+				peca_modelo.setModelo(modelo);	
+				
+				peca_modelo2.setPeca(peDAO.obter(Peca.class, (long) 8));
+				peca_modelo2.setModelo(modelo);
+				
+				peca_modelo3.setPeca(peDAO.obter(Peca.class, (long) 9));
+				peca_modelo3.setModelo(modelo);
+				
+				modelo.adicionarPeca_Modelo(peca_modelo);
+				modelo.adicionarPeca_Modelo(peca_modelo2);
+				modelo.adicionarPeca_Modelo(peca_modelo3);
+				
 				dao.inserir(modelo);
 				*/
+		
+		//Listando modelos por peça
+		ModeloDAO dao2 = new ModeloDAO();
+		List<Modelo> lista = new ArrayList<Modelo>();
+		Peca pe = new Peca();
+		PecaDAO peDAO = new PecaDAO();
+		pe = peDAO.obter(Peca.class, (long) 21);
+		
+		lista = dao2.obter(pe);
+		
+		for(int i = 0; i< lista.size(); i ++) {
+			System.out.println("======================================");
+			System.out.println("Id modelo: "+lista.get(i).getId());
+			System.out.println("Descrição modelo: "+lista.get(i).getDescricao());
+			System.out.println("Ano modelo: "+lista.get(i).getAno());
+			System.out.println("Linha modelo: "+lista.get(i).getLinha().getDescricao());
+			System.out.println("Montadora modelo: "+lista.get(i).getMontadora().getDescricao());
+			System.out.println("Descricão peça: "+pe.getDescricao());
+			System.out.println("Id peça: "+pe.getId());
+		}
+		
+		
+		
+		
 				//modelo = dao.obter(Modelo.class, (long) 1);
 				/*
 				modelo.setPecas(listaPe);
@@ -285,8 +327,8 @@ public class Teste {
 				
 				
 				//adicionando para a lista de modelos
-				peca.adicionarPeca_Modelo(peca_modelo2);
 				peca.adicionarPeca_Modelo(peca_modelo);	
+				peca.adicionarPeca_Modelo(peca_modelo2);
 				peca.adicionarPeca_Modelo(peca_modelo3);
 				
 				// persistindo no banco de dados				
@@ -294,7 +336,7 @@ public class Teste {
 			*/
 				
 		/*		
-		
+		//listando peças por modelo
 		PecaDAO dao2 = new PecaDAO();
 		List<Peca> lista = new ArrayList<Peca>();
 		Modelo mod = new Modelo();
@@ -302,7 +344,7 @@ public class Teste {
 		mod = modDAO2.obter(Modelo.class, (long) 2);
 		
 		lista = dao2.obter(mod);
-		//]System.out.println("testãoo: "+lista.get(1).getDescricao());
+		
 		
 		
 		for(int i = 0; i< lista.size(); i++) {

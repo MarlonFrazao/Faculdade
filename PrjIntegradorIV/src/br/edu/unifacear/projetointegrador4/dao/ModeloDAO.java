@@ -89,7 +89,7 @@ public class ModeloDAO extends DAOGenerico<Modelo> {
 
 		try {
 			//lista = em.createQuery("from modelo m join fetch m.peca p WHERE p.id  =" + peca.getId()).getResultList();
-			lista = em.createQuery("from modelo m join fetch m.peca_modelo p WHERE peca_id  =" + peca.getId()).getResultList();
+			lista = em.createQuery("from Modelo m join fetch m.peca_modelo p WHERE peca_id=" + peca.getId()).getResultList();
 		} catch (Exception e) {
 			System.err.println(e);
 		} finally {
