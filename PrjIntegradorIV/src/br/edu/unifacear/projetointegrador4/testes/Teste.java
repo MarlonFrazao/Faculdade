@@ -4,15 +4,10 @@ package br.edu.unifacear.projetointegrador4.testes;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.unifacear.projetointegrador4.dao.LinhaDeVeiculoDAO;
 import br.edu.unifacear.projetointegrador4.dao.ModeloDAO;
-import br.edu.unifacear.projetointegrador4.dao.MontadoraDAO;
 import br.edu.unifacear.projetointegrador4.dao.PecaDAO;
-import br.edu.unifacear.projetointegrador4.entity.LinhaDeVeiculo;
 import br.edu.unifacear.projetointegrador4.entity.Modelo;
-import br.edu.unifacear.projetointegrador4.entity.Montadora;
 import br.edu.unifacear.projetointegrador4.entity.Peca;
-import br.edu.unifacear.projetointegrador4.entity.Peca_Modelo;
 
 
 
@@ -24,165 +19,18 @@ public class Teste {
 	
 	public static void main(String[] args) {
 		
-		//----------------------------------------------------------------------//
-		//criando e testando a tabela MONTADORA
-		
-		//MontadoraDAO dao = new MontadoraDAO();
-		//não é necessario setar ID pq vai ser gerado automaticamente
-
-		/*
-		Montadora m = new Montadora();
-
-		
-		/*Montadora m = new Montadora();
-		
-		m.setDescricao("Honda");
-		m.setStatus(true);
-		
-		new MontadoraDAO().inserir(m);
-		*/
-		
-		
-		/*
-		Montadora m = new Montadora();
-		Montadora m2 = new Montadora();
-				
-		m.setId((long) 2);
-		m.setDescricao("Yamaha");
-		m.setStatus(true);
-		
-		MontadoraDAO dao = new MontadoraDAO();
-		dao.atualizar(m);
-				
-		System.out.println("Descrição: "+m2.getDescricao());
-		*/
-		
-		/*
-		MontadoraDAO dao = new MontadoraDAO();
-		Montadora m = new Montadora();
-		m.setDescricao("a");
-		for(Montadora mL: dao.obter(m.getDescricao())) {
-			System.out.println("=============================");
-			System.out.println("Id: "+mL.getId());
-			System.out.println("Descrição: "+mL.getDescricao());
-			System.out.println("Status: "+mL.getStatus());
-			
-		}*/
-		
-		
-		/*
-		MontadoraDAO dao = new MontadoraDAO();
-		for(Montadora m: dao.listar()) {
-			System.out.println("Descrição: "+m.getDescricao());
-		}
-		
-		*/
-		
-		
-		//----------------------------------------------------------------------//
-		//criando e testando a tabela APLICACAO
-		
-		//AplicacaoDAO dao = new AplicacaoDAO();
-		
-		/*
-		Aplicacao a = new Aplicacao();
-		a.setDescricao("Iluminação");
-		a.setStatus(true);
-		dao.inserir(a);
-		*/
-		
-		
-		/*
-		for(Aplicacao a: dao.listar()) {
-			System.out.println("=============================");
-			System.out.println("Id: "+a.getId());
-			System.out.println("Descricao: "+a.getDescricao());
-			System.out.println("Status: "+a.getStatus());
-		}
-		*/
-		
-		
-		/*
-		 Aplicacao a = new Aplicacao();
-		 Aplicacao a2 = new Aplicacao();
-		 a.setId((long) 2);
-		 a2 = dao.obter(Aplicacao.class, a.getId());
-		 
-		System.out.println("Descrição: "+a2.getDescricao());
-		*/
-		
-		
-		/*
-		Aplicacao a = new Aplicacao();
-		a.setDescricao("l");
-		
-		for(Aplicacao aL: dao.obter(a.getDescricao())) {
-			System.out.println("=============================");
-			System.out.println("Id: "+aL.getId());
-			System.out.println("Descricao: "+aL.getDescricao());
-			System.out.println("Status: "+aL.getStatus());
-		}
-		*/
-		
-		//----------------------------------------------------------------------//
-		//criando e testando a tabela LINHA DE VEICULO
-		
-
-		/*LinhaDeVeiculoDAO dao = new LinhaDeVeiculoDAO();
-
-	//	LinhaDeVeiculoDAO dao = new LinhaDeVeiculoDAO();
-
-		
-		
-		LinhaDeVeiculo ldv = new LinhaDeVeiculo();
-		ldv.setDescricao("Leve");
-		ldv.setStatus(true);
-		dao.inserir(ldv);
-		*/
-		
-		
-		/*
-		for(LinhaDeVeiculo ldv: dao.listar()) {
-			System.out.println("=============================");
-			System.out.println("Id: "+ldv.getId());
-			System.out.println("Descricao: "+ldv.getDescricao());
-			System.out.println("Status: "+ldv.getStatus());
-		}
-		*/
-		
-		
-		/*
-		 LinhaDeVeiculo ldv = new LinhaDeVeiculo();
-		 LinhaDeVeiculo ldv2 = new LinhaDeVeiculo();
-		 ldv.setId((long) 2);
-		 ldv2 = dao.obter(LinhaDeVeiculo.class, ldv.getId());
-		 
-		System.out.println("Descrição: "+ldv2.getDescricao());
-		*/
-		
-		
-		/*
-		LinhaDeVeiculo ldv = new LinhaDeVeiculo();
-		ldv.setDescricao("l");
-		
-		for(LinhaDeVeiculo ldvL: dao.obter(ldv.getDescricao())) {
-			System.out.println("=============================");
-			System.out.println("Id: "+ldvL.getId());
-			System.out.println("Descricao: "+ldvL.getDescricao());
-			System.out.println("Status: "+ldvL.getStatus());
-		}
-		*/
+	
 		
 		//----------------------------------------------------------------------//
 				//criando e testando a tabela Modelo
-				/*
+			/*	
 				ModeloDAO dao = new ModeloDAO();
 				MontadoraDAO montDao = new MontadoraDAO();
 				Montadora mont = new Montadora();
 				mont = montDao.obter(Montadora.class, (long) 1);
 				LinhaDeVeiculoDAO linDao = new LinhaDeVeiculoDAO();
 				LinhaDeVeiculo linha = new LinhaDeVeiculo();
-				linha = linDao.obter(LinhaDeVeiculo.class, (long) 1);
+				linha = linDao.obter(LinhaDeVeiculo.class, (long) 5);
 				PecaDAO peDAO = new PecaDAO();
 				List<Peca> listaPe = new ArrayList<Peca>();
 				Peca_Modelo peca_modelo = new Peca_Modelo();
@@ -192,7 +40,7 @@ public class Teste {
 				
 				Modelo modelo = new Modelo();
 				
-				modelo.setDescricao("Torto");
+				modelo.setDescricao("Corsa");
 				modelo.setMontadora(mont);
 				modelo.setLinha(linha);
 				//modelo.setPecas(listaPe);
@@ -214,8 +62,8 @@ public class Teste {
 				modelo.adicionarPeca_Modelo(peca_modelo3);
 				
 				dao.inserir(modelo);
-				*/
-		
+			*/	
+		/*
 		//Listando modelos por peça
 		ModeloDAO dao2 = new ModeloDAO();
 		List<Modelo> lista = new ArrayList<Modelo>();
@@ -235,7 +83,7 @@ public class Teste {
 			System.out.println("Descricão peça: "+pe.getDescricao());
 			System.out.println("Id peça: "+pe.getId());
 		}
-		
+		*/
 		
 		
 		
@@ -311,37 +159,37 @@ public class Teste {
 				peca.setStatus(true);
 				
 				// primeiro modelo da peça
-				modpeca = modDAO.obter(Modelo.class, (long) 2);				
+				modpeca = modDAO.obter(Modelo.class, (long) 1);				
 				peca_modelo.setModelo(modpeca);				
 				peca_modelo.setPeca(peca);				
 				
 				//segundo modelo da peça
-				modpeca = modDAO.obter(Modelo.class, (long) 3);
+				modpeca = modDAO.obter(Modelo.class, (long) 6);
 				peca_modelo2.setModelo(modpeca);
 				peca_modelo2.setPeca(peca);
 				
 				//terceiro modelo da peca
-				modpeca = modDAO.obter(Modelo.class, (long) 4);
-				peca_modelo3.setModelo(modpeca);
-				peca_modelo3.setPeca(peca);	
+				//modpeca = modDAO.obter(Modelo.class, (long) 4);
+				//peca_modelo3.setModelo(modpeca);
+				//peca_modelo3.setPeca(peca);	
 				
 				
 				//adicionando para a lista de modelos
 				peca.adicionarPeca_Modelo(peca_modelo);	
 				peca.adicionarPeca_Modelo(peca_modelo2);
-				peca.adicionarPeca_Modelo(peca_modelo3);
+				//peca.adicionarPeca_Modelo(peca_modelo3);
 				
 				// persistindo no banco de dados				
 				dao.inserir(peca);
 			*/
 				
-		/*		
+			/*	
 		//listando peças por modelo
 		PecaDAO dao2 = new PecaDAO();
 		List<Peca> lista = new ArrayList<Peca>();
 		Modelo mod = new Modelo();
 		ModeloDAO modDAO2 = new ModeloDAO();
-		mod = modDAO2.obter(Modelo.class, (long) 2);
+		mod = modDAO2.obter(Modelo.class, (long) 6);
 		
 		lista = dao2.obter(mod);
 		

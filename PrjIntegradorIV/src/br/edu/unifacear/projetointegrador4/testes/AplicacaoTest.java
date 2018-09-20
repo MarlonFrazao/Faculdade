@@ -14,16 +14,16 @@ public class AplicacaoTest {
 	//JUnit Build Path - add library - JUnit - JUnit 4 
 
 	//Indica que é um teste
-	/*
+	
 	@Test //Indica que é um teste
 
 	public void testeInserir() {
 		
 		Aplicacao a = new Aplicacao();
 
-		a.setDescricao("Freio");
+		a.setDescricao("Suspensãoaa");
 
-		System.out.println("============= Inserir =============");
+		
 		System.out.println("testeInserir: "+a.getDescricao());
 
 		
@@ -40,9 +40,9 @@ public class AplicacaoTest {
 	
 	@Test
 	public void testeAtualizar() throws BusinessException {
-		Aplicacao a = new FacadeBusiness().obterAplicacao((long) 6);
+		Aplicacao a = new FacadeBusiness().obterAplicacao((long) 7);
 
-		a.setDescricao("Sistema de Frenagem");
+		a.setDescricao("Suspensão");
 
 		
 		System.out.println("testeAtualizar: "+a.getDescricao());
@@ -53,17 +53,17 @@ public class AplicacaoTest {
 		} catch(BusinessException e) {
 			e.printStackTrace();
 		}
-		a = new FacadeBusiness().obterAplicacao((long) 6);
-		System.out.println("============= Atualizar =============");
+		a = new FacadeBusiness().obterAplicacao((long) 7);
+		
 		System.out.println("testeAtualizar: "+a.getDescricao());
 		
 		assertEquals(true, a.getId() != null);
 	}
-	*/
+	
 	@Test 
 	public void testeListar() throws BusinessException {
 		List<Aplicacao> lista = new FacadeBusiness().listarAplicacao();
-		System.out.println("============= Listar =============");
+		
 		if(lista.size() < 1) {
 			System.out.println("Deu ruim! :(");
 		} else {
@@ -85,7 +85,7 @@ public class AplicacaoTest {
 			e.printStackTrace();
 		}
 		
-		System.out.println("============= Obter por Id =============");
+		
 		System.out.println("teste obter por id");
 		
 		System.out.println("id: " + a.getId() + 
@@ -101,7 +101,6 @@ public class AplicacaoTest {
 		} catch(BusinessException e) {
 			e.printStackTrace();
 		}
-		System.out.println("============= Obter por Descrição =============");
 		assertEquals(true, la.get(0).getId() != null);
 		System.out.println("teste obter por descricao");
 		for(int i = 0; i < la.size(); i++) {

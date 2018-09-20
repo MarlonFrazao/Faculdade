@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="estilo.css">
 <link rel="stylesheet" type="text/css" href="carrosel.css">
 <link rel="stylesheet" type="text/css" href="3d.css">
+<link rel="stylesheet" type="text/css" href="carrinho.css">
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -28,9 +29,7 @@
       <li class="nav-item active">
         <a class="nav-link text-white " href="#contato">Contato <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item active">
-        <a class="nav-link text-white" href="clientes.html">Clientes</a>
-      </li>
+     
       
       <li class="nav-item active">
         <a class="nav-link text-white" href="produtos.html">Produtos</a>
@@ -53,8 +52,76 @@
     </form>
   </div>
 </nav>
-
 <hr>
+
+<div class="carrinho my-2 my-sm-0 mr-sm-2">
+    <h2>Lista de Compras</h2>
+    <button type="button" class="btn btn-success mb-2" style="padding: 20px; margin-left: 15px">Finalizar Pedido</button>
+		<table class="mb-2" style="margin-left: 15px">
+			<thead>
+				<tr>
+					<td></td>
+					<td>Nome</td>
+					<td>Quantidade</td>
+					<td>Valor</td>
+					<td>Total</td>
+					<td>Remover Item</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr >
+					<td><img src="_imagen/_iluminacao/farol1.jpg" style="width:20%"></td>
+					<td>Lanterna </td>
+					<td>1</td>
+					<td>499.99</td>
+					<td class="item-total">499.99</td>
+					<td><a href="" class="remove-item">(remover)</a></td>
+				</tr>
+				<tr>
+					<td><img src="_imagen/_lataria/parachoque1.jpg" style="width:20%"></td>
+					<td>Parachoque</td>
+					<td>2</td>
+					<td>199.99</td>
+					<td class="item-total">399.98</td>
+					<td><a href="" class="remove-item">(remover)</a></td>
+				</tr>
+				<tr>
+					<td><img src="_imagen/_carburador/carburador1.jpg" style="width:20%"></td>
+					<td>Carburador 1</td>
+					<td>1</td>
+					<td>99.99</td>
+					<td class="item-total">99.99</td>
+					<td><a href="" class="remove-item">(remover)</a></td>
+				</tr>
+				<tr>
+					<td><img src="_imagen/_carburador/carburador2.jpg" style="width:20%"></td>
+					<td>Carburador 2</td>
+					<td>1</td>
+					<td>299.00</td>
+					<td class="item-total">299.00</td>
+					<td><a href="" class="remove-item">(remover)</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+    <div class="form-inline row mb-2" style="margin-left: 15px">
+      <input type="button" class="undo my-2 my-sm-0 mr-sm-2 btn btn-outline-warning" value="Desfazer" />
+
+   <button type="button" class="btn btn-success">Finalizar Pedido</button>
+
+  </div >
+		<div style="margin-left: 15px"><strong>Valor total: </strong> R$ <span class="valorTotal">0</span></div>
+		<div style="margin-left: 15px"><strong>Quantidade de Produtos: </strong> <span class="qtdProdutos">0</span></div>
+  </div>
+ 
+ 
+
+
+  <br />
+  <br />
+  <hr />
+
+
 
 <blockquote class="blockquote">
         <a name="contato"></a>
@@ -68,7 +135,8 @@
   
   </body>
   
-  
+  <script type="text/javascript" src="jquery-2.0.3.min.js"></script>
+	<script src="carrinho.js"></script>
   
   
   
