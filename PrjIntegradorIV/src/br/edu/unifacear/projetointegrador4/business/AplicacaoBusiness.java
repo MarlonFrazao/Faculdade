@@ -46,6 +46,21 @@ public class AplicacaoBusiness {
 		return FabricaDAO.criarAplicacaoDAO().listar();
 	}
 	
+	public List<Aplicacao> listar(Boolean status) {
+		List<Aplicacao> retorno = new ArrayList<Aplicacao>();
+		List<Aplicacao> lista = FabricaDAO.criarAplicacaoDAO().listar();
+		
+		for(int i = 0; i < lista.size(); i++) {
+			if(lista.get(i).getStatus() == status) {
+				
+				retorno.add(lista.get(i));
+				
+			}
+		}
+		
+		return retorno;
+	}
+	
 	public Aplicacao obter(Long id) throws BusinessException {
 		Aplicacao a = new Aplicacao();
 		
@@ -73,8 +88,34 @@ public class AplicacaoBusiness {
 		return la;
 	}
 	
+	public List<Aplicacao> obter(String descricao, Boolean status) throws BusinessException {
+		List<Aplicacao> retorno = new ArrayList<Aplicacao>();
+		List<Aplicacao> lista = new ArrayList<Aplicacao>();
+		
+		if(descricao != null) {
+			lista = FabricaDAO.criarAplicacaoDAO().obter(descricao);
+		} else {
+			lista = null;
+			throw new BusinessException("Erro: Necessário informar descrição.");
+		}
+		
+		for(int i = 0; i < lista.size(); i++) {
+			if(lista.get(i).getStatus() == status) {
+				retorno.add(lista.get(i));
+			}
+		}
+		
+		return retorno;
+	}
+	
 	public void excluir(Aplicacao a) {
 		
 		FabricaDAO.criarAplicacaoDAO().excluir(a);
+	}
+	
+	public void reativar(Aplicacao a) {
+		a.setStatus(true);
+		
+		FabricaDAO.criarAplicacaoDAO().atualizar(a);
 	}
 }

@@ -29,6 +29,10 @@ public class FacadeBusiness {
 	public List<Aplicacao> listarAplicacao() throws BusinessException {
 		return new AplicacaoBusiness().listar();
 	}
+	
+	public List<Aplicacao> listarAplicacao(Boolean status) throws BusinessException {
+		return new AplicacaoBusiness().listar(status);
+	}
 
 	public Aplicacao obterAplicacao(Long id) throws BusinessException {
 		return new AplicacaoBusiness().obter(id);
@@ -37,9 +41,17 @@ public class FacadeBusiness {
 	public List<Aplicacao> obterAplicacao(String descricao) throws BusinessException {
 		return new AplicacaoBusiness().obter(descricao);
 	}
+	
+	public List<Aplicacao> obterAplicacao(String descricao, Boolean status) throws BusinessException {
+		return new AplicacaoBusiness().obter(descricao, status);
+	}
 
 	public void excluirAplicacao(Aplicacao a) {
 		new AplicacaoBusiness().excluir(a);
+	}
+	
+	public void reativarAplicacao(Aplicacao a) {
+		new AplicacaoBusiness().reativar(a);
 	}
 
 	// Linha de Veículo
@@ -266,8 +278,8 @@ public class FacadeBusiness {
 		return new PecaBusiness().obter(descricao);
 	}
 	
-	public List<Peca> obterPecaModelo(Long id_modelo) throws BusinessException{
-		return new PecaBusiness().obterModelo(id_modelo);
+	public List<Peca> obterPecaModelo(Modelo m) throws BusinessException{
+		return new PecaBusiness().obter(m);
 	}
 
 	public void excluirPeca(Peca p) throws BusinessException {
