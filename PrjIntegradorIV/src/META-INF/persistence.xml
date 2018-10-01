@@ -8,20 +8,20 @@
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <!-- Lista de entidades -->
      <!-- Sempre adicionar sua classes aqui se não não funfa -->
-    <class>br.edu.unifacear.projetointegrador4.entity.Montadora</class>
-    <class>br.edu.unifacear.projetointegrador4.entity.Aplicacao</class>
+    <class>br.edu.unifacear.projetointegrador4.model.entity.Montadora</class>
+    <class>br.edu.unifacear.projetointegrador4.model.entity.Aplicacao</class>
   
-    <class>br.edu.unifacear.projetointegrador4.entity.Cargo</class>
-    <class>br.edu.unifacear.projetointegrador4.entity.Cliente</class>    
-    <class>br.edu.unifacear.projetointegrador4.entity.Funcionario</class>
-    <class>br.edu.unifacear.projetointegrador4.entity.LinhaDeVeiculo</class>
-    <class>br.edu.unifacear.projetointegrador4.entity.Modelo</class>
-    <class>br.edu.unifacear.projetointegrador4.entity.Peca</class>
-    <class>br.edu.unifacear.projetointegrador4.entity.PedidoDeVenda</class>
-    <class>br.edu.unifacear.projetointegrador4.entity.StatusPV</class>
-    <class>br.edu.unifacear.projetointegrador4.entity.Telefone</class>
-    <class>br.edu.unifacear.projetointegrador4.entity.TipoCliente</class>
-    <class>br.edu.unifacear.projetointegrador4.entity.Peca_Modelo</class>
+    <class>br.edu.unifacear.projetointegrador4.model.entity.Cargo</class>
+    <class>br.edu.unifacear.projetointegrador4.model.entity.Cliente</class>    
+    <class>br.edu.unifacear.projetointegrador4.model.entity.Funcionario</class>
+    <class>br.edu.unifacear.projetointegrador4.model.entity.LinhaDeVeiculo</class>
+    <class>br.edu.unifacear.projetointegrador4.model.entity.Modelo</class>
+    <class>br.edu.unifacear.projetointegrador4.model.entity.Peca</class>
+    <class>br.edu.unifacear.projetointegrador4.model.entity.PedidoDeVenda</class>
+    <class>br.edu.unifacear.projetointegrador4.model.entity.StatusPV</class>
+    <class>br.edu.unifacear.projetointegrador4.model.entity.Telefone</class>
+    <class>br.edu.unifacear.projetointegrador4.model.entity.TipoCliente</class>
+    <class>br.edu.unifacear.projetointegrador4.model.entity.Peca_Modelo</class>
    
     <properties>
       <!-- Propriedades JDBC -->

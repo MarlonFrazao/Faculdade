@@ -6,9 +6,9 @@ import java.util.List;
 
 import org.junit.Test;
 
-import br.edu.unifacear.projetointegrador4.business.BusinessException;
-import br.edu.unifacear.projetointegrador4.business.FacadeBusiness;
-import br.edu.unifacear.projetointegrador4.entity.Montadora;
+import br.edu.unifacear.projetointegrador4.model.business.BusinessException;
+import br.edu.unifacear.projetointegrador4.model.business.FacadeBusiness;
+import br.edu.unifacear.projetointegrador4.model.entity.Montadora;
 
 public class MontadoraTest {
 	

@@ -6,10 +6,10 @@ import java.util.List;
 
 import org.junit.Test;
 
-import br.edu.unifacear.projetointegrador4.business.BusinessException;
-import br.edu.unifacear.projetointegrador4.business.FacadeBusiness;
-import br.edu.unifacear.projetointegrador4.entity.StatusPV;
-import br.edu.unifacear.projetointegrador4.entity.TipoCliente;
+import br.edu.unifacear.projetointegrador4.model.business.BusinessException;
+import br.edu.unifacear.projetointegrador4.model.business.FacadeBusiness;
+import br.edu.unifacear.projetointegrador4.model.entity.StatusPV;
+import br.edu.unifacear.projetointegrador4.model.entity.TipoCliente;
 
 public class TipoClienteTest {
 	@Test

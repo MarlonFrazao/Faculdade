@@ -7,12 +7,12 @@ import java.util.List;
 
 import org.junit.Test;
 
-import br.edu.unifacear.projetointegrador4.business.BusinessException;
-import br.edu.unifacear.projetointegrador4.dao.FabricaDAO;
-import br.edu.unifacear.projetointegrador4.dao.TipoClienteDAO;
-import br.edu.unifacear.projetointegrador4.entity.Cliente;
-import br.edu.unifacear.projetointegrador4.entity.Telefone;
-import br.edu.unifacear.projetointegrador4.entity.TipoCliente;
+import br.edu.unifacear.projetointegrador4.model.business.BusinessException;
+import br.edu.unifacear.projetointegrador4.model.dao.FabricaDAO;
+import br.edu.unifacear.projetointegrador4.model.dao.TipoClienteDAO;
+import br.edu.unifacear.projetointegrador4.model.entity.Cliente;
+import br.edu.unifacear.projetointegrador4.model.entity.Telefone;
+import br.edu.unifacear.projetointegrador4.model.entity.TipoCliente;
 
 public class ClienteTest {
 

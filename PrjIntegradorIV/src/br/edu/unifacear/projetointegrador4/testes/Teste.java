@@ -4,10 +4,10 @@ package br.edu.unifacear.projetointegrador4.testes;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.unifacear.projetointegrador4.dao.ModeloDAO;
-import br.edu.unifacear.projetointegrador4.dao.PecaDAO;
-import br.edu.unifacear.projetointegrador4.entity.Modelo;
-import br.edu.unifacear.projetointegrador4.entity.Peca;
+import br.edu.unifacear.projetointegrador4.model.dao.ModeloDAO;
+import br.edu.unifacear.projetointegrador4.model.dao.PecaDAO;
+import br.edu.unifacear.projetointegrador4.model.entity.Modelo;
+import br.edu.unifacear.projetointegrador4.model.entity.Peca;
 
 
 
