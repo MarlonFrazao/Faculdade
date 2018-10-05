@@ -11,7 +11,7 @@ public class AplicacaoBusiness {
 	
 	public void inserir(Aplicacao a) throws BusinessException {
 		
-		//busca as aplicações cadastradas para verificação
+		
 		List<Aplicacao> la = FabricaDAO.criarAplicacaoDAO().obter(a.getDescricao());
 		
 		a.setStatus(true);
@@ -19,16 +19,19 @@ public class AplicacaoBusiness {
 		if(a.getDescricao() == null) {
 			throw new BusinessException("Erro: Necessário informar descrição");
 		} else {
-			//verifica se há cadastro no banco de dados, se não há, insere o objeto
+			
 			if(la.size() < 1) {
+				
 				FabricaDAO.criarAplicacaoDAO().inserir(a);
+				System.out.println("---------OK5---------");
 			} else {
-				//verifica se já existe objeto com a mesma descricao
+				
 				for(int i = 0; i < la.size(); i++) {
 					if(a.getDescricao().equals(la.get(i).getDescricao())) {
 						throw new BusinessException("Aplicacao já cadastrada!");
 						
 					} else {
+						System.out.println("---------OK5---------");
 						FabricaDAO.criarAplicacaoDAO().inserir(a);
 					}
 				}

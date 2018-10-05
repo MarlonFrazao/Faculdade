@@ -2,13 +2,11 @@ package br.edu.unifacear.projetointegrador4.testes;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.List;
-
 import org.junit.Test;
 
 import br.edu.unifacear.projetointegrador4.model.business.BusinessException;
-import br.edu.unifacear.projetointegrador4.model.business.FacadeBusiness;
 import br.edu.unifacear.projetointegrador4.model.entity.Aplicacao;
+import br.edu.unifacear.projetointegrador4.model.facade.FacadeAplicacao;
 
 public class AplicacaoTest {
 	//JUnit Build Path - add library - JUnit - JUnit 4 
@@ -21,21 +19,21 @@ public class AplicacaoTest {
 		
 		Aplicacao a = new Aplicacao();
 
-		a.setDescricao("Suspensãoaa");
+		a.setDescricao("Teste3");
 
 		
 		System.out.println("testeInserir: "+a.getDescricao());
 
 		
 		try {
-			new FacadeBusiness().inserirAplicacao(a);
+			new FacadeAplicacao().inserir(a);
 		} catch(BusinessException e) {
 			e.printStackTrace();
 		}
 		
 		assertEquals(true, a.getId() != null);
 	}
-	
+	/*
 	//para testar: clicar com direito - Run As - JUnit
 	
 	@Test

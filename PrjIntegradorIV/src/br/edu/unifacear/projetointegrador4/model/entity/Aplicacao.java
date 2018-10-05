@@ -10,6 +10,11 @@ import br.edu.unifacear.projetointegrador4.model.dao.DAO;
 @Entity
 public class Aplicacao implements DAO{
 	
+	@Override
+	public String toString() {
+		return "Aplicacao [id=" + id + ", descricao=" + descricao + ", status=" + status + "]";
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

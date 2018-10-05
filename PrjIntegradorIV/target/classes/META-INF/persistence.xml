@@ -22,6 +22,7 @@
     <class>br.edu.unifacear.projetointegrador4.model.entity.Telefone</class>
     <class>br.edu.unifacear.projetointegrador4.model.entity.TipoCliente</class>
     <class>br.edu.unifacear.projetointegrador4.model.entity.Peca_Modelo</class>
+    
    
     <properties>
       <!-- Propriedades JDBC -->

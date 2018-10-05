@@ -9,7 +9,14 @@ import br.edu.unifacear.projetointegrador4.model.entity.Aplicacao;
 public class FacadeAplicacao {
 	
 	public void inserir(Aplicacao a) throws BusinessException {
-		new AplicacaoBusiness().inserir(a);
+		try {
+			new AplicacaoBusiness().inserir(a);	
+			System.out.println("Alô Alô Graças a Deus");
+		} catch (Exception e) {
+		System.out.println("fdsfsdfsde"+e.getMessage());
+		}
+		
+		System.out.println("---------OK4---------");
 	}
 
 	public void atualizar(Aplicacao a) throws BusinessException {

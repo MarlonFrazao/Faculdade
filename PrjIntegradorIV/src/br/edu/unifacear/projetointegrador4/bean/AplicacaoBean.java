@@ -32,10 +32,14 @@ public class AplicacaoBean {
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 		try {
-			aplicacao.setStatus(true);
+			System.out.println("---------OK---------");
+			
+			System.out.println(aplicacao);
 			facade.inserir(aplicacao);
+			System.out.println("---------OK3---------");
 			return "sucesso";
 		} catch(Exception e) {
+			System.out.println("-----"+e.getMessage());
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
 					e.getMessage(),""));
 			return "cadastraraplicacao";
