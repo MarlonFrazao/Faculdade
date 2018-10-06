@@ -6,6 +6,7 @@
   <persistence-unit name="prj_integrador_IV_PU">
     <!-- Implementação do JPA -->
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+    <jta-data-source>java:comp/env/jdbc/jsf</jta-data-source>
     <!-- Lista de entidades -->
      <!-- Sempre adicionar sua classes aqui se não não funfa -->
     <class>br.edu.unifacear.projetointegrador4.model.entity.Montadora</class>
