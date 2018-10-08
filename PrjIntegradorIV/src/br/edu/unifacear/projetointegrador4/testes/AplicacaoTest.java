@@ -1,6 +1,6 @@
 package br.edu.unifacear.projetointegrador4.testes;
 
-import static org.junit.Assert.assertEquals;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -12,7 +12,7 @@ public class AplicacaoTest {
 	//JUnit Build Path - add library - JUnit - JUnit 4 
 
 	//Indica que é um teste
-	
+	/*
 	@Test //Indica que é um teste
 
 	public void testeInserir() {
@@ -32,7 +32,7 @@ public class AplicacaoTest {
 		}
 		
 		assertEquals(true, a.getId() != null);
-	}
+	}*/
 	/*
 	//para testar: clicar com direito - Run As - JUnit
 	
@@ -57,10 +57,10 @@ public class AplicacaoTest {
 		
 		assertEquals(true, a.getId() != null);
 	}
-	
+	*/
 	@Test 
 	public void testeListar() throws BusinessException {
-		List<Aplicacao> lista = new FacadeBusiness().listarAplicacao();
+		List<Aplicacao> lista = new FacadeAplicacao().listar();
 		
 		if(lista.size() < 1) {
 			System.out.println("Deu ruim! :(");
@@ -73,7 +73,7 @@ public class AplicacaoTest {
 			}
 		}
 	}
-	
+	/*
 	@Test
 	public void testeObterPorId() {
 		Aplicacao a = null;

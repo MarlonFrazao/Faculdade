@@ -11,7 +11,7 @@ import br.edu.unifacear.projetointegrador4.model.business.FacadeBusiness;
 import br.edu.unifacear.projetointegrador4.model.entity.Cargo;
 
 public class CargoTest {
-	
+	/*
 	@Test
 	public void testeInserir() {
 		
@@ -44,7 +44,7 @@ public class CargoTest {
 		System.out.println("Corrigindo descrição: " + c.getDescricao());
 		
 		assertEquals(true, c.getId() != null);
-	}
+	}*/
 	
 	@Test
 	public void testeListar() {
@@ -63,7 +63,7 @@ public class CargoTest {
 			}
 		}
 	}
-	
+	/*
 	@Test
 	public void testeObterPorId() {
 		Cargo c = null;
@@ -102,5 +102,5 @@ public class CargoTest {
 		Cargo c = new FacadeBusiness().obterCargo((long) 1);
 		
 		new FacadeBusiness().excluirCargo(c);
-	}
+	}*/
 }

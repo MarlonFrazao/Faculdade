@@ -4,10 +4,8 @@ package br.edu.unifacear.projetointegrador4.testes;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.unifacear.projetointegrador4.model.dao.ModeloDAO;
-import br.edu.unifacear.projetointegrador4.model.dao.PecaDAO;
-import br.edu.unifacear.projetointegrador4.model.entity.Modelo;
-import br.edu.unifacear.projetointegrador4.model.entity.Peca;
+import br.edu.unifacear.projetointegrador4.model.dao.CargoDAO;
+import br.edu.unifacear.projetointegrador4.model.entity.Cargo;
 
 
 
@@ -222,6 +220,14 @@ public class Teste {
 		dao.atualizar(peca);
 		*/
 		
+		Cargo c = new Cargo();
+		CargoDAO dao = new CargoDAO();
+		List<Cargo> cargo = new ArrayList<Cargo>();
+		
+		cargo = dao.listar();
+		for(int i = 0; i< cargo.size(); i++) {
+			System.out.println("Descricao cargo: "+cargo.get(i).getDescricao());
+		}
 		
 
 	}
