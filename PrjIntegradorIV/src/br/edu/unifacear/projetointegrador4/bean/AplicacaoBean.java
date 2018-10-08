@@ -32,15 +32,9 @@ public class AplicacaoBean {
 		
 		FacesContext context = FacesContext.getCurrentInstance();
 		try {
-			System.out.println("---------OK---------");
-			Aplicacao apli = new Aplicacao();
-			//FacadeAplicacao fa = new FacadeAplicacao();
-			System.out.println(aplicacao);
 			
-			apli.setDescricao(aplicacao.getDescricao());
-			System.out.println(apli.getDescricao());
-			facade.inserir(apli);
-			System.out.println("---------OK3---------");
+			facade.inserir(aplicacao);
+			
 			return "sucesso";
 		} catch(Exception e) {
 			System.out.println("-----"+e.getMessage());

@@ -23,15 +23,15 @@ public class AplicacaoBusiness {
 			if(la.size() < 1) {
 				
 				FabricaDAO.criarAplicacaoDAO().inserir(a);
-				System.out.println("---------OK5---------");
+				
 			} else {
 				
 				for(int i = 0; i < la.size(); i++) {
 					if(a.getDescricao().equals(la.get(i).getDescricao())) {
-						throw new BusinessException("Aplicacao já cadastrada!");
+						throw new BusinessException("Aplicação já cadastrada!");
 						
 					} else {
-						System.out.println("---------OK5---------");
+						
 						FabricaDAO.criarAplicacaoDAO().inserir(a);
 					}
 				}
