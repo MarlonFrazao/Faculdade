@@ -1,10 +1,13 @@
 package br.edu.unifacear.projetointegrador4.bean;
 
+import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import br.edu.unifacear.projetointegrador4.model.business.BusinessException;
 import br.edu.unifacear.projetointegrador4.model.entity.Aplicacao;
 import br.edu.unifacear.projetointegrador4.model.facade.FacadeAplicacao;
 
@@ -14,10 +17,12 @@ public class AplicacaoBean {
 	
 	private Aplicacao aplicacao;
 	private FacadeAplicacao facade;
+	private List<Aplicacao> aplicacoes;
 	
 	public AplicacaoBean() {
 		aplicacao = new Aplicacao();
 		facade = new FacadeAplicacao();
+		aplicacoes = this.listar();
 	}
 
 	public Aplicacao getAplicacao() {
@@ -26,6 +31,14 @@ public class AplicacaoBean {
 
 	public void setAplicacao(Aplicacao aplicacao) {
 		this.aplicacao = aplicacao;
+	}
+
+	public List<Aplicacao> getAplicacoes() {
+		return aplicacoes;
+	}
+
+	public void setAplicacoes(List<Aplicacao> aplicacoes) {
+		this.aplicacoes = aplicacoes;
 	}
 
 	public String inserir() {
@@ -55,5 +68,21 @@ public class AplicacaoBean {
 					e.getMessage(),""));
 			return "errow";
 		}
+	}
+	
+	public List<Aplicacao> listar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		try {
+			aplicacoes = facade.listar(true);
+			
+		} catch (BusinessException e) {
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
+					e.getMessage(),""));
+			
+		}
+		
+		return aplicacoes;
+		
 	}
 }

@@ -44,6 +44,19 @@ public class CargoBusiness {
 		return FabricaDAO.criarCargoDAO().listar();
 	}
 	
+	public List<Cargo> listar(Boolean status){
+		List<Cargo> lista = FabricaDAO.criarCargoDAO().listar();
+		List<Cargo> retorno = new ArrayList<Cargo>();
+		
+		for(int i = 0; i < lista.size(); i++) {
+			if(lista.get(i).getStatus() == status) {
+				retorno.add(lista.get(i));
+			}
+		}
+		
+		return retorno;
+	}
+	
 	public Cargo obter(Long id) throws BusinessException {
 		Cargo c = new Cargo();
 		

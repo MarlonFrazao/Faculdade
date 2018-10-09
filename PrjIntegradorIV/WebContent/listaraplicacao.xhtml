@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html" 
+  xmlns:f="http://java.sun.com/jsf/core"  
+  xmlns:p="http://primefaces.org/ui">
+<h:head>
+<title>Teste Listar Aplicações</title>
+</h:head>
+<h:body >
+ <h1>Lista de aplicacoes</h1>
+ <hr />
+ 	
+   <p:outputLabel for="aplicacao" value="Aplicações: " />
+        <p:selectOneMenu id="aplicacao" value="#{aplicacaoBean.aplicacao.descricao}">
+            <f:selectItem itemLabel="Escolha uma aplicação" itemValue="" />
+            <f:selectItems value="#{aplicacaoBean.aplicacoes}" />
+        </p:selectOneMenu>
+    
+   
+   
+   <p:growl id="growl" showDetail="true" sticky="true" />   
+ 
+   <h:message />
+ 
+ <hr />
+</h:body>
+</html>
