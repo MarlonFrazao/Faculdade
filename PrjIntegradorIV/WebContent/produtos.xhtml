@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html" 
+  xmlns:f="http://java.sun.com/jsf/core"  
+  xmlns:p="http://primefaces.org/ui">
+<h:head>
+<title></title>
+</h:head>
+<h:body >
+<h:form>  
+    <p:growl id="messages"/> 
+    <p:menubar>     	
+        <p:menuitem url="/homefaces.jsf" value="Home" icon="ui-icon-home" />        
+ 		<p:menuitem url="/produtos.jsf" value="Produtos" icon="ui-icon-search"/>
+ 		<p:menuitem url="/carrinho.jsf" value="Carrinho" icon="ui-icon-search"/>
+ 		<p:menuitem url="/cadastroUsuario.jsf"  value="Novo Usuario" icon="ui-icon-search"/>
+ 		<p:menuitem url="/cliente.jsf"  value="Perfil" icon="ui-icon-search"/> 
+        <f:facet name="options">
+            <p:inputText style="margin-right:10px" placeholder="Search"/>
+            <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+        </f:facet>
+    </p:menubar>
+</h:form>
+<h1>Produtos</h1>
+</h:body>
+</html>

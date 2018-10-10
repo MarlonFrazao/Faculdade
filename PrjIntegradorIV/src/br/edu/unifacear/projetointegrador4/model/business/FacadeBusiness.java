@@ -266,7 +266,7 @@ public class FacadeBusiness {
 		new PecaBusiness().atualizar(p);
 	}
 
-	public List<Peca> listarPeca() {
+	public List<Peca> listarPeca() throws BusinessException {
 		return new PecaBusiness().listar();
 	}
 

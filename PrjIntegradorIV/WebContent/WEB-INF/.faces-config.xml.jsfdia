@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="inicio::#cadastraraplicacao.xhtml"
+    NAME="output" PATH="/cadastraraplicacao.xhtml"
+    TARGET="rules:#cadastraraplicacao.xhtml" TITLE="inicio" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastraraplicacao::#cadastraraplicacao.xhtml" NAME="output1"
+    PATH="/cadastraraplicacao.xhtml"
+    TARGET="rules:#cadastraraplicacao.xhtml" TITLE="cadastraraplicacao" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#ok.xhtml" PATH="/ok.xhtml"
+  SHAPE="464,17,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#cadastraraplicacao.xhtml"
+  PATH="/cadastraraplicacao.xhtml" SHAPE="256,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#cadastraraplicacao.xhtml:0" NAME="item"
+   PATH="/cadastraraplicacao.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="sucesso::#ok.xhtml" NAME="output"
+    PATH="/ok.xhtml" TARGET="rules:#ok.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#homefaces.xhtml" PATH="/homefaces.xhtml"
+  SHAPE="32,161,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#homefaces.xhtml:0" NAME="item"
+   PATH="/homefaces.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="home::#homefaces.xhtml" NAME="output"
+    PATH="/homefaces.xhtml" TARGET="rules:#homefaces.xhtml" TITLE="home" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="produtos::#produtos.xhtml" NAME="output1"
+    PATH="/produtos.xhtml" TARGET="rules:#produtos.xhtml"
+    TITLE="produtos" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="carrinho::#carrinho.xhtml" NAME="output2"
+    PATH="/carrinho.xhtml" TARGET="rules:#carrinho.xhtml"
+    TITLE="carrinho" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cadastroUsuario::#cadastroUsuario.xhtml"
+    NAME="output3" PATH="/cadastroUsuario.xhtml"
+    TARGET="rules:#cadastroUsuario.xhtml" TITLE="cadastroUsuario" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cliente::#clientes.xhtml" NAME="output4"
+    PATH="/clientes.xhtml" TARGET="rules:#clientes.xhtml"
+    TITLE="cliente" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#produtos.xhtml" PATH="/produtos.xhtml"
+  SHAPE="256,177,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#carrinho.xhtml" PATH="/carrinho.xhtml"
+  SHAPE="272,353,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#cadastroUsuario.xhtml"
+  PATH="/cadastroUsuario.xhtml" SHAPE="288,385,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#clientes.xhtml" PATH="/clientes.xhtml"
+  SHAPE="304,417,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

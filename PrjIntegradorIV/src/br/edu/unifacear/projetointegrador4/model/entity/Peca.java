@@ -20,6 +20,14 @@ import br.edu.unifacear.projetointegrador4.model.dao.DAO;
 public class Peca implements DAO{
 	
 	
+	
+	@Override
+	public String toString() {
+		return "Peca [id=" + id + ", descricao=" + descricao + ", aplicacao=" + aplicacao + ", qtdeTotal=" + qtdeTotal
+				+ ", adicional=" + adicional + ", dataCadastro=" + dataCadastro + ", totalAvaliacao=" + totalAvaliacao
+				+ ", mediaAvaliacao=" + mediaAvaliacao + ", numVisualizacao=" + numVisualizacao + ", foto=" + foto
+				+ ", status=" + status + "]";
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

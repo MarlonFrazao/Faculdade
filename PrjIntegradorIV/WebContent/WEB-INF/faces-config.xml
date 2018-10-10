@@ -25,4 +25,28 @@
 			<to-view-id>/ok.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/homefaces.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>home</from-outcome>
+			<to-view-id>/homefaces.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>produtos</from-outcome>
+			<to-view-id>/produtos.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>carrinho</from-outcome>
+			<to-view-id>/carrinho.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastroUsuario</from-outcome>
+			<to-view-id>/cadastroUsuario.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cliente</from-outcome>
+			<to-view-id>/clientes.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 </faces-config>
