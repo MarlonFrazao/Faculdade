@@ -2,6 +2,7 @@ package br.edu.unifacear.projetointegrador4.bean;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -22,7 +23,7 @@ public class AplicacaoBean {
 	public AplicacaoBean() {
 		aplicacao = new Aplicacao();
 		facade = new FacadeAplicacao();
-		aplicacoes = this.listar();
+		
 	}
 
 	public Aplicacao getAplicacao() {
@@ -70,7 +71,8 @@ public class AplicacaoBean {
 		}
 	}
 	
-	public List<Aplicacao> listar() {
+	@PostConstruct
+	public void listar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		
 		try {
@@ -82,7 +84,7 @@ public class AplicacaoBean {
 			
 		}
 		
-		return aplicacoes;
+		
 		
 	}
 }

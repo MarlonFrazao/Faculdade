@@ -32,7 +32,7 @@ public class AplicacaoDAO extends DAOGenerico<Aplicacao> {
 		List<Aplicacao> lista = null;
 		
 		try {
-			lista = em.createQuery("from Aplicacao").getResultList();
+			lista = em.createQuery("from Aplicacao order by descricao").getResultList();
 		}catch(Exception e) {
 			System.err.println(e);
 		}finally {

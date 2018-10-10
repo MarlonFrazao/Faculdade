@@ -11,9 +11,10 @@
  <hr />
  	
    <p:outputLabel for="aplicacao" value="Aplicações: " />
-        <p:selectOneMenu id="aplicacao" value="#{aplicacaoBean.aplicacao.descricao}">
-            <f:selectItem itemLabel="Escolha uma aplicação" itemValue="" />
-            <f:selectItems value="#{aplicacaoBean.aplicacoes}" />
+        <p:selectOneMenu id="aplicacao" value="#{aplicacaoBean.aplicacoes}" >
+            <f:selectItem itemLabel="Escolha uma aplicação"  />
+            <f:selectItems value="#{aplicacaoBean.aplicacoes}" 
+            var="aplicacao" itemValue="#{aplicacao}" itemLabel="#{aplicacao.descricao}" />
         </p:selectOneMenu>
     
    
