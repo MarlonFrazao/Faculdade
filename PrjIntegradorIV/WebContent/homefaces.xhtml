@@ -12,9 +12,9 @@
     <p:menubar>     	
         <p:menuitem url="/homefaces.jsf" value="Home" icon="ui-icon-home" />        
  		<p:menuitem url="/produtos.jsf" value="Produtos" icon="ui-icon-search"/>
- 		<p:menuitem url="/carrinho.jsf" value="Carrinho" icon="ui-icon-search"/>
- 		<p:menuitem url="/cadastroUsuario.jsf"  value="Novo Usuario" icon="ui-icon-search"/>
- 		<p:menuitem url="/cliente.jsf"  value="Perfil" icon="ui-icon-search"/> 
+ 		<p:menuitem url="/carrinho.jsf" value="Carrinho" icon="ui-icon-cart"/>
+ 		<p:menuitem url="/cadastroUsuario.jsf"  value="Novo Usuario" icon="ui-icon-plus"/>
+ 		<p:menuitem url="/cliente.jsf"  value="Perfil" icon="ui-icon-person"/> 
         <f:facet name="options">
             <p:inputText style="margin-right:10px" placeholder="Search"/>
             <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
@@ -26,23 +26,24 @@
 CAROUSEL DO PRIME FACES ARRUMAR-->
 
 <h:form id="form">
-    <p:carousel id ="pecas" value="#{pecaBean.pecas}" headerText="Itens em destaque" var="pecas" itemStyle="text-align:center" responsive="true">
+    <p:carousel id ="pecas" value="#{pecaBean.pecas}" headerText="Itens em destaque" var="peca" itemStyle="text-align:center" responsive="true">
         <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
             <f:facet name="header">
-                <p:graphicImage name="demo/images/car/#{car.brand}.gif"/>
+            	<img src="_imagen/#{peca.foto}.jpg" />
+               
             </f:facet>
-             			
+              			
             <h:outputText value="Id:" />
-            <h:outputText value="#{pecaBean.pecas}" var="pecas" itemValue="#{peca}" itemLabel="#{peca.id}" />
+            <h:outputText value="#{peca.id}"/>
             
             <h:outputText value="Descrição:" />
-            <h:outputText value="#{pecaBean.pecas}" var="pecas" itemValue="#{peca}" itemLabel="#{peca.descricao}"/>
- 
-            <h:outputText value="Ano:" />
-            <h:outputText value="#{pecaBean.pecas}" var="pecas" itemValue="#{peca}" itemLabel="#{peca.ano}"/>
+            <h:outputText value="#{peca.descricao}"/>
  
             <h:outputText value="Aplicação:" />
-            <h:outputText value="#{pecaBean.pecas}" var="pecas" itemValue="#{peca}" itemLabel="#{peca.aplicacao}"/>
+            <h:outputText value="#{peca.aplicacao.descricao}"/>
+            
+            <p:commandButton id="addCarrinho" icon="ui-icon-cart" style="position: relative; left: 50%; right: 50%"/>
+ 
  
             
         </p:panelGrid>
