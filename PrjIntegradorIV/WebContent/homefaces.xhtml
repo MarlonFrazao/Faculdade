@@ -5,6 +5,17 @@
   xmlns:p="http://primefaces.org/ui">
 <h:head>
 <title></title>
+<script src="_js/jquerylib.min.js"></script>
+<script>
+	$(document).ready(function(){
+		$("pecas").on({
+			mouseleave: function(){
+				$(this).hide("addCarrinho");
+			}
+		});
+		});
+	});
+</script>
 </h:head>
 <h:body >
 <h:form>  
@@ -28,8 +39,9 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
 <h:form id="form">
     <p:carousel id ="pecas" value="#{pecaBean.pecas}" headerText="Itens em destaque" var="peca" itemStyle="text-align:center" responsive="true">
         <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+        
             <f:facet name="header">
-            	<img src="_imagen/#{peca.foto}.jpg" />
+            	<img src="_imagen/#{peca.foto}.jpg" style="width:300px; hight:300px"/>
                
             </f:facet>
               			
@@ -45,7 +57,7 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
             <p:commandButton id="addCarrinho" icon="ui-icon-cart" style="position: relative; left: 50%; right: 50%"/>
  
  
-            
+           
         </p:panelGrid>
  
         <f:facet name="footer">
