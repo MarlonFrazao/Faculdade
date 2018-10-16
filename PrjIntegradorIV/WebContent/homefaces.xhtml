@@ -54,8 +54,15 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
             <h:outputText value="Aplicação:" />
             <h:outputText value="#{peca.aplicacao.descricao}"/>
             
-            <p:commandButton id="addCarrinho" icon="ui-icon-cart" style="position: relative; left: 50%; right: 50%"/>
- 
+            <p:commandButton id="addCarrinho" icon="ui-icon-cart" style="position: relative; left: 50%; right: 50%">
+            	<p:confirm header="Confirmação"  message="Descrição: #{peca.descricao} | Aplicação: #{peca.aplicacao.descricao}" icon="ui-icon-cart"/>           		
+            	
+            </p:commandButton>
+ 		
+ 			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"> 				
+       			<p:commandButton value="Adicionar" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        		<p:commandButton value="Voltar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+   			</p:confirmDialog>
  
            
         </p:panelGrid>
