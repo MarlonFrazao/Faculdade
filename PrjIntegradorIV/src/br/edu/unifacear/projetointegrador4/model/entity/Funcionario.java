@@ -23,12 +23,13 @@ public class Funcionario implements DAO{
 	private List<Telefone> telefone;
 	@ManyToOne
 	private Cargo cargo;
+	private Long senha;
 	private Boolean status;
 	
 	public Funcionario() {}
 
 	public Funcionario(Long matricula, String nome, String cpf, List<Telefone> telefone, 
-			Cargo cargo, Boolean status) {
+			Cargo cargo, Boolean status, Long senha) {
 		super();
 		this.id = matricula;
 		this.nome = nome;
@@ -36,6 +37,7 @@ public class Funcionario implements DAO{
 		this.telefone = telefone;
 		this.cargo = cargo;
 		this.status = status;
+		this.senha = senha;
 	}
 	@Override
 	public Long getId() {
@@ -85,5 +87,15 @@ public class Funcionario implements DAO{
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
+
+	public Long getSenha() {
+		return senha;
+	}
+
+	public void setSenha(Long senha) {
+		this.senha = senha;
+	}
+	
+	
 	
 }

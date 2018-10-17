@@ -21,6 +21,109 @@
         </f:facet>
     </p:menubar>
 </h:form>
-<h1>Cadastro de Usuário</h1>
+
+		<div class="title" align="center">
+            <span class="title_icon"></span><h1>CADASTRE-SE</h1>
+        </div>
+        
+        <div class="feat_prod_box_details" align="center">
+            
+            <p:panel header="INFORME SEUS DADOS">
+                <h:form id="cadastro">
+                    <p:messages id="messages" showDetail="true" autoUpdate="true"/>
+                    <p:panelGrid columns="2" id="panelGrid">
+                        <h:outputText value="Nome:" />
+                        <p:inputText id="nome" 
+                                    label="Nome" 
+                                    value="#{cadastroMB.usuario.nome}" 
+                                    size="35" 
+                                    maxlength="100"
+                                    required="true" >
+                            <f:validateLength minimum="3" maximum="50" for="nome" />
+                        </p:inputText>
+
+                        <h:outputText value="e-mail:" />
+                        <p:inputText id="email" 
+                                    label="e-mail" 
+                                    value="#{cadastroMB.usuario.email}" 
+                                    size="35" 
+                                    maxlength="40"
+                                    required="true" 
+                                    validatorMessage="e-mail inválido!" >
+                            <f:validateRegex pattern="[a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9\-\_\.]+" for="email" />
+                        </p:inputText>
+
+                        <h:outputText value="Senha:" />
+                        <p:password id="senha"
+                                    label="Senha"
+                                    value="#{cadastroMB.usuario.senha}"
+                                    size="35"
+                                    maxlength="10"
+                                    required="true"
+                                    feedback="true"
+                                    match="confsenha"
+                                    validatorMessage="A senha de confirmação está diferente!">
+
+                        </p:password>
+                        <h:outputText value="Confirma Senha:" />
+                        <p:password id="confsenha"
+                                    label="Confirma Senha"
+                                    value="#{cadastroMB.confirmaSenha}"
+                                    size="35"
+                                    maxlength="10"
+                                    required="true">
+
+                        </p:password>
+                        <h:outputText value="Endereço:" />
+                        <p:inputText id="endereco" 
+                                    label="Endereço" 
+                                    value="#{cadastroMB.usuario.endereco}" 
+                                    size="35" 
+                                    maxlength="100"
+                                    required="true" >
+                            <f:validateLength minimum="3" maximum="100" for="endereco" />
+                        </p:inputText>
+
+                        <h:outputText value="Bairro:" />
+                        <p:inputText id="bairro" 
+                                    label="Bairro" 
+                                    value="#{cadastroMB.usuario.bairro}" 
+                                    size="35"
+                                    maxlength="50"
+                                    required="true" >
+                            <f:validateLength minimum="3" maximum="50" for="bairro" />
+                        </p:inputText>
+                        <h:outputText value="Cep:" />
+                        <p:inputMask id="cep" label="Cep" required="true"
+                                            value="#{cadastroMB.usuario.cep }" size="35" maxlength="9"
+                                            requiredMessage="O campo 'Cep' deve ser preenchido." mask="99999-999">
+                            <f:validateRegex pattern="[0-9]{5}-[0-9]{3}$" for="cep"/>
+
+                        </p:inputMask>
+                        <h:outputText value="Telefone:" />
+                        <p:inputMask id="telefone"
+                                    value="#{cadastroMB.usuario.telefone}"
+                                    mask="(99)9999.9999"
+                                    size="35"/>
+
+                        <h:outputText value="Celular:" />
+                        <p:inputMask id="celular" 
+                                    value="#{cadastroMB.usuario.celular}"
+                                    mask="(99)9999.9999"
+                                    size="35"/>
+						
+						 <h:outputText value=" " />
+                         <p:commandButton id="botao" 
+                                        value="Salvar"
+                                        action="#{cadastroMB.salvar}" 
+                                        update="panelGrid"/>
+
+
+                    </p:panelGrid>
+                </h:form>
+           
+            </p:panel> 
+        </div>
+
 </h:body>
 </html>

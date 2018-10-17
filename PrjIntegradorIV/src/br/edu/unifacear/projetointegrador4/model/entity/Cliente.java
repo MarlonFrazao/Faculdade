@@ -26,13 +26,16 @@ public class Cliente implements DAO{
 	private List<Telefone> telefone;
 	@OneToOne
 	private TipoCliente tipo;
+	private Long senha;
 	
 	private Boolean status;
 	
 	public Cliente() {}
 	
+	
+	
 	public Cliente(Long id, String cpf, String nome, String endereco, String email, List<Telefone> telefone,
-			TipoCliente tipo, Boolean status) {
+			TipoCliente tipo, Long senha, Boolean status) {
 		super();
 		this.id = id;
 		this.cpf = cpf;
@@ -41,9 +44,12 @@ public class Cliente implements DAO{
 		this.email = email;
 		this.telefone = telefone;
 		this.tipo = tipo;
+		this.senha = senha;
 		this.status = status;
 	}
-	
+
+
+
 	@Override
 	public Long getId() {
 		return id;
@@ -110,5 +116,13 @@ public class Cliente implements DAO{
 		this.status = status;
 		
 	}
+
+	public Long getSenha() {
+		return senha;
+	}
+
+	public void setSenha(Long senha) {
+		this.senha = senha;
+	}	
 	
 }
