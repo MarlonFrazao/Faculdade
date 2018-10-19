@@ -13,7 +13,7 @@
         <p:menuitem url="/homefaces.jsf" value="Home" icon="ui-icon-home" />        
  		<p:menuitem url="/produtos.jsf" value="Produtos" icon="ui-icon-search"/>
  		<p:menuitem url="/carrinho.jsf" value="Carrinho" icon="ui-icon-cart"/>
- 		<p:menuitem url="/cadastroUsuario.jsf"  value="Novo Usuario" icon="ui-icon-plus"/>
+ 		<p:menuitem url="/cadastrousuario.jsf"  value="Novo Usuario" icon="ui-icon-plus"/>
  		<p:menuitem url="/cliente.jsf"  value="Perfil" icon="ui-icon-person"/> 
         <f:facet name="options">
             <p:inputText style="margin-right:10px" placeholder="Search"/>
@@ -32,10 +32,17 @@
                 <h:form id="cadastro">
                     <p:messages id="messages" showDetail="true" autoUpdate="true"/>
                     <p:panelGrid columns="2" id="panelGrid">
+                    
+                    	<h:outputText value="Cpf:" for="cpf"/>
+                        <p:inputText id="cpf" var="cpf"
+                                    value="#{cadastroClienteBean.cliente.cpf}"
+                                    mask="999.999.999-99"
+                                    size="35"/>
+                                    
                         <h:outputText value="Nome:" />
                         <p:inputText id="nome" 
                                     label="Nome" 
-                                    value="#{cadastroMB.usuario.nome}" 
+                                    value="#{cadastroClienteBean.cliente.nome}" 
                                     size="35" 
                                     maxlength="100"
                                     required="true" >
@@ -45,7 +52,7 @@
                         <h:outputText value="e-mail:" />
                         <p:inputText id="email" 
                                     label="e-mail" 
-                                    value="#{cadastroMB.usuario.email}" 
+                                    value="#{cadastroClienteBean.cliente.email}" 
                                     size="35" 
                                     maxlength="40"
                                     required="true" 
@@ -56,7 +63,7 @@
                         <h:outputText value="Senha:" />
                         <p:password id="senha"
                                     label="Senha"
-                                    value="#{cadastroMB.usuario.senha}"
+                                    value="#{cadastroClienteBean.cliente.senha}"
                                     size="35"
                                     maxlength="10"
                                     required="true"
@@ -68,7 +75,7 @@
                         <h:outputText value="Confirma Senha:" />
                         <p:password id="confsenha"
                                     label="Confirma Senha"
-                                    value="#{cadastroMB.confirmaSenha}"
+                                    value="#{cadastroClienteBean.confirmaSenha}"
                                     size="35"
                                     maxlength="10"
                                     required="true">
@@ -77,45 +84,25 @@
                         <h:outputText value="Endereço:" />
                         <p:inputText id="endereco" 
                                     label="Endereço" 
-                                    value="#{cadastroMB.usuario.endereco}" 
+                                    value="#{cadastroClienteBean.cliente.endereco}" 
                                     size="35" 
                                     maxlength="100"
                                     required="true" >
                             <f:validateLength minimum="3" maximum="100" for="endereco" />
                         </p:inputText>
 
-                        <h:outputText value="Bairro:" />
-                        <p:inputText id="bairro" 
-                                    label="Bairro" 
-                                    value="#{cadastroMB.usuario.bairro}" 
-                                    size="35"
-                                    maxlength="50"
-                                    required="true" >
-                            <f:validateLength minimum="3" maximum="50" for="bairro" />
-                        </p:inputText>
-                        <h:outputText value="Cep:" />
-                        <p:inputMask id="cep" label="Cep" required="true"
-                                            value="#{cadastroMB.usuario.cep }" size="35" maxlength="9"
-                                            requiredMessage="O campo 'Cep' deve ser preenchido." mask="99999-999">
-                            <f:validateRegex pattern="[0-9]{5}-[0-9]{3}$" for="cep"/>
-
-                        </p:inputMask>
+                       
                         <h:outputText value="Telefone:" />
-                        <p:inputMask id="telefone"
-                                    value="#{cadastroMB.usuario.telefone}"
+                        <p:inputText id="telefone"
+                                    value="#{cadastroClienteBean.telefone2.telefone}"
                                     mask="(99)9999.9999"
                                     size="35"/>
 
-                        <h:outputText value="Celular:" />
-                        <p:inputMask id="celular" 
-                                    value="#{cadastroMB.usuario.celular}"
-                                    mask="(99)9999.9999"
-                                    size="35"/>
 						
 						 <h:outputText value=" " />
                          <p:commandButton id="botao" 
                                         value="Salvar"
-                                        action="#{cadastroMB.salvar}" 
+                                        action="#{cadastroClienteBean.inserir}" 
                                         update="panelGrid"/>
 
 

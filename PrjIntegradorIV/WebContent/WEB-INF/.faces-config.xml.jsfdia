@@ -49,4 +49,22 @@
   PATH="/cadastroUsuario.xhtml" SHAPE="288,385,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#clientes.xhtml" PATH="/clientes.xhtml"
   SHAPE="304,417,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*:1" PATH="*" SHAPE="32,401,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:1" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="inicio::#cadastrousuario.xhtml"
+    NAME="output" PATH="/cadastrousuario.xhtml"
+    TARGET="rules:#cadastrousuario.xhtml" TITLE="inicio" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="cadastrousuario::#cadastrousuario.xhtml"
+    NAME="output1" PATH="/cadastrousuario.xhtml"
+    TARGET="rules:#cadastrousuario.xhtml" TITLE="cadastrousuario" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#cadastrousuario.xhtml"
+  PATH="/cadastrousuario.xhtml" SHAPE="256,417,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#cadastrousuario.xhtml:0" NAME="item"
+   PATH="/cadastrousuario.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="sucesso::#ok.xhtml" NAME="output"
+    PATH="/ok.xhtml" TARGET="rules:#ok.xhtml" TITLE="sucesso" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
 </PROCESS>

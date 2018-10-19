@@ -30,6 +30,16 @@ public class Cliente implements DAO{
 	
 	private Boolean status;
 	
+	
+	
+	@Override
+	public String toString() {
+		return "Cliente [id=" + id + ", cpf=" + cpf + ", nome=" + nome + ", endereco=" + endereco + ", email=" + email
+				+ ", tipo=" + tipo + ", senha=" + senha + ", status=" + status + "]";
+	}
+
+
+
 	public Cliente() {}
 	
 	

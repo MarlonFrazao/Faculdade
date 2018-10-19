@@ -219,7 +219,7 @@ public class Teste {
 		peca.setModelo(lista);
 		dao.atualizar(peca);
 		*/
-		
+		/*
 		Cargo c = new Cargo();
 		CargoDAO dao = new CargoDAO();
 		List<Cargo> cargo = new ArrayList<Cargo>();
@@ -228,7 +228,7 @@ public class Teste {
 		for(int i = 0; i< cargo.size(); i++) {
 			System.out.println("Descricao cargo: "+cargo.get(i).getDescricao());
 		}
-		
+		*/
 
 	}
 

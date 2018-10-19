@@ -5,10 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.edu.unifacear.projetointegrador4.model.dao.DAO;
+
 @Entity
-public class Telefone {
+public class Telefone implements DAO{
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String cpf;
 	private Long telefone;
@@ -17,6 +20,13 @@ public class Telefone {
 	
 	
 	public Telefone() {}
+	
+	@Override
+	public String toString() {
+		return "Telefone [id=" + id + ", cpf=" + cpf + ", telefone=" + telefone + ", tipo=" + tipo + "]";
+	}
+
+
 
 	public Telefone(Long id, String cpf, Long telefone, String tipo) {
 		super();
@@ -25,7 +35,8 @@ public class Telefone {
 		this.telefone = telefone;
 		this.tipo = tipo;
 	}
-
+	
+	@Override
 	public Long getId() {
 		return id;
 	}
@@ -56,6 +67,12 @@ public class Telefone {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	@Override
+	public void setStatus(Boolean status) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
