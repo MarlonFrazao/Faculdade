@@ -30,4 +30,8 @@ public class FacadeCliente {
 	public void excluirCliente(Cliente c) throws BusinessException {
 		new ClienteBusiness().excluir(c);
 	}
+
+	public List<Cliente> obterCliente(String cpf, Long senha) throws BusinessException  {
+		return new ClienteBusiness().obter(cpf, senha);
+	}
 }

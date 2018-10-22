@@ -16,8 +16,9 @@
  		<p:menuitem url="/cadastrousuario.jsf"  value="Novo Usuario" icon="ui-icon-plus"/>
  		<p:menuitem url="/cliente.jsf"  value="Perfil" icon="ui-icon-person"/> 
         <f:facet name="options">
-            <p:inputText style="margin-right:10px" placeholder="Search"/>
-            <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+            <p:inputText id="cpf" var="cpf" style="margin-right:10px" placeholder="CPF" value="#{cadastroClienteBean.cliente.cpf}"/>
+            <p:inputText id="senha" var="senha" style="margin-right:10px" placeholder="Senha" value="#{cadastroClienteBean.cliente.senha}"/>
+            <p:commandButton id="login" action="#{cadastroClienteBean.login}" value="Login" icon="ui-icon-extlink" />
         </f:facet>
     </p:menubar>
 </h:form>

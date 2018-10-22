@@ -19,6 +19,7 @@ public class CadastroClienteBean {
 
 	private Cliente cliente =null;
 	private List<Telefone> telefone=null;
+	private Cliente login =null;
 	private FacadeCliente facade = null;
 	private Long confirmaSenha =null ;
 	private Telefone telefone2=null;
@@ -32,6 +33,7 @@ public class CadastroClienteBean {
 		confirmaSenha = null;
 		telefone = new ArrayList<Telefone>();
 		telefone2 = new Telefone();
+		login = new Cliente();
 		
 
 	}
@@ -78,6 +80,14 @@ public class CadastroClienteBean {
 	public void setTelefone(List<Telefone> telefone) {
 		this.telefone = telefone;
 	}
+	public Cliente getLogin() {
+		return login;
+	}
+	public void setLogin(Cliente login) {
+		this.login = login;
+	}
+
+
 
 	public String inserir() {
 			System.out.println("entra 1");
@@ -118,6 +128,29 @@ public class CadastroClienteBean {
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 			return "cadastrarcliente";
 		}
+	}
+	public String login() {
+		FacesContext context = FacesContext.getCurrentInstance();	
+		System.out.println("valida senha login");
+		try {
+			System.out.println("valida senha login try");
+			this.login = facade.obterCliente(cliente.getCpf(), cliente.getSenha()).get(0);
+			System.out.println("valida senha login obter nome: "+login.getNome()+ " cpf "+login.getCpf());
+			if(this.login.getNome() != null) {
+				System.out.println("valida senha login retornou login");
+				return "login";
+			}else {
+				context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Senha ou login inválido", null));
+				System.out.println("valida senha login retornou falha");
+				return "falha";
+				
+			}
+		}catch(Exception e) {
+			System.out.println("valida senha login exception");
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+			return "falha";
+		}
+		
 	}
 
 }

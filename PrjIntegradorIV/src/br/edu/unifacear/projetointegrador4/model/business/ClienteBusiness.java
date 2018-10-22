@@ -77,4 +77,16 @@ public void inserir(Cliente c) throws BusinessException {
 		FabricaDAO.criarClienteDAO().excluir(c);
 	}
 
+	public List<Cliente> obter(String cpf, Long senha) throws BusinessException  {
+		List<Cliente> cliente = new ArrayList<Cliente>();
+		if(cpf == null) {
+			throw new BusinessException("Erro: Necessário informar CPF."); 
+		}else if(senha == null) {
+			throw new BusinessException("Erro: Necessário informar SENHA."); 
+		}else {
+			cliente = FabricaDAO.criarClienteDAO().obter(cpf, senha);
+		}
+		return cliente;
+	}
+
 }
