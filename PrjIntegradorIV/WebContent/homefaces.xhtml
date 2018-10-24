@@ -5,7 +5,7 @@
   xmlns:p="http://primefaces.org/ui">
 <h:head>
 <title></title>
-<script src="_js/jquerylib.min.js"></script>
+<!-- <script src="_js/jquerylib.min.js"></script> -->
 <script>
 	$(document).ready(function(){
 		$("pecas").on({
@@ -27,7 +27,8 @@
  		<p:menuitem url="/cadastrousuario.jsf"  value="Novo Usuario" icon="ui-icon-plus"/>
  		<p:menuitem url="/cliente.jsf"  value="Perfil" icon="ui-icon-person"/> 
         <f:facet name="options">
-            <h:form>            
+            <h:form>   
+            <p:outputLabel id="logado" value="#{cadastroClienteBean.login.nome}" style="padding:10px"  />         
     <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
        <p:commandButton id="btn" value="Login" icon="ui-icon-extlink"/>
     </h:outputLink>
@@ -43,7 +44,7 @@
             <p:password id="senha" value="#{cadastroClienteBean.cliente.senha}" required="true" label="senha" />
  
             <f:facet name="footer" style="align: center">
-                <p:commandButton value="Login" update="growl" action="#{cadastroClienteBean.login}"
+                <p:commandButton value="Login" update="growl logado" action="#{cadastroClienteBean.login}"
                                  oncomplete="handleLoginRequest(xhr, status, args)" />
             </f:facet>  
         </h:panelGrid>
@@ -71,13 +72,12 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
 
 <h:form id="form">
     <p:carousel id ="pecas" value="#{pecaBean.pecas}" headerText="Itens em destaque" var="peca" itemStyle="text-align:center" responsive="true">
-        <p:panelGrid columns="2" style="width:100%;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
-        
+        <p:panelGrid columns="2" style="width:260px;hight:260px;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+        	
             <f:facet name="header">
-            	<img src="_imagen/#{peca.foto}.jpg" style="width:300px; hight:300px"/>
-               
+            	<img src="_imagen/#{peca.foto}.jpg" style="width:250px; hight:250px"/>               
             </f:facet>
-              			
+             		
             <h:outputText value="Id:" />
             <h:outputText value="#{peca.id}"/>
             

@@ -22,22 +22,26 @@ public class CadastroClienteBean {
 
 	private Cliente cliente = null;
 	private List<Telefone> telefone = null;
-	private Cliente login = null;
+	private static Cliente login = new Cliente();
 	private FacadeCliente facade = null;
 	private Long confirmaSenha = null;
 	private Telefone telefone2 = null;
 	private FacadeTelefone facTel = null;
+	
 
 	public CadastroClienteBean() {
 		System.out.println("Entrou no bean");
+		
+		
 		cliente = new Cliente();
 		facade = new FacadeCliente();
 		facTel = new FacadeTelefone();
 		confirmaSenha = null;
 		telefone = new ArrayList<Telefone>();
 		telefone2 = new Telefone();
-		login = new Cliente();
-
+		
+		//login = new Cliente();
+		System.out.println("logado: "+login.getNome());
 	}
 
 	public Telefone getTelefone2() {
@@ -118,7 +122,12 @@ public class CadastroClienteBean {
 			return "cadastrarcliente";
 		}
 	}
-
+	public String retornaLogin() {
+		return "sucesso";
+	}
+	public String retornaFalha() {
+		return "falha";
+	}
 	public void login() {
 
 		System.out.println("valida senha login");
@@ -134,12 +143,14 @@ public class CadastroClienteBean {
 				message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem Vindo ", login.getNome().toString());
 
 				System.out.println("valida senha login retornou login");
+				retornaLogin();
 				// return "login";
 			} else {
 				loggedIn = false;
 				message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login inválido", "CPF ou Senha incorretos");
 
 				System.out.println("valida senha login retornou falha");
+				retornaFalha();
 				// return "falha";
 
 			}
