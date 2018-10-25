@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.edu.unifacear.projetointegrador4.model.dao.FabricaDAO;
 import br.edu.unifacear.projetointegrador4.model.entity.Aplicacao;
+import br.edu.unifacear.projetointegrador4.model.entity.Cliente;
 import br.edu.unifacear.projetointegrador4.model.entity.Telefone;
 
 public class TelefoneBusiness {
@@ -47,6 +48,9 @@ public void inserir(Telefone t) throws BusinessException {
 	public List<Telefone> listar() {
 		
 		return FabricaDAO.criarTelefoneDAO().listar();
+	}
+public List<Telefone> listar(Cliente cli) {		
+		return FabricaDAO.criarTelefoneDAO().obter(cli.getCpf());
 	}
 
 	public void excluir(Telefone t) {

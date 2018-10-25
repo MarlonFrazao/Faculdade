@@ -38,6 +38,7 @@ public class TelefoneDAO {
 			
 			em.getTransaction().commit();
 		}catch(Exception e) {
+			System.out.println("caiu catch telefone!!!");
 			System.err.println(e);
 			
 			em.getTransaction().rollback();
@@ -83,7 +84,7 @@ public class TelefoneDAO {
 		List<Telefone> lista = new ArrayList<Telefone>();
 		
 		try {
-			lista = em.createQuery("from Telefone WHERE cpf = " + cpf + ";").getResultList();
+			lista = em.createQuery("from Telefone WHERE cpf = " + cpf).getResultList();
 		}catch(Exception e) {
 			System.err.println(e);
 		}finally {
@@ -99,7 +100,7 @@ public class TelefoneDAO {
 		try {
 			em.getTransaction().begin();
 			
-			em.createQuery("delete from Telefone WHERE id = " + t.getId() + ";");
+			em.createQuery("delete from Telefone WHERE id = " + t.getId());
 			
 			em.getTransaction().commit();
 		} catch(Exception e) {

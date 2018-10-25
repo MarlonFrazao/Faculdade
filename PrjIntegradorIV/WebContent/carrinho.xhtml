@@ -17,7 +17,7 @@
  		<p:menuitem url="/cliente.jsf"  value="Perfil" icon="ui-icon-person"/> 
         <f:facet name="options">
             <h:form> 
-             <p:outputLabel id="logado" value="#{cadastroClienteBean.login.nome}" style="padding:10px" update="logado" />            
+             <p:outputLabel id="logado" value="Bem vindo #{cadastroClienteBean.login.nome}" style="padding:10px" update="logado" />            
     <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
        <p:commandButton id="btn" value="Login" icon="ui-icon-extlink"/>
     </h:outputLink>

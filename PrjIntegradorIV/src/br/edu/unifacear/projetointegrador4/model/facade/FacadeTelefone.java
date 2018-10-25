@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.edu.unifacear.projetointegrador4.model.business.BusinessException;
 import br.edu.unifacear.projetointegrador4.model.business.TelefoneBusiness;
+import br.edu.unifacear.projetointegrador4.model.entity.Cliente;
 import br.edu.unifacear.projetointegrador4.model.entity.Telefone;
 
 public class FacadeTelefone {
@@ -14,6 +15,9 @@ public class FacadeTelefone {
 	}
 	public void atualizarTelefone(Telefone tel) throws BusinessException{
 		new TelefoneBusiness().atualizar(tel);
+	}
+	public List<Telefone> obterTelefoneCpf(Cliente cli) throws BusinessException{		
+		return new TelefoneBusiness().listar(cli);
 	}
 	public List<Telefone> listarTelefone(){
 		return new TelefoneBusiness().listar();

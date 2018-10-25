@@ -25,7 +25,7 @@ public class CadastroClienteBean {
 	private static Cliente login = new Cliente();
 	private FacadeCliente facade = null;
 	private Long confirmaSenha = null;
-	private Telefone telefone2 = null;
+	private static Telefone telefone2 = new Telefone();;
 	private FacadeTelefone facTel = null;
 	
 
@@ -38,10 +38,9 @@ public class CadastroClienteBean {
 		facTel = new FacadeTelefone();
 		confirmaSenha = null;
 		telefone = new ArrayList<Telefone>();
-		telefone2 = new Telefone();
 		
-		//login = new Cliente();
 		System.out.println("logado: "+login.getNome());
+		System.out.println("telefone bean: "+telefone2.getTelefone());
 	}
 
 	public Telefone getTelefone2() {
@@ -137,6 +136,9 @@ public class CadastroClienteBean {
 		try {
 			System.out.println("valida senha login try");
 			this.login = facade.obterCliente(cliente.getCpf(), cliente.getSenha()).get(0);
+			this.telefone = facTel.obterTelefoneCpf(cliente);
+			telefone2 = telefone.get(0);
+			System.out.println("telefone do cara: "+telefone2.getTelefone());
 			System.out.println("valida senha login obter nome: " + login.getNome() + " cpf " + login.getCpf());
 			if (this.login.getNome() != null) {
 				loggedIn = true;
@@ -163,6 +165,45 @@ public class CadastroClienteBean {
 			// return "falha";
 		}
 
+	}
+	
+	public String atualizar() {
+		System.out.println("entra 1");
+		FacesContext context = FacesContext.getCurrentInstance();
+		try {
+			System.out.println("entra 2");
+			cliente = login;
+			telefone = facTel.obterTelefoneCpf(cliente);
+			System.out.println("recebeu lista");
+			for(int i =0; i<telefone.size();i++) {
+				System.out.println("lista antes if -- CPF: "+telefone.get(i).getCpf()+" tel: "+telefone.get(i).getTelefone());
+				if(telefone2.getId() == (telefone.get(i).getId()) && telefone2.getTelefone() != telefone.get(i).getTelefone()) {
+					System.out.println("antes de mudar -- CPF: "+telefone.get(i).getCpf()+" tel: "+telefone.get(i).getTelefone());
+					telefone.set(i, telefone2);
+					System.out.println("iiiiiiiii: "+i);
+					System.out.println("depois de mudar -- CPF: "+telefone.get(i).getCpf()+" tel: "+telefone.get(i).getTelefone());
+					facTel.atualizarTelefone(telefone2);	
+					System.out.println("telefones diferentes -- CPF: "+telefone.get(i).getCpf()+" tel: "+telefone.get(i).getTelefone());
+					System.out.println("entrou for telefone");
+					
+				}else {
+					System.out.println("para telefones iguais -- CPF: "+telefone.get(i).getCpf()+" tel: "+telefone.get(i).getTelefone());
+				}
+			}
+			//telefone.add(telefone2);
+			//cliente.setTelefone(telefone);
+
+			facade.atualizarCliente(cliente);
+
+			login();
+			return "sucesso";
+
+		} catch (Exception e) {
+			System.out.println("entra exception alterar ");
+			System.out.println("-----" + e.getMessage());
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
+			return "perfil";
+		}
 	}
 
 }
