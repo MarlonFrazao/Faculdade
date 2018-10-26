@@ -22,7 +22,27 @@
 		<from-view-id>/cadastraraplicacao.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>sucesso</from-outcome>
-			<to-view-id>/ok.xhtml</to-view-id>
+			<to-view-id>/listaraplicacao.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>*</from-view-id>
+		<navigation-case>
+			<from-outcome>inicio</from-outcome>
+			<to-view-id>/cadastrarmontadora.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastrarmontadora</from-outcome>
+			<to-view-id>/cadastrarmontadora.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<from-view-id>/cadastrarmontadora.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>sucesso</from-outcome>
+			<to-view-id>/listarmontadora.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	

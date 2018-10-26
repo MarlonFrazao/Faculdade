@@ -88,7 +88,7 @@ public class FacadeBusiness {
 		new MontadoraBusiness().atualizar(m);
 	}
 
-	public List<Montadora> listarMontadora() {
+	public List<Montadora> listarMontadora() throws BusinessException{
 		return new MontadoraBusiness().listar();
 	}
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html" 
+  xmlns:f="http://java.sun.com/jsf/core"  
+  xmlns:p="http://primefaces.org/ui"
+  lang="pt-br">
+<h:head>
+<meta charset="utf-8" />
+<title>Cadastro de Montadora</title>
+</h:head>
+<h:body>
+ <h1>Cadastro de Montadora</h1>
+ <hr />
+ <h:form>
+   
+    
+   <h:panelGrid columns="2">
+     
+     <h:outputLabel value="Descrição: " for="descricao" />
+     <h:inputText id="descricao" label="descricao" value="#{montadoraBean.montadora.descricao}" required="true" />
+     
+     <h:commandButton action="#{montadoraBean.inserir}" value="Salvar" />
+   </h:panelGrid>
+   
+   <p:growl id="growl" showDetail="true" sticky="true" />   
+ 
+   <h:message />
+ </h:form>
+ <hr />
+</h:body>
+</html>

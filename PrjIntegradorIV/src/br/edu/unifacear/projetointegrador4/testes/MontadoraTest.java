@@ -50,7 +50,7 @@ public class MontadoraTest {
 	}
 	
 	@Test
-	public void testeListar() {
+	public void testeListar() throws BusinessException {
 		System.out.println("============= Listar =============");
 		List<Montadora> lista = new FacadeBusiness().listarMontadora();
 		
