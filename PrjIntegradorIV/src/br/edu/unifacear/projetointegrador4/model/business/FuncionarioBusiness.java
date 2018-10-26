@@ -11,7 +11,7 @@ public class FuncionarioBusiness {
 
 public void inserir(Funcionario f) throws BusinessException {
 		
-		//busca as aplicações cadastradas para verificação
+		
 		List<Funcionario> lf = FabricaDAO.criarFuncionarioDAO().obter(f.getNome());
 		
 		f.setStatus(true);
@@ -19,14 +19,14 @@ public void inserir(Funcionario f) throws BusinessException {
 		if(f.getNome() == null) {
 			throw new BusinessException("Erro: Necessário informar nome");
 		} else {
-			//verifica se há cadastro no banco de dados, se não há, insere o objeto
+			
 			if(lf.size() < 1) {
 				FabricaDAO.criarFuncionarioDAO().inserir(f);
 			} else {
-				//verifica se já existe objeto com a mesma descricao
+				
 				for(int i = 0; i < lf.size(); i++) {
-					if(f.getNome().equals(lf.get(i).getNome())) {
-						throw new BusinessException("Funcionario já cadastrada!");
+					if(f.getCpf().equals(lf.get(i).getCpf())) {
+						throw new BusinessException("Funcionario(a) já cadastrado(a)!");
 						
 					} else {
 						FabricaDAO.criarFuncionarioDAO().inserir(f);

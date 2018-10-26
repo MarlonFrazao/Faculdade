@@ -24,8 +24,8 @@ public void inserir(Cliente c) throws BusinessException {
 			} else {
 				//verifica se já existe objeto com a mesma descricao
 				for(int i = 0; i < lc.size(); i++) {
-					if(c.getNome().equals(lc.get(i).getNome())) {
-						throw new BusinessException("Cliente já cadastrada!");
+					if(c.getCpf().equals(lc.get(i).getCpf())) {
+						throw new BusinessException("Cliente já cadastrado(a)!");
 						
 					} else {
 						FabricaDAO.criarClienteDAO().inserir(c);
