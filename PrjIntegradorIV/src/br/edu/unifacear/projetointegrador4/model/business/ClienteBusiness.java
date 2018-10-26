@@ -11,7 +11,7 @@ public class ClienteBusiness {
 public void inserir(Cliente c) throws BusinessException {
 		
 		//busca as aplicações cadastradas para verificação
-		List<Cliente> lc = FabricaDAO.criarClienteDAO().obter(c.getNome());
+		List<Cliente> lc = FabricaDAO.criarClienteDAO().listar();
 		
 		c.setStatus(true);
 		

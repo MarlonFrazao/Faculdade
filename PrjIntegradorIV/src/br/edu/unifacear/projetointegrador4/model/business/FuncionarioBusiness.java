@@ -12,7 +12,7 @@ public class FuncionarioBusiness {
 public void inserir(Funcionario f) throws BusinessException {
 		
 		
-		List<Funcionario> lf = FabricaDAO.criarFuncionarioDAO().obter(f.getNome());
+		List<Funcionario> lf = FabricaDAO.criarFuncionarioDAO().listar();
 		
 		f.setStatus(true);
 		
