@@ -117,7 +117,7 @@ public class Cliente implements DAO{
 		this.tipo = tipo;
 	}
 	
-	public Boolean status() {
+	public Boolean getStatus() {
 		return status;
 	}
 

@@ -84,8 +84,34 @@ public class CargoBusiness {
 		return lista;
 	}
 	
+	public List<Cargo> obter(String descricao, Boolean status) throws BusinessException{
+		
+		List<Cargo> retorno = new ArrayList<Cargo>();
+		List<Cargo> lista = FabricaDAO.criarCargoDAO().obter(descricao);
+		
+		if (descricao == null) {
+			lista = null;
+			throw new BusinessException("Erro: Necessário informar descrição.");
+		} else {
+			for(int i = 0; i < lista.size(); i++) {
+				if(lista.get(i).getStatus() == status) {
+					retorno.add(lista.get(i));
+				}
+			}
+		}
+		
+		return retorno;
+	}
+	
 	public void excluir(Cargo c) {
 		
 		FabricaDAO.criarCargoDAO().excluir(c);
+	}
+	
+	public void reativar(Cargo c) {
+		
+		c.setStatus(true);
+		
+		FabricaDAO.criarCargoDAO().atualizar(c);
 	}
 }

@@ -11,6 +11,7 @@ import br.edu.unifacear.projetointegrador4.model.entity.Funcionario;
 
 public class ClienteDAO extends DAOGenerico<Cliente>{
 	
+	
 	public List<Cliente> obter(String nome) {
 		EntityManager em = new ConnectionFactory().getConnection();
 		Cliente cliente = null;
