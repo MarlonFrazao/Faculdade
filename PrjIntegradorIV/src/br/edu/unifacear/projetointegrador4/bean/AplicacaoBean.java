@@ -1,5 +1,6 @@
 package br.edu.unifacear.projetointegrador4.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -23,6 +24,7 @@ public class AplicacaoBean {
 	public AplicacaoBean() {
 		aplicacao = new Aplicacao();
 		facade = new FacadeAplicacao();
+		aplicacoes = new ArrayList<Aplicacao>();
 		
 	}
 

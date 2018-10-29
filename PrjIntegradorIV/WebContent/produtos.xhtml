@@ -56,5 +56,37 @@
     </p:menubar>
 </h:form>
 <h1>Produtos</h1>
+
+<h:form >
+    <p:growl>
+        <p:autoUpdate />
+    </p:growl>
+    <h3>Filtros</h3>
+ 	<f:facet name="options">
+            <p:inputText placeholder="Nome da peça"/>
+            <p:commandButton type="button" value="Procurar" icon="ui-icon-extlink" />
+        </f:facet>	
+        
+     <p:selectOneMenu id="aplicacao" value="#{aplicacaoBean.aplicacoes}" >
+            <f:selectItem itemLabel="Escolha uma aplicação"  />
+            <f:selectItems value="#{aplicacaoBean.aplicacoes}" 
+            var="aplicacao" itemValue="#{aplicacao}" itemLabel="#{aplicacao.descricao}" />
+        </p:selectOneMenu>
+    
+    <p:menu toggleable="true">
+        <p:submenu  label="Aplicação" var="aplicacao" value="#{aplicacaoBean.aplicacoes}" for="aplicacao">
+            <p:menuitem value="#{aplicacaoBean.aplicacoes}" 
+            var="aplicacao" itemValue="#{aplicacao}" itemLabel="#{aplicacao.descricao}"/>
+           
+        </p:submenu>
+         <p:submenu id="montadora" label="Montadora" for="montadora" value="#{montadoraBean.montadoras}" >
+            <p:menuitem value="#{montadoraBean.montadoras}"  
+            var="montadora" itemValue="#{montadora}" itemLabel="#{montadora.descricao}"/>            
+        </p:submenu>
+       
+    </p:menu>
+    
+    
+</h:form>
 </h:body>
 </html>

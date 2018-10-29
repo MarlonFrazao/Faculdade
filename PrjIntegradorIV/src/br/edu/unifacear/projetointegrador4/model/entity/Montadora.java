@@ -19,6 +19,13 @@ public class Montadora implements DAO {
 	private String descricao;
 	private Boolean status;
 	
+	
+	
+	@Override
+	public String toString() {
+		return "Montadora [id=" + id + ", descricao=" + descricao + ", status=" + status + "]";
+	}
+
 	public Montadora() {}
 	
 	public Montadora(Long id, String descricao, Boolean status) {
