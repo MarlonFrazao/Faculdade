@@ -57,36 +57,67 @@
 </h:form>
 <h1>Produtos</h1>
 
-<h:form >
-    <p:growl>
-        <p:autoUpdate />
-    </p:growl>
-    <h3>Filtros</h3>
- 	<f:facet name="options">
-            <p:inputText placeholder="Nome da peça"/>
-            <p:commandButton type="button" value="Procurar" icon="ui-icon-extlink" />
-        </f:facet>	
-        
-     <p:selectOneMenu id="aplicacao" value="#{aplicacaoBean.aplicacoes}" >
-            <f:selectItem itemLabel="Escolha uma aplicação"  />
-            <f:selectItems value="#{aplicacaoBean.aplicacoes}" 
-            var="aplicacao" itemValue="#{aplicacao}" itemLabel="#{aplicacao.descricao}" />
-        </p:selectOneMenu>
+<h:form id="form">
+   <p:layout style="min-width:400px;min-height:600px;">
+    <p:layoutUnit position="west" resizable="true" size="100" minSize="40" maxSize="200">
     
-    <p:menu toggleable="true">
-        <p:submenu  label="Aplicação" var="aplicacao" value="#{aplicacaoBean.aplicacoes}" for="aplicacao">
-            <p:menuitem value="#{aplicacaoBean.aplicacoes}" 
-            var="aplicacao" itemValue="#{aplicacao}" itemLabel="#{aplicacao.descricao}"/>
-           
-        </p:submenu>
-         <p:submenu id="montadora" label="Montadora" for="montadora" value="#{montadoraBean.montadoras}" >
-            <p:menuitem value="#{montadoraBean.montadoras}"  
-            var="montadora" itemValue="#{montadora}" itemLabel="#{montadora.descricao}"/>            
-        </p:submenu>
+    menu esquerda
        
-    </p:menu>
-    
-    
+    </p:layoutUnit>
+ 
+    <p:layoutUnit position="center">
+      	<p:dataGrid var="peca" value="#{pecaBean.pecas}" columns="3" layout="grid"
+        rows="12" paginator="true" id="pecas"
+        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+        rowsPerPageTemplate="6,12,16">
+ 
+        <f:facet name="header">
+           Peças
+        </f:facet>
+ 
+        <p:panel header="#{peca.id}" style="text-align:center">
+            <h:panelGrid columns="1" style="width:100%">
+                <img src="_imagen/#{peca.foto}.jpg" style="width:50%; hight:45%; position:center "/> 
+ 
+                <h:outputText value="#{peca.descricao}" />
+ 
+                <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+                    <f:setPropertyActionListener value="#{peca}" target="#{pecaBean.peca}" />
+                </p:commandLink>
+            </h:panelGrid>
+        </p:panel>
+ 
+    </p:dataGrid>
+ 
+    <p:dialog header="Informações da peça" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="carDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty pecaBean.pecas}" columnClasses="label,value">
+                <f:facet name="header">
+                    <img src="_imagen/#{pecaBean.peca.foto}.jpg" style="width:30%; hight:30%; align:center;"/> 
+                   
+                </f:facet>
+ 
+                <h:outputText value="Id:" />
+                <h:outputText value="#{pecaBean.peca.id}" />
+                
+                <h:outputText value="Descrição" />
+                <h:outputText value="#{pecaBean.peca.descricao}" />
+ 
+ 
+                <h:outputText value="Adicional" />
+                <h:outputText value="#{pecaBean.peca.adicional}" />
+ 
+ 
+                <h:outputText value="Aplicação" />
+                <h:outputText value="#{pecaBean.peca.aplicacao.descricao}" />
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+
+
+    </p:layoutUnit>
+</p:layout>
 </h:form>
 </h:body>
 </html>

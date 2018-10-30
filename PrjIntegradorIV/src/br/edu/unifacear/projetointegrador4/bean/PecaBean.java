@@ -38,6 +38,7 @@ public class PecaBean {
 	public PecaBean() {
 		peca = new Peca();
 		facade = new FacadeBusiness();
+		pecas = new ArrayList<Peca>();
 		
 	}
 	
@@ -46,6 +47,7 @@ public class PecaBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		
 		try {
+			System.out.println("entrou listar");
 			pecas = facade.listarPeca();
 			
 		} catch (BusinessException e) {
