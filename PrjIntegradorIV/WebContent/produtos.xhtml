@@ -90,7 +90,7 @@
  
     </p:dataGrid>
  
-    <p:dialog header="Informações da peça" widgetVar="popUpDetalhes" showEffect="fade" hideEffect="fade" resizable="false">
+    <p:dialog header="Informações da peça" widgetVar="popUpDetalhes" global="true" showEffect="fade" hideEffect="fade" resizable="false">
         <p:outputPanel id="detalhes" style="text-align:center;">
             <p:panelGrid  columns="2" rendered="#{not empty pecaBean.pecas}" columnClasses="label,value">
                 <f:facet name="header">
