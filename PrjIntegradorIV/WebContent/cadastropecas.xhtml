@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title></title>
+</h:head>
+<h:body>
+	<h:form>
+		<p:growl id="messages" showDetail="true" sticky="true" />
+		<p:menubar style="background-color:blue">
+			<p:menuitem url="/homefaces.jsf" value="Home" icon="ui-icon-home" />
+			<p:menuitem url="/produtos.jsf" value="Produtos"
+				icon="ui-icon-search" />
+			<p:menuitem url="/carrinho.jsf" value="Carrinho" icon="ui-icon-cart" />
+			<p:menuitem url="/cadastrousuario.jsf" value="Novo Usuario"
+				icon="ui-icon-plus" />
+			<p:menuitem url="/cliente.jsf" value="Perfil" icon="ui-icon-person" />
+			<f:facet name="options">
+				<h:form>
+					<p:outputLabel id="logado"
+						value="Bem vindo #{cadastroClienteBean.login.nome}"
+						style="padding:10px" update="logado" />
+					<h:outputLink value="javascript:void(0)"
+						onclick="PF('dlg').show();" title="login">
+						<p:commandButton id="btn" value="Login" icon="ui-icon-extlink" />
+					</h:outputLink>
+
+					<p:growl id="growl" sticky="true" showDetail="true" life="300" />
+
+					<p:dialog header="Login" widgetVar="dlg" resizable="false">
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputLabel for="cpf" value="CPF:" />
+							<p:inputText id="cpf" value="#{cadastroClienteBean.cliente.cpf}"
+								required="true" label="cpf" />
+
+							<h:outputLabel for="senha" value="Senha:" />
+							<p:password id="senha"
+								value="#{cadastroClienteBean.cliente.senha}" required="true"
+								label="senha" />
+
+							<f:facet name="footer" style="align: center">
+								<p:commandButton value="Login" update="growl"
+									action="#{cadastroClienteBean.login}"
+									oncomplete="handleLoginRequest(xhr, status, args)" />
+							</f:facet>
+						</h:panelGrid>
+					</p:dialog>
+				</h:form>
+
+				<script type="text/javascript">
+					function handleLoginRequest(xhr, status, args) {
+						if (args.validationFailed || !args.loggedIn) {
+							PF('dlg').jq.effect("shake", {
+								times : 5
+							}, 100);
+						} else {
+							PF('dlg').hide();
+							$('#loginLink').fadeOut();
+						}
+					}
+				</script>
+
+			</f:facet>
+		</p:menubar>
+	</h:form>
+
+
+	<div class="title" align="center">
+		<span class="title_icon"></span>
+		<h1>Cadastro de pecas</h1>
+	</div>
+
+	<div class="feat_prod_box_details" align="center">
+
+		<p:panel header="INFORME OS DADOS DA PEÇA">
+			<h:form id="cadastro">
+
+				<p:panelGrid columns="3" id="panelGrid" type="reset">
+
+					<h:outputText value="Descrição:" for="descricao" />
+					<p:inputText id="descricao" var="descricao" value="#{pecaBean.peca.descricao}"
+						size="35" />
+					<h:outputText value="" for="" />
+					
+					
+					<h:outputText value="Modelo:" for="modelo" />
+					<p:selectOneMenu id="modelo" value="#{modeloBean.modelos}">
+						<f:selectItem itemLabel="Escolha um modelo" />
+						<f:selectItems value="#{modeloBean.modelos}" var="modelo"
+							itemValue="#{modelo}" itemLabel="#{modelo.descricao}" />
+					</p:selectOneMenu>
+					<h:outputText value="" for="" />
+					
+
+					<h:outputText value="Aplicação:" for="aplicacao" />
+					<p:selectOneMenu id="aplicacao" value="#{aplicacaoBean.aplicacoes}">
+						<f:selectItem itemLabel="Escolha uma aplicação" />
+						<f:selectItems value="#{aplicacaoBean.aplicacoes}" var="aplicacao"
+							itemValue="#{aplicacao}" itemLabel="#{aplicacao.descricao}" />
+					</p:selectOneMenu>
+					<h:outputText value="" for="" />
+
+
+					<h:outputText value="Adicional:" for="adicional" />
+					<p:inputText id="adicional" var="adicional" value="#{pecaBean.peca.adicional}"
+						size="35" />
+					<h:outputText value="" for="" />
+					
+				
+					<h:outputText value="Quantidade:" />
+					<p:inputText id="qtdeTotal" label="qtdTotal"
+						value="#{pecaBean.peca.qtdeTotal}" size="35" required="true" />
+					<h:outputText value="" for="" />
+					
+
+					<h:outputText value="" for="" />
+					<p:commandButton id="botao" value="Salvar"
+						action="#{cadastroClienteBean.inserir}" update="panelGrid" />
+					<h:outputText value="" for="" />
+
+
+
+				</p:panelGrid>
+			</h:form>
+
+		</p:panel>
+	</div>
+
+</h:body>
+</html>

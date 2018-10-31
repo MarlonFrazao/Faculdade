@@ -238,7 +238,7 @@ public class FacadeBusiness {
 		new ModeloBusiness().atualizar(m);
 	}
 
-	public List<Modelo> listarModelo() {
+	public List<Modelo> listarModelo() throws BusinessException{
 		return new ModeloBusiness().listar();
 	}
 

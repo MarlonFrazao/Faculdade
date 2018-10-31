@@ -58,8 +58,8 @@
 <h1>Produtos</h1>
 
 <h:form id="form">
-   <p:layout style="min-width:400px;min-height:600px;">
-    <p:layoutUnit position="west" resizable="true" size="100" minSize="40" maxSize="200">
+   <p:layout style="min-width:600px;min-height:600px;">
+    <p:layoutUnit position="west" resizable="true" size="200" minSize="40" maxSize="200">
     
     menu esquerda
        
@@ -79,9 +79,9 @@
             <h:panelGrid columns="1" style="width:100%">
                 <img src="_imagen/#{peca.foto}.jpg" style="width:50%; hight:45%; position:center "/> 
  
-                <h:outputText value="#{peca.descricao}" />
+                <h:outputText value="#{peca.descricao}" style="text-align:center"/>
  
-                <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+                <p:commandLink update=":form:detalhes" oncomplete="PF('popUpDetalhes').show()" title="Informações">
                     <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
                     <f:setPropertyActionListener value="#{peca}" target="#{pecaBean.peca}" />
                 </p:commandLink>
@@ -90,8 +90,8 @@
  
     </p:dataGrid>
  
-    <p:dialog header="Informações da peça" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-        <p:outputPanel id="carDetail" style="text-align:center;">
+    <p:dialog header="Informações da peça" widgetVar="popUpDetalhes" showEffect="fade" hideEffect="fade" resizable="false">
+        <p:outputPanel id="detalhes" style="text-align:center;">
             <p:panelGrid  columns="2" rendered="#{not empty pecaBean.pecas}" columnClasses="label,value">
                 <f:facet name="header">
                     <img src="_imagen/#{pecaBean.peca.foto}.jpg" style="width:30%; hight:30%; align:center;"/> 
