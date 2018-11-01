@@ -42,7 +42,7 @@
 		<from-view-id>/cadastropecas.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>sucesso</from-outcome>
-			<to-view-id>/cadastropecas.xhtml</to-view-id>
+			<to-view-id>/ok.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	

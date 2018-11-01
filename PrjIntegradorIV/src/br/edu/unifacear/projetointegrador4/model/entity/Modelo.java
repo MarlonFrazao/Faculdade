@@ -16,7 +16,7 @@ import br.edu.unifacear.projetointegrador4.model.dao.DAO;
 
 @Entity
 public class Modelo implements DAO {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -27,39 +27,30 @@ public class Modelo implements DAO {
 	private LinhaDeVeiculo linha;
 	private Integer ano;
 	private Boolean status;
-	
+
 	@OneToMany(mappedBy = "id_modelo", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
 	private List<Peca_Modelo> peca_modelo = new ArrayList<Peca_Modelo>();
-	
-	public Modelo() {}
-	
 
+	public Modelo() {
+	}
 
 	@Override
 	public String toString() {
-		return "Modelo [id=" + id + ", descricao=" + descricao + ", montadora=" + montadora + ", linha=" + linha
-				+ ", ano=" + ano + ", status=" + status + "]";
+		return "Modelo [id=" + id + ", descricao=" + descricao + ", ano=" + ano + ", status=" + status + "]";
 	}
-
-
-
-
-
-
-
 
 	public void adicionarPeca_Modelo(Peca_Modelo peca_modelo) {
 		peca_modelo.setModelo(this);
 		this.peca_modelo.add(peca_modelo);
 	}
-	
+
 	public void removerPeca_Modelo(int index) {
 		Peca_Modelo peca_modelo = this.peca_modelo.get(index);
 		this.peca_modelo.remove(index);
 	}
-	
-	public Modelo(Long id, String descricao, Montadora montadora, LinhaDeVeiculo linha, Integer ano, Boolean status
-			, List<Peca_Modelo> peca_modelo) {
+
+	public Modelo(Long id, String descricao, Montadora montadora, LinhaDeVeiculo linha, Integer ano, Boolean status,
+			List<Peca_Modelo> peca_modelo) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
@@ -114,20 +105,18 @@ public class Modelo implements DAO {
 	public Boolean getStatus() {
 		return status;
 	}
+
 	@Override
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
 
-
 	public List<Peca_Modelo> getPecas() {
 		return peca_modelo;
 	}
 
-
 	public void setPecas(List<Peca_Modelo> pecas) {
 		this.peca_modelo = pecas;
 	}
-	
-	
+
 }

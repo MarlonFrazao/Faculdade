@@ -86,56 +86,18 @@
 					
 					
 					<h:outputText value="Modelo:" for="modelo" />
-					<p:selectOneMenu id="modelo" value="#{modeloBean.modelos}">
+					<p:selectOneMenu id="modelo" value="#{modeloBean.modelos}" converter="omnifaces.SelectItemsConverter">
 						<f:selectItem itemLabel="Escolha um modelo" />
 						<f:selectItems value="#{modeloBean.modelos}" var="modelo"
-							itemValue="#{modelo}" itemLabel="#{modelo.descricao}" />
+							itemValue="#{modelo}" itemLabel="#{modelo.descricao}" converter="omnifaces.SelectItemsConverter" />
 					</p:selectOneMenu>
-					<p:commandButton id="novoModelo" value="Novo" for="panelGrid2">
-					
-            			<p:confirm header="Novo Modelo" message="Informe os Dados" id="conf">
-            				
-            			 </p:confirm> 
-            			
-            			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade" id="confDia"> 
-            				<p:panelGrid columns="2" id="panelGrid2">
-            				<h:outputText value="Descrição:" for="descricaoMod" />
-							<p:inputText id="descricaoMod" var="descricaoMod" value="#{modeloBean.modelo.descricao}"
-							size="25" />
-							
-							<h:outputText value="Ano:" for="ano" />
-							<p:inputText id="ano" var="ano" value="#{modeloBean.modelo.ano}"
-							size="25" />
-							
-							<h:outputText value="Linha De Veiculo:" for="ldv" />
-							<p:selectOneMenu id="ldv" value="#{linhaDeVeiculoBean.linhas}">
-								<f:selectItem itemLabel="Escolha uma Linha de Veiculo" />
-								<f:selectItems value="#{linhaDeVeiculoBean.linhas}" var="linha"
-							itemValue="#{linha}" itemLabel="#{linha.descricao}" />
-							</p:selectOneMenu>
-							
-							<h:outputText value="Montadora:" for="montadora" />
-							<p:selectOneMenu id="montadora" value="#{montadoraBean.montadoras}">
-								<f:selectItem itemLabel="Escolha uma Montadora" />
-								<f:selectItems value="#{montadoraBean.montadoras}" var="montadora"
-							itemValue="#{montadora}" itemLabel="#{montadora.descricao}" />
-							</p:selectOneMenu>
-										
-       						<p:commandButton action="#{modeloBean.inserir}" value="Salvar" styleClass="ui-confirmdialog-yes"
-       							 icon="ui-icon-check" />
-       							 
-        					<p:commandButton value="Voltar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-        					
-        					</p:panelGrid>
-   						</p:confirmDialog>
-            		         	
-           			</p:commandButton>
+					<h:outputText value="" for="" />
  		
  			
 					
 
 					<h:outputText value="Aplicação:" for="aplicacao" />
-					<p:selectOneMenu id="aplicacao" value="#{aplicacaoBean.aplicacoes}">
+					<p:selectOneMenu id="aplicacao" value="#{aplicacaoBean.aplicacoes}" converter="omnifaces.SelectItemsConverter">
 						<f:selectItem itemLabel="Escolha uma aplicação" />
 						<f:selectItems value="#{aplicacaoBean.aplicacoes}" var="aplicacao"
 							itemValue="#{aplicacao}" itemLabel="#{aplicacao.descricao}" />
@@ -160,10 +122,9 @@
 					
 
 					<h:outputText value="" for="" />
-					<p:commandButton id="botao" value="Salvar"
+					<h:commandButton id="botao" value="Salvar"
 						action="#{pecaBean.inserir}" update="panelGrid" />
 					<h:outputText value="" for="" />
-
 
 
 				</p:panelGrid>

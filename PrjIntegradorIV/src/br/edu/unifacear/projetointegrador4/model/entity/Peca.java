@@ -19,15 +19,6 @@ import br.edu.unifacear.projetointegrador4.model.dao.DAO;
 @Entity
 public class Peca implements DAO{
 	
-	
-	
-	@Override
-	public String toString() {
-		return "Peca [id=" + id + ", descricao=" + descricao + ", aplicacao=" + aplicacao + ", qtdeTotal=" + qtdeTotal
-				+ ", adicional=" + adicional + ", dataCadastro=" + dataCadastro + ", totalAvaliacao=" + totalAvaliacao
-				+ ", mediaAvaliacao=" + mediaAvaliacao + ", numVisualizacao=" + numVisualizacao + ", foto=" + foto
-				+ ", status=" + status + "]";
-	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -47,6 +38,17 @@ public class Peca implements DAO{
 	private String foto;
 	private Boolean status;
 	
+	
+	
+	
+	@Override
+	public String toString() {
+		return "Peca [id=" + id + ", descricao=" + descricao + ", qtdeTotal=" + qtdeTotal + ", adicional=" + adicional
+				+ ", dataCadastro=" + dataCadastro + ", totalAvaliacao=" + totalAvaliacao + ", mediaAvaliacao="
+				+ mediaAvaliacao + ", numVisualizacao=" + numVisualizacao + ", foto=" + foto + ", status=" + status
+				+ "]";
+	}
+
 	public void adicionarPeca_Modelo(Peca_Modelo peca_modelo) {			
 		peca_modelo.setPeca(this);		
 		this.peca_modelo.add(peca_modelo);		

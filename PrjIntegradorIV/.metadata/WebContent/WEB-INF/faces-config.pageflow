@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15366907948671" configfile="/PrjIntegradorIV/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="370" id="pf15402274767720" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf15402274767721 pf15402274767722 pf15402274767724 pf15405147239450 pf15405147239451 pf15405147239452 pf15410894431274 pf15410894431275" path="*"/>
-  <nodes xsi:type="pageflow:PFPage" name="cadastraraplicacao.xhtml" x="338" y="178" id="pf15402274767725" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf15405147239453" inlinks="pf15402274767721 pf15402274767722" path="/cadastraraplicacao.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="cadastrousuario.xhtml" x="338" y="562" id="pf15402274767728" referenceLink="//@navigationRule.5/@navigationCase.2/@toViewId|" outlinks="pf15403138037961 pf15403998155180 pf15403998155181" inlinks="pf15402274767724 pf15403138037961 pf15405147239450" path="/cadastrousuario.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="cliente.xhtml" id="pf15403998155182" referenceLink="//@navigationRule.5/@navigationCase.1/@toViewId|" inlinks="pf15403998155180 pf15403998155181" path="/cliente.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="listaraplicacao.xhtml" id="pf15405147239454" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf15405147239453" path="/listaraplicacao.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="cadastrarmontadora.xhtml" id="pf15405147239455" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf15405147239456" inlinks="pf15405147239451 pf15405147239452" path="/cadastrarmontadora.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="listarmontadora.xhtml" id="pf15405147239457" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf15405147239456" path="/listarmontadora.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="cadastropecas.xhtml" id="pf15410894431276" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" outlinks="pf15410894431277" inlinks="pf15410894431274 pf15410894431275 pf15410894431277" path="/cadastropecas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="*" x="122" y="370" id="pf15402274767720" referenceLink="//@navigationRule.6/@fromViewId|" outlinks="pf15402274767721 pf15402274767722 pf15402274767724 pf15405147239450 pf15405147239451 pf15405147239452 pf15410894431274 pf15410894431275" path="*"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastraraplicacao.xhtml" x="338" y="178" id="pf15402274767725" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15405147239453" inlinks="pf15402274767721 pf15402274767722" path="/cadastraraplicacao.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastrousuario.xhtml" x="338" y="562" id="pf15402274767728" referenceLink="//@navigationRule.7/@navigationCase.2/@toViewId|" outlinks="pf15403138037961 pf15403998155180 pf15403998155181" inlinks="pf15402274767724 pf15403138037961 pf15405147239450" path="/cadastrousuario.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cliente.xhtml" id="pf15403998155182" referenceLink="//@navigationRule.7/@navigationCase.1/@toViewId|" inlinks="pf15403998155180 pf15403998155181" path="/cliente.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="listaraplicacao.xhtml" id="pf15405147239454" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf15405147239453" path="/listaraplicacao.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastrarmontadora.xhtml" id="pf15405147239455" referenceLink="//@navigationRule.5/@fromViewId|" outlinks="pf15405147239456" inlinks="pf15405147239451 pf15405147239452" path="/cadastrarmontadora.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="listarmontadora.xhtml" id="pf15405147239457" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" inlinks="pf15405147239456" path="/listarmontadora.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="cadastropecas.xhtml" id="pf15410894431276" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf15411126386510" inlinks="pf15410894431274 pf15410894431275" path="/cadastropecas.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="ok.xhtml" id="pf15411126386511" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf15411126386510" path="/ok.xhtml"/>
   <links id="pf15402274767721" target="pf15402274767725" source="pf15402274767720" outcome="inicio"/>
   <links id="pf15402274767722" target="pf15402274767725" source="pf15402274767720" outcome="cadastraraplicacao"/>
   <links id="pf15402274767724" target="pf15402274767728" source="pf15402274767720" outcome="inicio"/>
@@ -21,5 +22,5 @@
   <links id="pf15405147239456" target="pf15405147239457" source="pf15405147239455" outcome="sucesso"/>
   <links id="pf15410894431274" target="pf15410894431276" source="pf15402274767720" outcome="inicio"/>
   <links id="pf15410894431275" target="pf15410894431276" source="pf15402274767720" outcome="cadastropecas"/>
-  <links id="pf15410894431277" target="pf15410894431276" source="pf15410894431276" outcome="sucesso"/>
+  <links id="pf15411126386510" target="pf15411126386511" source="pf15410894431276" outcome="sucesso"/>
 </pageflow:Pageflow>
