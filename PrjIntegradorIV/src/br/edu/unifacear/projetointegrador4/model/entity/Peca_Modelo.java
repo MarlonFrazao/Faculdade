@@ -30,6 +30,15 @@ public class Peca_Modelo implements DAO{
 	public Peca_Modelo() {
 
 	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "Peca_Modelo [id=" + id + ", id_peca=" + id_peca + ", id_modelo=" + id_modelo + "]";
+	}
+
+
 
 	public Peca_Modelo(Peca peca, Modelo modelo, Long id) {
 		super();

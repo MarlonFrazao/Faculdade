@@ -18,6 +18,15 @@ public class LinhaDeVeiculo implements DAO {
 	
 	public LinhaDeVeiculo() {}
 
+	
+	
+	@Override
+	public String toString() {
+		return "LinhaDeVeiculo [id=" + id + ", descricao=" + descricao + ", status=" + status + "]";
+	}
+
+
+
 	public LinhaDeVeiculo(Long id, String descricao, Boolean status) {
 		super();
 		this.id = id;

@@ -2,6 +2,7 @@ package br.edu.unifacear.projetointegrador4.testes;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
@@ -48,7 +49,13 @@ public class LinhaDeVeiculoTest {
 	
 	@Test
 	public void testeListar() {
-		List<LinhaDeVeiculo> lista = new FacadeBusiness().listarLinhaDeVeiculo();
+		List<LinhaDeVeiculo> lista = new ArrayList<LinhaDeVeiculo>();
+		try {
+			lista = new FacadeBusiness().listarLinhaDeVeiculo();
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("============= Listar =============");
 		if(lista.size() < 1) {
 			System.out.println(":(");

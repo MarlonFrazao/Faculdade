@@ -41,7 +41,7 @@ public class LinhaDeVeiculoBusiness {
 		FabricaDAO.criarLinhaDeVeiculoDAO().atualizar(ldv);
 	}
 	
-	public List<LinhaDeVeiculo> listar() {
+	public List<LinhaDeVeiculo> listar()throws BusinessException {
 		
 		return FabricaDAO.criarLinhaDeVeiculoDAO().listar();
 	}

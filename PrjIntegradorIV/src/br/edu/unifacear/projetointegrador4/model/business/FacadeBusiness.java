@@ -63,7 +63,7 @@ public class FacadeBusiness {
 		new LinhaDeVeiculoBusiness().atualizar(ldv);
 	}
 
-	public List<LinhaDeVeiculo> listarLinhaDeVeiculo() {
+	public List<LinhaDeVeiculo> listarLinhaDeVeiculo() throws BusinessException {
 		return new LinhaDeVeiculoBusiness().listar();
 	}
 
