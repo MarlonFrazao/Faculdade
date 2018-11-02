@@ -59,7 +59,10 @@ public class Peca implements DAO{
 		this.peca_modelo.remove(index);
 	}
 	
-	public Peca() {}
+	public Peca() {
+		aplicacao = new Aplicacao();
+		
+	}
 
 	public Peca(Long id, String descricao, List<Peca_Modelo> peca_modelo, Aplicacao aplicacao, Long qtdeTotal, String adicional,
 			Date dataCadastro, Long totalAvaliacao, Float mediaAvaliacao, Long numVisualizacao, String foto,

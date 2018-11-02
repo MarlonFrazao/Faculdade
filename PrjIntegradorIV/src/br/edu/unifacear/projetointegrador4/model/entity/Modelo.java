@@ -32,6 +32,8 @@ public class Modelo implements DAO {
 	private List<Peca_Modelo> peca_modelo = new ArrayList<Peca_Modelo>();
 
 	public Modelo() {
+		linha = new LinhaDeVeiculo();
+		montadora = new Montadora();
 	}
 
 	@Override

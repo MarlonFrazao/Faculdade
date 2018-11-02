@@ -85,23 +85,17 @@
 					<h:outputText value="" for="" />
 					
 					
-					<h:outputText value="Modelo:" for="modelo" />
-					<p:selectOneMenu id="modelo" value="#{modeloBean.modelos}" converter="omnifaces.SelectItemsConverter">
-						<f:selectItem itemLabel="Escolha um modelo" />
-						<f:selectItems value="#{modeloBean.modelos}" var="modelo"
-							itemValue="#{modelo}" itemLabel="#{modelo.descricao}" converter="omnifaces.SelectItemsConverter" />
-					</p:selectOneMenu>
-					<h:outputText value="" for="" />
- 		
- 			
-					
-
+				
 					<h:outputText value="Aplicação:" for="aplicacao" />
-					<p:selectOneMenu id="aplicacao" value="#{aplicacaoBean.aplicacoes}" converter="omnifaces.SelectItemsConverter">
+					
+					
+					<p:selectOneMenu id="comboaplicacao" value="#{pecaBean.peca.aplicacao.id}" converter="omnifaces.SelectItemsConverter">
 						<f:selectItem itemLabel="Escolha uma aplicação" />
-						<f:selectItems value="#{aplicacaoBean.aplicacoes}" var="aplicacao"
-							itemValue="#{aplicacao}" itemLabel="#{aplicacao.descricao}" />
+						<f:selectItems value="#{pecaBean.aplicacoes}" var="aplicacao"
+							itemValue="#{aplicacao.id}" itemLabel="#{aplicacao.descricao}" />
 					</p:selectOneMenu>
+					
+					
 					<h:outputText value="" for="" />
 
 
@@ -132,6 +126,9 @@
 
 		</p:panel>
 	</div>
+	</hr>
+	
+	
 
 </h:body>
 </html>

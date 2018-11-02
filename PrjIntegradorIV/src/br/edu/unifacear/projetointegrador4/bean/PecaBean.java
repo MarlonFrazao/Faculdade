@@ -8,6 +8,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.convert.FacesConverter;
+import javax.persistence.Convert;
+import javax.persistence.Converter;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
@@ -27,6 +30,7 @@ public class PecaBean {
 	private FacadeBusiness facade;
 	private List<Peca> pecas;
 	private Aplicacao aplicacao;
+	private List<Aplicacao> aplicacoes;
 	private Peca_Modelo peca_Modelo;
 	private List<Modelo> modelos;
 	private Modelo modelo;
@@ -37,11 +41,42 @@ public class PecaBean {
 		facade = new FacadeBusiness();
 		pecas = new ArrayList<Peca>();
 		modelos = new ArrayList<Modelo>();
+		
 		aplicacao = new Aplicacao();
 		peca_Modelo = new Peca_Modelo();
 		modelo = new Modelo();
-
+		aplicacoes = new ArrayList<Aplicacao>();
+		listarApli();
 	}
+	
+	public void listarMod() {
+		try {
+			modelos = new FacadeBusiness().listarModelo();
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void listarApli() {
+		try {
+			aplicacoes = new FacadeBusiness().listarAplicacao();
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public List<Aplicacao> getAplicacoes() {
+		return aplicacoes;
+	}
+
+
+
+	public void setAplicacoes(List<Aplicacao> aplicacoes) {
+		this.aplicacoes = aplicacoes;
+	}
+
+
 
 	public UploadedFile getFoto() {
 		return foto;
@@ -58,12 +93,15 @@ public class PecaBean {
 	public void setMod(Modelo modelo) {
 		this.modelo = modelo;
 	}
-
+	
+	
 	public Aplicacao getAplicacao() {
 		return aplicacao;
 	}
-
+	
+	
 	public void setAplicacao(Aplicacao aplicacao) {
+		System.out.println("Aplicacao: "+aplicacao.getDescricao());
 		this.aplicacao = aplicacao;
 	}
 
@@ -118,21 +156,27 @@ public class PecaBean {
 		this.modelo = new ModeloBean().getModelo();
 		System.out.println("pecaBean pega modelo"+modelo.getDescricao());
 	}
-
+	
 	public String inserir() {
 		System.out.println("entra 1");
 		FacesContext context = FacesContext.getCurrentInstance();
 		try {
-			pegaModelo();
+			//pegaModelo();
+			
 			System.out.println("entra 2");
-			peca.setAplicacao(aplicacao);
-			peca_Modelo.setPeca(peca);
-			peca_Modelo.setModelo(modelo);
+			System.out.println("peca Nome:"+peca.getDescricao());
+			System.out.println("peca adicional:"+peca.getAdicional());
+			System.out.println("peca id apli:"+peca.getAplicacao().getId());
+			System.out.println("peca qtd:"+peca.getQtdeTotal());
+			
+			//peca.setAplicacao(aplicacao);
+			//peca_Modelo.setPeca(peca);
+			//peca_Modelo.setModelo(modelo);
 
-			peca.adicionarPeca_Modelo(peca_Modelo);
-			peca.setFoto(foto.getFileName());
+			//peca.adicionarPeca_Modelo(peca_Modelo);
+			//peca.setFoto(foto.getFileName());
 
-			System.out.println("nome foto: " + peca.getFoto());
+			//System.out.println("nome foto: " + peca.getFoto());
 
 			facade.inserirPeca(peca);
 
