@@ -29,11 +29,12 @@ public class Modelo implements DAO {
 	private Boolean status;
 
 	@OneToMany(mappedBy = "id_modelo", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
-	private List<Peca_Modelo> peca_modelo = new ArrayList<Peca_Modelo>();
+	private List<Peca_Modelo> peca_modelo;
 
 	public Modelo() {
 		linha = new LinhaDeVeiculo();
 		montadora = new Montadora();
+		peca_modelo  = new ArrayList<Peca_Modelo>();
 	}
 
 	@Override

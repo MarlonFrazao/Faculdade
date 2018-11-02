@@ -59,9 +59,38 @@
 
 <h:form id="form">
    <p:layout style="min-width:600px;min-height:600px;">
-    <p:layoutUnit position="west" resizable="true" size="200" minSize="40" maxSize="200">
+    <p:layoutUnit position="west" resizable="true" size="300" minSize="40" maxSize="300">
     
-    menu esquerda
+    	<p:panel header="Filtro" size="20">
+    		<h:form id="filtro">
+    			<p:panelGrid columns="1" id="panelGrid" type="reset" style="border: none !important;">
+    				<h:outputText value="Descrição:" for="descricao" />
+					<p:inputText id="descricao" var="descricao" value="#{pecaBean.desc}"
+						size="20" />
+					
+					
+					<p:selectOneMenu id="comboaplicacao" value="#{pecaBean.peca.aplicacao.id}" 
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem itemLabel="Aplicação" />
+						<f:selectItems value="#{pecaBean.aplicacoes}" var="aplicacao"
+							itemValue="#{aplicacao.id}" itemLabel="#{aplicacao.descricao}" />
+					</p:selectOneMenu>
+					
+					<p:selectOneMenu id="combomodelo" value="#{pecaBean.modelo.id}" 
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem itemLabel="Modelo" />
+						<f:selectItems value="#{pecaBean.modelos}" var="modelo"
+							itemValue="#{modelo.id}" itemLabel="#{modelo.descricao}" />
+					</p:selectOneMenu>
+					
+					<h:commandButton id="botao" value="Filtrar"
+						action="#{pecaBean.filtrar}" update="panelGrid" />
+					<h:outputText value="" for="" />
+					
+					
+    			</p:panelGrid>
+    		</h:form>
+    	</p:panel>
        
     </p:layoutUnit>
  

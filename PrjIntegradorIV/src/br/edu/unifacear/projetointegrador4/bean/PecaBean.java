@@ -8,15 +8,12 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.convert.FacesConverter;
-import javax.persistence.Convert;
-import javax.persistence.Converter;
 
-import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
 
 import br.edu.unifacear.projetointegrador4.model.business.BusinessException;
 import br.edu.unifacear.projetointegrador4.model.business.FacadeBusiness;
+import br.edu.unifacear.projetointegrador4.model.business.PecaBusiness;
 import br.edu.unifacear.projetointegrador4.model.entity.Aplicacao;
 import br.edu.unifacear.projetointegrador4.model.entity.Modelo;
 import br.edu.unifacear.projetointegrador4.model.entity.Peca;
@@ -35,18 +32,29 @@ public class PecaBean {
 	private List<Modelo> modelos;
 	private Modelo modelo;
 	private UploadedFile foto;
+	private String desc;
+	private Boolean status;
+	private PecaBusiness business;
 
 	public PecaBean() {
 		peca = new Peca();
 		facade = new FacadeBusiness();
 		pecas = new ArrayList<Peca>();
-		modelos = new ArrayList<Modelo>();
+		try {
+			modelos = facade.listarModelo();
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		aplicacao = new Aplicacao();
 		peca_Modelo = new Peca_Modelo();
 		modelo = new Modelo();
 		aplicacoes = new ArrayList<Aplicacao>();
 		listarApli();
+		desc = null;
+		status = null;
+		business = new PecaBusiness();
 	}
 	
 	public void listarMod() {
@@ -86,11 +94,11 @@ public class PecaBean {
 		this.foto = foto;
 	}
 
-	public Modelo getMod() {
+	public Modelo getModelo() {
 		return modelo;
 	}
 
-	public void setMod(Modelo modelo) {
+	public void setModelo(Modelo modelo) {
 		this.modelo = modelo;
 	}
 	
@@ -113,11 +121,11 @@ public class PecaBean {
 		this.peca_Modelo = peca_Modelo;
 	}
 
-	public List<Modelo> getModelo() {
+	public List<Modelo> getModelos() {
 		return modelos;
 	}
 
-	public void setModelo(List<Modelo> modelos) {
+	public void setModelos(List<Modelo> modelos) {
 		this.modelos = modelos;
 	}
 
@@ -135,6 +143,22 @@ public class PecaBean {
 
 	public void setPecas(List<Peca> pecas) {
 		this.pecas = pecas;
+	}
+
+	public String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+
+	public Boolean getStatus() {
+		return status;
+	}
+
+	public void setStatus(Boolean status) {
+		this.status = status;
 	}
 
 	@PostConstruct
@@ -206,6 +230,79 @@ public class PecaBean {
 			System.out.println("-----" + e.getMessage());
 			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
 			return "cadastropecas";
+		}
+	}
+	
+	public String filtrar() {
+		FacesContext context = FacesContext.getCurrentInstance();
+		
+		
+		try {
+			int aux = 0;
+			
+			if(desc != "") {
+				aux = aux + 1;
+			}
+			
+			if(modelo.getId() != null) {
+				aux = aux + 2;
+			}
+			
+			if(aplicacao.getId() != null) {
+				aux = aux + 4;
+			} 
+			
+			if(status != null) {
+				aux = aux + 8;
+			}
+			
+			System.out.println("aux: "+aux);
+			if(aux == 0) {
+				pecas = facade.listarPeca();
+			} else if(aux == 1) {
+				pecas = business.filtrar(desc);
+			} else if(aux == 2) {
+				pecas = business.filtrar(modelo);
+			} else if(aux == 3) {
+				pecas = business.filtrar(desc, modelo);
+			} else if(aux == 4) {
+				pecas = business.filtrar(aplicacao);
+			} else if(aux == 5) {
+				pecas = business.filtrar(desc, aplicacao);
+			} else if(aux == 6) {
+				pecas = business.filtrar(modelo, aplicacao);
+			} else if(aux == 7) {
+				pecas = business.filtrar(desc, modelo, aplicacao);
+			} else if(aux == 8) {
+				pecas = business.filtrar(status);
+			} else if(aux == 9) {
+				pecas = business.filtrar(desc, status);
+			} else if(aux == 10) {
+				pecas = business.filtrar(modelo, status);
+			} else if(aux == 11) {
+				pecas = business.filtrar(desc, modelo, status);
+			} else if(aux == 12) {
+				pecas = business.filtrar(aplicacao, status);
+			} else if(aux == 13) {
+				pecas = business.filtrar(desc, aplicacao, status);
+			} else if(aux == 14) {
+				pecas = business.filtrar(modelo, aplicacao, status);
+			} else if(aux == 15) {
+				pecas = business.filtrar(desc, modelo, aplicacao, status);
+			}
+			
+			
+			return "sucesso";
+		} catch(Exception e) {
+			try {
+				pecas = facade.listarPeca();
+			} catch (BusinessException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, 
+					e.getMessage(), ""));
+			return "filtrar";
 		}
 	}
 
