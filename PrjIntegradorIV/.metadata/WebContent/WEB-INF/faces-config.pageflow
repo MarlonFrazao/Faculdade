@@ -9,6 +9,7 @@
   <nodes xsi:type="pageflow:PFPage" name="listarmontadora.xhtml" id="pf15405147239457" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" inlinks="pf15405147239456" path="/listarmontadora.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="cadastropecas.xhtml" id="pf15410894431276" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf15411126386510" inlinks="pf15410894431274 pf15410894431275" path="/cadastropecas.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="ok.xhtml" id="pf15411126386511" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf15411126386510" path="/ok.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="produtos.xhtml" id="pf15412552920710" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" outlinks="pf15412552920711" inlinks="pf15412552920711" path="/produtos.xhtml"/>
   <links id="pf15402274767721" target="pf15402274767725" source="pf15402274767720" outcome="inicio"/>
   <links id="pf15402274767722" target="pf15402274767725" source="pf15402274767720" outcome="cadastraraplicacao"/>
   <links id="pf15402274767724" target="pf15402274767728" source="pf15402274767720" outcome="inicio"/>
@@ -23,4 +24,5 @@
   <links id="pf15410894431274" target="pf15410894431276" source="pf15402274767720" outcome="inicio"/>
   <links id="pf15410894431275" target="pf15410894431276" source="pf15402274767720" outcome="cadastropecas"/>
   <links id="pf15411126386510" target="pf15411126386511" source="pf15410894431276" outcome="sucesso"/>
+  <links id="pf15412552920711" target="pf15412552920710" source="pf15412552920710" outcome="sucesso"/>
 </pageflow:Pageflow>

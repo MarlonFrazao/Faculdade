@@ -121,6 +121,8 @@ public class PecaBusiness {
 		Boolean status = null;
 		int aux = 0;
 		
+		System.out.println("lista do BD: " + lista.size());
+		
 		for(int i = 0; i < obj.length; i++) {
 			if(obj[i] instanceof String) {
 				desc = (String) obj[i];
@@ -352,6 +354,8 @@ public class PecaBusiness {
 			}
 		}
 		
+		
+		System.out.println("lista de retorno: " + retorno.size());
 		return retorno;
 	}
 	

@@ -52,7 +52,7 @@ public class PecaBean {
 		modelo = new Modelo();
 		aplicacoes = new ArrayList<Aplicacao>();
 		listarApli();
-		desc = null;
+		desc = "";
 		status = null;
 		business = new PecaBusiness();
 	}
@@ -240,7 +240,7 @@ public class PecaBean {
 		try {
 			int aux = 0;
 			
-			if(desc != "") {
+			if(!desc.equals("")) {
 				aux = aux + 1;
 			}
 			
@@ -291,7 +291,7 @@ public class PecaBean {
 				pecas = business.filtrar(desc, modelo, aplicacao, status);
 			}
 			
-			
+			System.out.println("lista no feijão: " + pecas.size());
 			return "sucesso";
 		} catch(Exception e) {
 			try {
