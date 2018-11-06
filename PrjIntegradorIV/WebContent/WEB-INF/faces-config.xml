@@ -42,7 +42,7 @@
 		<from-view-id>/cadastropecas.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>sucesso</from-outcome>
-			<to-view-id>/ok.xhtml</to-view-id>
+			<to-view-id>/cadastropecas.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
@@ -96,9 +96,13 @@
 	<navigation-rule>
 		<from-view-id>/produtos.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>sucesso</from-outcome>
+			<from-outcome>filtrou</from-outcome>
 			<to-view-id>/produtos.xhtml</to-view-id>
 		</navigation-case>	
+		<navigation-case>
+			<from-outcome>filtrar</from-outcome>
+			<to-view-id>/produtos.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	
 	

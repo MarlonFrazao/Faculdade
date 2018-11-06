@@ -2,8 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	lang="pt-br">
 <h:head>
+<meta charset="UTF-8"/>
 	<title></title>
 </h:head>
 <h:body>
@@ -85,7 +87,16 @@
 					<h:outputText value="" for="" />
 					
 					
-				
+					<h:outputText value="Modelo:" for="modelo" />
+					<p:selectOneMenu id="combomodelo" value="#{pecaBean.modelo.id}" 
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem itemLabel="Modelo" />
+						<f:selectItems value="#{pecaBean.modelos}" var="modelo"
+							itemValue="#{modelo.id}" itemLabel="#{modelo.descricao}" />
+					</p:selectOneMenu>
+					<h:outputText value="" for="" />
+					
+					
 					<h:outputText value="Aplicação:" for="aplicacao" />
 					
 					
@@ -111,13 +122,18 @@
 					<h:outputText value="" for="" />
 					
 					<h:outputText value="foto:" />
-					<p:fileUpload value="#{pecaBean.foto}" mode="simple" skinSimple="true" placeHolder="Escolher Foto"/>
+					<p:fileUpload fileUploadListener="#{pecaBean.upload}" mode ="advanced"
+        			allowTypes="/(\.|\/)(gif|jpe?g|png)$/" 
+        			sizeLimit="100000"
+        			multiple="true" 
+        			dragDropSupport="true"
+        			description="Selecione Imagens"/>
 					<h:outputText value="" for="" />
 					
-
+					
 					<h:outputText value="" for="" />
 					<h:commandButton id="botao" value="Salvar"
-						action="#{pecaBean.inserir}" update="panelGrid" />
+						action="#{pecaBean.inserir}" fileUploadListener="#{pecaBean.upload}" update="cadastro" />
 					<h:outputText value="" for="" />
 
 

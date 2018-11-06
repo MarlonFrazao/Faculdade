@@ -30,17 +30,12 @@ public class CadastroClienteBean {
 	
 
 	public CadastroClienteBean() {
-		System.out.println("Entrou no bean");
-		
-		
 		cliente = new Cliente();
 		facade = new FacadeCliente();
 		facTel = new FacadeTelefone();
 		confirmaSenha = null;
 		telefone = new ArrayList<Telefone>();
 		
-		System.out.println("logado: "+login.getNome());
-		System.out.println("telefone bean: "+telefone2.getTelefone());
 	}
 
 	public Telefone getTelefone2() {

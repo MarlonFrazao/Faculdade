@@ -123,9 +123,12 @@ public class PecaBusiness {
 		
 		System.out.println("lista do BD: " + lista.size());
 		
+		
+		
 		for(int i = 0; i < obj.length; i++) {
 			if(obj[i] instanceof String) {
 				desc = (String) obj[i];
+				System.out.println("desc: " + desc+" blablabla2");
 				aux = aux + 1;
 			}
 			
@@ -153,6 +156,7 @@ public class PecaBusiness {
 			}
 			
 			if(retorno.size() < 1) {
+				System.out.println("Desc 1 if "+desc);
 				throw new BusinessException("Desculpe, mas não encontramos :(");
 			}
 		}
@@ -355,7 +359,7 @@ public class PecaBusiness {
 		}
 		
 		
-		System.out.println("lista de retorno: " + retorno.size());
+		System.out.println("lista de retorno: " + retorno.size()+" ");
 		return retorno;
 	}
 	

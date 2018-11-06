@@ -4,6 +4,7 @@
   xmlns:f="http://java.sun.com/jsf/core"  
   xmlns:p="http://primefaces.org/ui">
 <h:head>
+<meta charset="UTF-8"/>
 <title></title>
 </h:head>
 <h:body >
@@ -55,15 +56,13 @@
         </f:facet>
     </p:menubar>
 </h:form>
-<h1>Produtos</h1>
 
-<h:form id="form">
-   <p:layout style="min-width:600px;min-height:600px;">
-    <p:layoutUnit position="west" resizable="true" size="300" minSize="40" maxSize="300">
-    
-    	<p:panel header="Filtro" size="20">
-    		<h:form id="filtro">
-    			<p:panelGrid columns="1" id="panelGrid" type="reset" style="border: none !important;">
+
+<h:form id="form"> 
+	<h:form id="filtro">
+    	<p:panel header="Filtro de Peças" size="20">
+    		
+    			<p:panelGrid columns="5" id="panelGrid" >
     				<h:outputText value="Descrição:" for="descricao" />
 					<p:inputText id="descricao" var="descricao" value="#{pecaBean.desc}"
 						size="20" />
@@ -83,18 +82,20 @@
 							itemValue="#{modelo.id}" itemLabel="#{modelo.descricao}" />
 					</p:selectOneMenu>
 					
-					<h:commandButton id="botao" value="Filtrar"
-						action="#{pecaBean.filtrar}" update="panelGrid" />
-					<h:outputText value="" for="" />
+					<h:commandButton id="botaoFiltrar" value="Filtrar"
+						action="#{pecaBean.filtrar}" update="form2"/> 
 					
 					
+					
+					
+					 
     			</p:panelGrid>
-    		</h:form>
+    		
     	</p:panel>
-       
-    </p:layoutUnit>
- 
-    <p:layoutUnit position="center">
+       </h:form>
+   
+
+    
       	<p:dataGrid var="peca" value="#{pecaBean.pecas}" columns="3" layout="grid"
         rows="12" paginator="true" id="pecas"
         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -103,8 +104,9 @@
         <f:facet name="header">
            Peças
         </f:facet>
- 
-        <p:panel header="#{peca.id}" style="text-align:center">
+
+		<h:form id="form2">
+        <p:panel header="#{peca.id}" style="text-align:center" id="pnlProdutos">
             <h:panelGrid columns="1" style="width:100%">
                 <img src="_imagen/#{peca.foto}.jpg" style="width:50%; hight:45%; position:center "/> 
  
@@ -116,9 +118,9 @@
                 </p:commandLink>
             </h:panelGrid>
         </p:panel>
- 
+	</h:form>
     </p:dataGrid>
- 
+
     <p:dialog header="Informações da peça" widgetVar="popUpDetalhes" global="true" showEffect="fade" hideEffect="fade" resizable="false">
         <p:outputPanel id="detalhes" style="text-align:center;">
             <p:panelGrid  columns="2" rendered="#{not empty pecaBean.pecas}" columnClasses="label,value">
@@ -145,8 +147,9 @@
     </p:dialog>
 
 
-    </p:layoutUnit>
-</p:layout>
-</h:form>
+   
+
+</h:form>  
+
 </h:body>
 </html>
