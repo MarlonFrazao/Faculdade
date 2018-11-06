@@ -78,9 +78,9 @@
 
 		<p:panel header="INFORME OS DADOS DA PEÇA">
 			<h:form id="cadastro">
-
+				<p:growl id="salvoSucesso" sticky="true" showDetail="true" life="300" />
 				<p:panelGrid columns="3" id="panelGrid" type="reset" style="border: none !important;">
-
+					
 					<h:outputText value="Descrição:" for="descricao" />
 					<p:inputText id="descricao" var="descricao" value="#{pecaBean.peca.descricao}"
 						size="35" />
@@ -90,7 +90,7 @@
 					<h:outputText value="Modelo:" for="modelo" />
 					<p:selectOneMenu id="combomodelo" value="#{pecaBean.modelo.id}" 
 						converter="omnifaces.SelectItemsConverter">
-						<f:selectItem itemLabel="Modelo" />
+						<f:selectItem itemLabel="Escolha um modelo" />
 						<f:selectItems value="#{pecaBean.modelos}" var="modelo"
 							itemValue="#{modelo.id}" itemLabel="#{modelo.descricao}" />
 					</p:selectOneMenu>
@@ -131,9 +131,10 @@
 					<h:outputText value="" for="" />
 					
 					
+					
 					<h:outputText value="" for="" />
 					<h:commandButton id="botao" value="Salvar"
-						action="#{pecaBean.inserir}" fileUploadListener="#{pecaBean.upload}" update="cadastro" />
+						action="#{pecaBean.inserir}" update="salvoSucesso panelGrid" />
 					<h:outputText value="" for="" />
 
 

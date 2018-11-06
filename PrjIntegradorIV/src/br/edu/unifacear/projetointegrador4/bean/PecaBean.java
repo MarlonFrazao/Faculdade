@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,9 @@ import javax.faces.application.ViewHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.component.UIViewRoot;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
@@ -46,7 +49,9 @@ public class PecaBean {
 	private Boolean status;
 	private PecaBusiness business;
 	private String diretorioDestino;
-
+	private static String nomeArq;
+	private URL diretorio = null;
+	
 	public PecaBean() {
 
 		System.out.println("Entrou bean");
@@ -58,7 +63,7 @@ public class PecaBean {
 		peca_Modelo = new Peca_Modelo();
 		modelo = new Modelo();
 		aplicacoes = new ArrayList<Aplicacao>();
-		diretorioDestino = "C:\\Temp\\";
+		diretorioDestino = "";
 		listarApli();
 		listarMod();
 		System.out.println("desc antes: " + desc);
@@ -66,7 +71,12 @@ public class PecaBean {
 		System.out.println("desc depois: " + desc);
 		status = null;
 		business = new PecaBusiness();
+		
+		diretorio = this.getClass().getResource("");
+		
 		this.listar();
+		System.out.println("diretório: "+diretorio.toString());
+		
 	}
 
 	public void listarMod() {
@@ -143,13 +153,17 @@ public class PecaBean {
 	public void setPeca(Peca peca) {
 		this.peca = peca;
 	}
+	
+	public String getNomeArq() {
+		return nomeArq;
+	}
+
+	public void setNomeArq(String nomeArq) {
+		this.nomeArq = nomeArq;
+	}
 
 	public List<Peca> getPecas() {
-		for (int i = 0; i < pecas.size(); i++) {
-			System.out.println("Id: " + pecas.get(i).getId());
-			System.out.println("Nome: " + pecas.get(i).getDescricao());
-			System.out.println("QTD: " + pecas.get(i).getQtdeTotal());
-		}
+		
 		return pecas;
 	}
 
@@ -206,8 +220,9 @@ public class PecaBean {
 			System.out.println("peca qtd:" + peca.getQtdeTotal());
 
 			// peca.setAplicacao(aplicacao);
+			System.out.println("nome foto inserir: "+getNomeArq());
 
-			// peca.setFoto(foto.getFileName());
+			peca.setFoto(getNomeArq());
 
 			// System.out.println("nome foto: " + peca.getFoto());
 			peca_Modelo.setPeca(peca);
@@ -217,7 +232,9 @@ public class PecaBean {
 			System.out.println("meu nome de foto: "+peca.getFoto());
 			facade.inserirPeca(peca);
 			
-
+			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso! ", peca.getDescricao().toString() + " foi salva com sucesso!");
+		
+			peca = new Peca();
 			return "sucesso";
 
 		} catch (Exception e) {
@@ -329,9 +346,9 @@ public class PecaBean {
 	public void upload(FileUploadEvent event) {
 
 		// Nome do Arquivo que quero gerar 17-11-2015-13:14:21.584.png
-		String nomeArq = getFileName(event.getFile().getFileName());
+		nomeArq = getFileName(event.getFile().getFileName());
 		peca.setFoto(nomeArq);
-		System.out.println(peca.getFoto());
+		System.out.println(peca.getFoto()+" esse é o nome de getFoto em upload");
 
 		System.out.println(event.getFile().getFileName());
 
@@ -348,6 +365,9 @@ public class PecaBean {
 	public void copyFile(String fileName, InputStream in) {
 		try {
 			// write the inputStream to a FileOutputStream
+			diretorioDestino = "";
+			
+					//getServletContext().getContext("/projeto").getRealPath("/");
 			OutputStream out = new FileOutputStream(new File(diretorioDestino
 					+ fileName));
 			int read = 0;
@@ -362,6 +382,8 @@ public class PecaBean {
 			out.close();
 
 			System.out.println("Novo arquivo criado '"+fileName+"'!");
+			peca.setFoto(fileName);
+			
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}
