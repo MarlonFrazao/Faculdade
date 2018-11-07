@@ -1,5 +1,6 @@
 package br.edu.unifacear.projetointegrador4.bean;
 
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -10,16 +11,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
-import javax.faces.application.ViewHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.component.UIViewRoot;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
@@ -63,7 +58,7 @@ public class PecaBean {
 		peca_Modelo = new Peca_Modelo();
 		modelo = new Modelo();
 		aplicacoes = new ArrayList<Aplicacao>();
-		diretorioDestino = "c:\\temp\\";
+		
 		listarApli();
 		listarMod();
 		System.out.println("desc antes: " + desc);
@@ -72,10 +67,16 @@ public class PecaBean {
 		status = null;
 		business = new PecaBusiness();
 		
-		diretorio = this.getClass().getResource("");
+		//diretorio = this.getClass().getResource("/../../../../WebContent/");
 		
 		this.listar();
-		System.out.println("diretório: "+diretorio.toString());
+		//System.out.println("diretório: "+diretorio.toString());
+		//System.out.println("diretório: "+diretorio.toString());
+		//ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
+		//System.out.println(servletContext.getRealPath("/WebContent/_imagen/"));
+		
+		
+		
 		
 	}
 
@@ -270,8 +271,7 @@ public class PecaBean {
 
 		try {
 			int aux = 0;
-			
-			System.out.println("aplicação id: " + aplicacao.getId());
+
 			if (!desc.equals("")) {
 				aux = aux + 1;
 			}
@@ -299,8 +299,6 @@ public class PecaBean {
 			} else if (aux == 3) {
 				pecas = business.filtrar(desc, modelo);
 			} else if (aux == 4) {
-				System.out.println("id aplicação: " + aplicacao.getId() + "\ndescrição: " 
-						+ aplicacao.getDescricao());
 				pecas = business.filtrar(aplicacao);
 			} else if (aux == 5) {
 				pecas = business.filtrar(desc, aplicacao);
@@ -367,12 +365,20 @@ public class PecaBean {
 	}
 	public void copyFile(String fileName, InputStream in) {
 		try {
-			// write the inputStream to a FileOutputStream
-			//diretorioDestino = "";
 			
-					//getServletContext().getContext("/projeto").getRealPath("/");
+			
+			// write the inputStream to a FileOutputStream
+			
+			String file = new File("produtos.xhtml").getAbsolutePath();
+			
+			System.out.println("file "+file);
+	         diretorioDestino = "/_imagen";
+	 		System.out.println("deretorio destino: "+diretorioDestino);
+	 		
 			OutputStream out = new FileOutputStream(new File(diretorioDestino
 					+ fileName));
+			
+			System.out.println("Copy file: "+out.toString());
 			int read = 0;
 			byte[] bytes = new byte[1024];
 
