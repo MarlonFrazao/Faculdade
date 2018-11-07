@@ -100,7 +100,8 @@
 					<h:outputText value="Aplicação:" for="aplicacao" />
 					
 					
-					<p:selectOneMenu id="comboaplicacao" value="#{pecaBean.peca.aplicacao.id}" converter="omnifaces.SelectItemsConverter">
+					<p:selectOneMenu id="comboaplicacao" value="#{pecaBean.peca.aplicacao.id}" 
+						converter="omnifaces.SelectItemsConverter">
 						<f:selectItem itemLabel="Escolha uma aplicação" />
 						<f:selectItems value="#{pecaBean.aplicacoes}" var="aplicacao"
 							itemValue="#{aplicacao.id}" itemLabel="#{aplicacao.descricao}" />

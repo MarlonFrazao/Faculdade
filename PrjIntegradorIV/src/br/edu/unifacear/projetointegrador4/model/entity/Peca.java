@@ -31,7 +31,7 @@ public class Peca implements DAO{
 	private Aplicacao aplicacao;
 	private Long qtdeTotal;
 	private String adicional;
-	private Date dataCadastro;
+	private Date dataCadastro; 
 	private Long totalAvaliacao;
 	private Float mediaAvaliacao;
 	private Long numVisualizacao;

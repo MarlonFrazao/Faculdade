@@ -68,7 +68,7 @@
 						size="20" />
 					
 					
-					<p:selectOneMenu id="comboaplicacao" value="#{pecaBean.peca.aplicacao.id}" 
+					<p:selectOneMenu id="comboaplicacao" value="#{pecaBean.aplicacao.id}" 
 						converter="omnifaces.SelectItemsConverter">
 						<f:selectItem itemLabel="Aplicação" />
 						<f:selectItems value="#{pecaBean.aplicacoes}" var="aplicacao"
@@ -108,7 +108,7 @@
 		<h:form id="form2">
         <p:panel header="#{peca.id}" style="text-align:center" id="pnlProdutos">
             <h:panelGrid columns="1" style="width:100%">
-                <img src="/C:temp/#{peca.foto}.jpg" style="width:50%; hight:45%; position:center "/> 
+                <img src="C:\Users\fraza\git\Faculdade\PrjIntegradorIV\WebContent\_imagen#{peca.foto}.jpg" style="width:50%; hight:45%; position:center "/> 
  
                 <h:outputText value="#{peca.descricao}" style="text-align:center"/>
  
@@ -125,7 +125,7 @@
         <p:outputPanel id="detalhes" style="text-align:center;">
             <p:panelGrid  columns="2" rendered="#{not empty pecaBean.pecas}" columnClasses="label,value">
                 <f:facet name="header">
-                    <img src="C:temp/#{pecaBean.peca.foto}.jpg" style="width:30%; hight:30%; align:center;"/> 
+                    <img src="C:\Users\fraza\git\Faculdade\PrjIntegradorIV\WebContent\_imagen#{pecaBean.peca.foto}.jpg" style="width:30%; hight:30%; align:center;"/> 
                    
                 </f:facet>
  

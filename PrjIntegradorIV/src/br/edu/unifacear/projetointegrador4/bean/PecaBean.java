@@ -63,7 +63,7 @@ public class PecaBean {
 		peca_Modelo = new Peca_Modelo();
 		modelo = new Modelo();
 		aplicacoes = new ArrayList<Aplicacao>();
-		diretorioDestino = "";
+		diretorioDestino = "c:\\temp\\";
 		listarApli();
 		listarMod();
 		System.out.println("desc antes: " + desc);
@@ -270,7 +270,8 @@ public class PecaBean {
 
 		try {
 			int aux = 0;
-
+			
+			System.out.println("aplicação id: " + aplicacao.getId());
 			if (!desc.equals("")) {
 				aux = aux + 1;
 			}
@@ -298,6 +299,8 @@ public class PecaBean {
 			} else if (aux == 3) {
 				pecas = business.filtrar(desc, modelo);
 			} else if (aux == 4) {
+				System.out.println("id aplicação: " + aplicacao.getId() + "\ndescrição: " 
+						+ aplicacao.getDescricao());
 				pecas = business.filtrar(aplicacao);
 			} else if (aux == 5) {
 				pecas = business.filtrar(desc, aplicacao);
@@ -365,7 +368,7 @@ public class PecaBean {
 	public void copyFile(String fileName, InputStream in) {
 		try {
 			// write the inputStream to a FileOutputStream
-			diretorioDestino = "";
+			//diretorioDestino = "";
 			
 					//getServletContext().getContext("/projeto").getRealPath("/");
 			OutputStream out = new FileOutputStream(new File(diretorioDestino
