@@ -94,8 +94,8 @@
     	</p:panel>
        </h:form>
    
-
-    
+ <h:form id="form2">
+   
       	<p:dataGrid var="peca" value="#{pecaBean.pecas}" columns="3" layout="grid"
         rows="12" paginator="true" id="pecas"
         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -104,11 +104,12 @@
         <f:facet name="header">
            Peças
         </f:facet>
-
-		<h:form id="form2">
+		
+		
         <p:panel header="#{peca.id}" style="text-align:center" id="pnlProdutos">
             <h:panelGrid columns="1" style="width:100%">
-                <img src="\_imagen#{peca.foto}.jpg" style="width:50%; hight:45%; position:center "/> 
+              <!-- A extensão das fotos está sendo salva no banco de dados -->
+                <h:graphicImage value="_imagen/#{peca.foto}" style="width:50%; hight:45%; position:center "/> 
  
                 <h:outputText value="#{peca.descricao}" style="text-align:center"/>
  
@@ -118,14 +119,15 @@
                 </p:commandLink>
             </h:panelGrid>
         </p:panel>
-	</h:form>
+	
     </p:dataGrid>
-
+</h:form>
     <p:dialog header="Informações da peça" widgetVar="popUpDetalhes" global="true" showEffect="fade" hideEffect="fade" resizable="false">
         <p:outputPanel id="detalhes" style="text-align:center;">
             <p:panelGrid  columns="2" rendered="#{not empty pecaBean.pecas}" columnClasses="label,value">
                 <f:facet name="header">
-                    <img src="\_imagen#{pecaBean.peca.foto}.jpg" style="width:30%; hight:30%; align:center;"/> 
+                <!-- A extensão das fotos está sendo salva no banco de dados -->
+                    <h:graphicImage value="_imagen/#{pecaBean.peca.foto}" style="width:30%; hight:30%; align:center;"/> 
                    
                 </f:facet>
  

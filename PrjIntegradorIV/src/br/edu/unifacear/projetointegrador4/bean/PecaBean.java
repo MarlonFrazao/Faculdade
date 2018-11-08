@@ -67,16 +67,10 @@ public class PecaBean {
 		status = null;
 		business = new PecaBusiness();
 		
-		//diretorio = this.getClass().getResource("/../../../../WebContent/");
+		//diretorioDestino = "colocar seu diretorio aqui e comentar o meu";
+		diretorioDestino = "C:\\Users\\osval\\Desktop\\Projeto IV\\Faculdade\\PrjIntegradorIV\\WebContent\\_imagen\\";
 		
 		this.listar();
-		//System.out.println("diretório: "+diretorio.toString());
-		//System.out.println("diretório: "+diretorio.toString());
-		//ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext();
-		//System.out.println(servletContext.getRealPath("/WebContent/_imagen/"));
-		
-		
-		
 		
 	}
 
@@ -148,6 +142,8 @@ public class PecaBean {
 	}
 
 	public Peca getPeca() {
+		
+		System.out.println("Pegou peça detalhes: "+peca.getFoto());
 		return peca;
 	}
 
@@ -164,7 +160,9 @@ public class PecaBean {
 	}
 
 	public List<Peca> getPecas() {
-		
+		for(int i = 0; i<pecas.size(); i++) {
+			System.out.println("fotos: "+pecas.get(i).getFoto());
+		}
 		return pecas;
 	}
 
@@ -348,7 +346,7 @@ public class PecaBean {
 
 		// Nome do Arquivo que quero gerar 17-11-2015-13:14:21.584.png
 		nomeArq = getFileName(event.getFile().getFileName());
-		peca.setFoto(nomeArq);
+		//peca.setFoto(nomeArq);
 		System.out.println(peca.getFoto()+" esse é o nome de getFoto em upload");
 
 		System.out.println(event.getFile().getFileName());
@@ -369,10 +367,7 @@ public class PecaBean {
 			
 			// write the inputStream to a FileOutputStream
 			
-			String file = new File("produtos.xhtml").getAbsolutePath();
-			
-			System.out.println("file "+file);
-	         diretorioDestino = "/_imagen";
+	        
 	 		System.out.println("deretorio destino: "+diretorioDestino);
 	 		
 			OutputStream out = new FileOutputStream(new File(diretorioDestino
@@ -415,7 +410,12 @@ public class PecaBean {
 		data1 = formata.format(agora);
 		formata = new SimpleDateFormat(hora);
 		hora1 = formata.format(agora);
-		return data1 + "-" + hora1+"."+getExtensao(nomeArquivo);
+	
+		Long aux = pecas.get(pecas.size()-1).getId()+1;
+		System.out.println("id peca: "+aux);
+		String aux2 = aux.toString();
+		System.out.println("aux 2: "+aux2);
+		return "img"+aux2+"."+getExtensao(nomeArquivo);
 	}
 
 }
