@@ -34,7 +34,7 @@ public class PedidoDeVendaBean {
 		peca = new Peca();
 		cliente = new Cliente();
 		peca = pBean.getPeca();
-		System.out.println("Loucura Loucura Loucura: "+pBean.getPeca().getDescricao());
+		System.out.println("Loucura Loucura Loucura: "+pBean.getPeca().getDescricao()); 
 		
 	}
 
