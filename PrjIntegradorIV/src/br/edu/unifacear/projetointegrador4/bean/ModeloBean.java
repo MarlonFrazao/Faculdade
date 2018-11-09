@@ -26,12 +26,16 @@ public class ModeloBean {
 		private Peca_Modelo peca_Modelo;
 		private List<Montadora> montadoras;
 		private List<LinhaDeVeiculo> linhas;
+		private Montadora monta;
+		private LinhaDeVeiculo lin;
 		
 		
 		
 		public ModeloBean() {
 			System.out.println("entrouBean modelo");
 			modelo = new Modelo();
+			monta = new Montadora();
+			lin = new LinhaDeVeiculo();
 			facade = new FacadeBusiness();
 			modelos = new ArrayList<Modelo>();
 			peca_Modelo = new Peca_Modelo();
@@ -61,6 +65,23 @@ public class ModeloBean {
 		}
 		
 		
+		
+		public Montadora getMonta() {
+			return monta;
+		}
+
+		public void setMonta(Montadora monta) {
+			this.monta = monta;
+		}
+
+		public LinhaDeVeiculo getLin() {
+			return lin;
+		}
+
+		public void setLin(LinhaDeVeiculo lin) {
+			this.lin = lin;
+		}
+
 		public List<Montadora> getMontadoras() {
 			return montadoras;
 		}
@@ -111,7 +132,7 @@ public class ModeloBean {
 			this.modelos = modelos;
 		}
 		
-		@PostConstruct
+		//@PostConstruct
 		public void listar() {
 			FacesContext context = FacesContext.getCurrentInstance();
 			
@@ -133,6 +154,7 @@ public class ModeloBean {
 			try {
 				System.out.println("inserir modelo");
 				facade.inserirModelo(modelo);
+				modelo= new Modelo();
 				
 				return "sucesso";
 			} catch(Exception e) {

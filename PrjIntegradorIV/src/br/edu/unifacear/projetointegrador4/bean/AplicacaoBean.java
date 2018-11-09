@@ -25,7 +25,7 @@ public class AplicacaoBean {
 		aplicacao = new Aplicacao();
 		facade = new FacadeAplicacao();
 		aplicacoes = new ArrayList<Aplicacao>();
-		
+		listar();
 	}
 
 	public Aplicacao getAplicacao() {
@@ -50,7 +50,7 @@ public class AplicacaoBean {
 		try {
 			
 			facade.inserir(aplicacao);
-			
+			aplicacao = new Aplicacao();
 			return "sucesso";
 		} catch(Exception e) {
 			System.out.println("-----"+e.getMessage());
@@ -73,7 +73,7 @@ public class AplicacaoBean {
 		}
 	}
 	
-	@PostConstruct
+	//@PostConstruct
 	public void listar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		

@@ -11,7 +11,7 @@
 <h:body>
 	<h:form>
 		<p:growl id="messages" showDetail="true" sticky="true" />
-		<p:menubar style="background-color:blue">
+		<p:menubar>
 			<p:menuitem url="/homefaces.jsf" value="Home" icon="ui-icon-home" />
 			<p:menuitem url="/produtos.jsf" value="Produtos"
 				icon="ui-icon-search" />
@@ -95,18 +95,63 @@
 							itemValue="#{modelo.id}" itemLabel="#{modelo.descricao}" />
 					</p:selectOneMenu>
 					
-					<p:commandLink update=":cadastro:detalhes"
-						oncomplete="PF('popUpDetalhes').show()" title="Informações">
-						<h:outputText value="Novo"
-							style="margin:0 auto;" />
-						
-							
-							<p:dialog header="Cadastro de Modelo" widgetVar="popUpDetalhes"
+					<p:commandButton value="Novo"
+						onclick="PF('popCadastroMod').show()" />
+				
+					
+					
+					
+					
+					<h:outputText value="Aplicação:" for="aplicacao" />
+					
+					
+					<p:selectOneMenu id="comboaplicacao" value="#{pecaBean.peca.aplicacao.id}" 
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem itemLabel="Escolha uma aplicação" />
+						<f:selectItems value="#{pecaBean.aplicacoes}" var="aplicacao"
+							itemValue="#{aplicacao.id}" itemLabel="#{aplicacao.descricao}" />
+					</p:selectOneMenu>
+					<p:commandButton value="Novo"
+						onclick="PF('popCadastroApli').show()" />
+
+
+					<h:outputText value="Adicional:" for="adicional" />
+					<p:inputText id="adicional" var="adicional" value="#{pecaBean.peca.adicional}"
+						size="35" />
+					<h:outputText value="" for="" />
+					
+				
+					<h:outputText value="Quantidade:" />
+					<p:inputText id="qtdeTotal" label="qtdTotal"
+						value="#{pecaBean.peca.qtdeTotal}" size="35" required="true" />
+					<h:outputText value="" for="" />
+					
+					<h:outputText value="foto:" />
+					<p:fileUpload fileUploadListener="#{pecaBean.upload}" mode ="advanced"
+        			allowTypes="/(\.|\/)(gif|jpe?g|png)$/" 
+        			sizeLimit="100000"
+        			multiple="true" 
+        			dragDropSupport="true"
+        			description="Selecione Imagens"/>
+					<h:outputText value="" for="" />
+					
+					
+					
+					<h:outputText value="" for="" />
+					<h:commandButton id="botao" value="Salvar"
+						action="#{pecaBean.inserir}" update="messages panelGrid"/>
+					
+					<h:outputText value="" for="" />
+
+
+				</p:panelGrid>
+			</h:form>
+			
+			<p:dialog header="Cadastro de Modelo" widgetVar="popCadastroMod"
 								global="true" showEffect="fade" hideEffect="fade" resizable="false">
-								<p:outputPanel id="detalhes" style="text-align:center;">
+								
 								<h:form id="cadastroMod">
-								<p:panelGrid columns="2" rendered="#{not empty pecaBean.pecas}"
-								columnClasses="label,value">
+								<p:panelGrid columns="2" columnClasses="label,value">
 								
 								<h:outputText value="Descricao: " for="descricaoMod"/>
 								<p:inputText id="descricaoMod" var="descricaoMod" value="#{modeloBean.modelo.descricao}"
@@ -134,63 +179,32 @@
 								
 								<h:outputText value="" for="" />
 								<h:commandButton id="botaoModelo" value="Salvar"
-								actionListner="#{modeloBean.inserir}" update="combomodelo" />
+								action="#{modeloBean.inserir}" update="combomodelo cadastroMod" />
 								
 								</p:panelGrid>
 								</h:form>
-								</p:outputPanel>
+								
 							</p:dialog>
 							
-					</p:commandLink>
-					
-					
-					
-					
-					<h:outputText value="Aplicação:" for="aplicacao" />
-					
-					
-					<p:selectOneMenu id="comboaplicacao" value="#{pecaBean.peca.aplicacao.id}" 
-						converter="omnifaces.SelectItemsConverter">
-						<f:selectItem itemLabel="Escolha uma aplicação" />
-						<f:selectItems value="#{pecaBean.aplicacoes}" var="aplicacao"
-							itemValue="#{aplicacao.id}" itemLabel="#{aplicacao.descricao}" />
-					</p:selectOneMenu>
-					
-					
-					<h:outputText value="" for="" />
-
-
-					<h:outputText value="Adicional:" for="adicional" />
-					<p:inputText id="adicional" var="adicional" value="#{pecaBean.peca.adicional}"
-						size="35" />
-					<h:outputText value="" for="" />
-					
-				
-					<h:outputText value="Quantidade:" />
-					<p:inputText id="qtdeTotal" label="qtdTotal"
-						value="#{pecaBean.peca.qtdeTotal}" size="35" required="true" />
-					<h:outputText value="" for="" />
-					
-					<h:outputText value="foto:" />
-					<p:fileUpload fileUploadListener="#{pecaBean.upload}" mode ="advanced"
-        			allowTypes="/(\.|\/)(gif|jpe?g|png)$/" 
-        			sizeLimit="100000"
-        			multiple="true" 
-        			dragDropSupport="true"
-        			description="Selecione Imagens"/>
-					<h:outputText value="" for="" />
-					
-					
-					
-					<h:outputText value="" for="" />
-					<h:commandButton id="botao" value="Salvar"
-						action="#{pecaBean.inserir}" update="salvoSucesso panelGrid" />
-					
-					<h:outputText value="" for="" />
-
-
-				</p:panelGrid>
-			</h:form>
+							<p:dialog header="Cadastro de Modelo" widgetVar="popCadastroApli"
+								global="true" showEffect="fade" hideEffect="fade" resizable="false">
+								
+								<h:form id="cadastroApli">
+								<p:panelGrid columns="2" columnClasses="label,value">
+								
+								<h:outputText value="Descricao: " for="descricaoApli"/>
+								<p:inputText id="descricaoApli" var="descricaoApli" value="#{aplicacaoBean.aplicacao.descricao}"
+								size="35" />
+								
+								
+								<h:outputText value="" for="" />
+								<h:commandButton id="botaoAplicacao" value="Salvar"
+								action="#{aplicacaoBean.inserir}" update="comboaplicacao cadastroApli" />
+								
+								</p:panelGrid>
+								</h:form>
+								
+							</p:dialog>
 
 		</p:panel>
 	</div>
