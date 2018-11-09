@@ -143,7 +143,6 @@ public class PecaBean {
 
 	public Peca getPeca() {
 		
-		System.out.println("Pegou peça detalhes: "+peca.getFoto());
 		return peca;
 	}
 
@@ -160,9 +159,7 @@ public class PecaBean {
 	}
 
 	public List<Peca> getPecas() {
-		for(int i = 0; i<pecas.size(); i++) {
-			System.out.println("fotos: "+pecas.get(i).getFoto());
-		}
+		
 		return pecas;
 	}
 
@@ -234,25 +231,6 @@ public class PecaBean {
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso! ", peca.getDescricao().toString() + " foi salva com sucesso!");
 		
 			peca = new Peca();
-			return "sucesso";
-
-		} catch (Exception e) {
-			System.out.println("entra exception inserir ");
-			System.out.println("-----" + e.getMessage());
-			context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, e.getMessage(), ""));
-			return "cadastropecas";
-		}
-	}
-
-	public String inserirModelo() {
-		System.out.println("entra 1");
-		FacesContext context = FacesContext.getCurrentInstance();
-		ModeloBean modeloBean = new ModeloBean();
-		try {
-			System.out.println("entra 2");
-			modelo = modeloBean.getModelo();
-			facade.inserirModelo(modelo);
-
 			return "sucesso";
 
 		} catch (Exception e) {

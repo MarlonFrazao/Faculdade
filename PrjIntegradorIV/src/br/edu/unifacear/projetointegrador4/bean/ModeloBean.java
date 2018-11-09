@@ -12,7 +12,9 @@ import javax.faces.event.ActionEvent;
 
 import br.edu.unifacear.projetointegrador4.model.business.BusinessException;
 import br.edu.unifacear.projetointegrador4.model.business.FacadeBusiness;
+import br.edu.unifacear.projetointegrador4.model.entity.LinhaDeVeiculo;
 import br.edu.unifacear.projetointegrador4.model.entity.Modelo;
+import br.edu.unifacear.projetointegrador4.model.entity.Montadora;
 import br.edu.unifacear.projetointegrador4.model.entity.Peca_Modelo;
 
 @ManagedBean(name="modeloBean")
@@ -22,6 +24,9 @@ public class ModeloBean {
 		private FacadeBusiness facade;
 		private List<Modelo> modelos;
 		private Peca_Modelo peca_Modelo;
+		private List<Montadora> montadoras;
+		private List<LinhaDeVeiculo> linhas;
+		
 		
 		
 		public ModeloBean() {
@@ -30,10 +35,56 @@ public class ModeloBean {
 			facade = new FacadeBusiness();
 			modelos = new ArrayList<Modelo>();
 			peca_Modelo = new Peca_Modelo();
+			montadoras = new ArrayList<Montadora>();
+			linhas = new ArrayList<LinhaDeVeiculo>();
+			listarLinhas();
+			listarMontadoras();
+			listar();
+		}
+		
+		public void listarLinhas() {
+			try {
+				linhas = facade.listarLinhaDeVeiculo();
+			} catch (BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		public void listarMontadoras() {
+			try {
+				montadoras = facade.listarMontadora();
+			} catch (BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		
-		
+		public List<Montadora> getMontadoras() {
+			return montadoras;
+		}
+
+
+
+		public void setMontadoras(List<Montadora> montadoras) {
+			this.montadoras = montadoras;
+		}
+
+
+
+		public List<LinhaDeVeiculo> getLinhas() {
+			return linhas;
+		}
+
+
+
+		public void setLinhas(List<LinhaDeVeiculo> linhas) {
+			this.linhas = linhas;
+		}
+
+
+
 		public Peca_Modelo getPeca_Modelo() {
 			return peca_Modelo;
 		}
@@ -76,7 +127,7 @@ public class ModeloBean {
 		}
 		
 		
-		public String inserir(ActionEvent event) {
+		public String inserir() {
 			System.out.println("inserir antes try modelo");
 			FacesContext context = FacesContext.getCurrentInstance();
 			try {
