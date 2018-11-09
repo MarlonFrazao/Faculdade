@@ -1,13 +1,13 @@
 package br.edu.unifacear.projetointegrador4.model.entity;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -30,7 +30,12 @@ public class PedidoDeVenda implements DAO{
 	private StatusPV statusPV;
 	private Boolean status;
 	
-	public PedidoDeVenda() {}
+	public PedidoDeVenda() {
+		cliente = new Cliente();
+		peca = new ArrayList<Peca>();
+		statusPV = new StatusPV();
+		
+	}
 
 	public PedidoDeVenda(Long id, Cliente cliente, List<Peca> peca, Date data, StatusPV statusPV, Boolean status) {
 		super();
@@ -41,6 +46,13 @@ public class PedidoDeVenda implements DAO{
 		this.statusPV = statusPV;
 		this.status = status;
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "PedidoDeVenda [id=" + id + ", data=" + data + ", status=" + status + "]";
+	}
+
 	@Override
 	public Long getId() {
 		return id;

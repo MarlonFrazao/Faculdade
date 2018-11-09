@@ -24,6 +24,13 @@ public class StatusPV implements DAO{
 		this.descricao = descricao;
 		this.status = status;
 	}
+	
+	
+	@Override
+	public String toString() {
+		return "StatusPV [id=" + id + ", descricao=" + descricao + ", status=" + status + "]";
+	}
+
 	@Override
 	public Long getId() {
 		return id;

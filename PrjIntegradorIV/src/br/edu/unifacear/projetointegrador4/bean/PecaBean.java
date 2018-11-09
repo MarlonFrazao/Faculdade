@@ -31,7 +31,7 @@ import br.edu.unifacear.projetointegrador4.model.entity.Peca_Modelo;
 @RequestScoped
 public class PecaBean {
 
-	private Peca peca;
+	private static Peca peca;
 	private FacadeBusiness facade;
 	private List<Peca> pecas;
 	private Aplicacao aplicacao;
@@ -142,7 +142,7 @@ public class PecaBean {
 	}
 
 	public Peca getPeca() {
-		
+		System.out.println("PecaBean getPeca: "+peca.getDescricao());
 		return peca;
 	}
 
