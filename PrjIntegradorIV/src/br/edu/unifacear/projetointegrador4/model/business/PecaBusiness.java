@@ -7,6 +7,7 @@ import br.edu.unifacear.projetointegrador4.model.dao.FabricaDAO;
 import br.edu.unifacear.projetointegrador4.model.entity.Aplicacao;
 import br.edu.unifacear.projetointegrador4.model.entity.Modelo;
 import br.edu.unifacear.projetointegrador4.model.entity.Peca;
+import br.edu.unifacear.projetointegrador4.model.entity.Peca_Modelo;
 
 public class PecaBusiness {
 	public void inserir(Peca p) throws BusinessException {
@@ -115,6 +116,8 @@ public class PecaBusiness {
 	public List<Peca> filtrar(Object...obj) throws BusinessException{
 		List<Peca> retorno = new ArrayList<Peca>();
 		List<Peca> lista = FabricaDAO.criarPecaDAO().listar();
+		List<Peca_Modelo> listapm = FabricaDAO.criarPeca_ModeloDAO().listar();
+		Peca_Modelo pm = new Peca_Modelo();
 		Modelo m = new Modelo();
 		Aplicacao a = new Aplicacao();
 		String desc = "";
@@ -128,7 +131,6 @@ public class PecaBusiness {
 		for(int i = 0; i < obj.length; i++) {
 			if(obj[i] instanceof String) {
 				desc = (String) obj[i];
-				System.out.println("desc: " + desc+" blablabla2");
 				aux = aux + 1;
 			}
 			
@@ -150,22 +152,24 @@ public class PecaBusiness {
 		
 		if(aux == 1) {
 			for(int i = 0; i < lista.size(); i++) {
-				if(lista.get(i).getDescricao().equals(desc)) {
+				if(lista.get(i).getDescricao().equalsIgnoreCase(desc)) {
 					retorno.add(lista.get(i));
 				} 
 			}
 			
 			if(retorno.size() < 1) {
-				System.out.println("Desc 1 if "+desc);
 				throw new BusinessException("Desculpe, mas não encontramos :(");
 			}
 		}
 		
 		if(aux == 2) {
-			for(int i = 0; i < lista.size(); i++) {
-				for(int j = 0; j < lista.get(i).getPeca_Modelo().size(); j++) {
-					if(lista.get(i).getPeca_Modelo().get(j).getModelo().getId() == m.getId()) {
-						retorno.add(lista.get(i));
+			
+			for(int i = 0; i < listapm.size(); i++) {
+				if(listapm.get(i).getModelo().getId() == m.getId()) {
+					for(int j = 0; j < lista.size(); j++) {
+						if(listapm.get(i).getPeca().getId() == lista.get(j).getId()) {
+							retorno.add(lista.get(j));
+						}
 					}
 				}
 			}
@@ -176,11 +180,13 @@ public class PecaBusiness {
 		}
 		
 		if(aux == 3) {
-			for(int i = 0; i < lista.size(); i++) {
-				for(int j = 0; j < lista.get(i).getPeca_Modelo().size(); j++) {
-					if(lista.get(i).getPeca_Modelo().get(j).getModelo().getId() == m.getId() &&
-							lista.get(i).getDescricao().equals(desc)) {
-						retorno.add(lista.get(i));
+			for(int i = 0; i < listapm.size(); i++) {
+				if(listapm.get(i).getModelo().getId() == m.getId()) {
+					for(int j = 0; j < lista.size(); j++) {
+						if(listapm.get(i).getPeca().getId() == lista.get(j).getId() &&
+							lista.get(j).getDescricao().equalsIgnoreCase(desc)) {
+						retorno.add(lista.get(j));
+						}
 					}
 				}
 			}
@@ -205,7 +211,7 @@ public class PecaBusiness {
 		if(aux == 5) {
 			for(int i = 0; i < lista.size(); i++) {
 				if(lista.get(i).getAplicacao().getId() == a.getId() &&
-						lista.get(i).getDescricao().equals(desc)) {
+						lista.get(i).getDescricao().equalsIgnoreCase(desc)) {
 					retorno.add(lista.get(i));
 				}
 			}
@@ -216,11 +222,13 @@ public class PecaBusiness {
 		}
 		
 		if(aux == 6) {
-			for(int i = 0; i < lista.size(); i++) {
-				for(int j = 0; j < lista.get(i).getPeca_Modelo().size(); j++) {
-					if(lista.get(i).getPeca_Modelo().get(j).getModelo().getId() == m.getId() &&
-							lista.get(i).getAplicacao().getId() == a.getId()) {
-						retorno.add(lista.get(i));
+			for(int i = 0; i < listapm.size(); i++) {
+				if(listapm.get(i).getModelo().getId() == m.getId()) {
+					for(int j = 0; j < lista.size(); j++) {
+						if(listapm.get(i).getPeca().getId() == lista.get(j).getId() &&
+							lista.get(j).getAplicacao().getId() == a.getId()) {
+						retorno.add(lista.get(j));
+						}
 					}
 				}
 			}
@@ -231,12 +239,14 @@ public class PecaBusiness {
 		}
 		
 		if(aux == 7) {
-			for(int i = 0; i < lista.size(); i++) {
-				for(int j = 0; j < lista.get(i).getPeca_Modelo().size(); j++) {
-					if(lista.get(i).getPeca_Modelo().get(j).getModelo().getId() == m.getId() &&
-							lista.get(i).getAplicacao().getId() == a.getId() &&
-							lista.get(i).getDescricao().equals(desc)) {
-						retorno.add(lista.get(i));
+			for(int i = 0; i < listapm.size(); i++) {
+				if(listapm.get(i).getModelo().getId() == m.getId()) {
+					for(int j = 0; j < lista.size(); j++) {
+						if(listapm.get(i).getPeca().getId() == lista.get(j).getId() &&
+							lista.get(j).getAplicacao().getId() == a.getId() &&
+							lista.get(j).getDescricao().equalsIgnoreCase(desc)) {
+							retorno.add(lista.get(j));
+						}
 					}
 				}
 			}
@@ -260,7 +270,7 @@ public class PecaBusiness {
 		
 		if(aux == 9) {
 			for(int i = 0; i < lista.size(); i++) {
-				if(lista.get(i).getDescricao().equals(desc) &&
+				if(lista.get(i).getDescricao().equalsIgnoreCase(desc) &&
 						lista.get(i).getStatus() == status) {
 					retorno.add(lista.get(i));
 				}
@@ -272,11 +282,13 @@ public class PecaBusiness {
 		}
 		
 		if(aux == 10) {
-			for(int i = 0; i < lista.size(); i ++) {
-				for(int j = 0; j < lista.get(i).getPeca_Modelo().size(); j++) {
-					if(lista.get(i).getPeca_Modelo().get(j).getModelo().getId() == m.getId() &&
-							lista.get(i).getStatus() == status) {
-						retorno.add(lista.get(i));
+			for(int i = 0; i < listapm.size(); i++) {
+				if(listapm.get(i).getModelo().getId() == m.getId()) {
+					for(int j = 0; j < lista.size(); j++) {
+						if(listapm.get(i).getPeca().getId() == lista.get(j).getId() &&
+							lista.get(j).getStatus() == status) {
+							retorno.add(lista.get(j));
+						}
 					}
 				}
 			}
@@ -287,12 +299,14 @@ public class PecaBusiness {
 		}
 		
 		if(aux == 11) {
-			for(int i = 0; i < lista.size(); i++) {
-				for(int j = 0; j < lista.get(i).getPeca_Modelo().size(); j++) {
-					if(lista.get(i).getDescricao().equals(desc) &&
-							lista.get(i).getPeca_Modelo().get(j).getModelo().getId() == m.getId() &&
-							lista.get(i).getStatus() == status) {
-						retorno.add(lista.get(i));
+			for(int i = 0; i < listapm.size(); i++) {
+				if(listapm.get(i).getModelo().getId() == m.getId()) {
+					for(int j = 0; j < lista.size(); j++) {
+						if(listapm.get(i).getPeca().getId() == lista.get(j).getId() &&
+								lista.get(j).getDescricao().equalsIgnoreCase(desc) &&
+								lista.get(j).getStatus() == status) {
+							retorno.add(lista.get(j));
+						}
 					}
 				}
 			}
@@ -317,7 +331,7 @@ public class PecaBusiness {
 		
 		if(aux == 13) {
 			for(int i = 0; i < lista.size(); i++) {
-				if(lista.get(i).getDescricao().equals(desc) &&
+				if(lista.get(i).getDescricao().equalsIgnoreCase(desc) &&
 						lista.get(i).getAplicacao().getId() == a.getId() &&
 						lista.get(i).getStatus() == status) {
 					retorno.add(lista.get(i));
@@ -330,12 +344,14 @@ public class PecaBusiness {
 		}
 		
 		if(aux == 14) {
-			for(int i = 0; i < lista.size(); i++) {
-				for(int j = 0; j < lista.get(i).getPeca_Modelo().size(); j++) {
-					if(lista.get(i).getPeca_Modelo().get(j).getModelo().getId() == m.getId() &&
-							lista.get(i).getAplicacao().getId() == a.getId() &&
-							lista.get(i).getStatus() == status) {
-						retorno.add(lista.get(i));
+			for(int i = 0; i < listapm.size(); i++) {
+				if(listapm.get(i).getModelo().getId() == m.getId()) {
+					for(int j = 0; j < lista.size(); j++) {
+						if(listapm.get(i).getPeca().getId() == lista.get(j).getId() &&
+								lista.get(j).getAplicacao().getId() == a.getId() &&
+								lista.get(j).getStatus() == status) {
+							retorno.add(lista.get(j));
+						}
 					}
 				}
 			}
@@ -346,13 +362,15 @@ public class PecaBusiness {
 		}
 		
 		if(aux == 15) {
-			for(int i = 0; i < lista.size(); i++) {
-				for(int j = 0; j < lista.get(i).getPeca_Modelo().size(); j++) {
-					if(lista.get(i).getDescricao().equals(desc) &&
-							lista.get(i).getPeca_Modelo().get(j).getModelo().getId() == m.getId() &&
-							lista.get(i).getAplicacao().getId() == a.getId() &&
-							lista.get(i).getStatus() == status) {
-						retorno.add(lista.get(i));
+			for(int i = 0; i < listapm.size(); i++) {
+				if(listapm.get(i).getModelo().getId() == m.getId()) {
+					for(int j = 0; j < lista.size(); j++) {
+						if(listapm.get(i).getPeca().getId() == lista.get(j).getId() &&
+								lista.get(j).getDescricao().equalsIgnoreCase(desc) &&
+								lista.get(j).getAplicacao().getId() == a.getId() &&
+								lista.get(j).getStatus() == status) {
+							retorno.add(lista.get(j));
+						}
 					}
 				}
 			}

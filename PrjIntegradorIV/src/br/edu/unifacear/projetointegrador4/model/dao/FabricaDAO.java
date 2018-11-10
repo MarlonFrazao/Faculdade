@@ -48,4 +48,8 @@ public class FabricaDAO {
 	public static TelefoneDAO criarTelefoneDAO() {		
 		return new TelefoneDAO();
 	}
+	
+	public static Peca_ModeloDAO criarPeca_ModeloDAO() {
+		return new Peca_ModeloDAO();
+	}
 }

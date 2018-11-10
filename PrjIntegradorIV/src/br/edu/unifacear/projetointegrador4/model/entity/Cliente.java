@@ -22,7 +22,7 @@ public class Cliente implements DAO{
 	private String nome;
 	private String endereco;
 	private String email;
-	@OneToMany
+	@OneToMany 
 	private List<Telefone> telefone;
 	@OneToOne
 	private TipoCliente tipo;
