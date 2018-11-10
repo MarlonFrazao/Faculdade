@@ -56,5 +56,31 @@
     </p:menubar>
 </h:form>
 <h1>Carrinho</h1>
+
+	<h:form>
+	<!-- <p:commandButton value="Novo" action="#{produtoBean.novo}"/>-->
+	<h3>Pedido de Compra</h3>
+	<p:dataTable var="peca" value="#{pedidoVenda.pecas}">
+		<p:column sortBy="#{peca.id}" headerText="Id">
+			<h:outputText value="#{peca.id}"/>
+		</p:column>
+		
+		<p:column sortBy="#{peca.descricao}" headerText="Descrição">
+			<h:outputText value="#{peca.descricao}"/>
+		</p:column>
+		<p:column sortBy="#{peca.adicional}" headerText="Adicional">
+			<h:outputText value="#{peca.adicional}"/>
+		</p:column>
+		<p:column sortBy="#{peca.qtdeTotal}" headerText="quantidade">
+			<h:outputText value="#{peca.qtdeTotal}"/>
+		</p:column>
+		
+	
+	</p:dataTable>
+
+
+</h:form>
+
+
 </h:body>
 </html>

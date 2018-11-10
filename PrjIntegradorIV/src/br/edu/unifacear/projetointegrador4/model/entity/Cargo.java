@@ -17,6 +17,7 @@ public class Cargo implements DAO{
 	private Boolean status;
 	
 	public Cargo() {}
+	
 
 	public Cargo(Long id, String descricao, Boolean status) {
 		super();

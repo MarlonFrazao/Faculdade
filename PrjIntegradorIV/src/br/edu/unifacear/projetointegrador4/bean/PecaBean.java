@@ -14,7 +14,9 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.UploadedFile;
@@ -28,7 +30,7 @@ import br.edu.unifacear.projetointegrador4.model.entity.Peca;
 import br.edu.unifacear.projetointegrador4.model.entity.Peca_Modelo;
 
 @ManagedBean(name = "pecaBean")
-@RequestScoped
+@ViewScoped
 public class PecaBean {
 
 	private static Peca peca;
@@ -45,7 +47,9 @@ public class PecaBean {
 	private PecaBusiness business;
 	private String diretorioDestino;
 	private static String nomeArq;
-	private URL diretorio = null;
+	private PedidoDeVendaBean pBean;
+	
+	
 	
 	public PecaBean() {
 
@@ -66,6 +70,7 @@ public class PecaBean {
 		System.out.println("desc depois: " + desc);
 		status = null;
 		business = new PecaBusiness();
+		pBean = new PedidoDeVendaBean();
 		
 		//diretorioDestino = "colocar seu diretorio aqui e comentar o meu";
 		diretorioDestino = "C:\\Users\\osval\\Desktop\\Projeto IV\\Faculdade\\PrjIntegradorIV\\WebContent\\_imagen\\";
@@ -90,6 +95,18 @@ public class PecaBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public String addCarrinho() {
+		new PedidoDeVendaBean().addPeca(getPeca());
+		return "nada";
+	}
+	public PedidoDeVendaBean getpBean() {
+		return pBean;
+	}
+
+	public void setpBean(PedidoDeVendaBean pBean) {
+		this.pBean = pBean;
 	}
 
 	public List<Aplicacao> getAplicacoes() {
@@ -122,6 +139,7 @@ public class PecaBean {
 
 	public void setAplicacao(Aplicacao aplicacao) {
 		System.out.println("Aplicacao: " + aplicacao.getDescricao());
+		
 		this.aplicacao = aplicacao;
 	}
 
@@ -143,6 +161,7 @@ public class PecaBean {
 
 	public Peca getPeca() {
 		System.out.println("PecaBean getPeca: "+peca.getDescricao());
+		
 		return peca;
 	}
 

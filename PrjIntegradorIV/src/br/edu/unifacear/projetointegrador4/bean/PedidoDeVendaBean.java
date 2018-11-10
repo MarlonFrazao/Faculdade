@@ -6,8 +6,8 @@ import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 import br.edu.unifacear.projetointegrador4.model.business.BusinessException;
 import br.edu.unifacear.projetointegrador4.model.business.FacadeBusiness;
@@ -16,25 +16,26 @@ import br.edu.unifacear.projetointegrador4.model.entity.Peca;
 import br.edu.unifacear.projetointegrador4.model.entity.PedidoDeVenda;
 
 @ManagedBean(name = "pedidoVendaBean")
-@RequestScoped
+@ViewScoped
 public class PedidoDeVendaBean {
-	private static PedidoDeVenda pdv;
+	private static PedidoDeVenda pdv= new PedidoDeVenda();;
 	private List<PedidoDeVenda> listapdv;
-	private List<Peca> listaPeca;
+	private List<Peca> listaPeca = new ArrayList<Peca>();
 	private Peca peca;
 	private FacadeBusiness facade;
 	private Cliente cliente;
-	private PecaBean pBean;
+	
 
 	public PedidoDeVendaBean() {
 		System.out.println("entrou PDV Bean");
-		pdv = new PedidoDeVenda();
 		listapdv = new ArrayList<PedidoDeVenda>();
-		listaPeca = new ArrayList<Peca>();
+		//listaPeca = new ArrayList<Peca>();
 		peca = new Peca();
 		cliente = new Cliente();
-		peca = pBean.getPeca();
-		System.out.println("Loucura Loucura Loucura: "+pBean.getPeca().getDescricao()); 
+		//listarPecas();
+		//pBean = new PecaBean();
+		//peca = pBean.getPeca();
+		System.out.println("Loucura Loucura Loucura: "+peca.getDescricao()); 
 		
 	}
 
@@ -44,7 +45,7 @@ public class PedidoDeVendaBean {
 		this.listapdv = listapdv;
 		this.listaPeca = listaPeca;
 		this.peca = peca;
-		listarPecas();
+		
 		
 	}
 
@@ -65,16 +66,17 @@ public class PedidoDeVendaBean {
 		return "pdv";	
 	}
 
-	public String addPeca() {
+	public String addPeca(Peca peca) {
+		
 		FacesContext context = FacesContext.getCurrentInstance();
 		System.out.println("Entrou add Peca");
 		Long aux = new CadastroClienteBean().getLogin().getId();
 		if (aux != null) {
-			
+			this.peca = peca;
 			System.out.println("entrou if add peca");
 			listaPeca.add(peca);
-			System.out.println("ADD peca: "+peca.getDescricao());
-			peca = new Peca();
+			System.out.println("ADD peca: "+peca.getId());
+		
 		} else {
 			System.out.println("entrou else add peca");
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Necessário Realizar Login", null);

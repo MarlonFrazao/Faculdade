@@ -128,7 +128,7 @@
 						<h:outputText styleClass="ui-icon ui-icon-search"
 							style="margin:0 auto;" />
 						<f:setPropertyActionListener value="#{peca}"
-							target="#{pecaBean.peca}" oncomplete="#{pedidoVendaBean.peca}"/>
+							target="#{pecaBean.peca}" />
 					</p:commandLink>
 				</h:panelGrid>
 			</p:panel>
@@ -167,8 +167,8 @@
 					
 					<f:facet name="footer" >
 				
-						<p:commandButton id="addCarrinho" value="#{pecaBean.peca.descricao}" action="#{pedidoVendaBean.addPeca}"
-						 oncomplete="PF('popUpDetalhes').hide()"/>
+						<p:commandButton id="addCarrinho" value="#{pecaBean.peca.id}" action="#{pecaBean.addCarrinho}"
+						 oncomplete="PF('popUpDetalhes').hide()" target="#{pecaBean.peca}"/>
 						
 						<p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"
 						 onclick="PF('popUpDetalhes').hide()"/>						
