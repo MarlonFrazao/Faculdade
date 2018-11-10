@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
@@ -14,28 +13,36 @@ import br.edu.unifacear.projetointegrador4.model.business.FacadeBusiness;
 import br.edu.unifacear.projetointegrador4.model.entity.Cliente;
 import br.edu.unifacear.projetointegrador4.model.entity.Peca;
 import br.edu.unifacear.projetointegrador4.model.entity.PedidoDeVenda;
+import br.edu.unifacear.projetointegrador4.model.entity.StatusPV;
 
 @ManagedBean(name = "pedidoVendaBean")
 @ViewScoped
 public class PedidoDeVendaBean {
 	private static PedidoDeVenda pdv= new PedidoDeVenda();;
 	private List<PedidoDeVenda> listapdv;
-	private List<Peca> listaPeca = new ArrayList<Peca>();
-	private Peca peca;
+	private static List<Peca> listaPeca = new ArrayList<Peca>();
+	private static Peca peca = new Peca();
 	private FacadeBusiness facade;
 	private Cliente cliente;
+	private StatusPV stpv;
 	
 
 	public PedidoDeVendaBean() {
 		System.out.println("entrou PDV Bean");
 		listapdv = new ArrayList<PedidoDeVenda>();
+		facade = new FacadeBusiness();
+		stpv = new StatusPV();
 		//listaPeca = new ArrayList<Peca>();
-		peca = new Peca();
+		//peca = new Peca();
 		cliente = new Cliente();
 		//listarPecas();
 		//pBean = new PecaBean();
 		//peca = pBean.getPeca();
 		System.out.println("Loucura Loucura Loucura: "+peca.getDescricao()); 
+		System.out.println("Tamanho lista: "+listaPeca.size());
+		for(int i =0; i<listaPeca.size();i++) {
+			System.out.println("Lista de Pecas: "+listaPeca.get(i).getId());
+		}
 		
 	}
 
@@ -50,11 +57,20 @@ public class PedidoDeVendaBean {
 	}
 
 	public String adicionarCarrinho() {
-
+		Long aux = new CadastroClienteBean().getLogin().getId();
+		List<StatusPV> auxSPV = new ArrayList<StatusPV>();
 		try {
-			if (listaPeca.size() != 0 || listaPeca != null) {
+			setCliente(facade.obterCliente(aux));
+			System.out.println("cliente addCarrinho: "+this.cliente.getNome());
+			auxSPV= (facade.obterStatusPV("Pedido Realizado"));			
+			setStpv( auxSPV.get(0));
+			System.out.println("Status do pedido: "+stpv.getDescricao());
+			if ((listaPeca.size() != 0 || listaPeca != null)&&(cliente.getId()!=null)) {
 				System.out.println("Inseriu pedido de venda");
+				pdv.setStatusPV(stpv);
 				pdv.setPeca(listaPeca);
+				pdv.setCliente(cliente);
+				System.out.println("pdv lista: "+pdv.getPeca().size());
 				facade.inserirPedidoDeVenda(pdv);
 				return "sucesso";
 			}
@@ -76,6 +92,9 @@ public class PedidoDeVendaBean {
 			System.out.println("entrou if add peca");
 			listaPeca.add(peca);
 			System.out.println("ADD peca: "+peca.getId());
+			for(int i =0; i<listaPeca.size();i++) {
+				System.out.println("Lista de Pecas em addPeca: "+listaPeca.get(i).getId());
+			}
 		
 		} else {
 			System.out.println("entrou else add peca");
@@ -98,6 +117,14 @@ public class PedidoDeVendaBean {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public StatusPV getStpv() {
+		return stpv;
+	}
+
+	public void setStpv(StatusPV stpv) {
+		this.stpv = stpv;
 	}
 
 	public Cliente getCliente() {

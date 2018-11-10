@@ -58,26 +58,32 @@
 <h1>Carrinho</h1>
 
 	<h:form>
+	<p:growl id="pedido" sticky="true" showDetail="true" life="300" />
 	<!-- <p:commandButton value="Novo" action="#{produtoBean.novo}"/>-->
-	<h3>Pedido de Compra</h3>
-	<p:dataTable var="peca" value="#{pedidoVenda.pecas}">
-		<p:column sortBy="#{peca.id}" headerText="Id">
-			<h:outputText value="#{peca.id}"/>
+	<p:panel >
+	<f:facet name="header">
+		<p:outputLabel value="Pedidos de compra"/>
+	</f:facet>
+	<p:dataTable var="listaPeca" value="#{pedidoVendaBean.listaPeca}">
+		<p:column sortBy="#{listaPeca.id}" headerText="Id">
+			<h:outputText value="#{listaPeca.id}"/>
 		</p:column>
 		
-		<p:column sortBy="#{peca.descricao}" headerText="Descrição">
-			<h:outputText value="#{peca.descricao}"/>
+		<p:column sortBy="#{listaPeca.descricao}" headerText="Descrição">
+			<h:outputText value="#{listaPeca.descricao}"/>
 		</p:column>
-		<p:column sortBy="#{peca.adicional}" headerText="Adicional">
-			<h:outputText value="#{peca.adicional}"/>
+		<p:column sortBy="#{listaPeca.adicional}" headerText="Adicional">
+			<h:outputText value="#{listaPeca.adicional}"/>
 		</p:column>
-		<p:column sortBy="#{peca.qtdeTotal}" headerText="quantidade">
-			<h:outputText value="#{peca.qtdeTotal}"/>
+		<p:column sortBy="#{listaPeca.qtdeTotal}" headerText="quantidade">
+			<h:outputText value="#{listaPeca.qtdeTotal}"/>
 		</p:column>
-		
+		<f:facet name="footer">
+		<p:commandButton value="Finalizar pedido" action="#{pedidoVendaBean.adicionarCarrinho}" style="position:relative;"/>
+		</f:facet>
 	
 	</p:dataTable>
-
+</p:panel>
 
 </h:form>
 

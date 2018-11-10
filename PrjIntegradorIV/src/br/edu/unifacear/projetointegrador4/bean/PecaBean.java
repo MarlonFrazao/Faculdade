@@ -47,7 +47,7 @@ public class PecaBean {
 	private PecaBusiness business;
 	private String diretorioDestino;
 	private static String nomeArq;
-	private PedidoDeVendaBean pBean;
+	private PedidoDeVendaBean pBean = new PedidoDeVendaBean();
 	
 	
 	
@@ -70,7 +70,7 @@ public class PecaBean {
 		System.out.println("desc depois: " + desc);
 		status = null;
 		business = new PecaBusiness();
-		pBean = new PedidoDeVendaBean();
+		//pBean = new PedidoDeVendaBean();
 		
 		//diretorioDestino = "colocar seu diretorio aqui e comentar o meu";
 		diretorioDestino = "C:\\Users\\osval\\Desktop\\Projeto IV\\Faculdade\\PrjIntegradorIV\\WebContent\\_imagen\\";
@@ -98,7 +98,7 @@ public class PecaBean {
 	}
 	
 	public String addCarrinho() {
-		new PedidoDeVendaBean().addPeca(getPeca());
+		pBean.addPeca(getPeca());
 		return "nada";
 	}
 	public PedidoDeVendaBean getpBean() {
