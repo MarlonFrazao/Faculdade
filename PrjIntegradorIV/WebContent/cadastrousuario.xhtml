@@ -8,7 +8,7 @@
 </h:head>
 
 
-<h:body >
+<h:body style="background:black">
 <h:form>  
     <p:growl id="messages" showDetail="true" sticky="true"/> 
     <p:menubar >     	
@@ -28,10 +28,10 @@
  
     <p:dialog header="Login" widgetVar="dlg" resizable="false">
         <h:panelGrid columns="2" cellpadding="5">
-            <h:outputLabel for="cpf" value="CPF:" />
+            <h:outputLabel for="cpf" value="CPF:" style="color:#ffffff"/>
             <p:inputText id="cpf" value="#{cadastroClienteBean.cliente.cpf}" required="true" label="cpf" />
  
-            <h:outputLabel for="senha" value="Senha:" />
+            <h:outputLabel for="senha" value="Senha:" style="color:#ffffff"/>
             <p:password id="senha" value="#{cadastroClienteBean.cliente.senha}" required="true" label="senha" />
  
             <f:facet name="footer" style="align: center">
@@ -149,7 +149,22 @@
             </p:panel> 
         </div>
         
-        
+ <hr/>
+<p:panel header="Contato"> 
+<p:panelGrid columns="4" >
+	<h:outputLabel value="Telefone:"/>
+	<h:outputLabel value="(41)3643-6666"/>
+	
+	<h:outputLabel value="Celular:"/>
+	<h:outputLabel value="(41)9999-9999"/>
+	
+	<h:outputLabel value="E-Mail:"/>
+	<h:outputLabel value="VendaPecas@Hotmail.com"/>
+	
+	<h:outputLabel value="Web Site:"/>
+	<h:outputLabel value="www.vendapecas.com.br"/>
+</p:panelGrid>
+</p:panel>       
 
 </h:body>
 </html>

@@ -6,7 +6,7 @@
 <h:head>
 <title></title>
 </h:head>
-<h:body >
+<h:body style="background:black">
 <h:form>  
     <p:growl id="messages" showDetail="true" sticky="true"/> 
     <p:menubar style="background-color:blue">     	
@@ -26,10 +26,10 @@
  
     <p:dialog header="Login" widgetVar="dlg" resizable="false">
         <h:panelGrid columns="2" cellpadding="5">
-            <h:outputLabel for="cpf" value="CPF:" />
+            <h:outputLabel for="cpf" value="CPF:" style="color:#ffffff"/>
             <p:inputText id="cpf" value="#{cadastroClienteBean.cliente.cpf}" required="true" label="cpf" />
  
-            <h:outputLabel for="senha" value="Senha:" />
+            <h:outputLabel for="senha" value="Senha:" style="color:#ffffff"/>
             <p:password id="senha" value="#{cadastroClienteBean.cliente.senha}" required="true" label="senha" />
  
             <f:facet name="footer" style="align: center">
@@ -64,7 +64,8 @@
 	<f:facet name="header">
 		<p:outputLabel value="Pedidos de compra"/>
 	</f:facet>
-	<p:dataTable var="listaPeca" value="#{pedidoVendaBean.listaPeca}">
+	<p:dataTable id="table" var="listaPeca" value="#{pedidoVendaBean.listaPeca}">
+	
 		<p:column sortBy="#{listaPeca.id}" headerText="Id">
 			<h:outputText value="#{listaPeca.id}"/>
 		</p:column>
@@ -78,15 +79,35 @@
 		<p:column sortBy="#{listaPeca.qtdeTotal}" headerText="quantidade">
 			<h:outputText value="#{listaPeca.qtdeTotal}"/>
 		</p:column>
+		<p:column headerText="Remover">		
+			<p:commandButton icon="ui-icon-close" action="#{pedidoVendaBean.tiraItem}" update="table" target="#{pedidoVendaBean.peca}"/>
+		</p:column>
+		
 		<f:facet name="footer">
 		<p:commandButton value="Finalizar pedido" action="#{pedidoVendaBean.adicionarCarrinho}" style="position:relative;"/>
+		<p:commandButton value="Limpar Pedido" action="#{pedidoVendaBean.limparCarrinho}" update="table"/>
 		</f:facet>
 	
 	</p:dataTable>
 </p:panel>
 
 </h:form>
-
+<hr/>
+<p:panel header="Contato"> 
+<p:panelGrid columns="4" >
+	<h:outputLabel value="Telefone:"/>
+	<h:outputLabel value="(41)3643-6666"/>
+	
+	<h:outputLabel value="Celular:"/>
+	<h:outputLabel value="(41)9999-9999"/>
+	
+	<h:outputLabel value="E-Mail:"/>
+	<h:outputLabel value="VendaPecas@Hotmail.com"/>
+	
+	<h:outputLabel value="Web Site:"/>
+	<h:outputLabel value="www.vendapecas.com.br"/>
+</p:panelGrid>
+</p:panel>
 
 </h:body>
 </html>

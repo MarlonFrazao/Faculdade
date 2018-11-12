@@ -55,7 +55,14 @@ public class PedidoDeVendaBean {
 		
 		
 	}
-
+	public String tiraItem() {
+		listaPeca.remove(getPeca());
+		return "tira";
+	}
+	public String limparCarrinho() {
+		this.listaPeca = new ArrayList<Peca>();
+		return "limpou";
+	}
 	public String adicionarCarrinho() {
 		Long aux = new CadastroClienteBean().getLogin().getId();
 		List<StatusPV> auxSPV = new ArrayList<StatusPV>();

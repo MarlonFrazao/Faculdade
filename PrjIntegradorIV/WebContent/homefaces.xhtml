@@ -17,7 +17,7 @@
 	});
 </script>
 </h:head>
-<h:body >
+<h:body style="background:black">
 <h:form>  
     <p:growl id="messages" showDetail="true" sticky="true"/> 
     <p:menubar >     	
@@ -37,10 +37,10 @@
  
     <p:dialog header="Login" widgetVar="dlg" resizable="false">
         <h:panelGrid columns="2" cellpadding="5">
-            <h:outputLabel for="cpf" value="CPF:" />
+            <h:outputLabel for="cpf" value="CPF:" style="color:#ffffff"/>
             <p:inputText id="cpf" value="#{cadastroClienteBean.cliente.cpf}" required="true" label="cpf" />
  
-            <h:outputLabel for="senha" value="Senha:" />
+            <h:outputLabel for="senha" value="Senha:" style="color:#ffffff"/>
             <p:password id="senha" value="#{cadastroClienteBean.cliente.senha}" required="true" label="senha" />
  
             <f:facet name="footer" style="align: center">
@@ -72,12 +72,13 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
 
 <h:form id="form">
     <p:carousel id ="pecas" value="#{pecaBean.pecas}" headerText="Itens em destaque" var="peca" itemStyle="text-align:center" responsive="true">
-        <p:panelGrid columns="2" style="width:260px;hight:260px;margin:10px 0px" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+        <p:panelGrid columns="1" style="width:100%; position:relative; min-height:60%;" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
         	
             <f:facet name="header">
-            	<img src="_imagen/#{peca.foto}" style="width:250px; hight:250px"/>               
+            	<h:graphicImage value="_imagen/#{peca.foto}"
+						style="width: 50%; hight: 50%; padding:25px;" />               
             </f:facet>
-             		
+            <p:panelGrid columns="2" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank" > 		
             <h:outputText value="Id:" />
             <h:outputText value="#{peca.id}"/>
             
@@ -86,26 +87,86 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
  
             <h:outputText value="Aplicação:" />
             <h:outputText value="#{peca.aplicacao.descricao}"/>
-            
-            <p:commandButton id="addCarrinho" icon="ui-icon-cart" style="position: relative; left: 50%; right: 50%">
-            	<p:confirm header="Confirmação"  message="Descrição: #{peca.descricao} | Aplicação: #{peca.aplicacao.descricao}" icon="ui-icon-cart"/>           		
-            	
-            </p:commandButton>
- 		
- 			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade"> 				
-       			<p:commandButton value="Adicionar" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-        		<p:commandButton value="Voltar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-   			</p:confirmDialog>
- 
-           
-        </p:panelGrid>
- 
-        <f:facet name="footer">
-                
+            </p:panelGrid>
+            <p:commandLink update=":form:detalhes"
+						oncomplete="PF('popUpDetalhes').show()" title="Informações">
+						<h:outputText styleClass="ui-icon ui-icon-cart"
+							style="margin:0 auto;" />
+						<f:setPropertyActionListener value="#{peca}"
+							target="#{pecaBean.peca}" />
+			</p:commandLink>
+			
+ 		 </p:panelGrid>
+ 		  <f:facet name="footer">  
+ 		              
         </f:facet>
     </p:carousel>
-  </h:form>
+ 			<p:dialog header="Informações da peça" widgetVar="popUpDetalhes"
+			global="true" showEffect="fade" hideEffect="fade" resizable="false">
+			<p:outputPanel id="detalhes" style="text-align:center;">
 
-<h1>Home</h1>
+				<p:panelGrid columns="2" rendered="#{not empty pecaBean.pecas}"
+					columnClasses="label,value">
+
+					<f:facet name="header">
+						<!-- A extensão das fotos está sendo salva no banco de dados -->
+						<h:graphicImage value="_imagen/#{pecaBean.peca.foto}"
+							style="width:30%; hight:30%;" />
+
+					</f:facet>
+
+					<h:outputText value="Id:" />
+					<h:outputText value="#{pecaBean.peca.id}"/>
+
+					<h:outputText value="Descrição" />
+					<h:outputText value="#{pecaBean.peca.descricao}"/>
+
+
+					<h:outputText value="Adicional" />
+					<h:outputText value="#{pecaBean.peca.adicional}" />
+
+
+					<h:outputText value="Aplicação" />
+					<h:outputText value="#{pecaBean.peca.aplicacao.descricao}" />
+					
+					<h:outputText value="Quantidade:"/>
+					<p:spinner id="basic" value="#{pecaBean.peca.qtdeTotal}" />
+					
+					<f:facet name="footer" >
+				
+						<p:commandButton id="addCarrinho" value="Adicionar ao Carrinho" action="#{pecaBean.addCarrinho}"
+						 oncomplete="PF('popUpDetalhes').hide()" target="#{pecaBean.peca}"/>
+						
+						<p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+						 onclick="PF('popUpDetalhes').hide()"/>						
+					
+					</f:facet>
+					
+				</p:panelGrid>
+
+			</p:outputPanel>
+		</p:dialog>
+ 
+           
+       
+ 
+       
+  </h:form>
+<hr/>
+<p:panel header="Contato"> 
+<p:panelGrid columns="4" >
+	<h:outputLabel value="Telefone:"/>
+	<h:outputLabel value="(41)3643-6666"/>
+	
+	<h:outputLabel value="Celular:"/>
+	<h:outputLabel value="(41)9999-9999"/>
+	
+	<h:outputLabel value="E-Mail:"/>
+	<h:outputLabel value="VendaPecas@Hotmail.com"/>
+	
+	<h:outputLabel value="Web Site:"/>
+	<h:outputLabel value="www.vendapecas.com.br"/>
+</p:panelGrid>
+</p:panel>
 </h:body>
 </html>

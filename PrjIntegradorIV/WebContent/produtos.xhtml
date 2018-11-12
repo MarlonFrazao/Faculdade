@@ -24,9 +24,11 @@
 						value="Bem vindo #{cadastroClienteBean.login.nome}"
 						style="padding:10px" update="logado" />
 					<h:outputLink value="javascript:void(0)"
-						onclick="PF('dlg').show();" title="login">
-						<p:commandButton id="btn" value="Login" icon="ui-icon-extlink" />
+						onclick="PF('dlg').show(); " title="login" >
+						<p:commandButton id="btnLogin" value="Login" icon="ui-icon-extlink" />						
 					</h:outputLink>
+					
+				
 
 					<p:growl id="growl" sticky="true" showDetail="true" life="300" />
 
@@ -59,6 +61,7 @@
 						} else {
 							PF('dlg').hide();
 							$('#loginLink').fadeOut();
+							
 						}
 					}
 				</script>
@@ -152,17 +155,19 @@
 					<h:outputText value="Id:" />
 					<h:outputText value="#{pecaBean.peca.id}"/>
 
-					<h:outputText value="Descrição" />
+					<h:outputText value="Descrição:" />
 					<h:outputText value="#{pecaBean.peca.descricao}"/>
 
 
-					<h:outputText value="Adicional" />
+					<h:outputText value="Adicional:" />
 					<h:outputText value="#{pecaBean.peca.adicional}" />
 
 
-					<h:outputText value="Aplicação" />
+					<h:outputText value="Aplicação:" />
 					<h:outputText value="#{pecaBean.peca.aplicacao.descricao}" />
 					
+					<h:outputText value="Quantidade:"/>
+					<p:spinner id="basic" value="#{pecaBean.peca.qtdeTotal}" />
 					
 					
 					<f:facet name="footer" >
@@ -181,6 +186,21 @@
 		</p:dialog>
 
 	</h:form>
-
+<hr/>
+<p:panel header="Contato"> 
+<p:panelGrid columns="4" >
+	<h:outputLabel value="Telefone:"/>
+	<h:outputLabel value="(41)3643-6666"/>
+	
+	<h:outputLabel value="Celular:"/>
+	<h:outputLabel value="(41)9999-9999"/>
+	
+	<h:outputLabel value="E-Mail:"/>
+	<h:outputLabel value="VendaPecas@Hotmail.com"/>
+	
+	<h:outputLabel value="Web Site:"/>
+	<h:outputLabel value="www.vendapecas.com.br"/>
+</p:panelGrid>
+</p:panel>
 </h:body>
 </html>

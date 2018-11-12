@@ -28,6 +28,7 @@ public class CadastroClienteBean {
 	private static Telefone telefone2 = new Telefone();;
 	private FacadeTelefone facTel = null;
 	
+	
 
 	public CadastroClienteBean() {
 		cliente = new Cliente();
@@ -37,6 +38,9 @@ public class CadastroClienteBean {
 		telefone = new ArrayList<Telefone>();
 		
 	}
+	
+
+
 
 	public Telefone getTelefone2() {
 		return telefone2;
@@ -122,12 +126,15 @@ public class CadastroClienteBean {
 	public String retornaFalha() {
 		return "falha";
 	}
+	public void logout() {
+		login = new Cliente();
+	}
 	public void login() {
 
 		System.out.println("valida senha login");
 		FacesMessage message = null;
 		boolean loggedIn = false;
-
+	
 		try {
 			System.out.println("valida senha login try");
 			this.login = facade.obterCliente(cliente.getCpf(), cliente.getSenha()).get(0);
@@ -141,6 +148,7 @@ public class CadastroClienteBean {
 
 				System.out.println("valida senha login retornou login");
 				retornaLogin();
+				
 				// return "login";
 			} else {
 				loggedIn = false;
@@ -159,7 +167,7 @@ public class CadastroClienteBean {
 
 			// return "falha";
 		}
-
+		
 	}
 	
 	public String atualizar() {
