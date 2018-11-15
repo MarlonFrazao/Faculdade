@@ -56,7 +56,7 @@ public class PedidoDeVendaBean {
 		
 	}
 	public String tiraItem() {
-		listaPeca.remove(getPeca());
+		listaPeca.remove(peca);
 		return "tira";
 	}
 	public String limparCarrinho() {

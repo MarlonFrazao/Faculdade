@@ -57,7 +57,7 @@
 </h:form>
 <h1>Carrinho</h1>
 
-	<h:form>
+	<h:form id="form">
 	<p:growl id="pedido" sticky="true" showDetail="true" life="300" />
 	<!-- <p:commandButton value="Novo" action="#{produtoBean.novo}"/>-->
 	<p:panel >
@@ -79,16 +79,73 @@
 		<p:column sortBy="#{listaPeca.qtdeTotal}" headerText="quantidade">
 			<h:outputText value="#{listaPeca.qtdeTotal}"/>
 		</p:column>
-		<p:column headerText="Remover">		
-			<p:commandButton icon="ui-icon-close" action="#{pedidoVendaBean.tiraItem}" update="table" target="#{pedidoVendaBean.peca}"/>
-		</p:column>
-		
-		<f:facet name="footer">
+
+				<p:column headerText="Detalhes">
+					<p:commandLink update=":form:detalhes"
+						oncomplete="PF('popUpDetalhes').show()" title="Informações">
+						<h:outputText styleClass="ui-icon ui-icon-search"
+							style="margin:0 auto;" />
+						<f:setPropertyActionListener value="#{peca}"
+							target="#{pedidoVendaBean.peca}" />
+					</p:commandLink>
+
+				</p:column>
+				
+				
+
+				<f:facet name="footer">
 		<p:commandButton value="Finalizar pedido" action="#{pedidoVendaBean.adicionarCarrinho}" style="position:relative;"/>
 		<p:commandButton value="Limpar Pedido" action="#{pedidoVendaBean.limparCarrinho}" update="table"/>
 		</f:facet>
 	
 	</p:dataTable>
+	
+	<p:dialog header="Informações da peça" widgetVar="popUpDetalhes"
+			global="true" showEffect="fade" hideEffect="fade" resizable="false">
+			<p:outputPanel id="detalhes" style="text-align:center;">
+
+				<p:panelGrid columns="2" rendered="#{not empty pedidoVendaBean.listaPeca}"
+					columnClasses="label,value">
+
+					<f:facet name="header">
+						<!-- A extensão das fotos está sendo salva no banco de dados -->
+						<h:graphicImage value="_imagen/#{pedidoVendaBean.peca.foto}"
+							style="width:30%; hight:30%;" />
+
+					</f:facet>
+
+					<h:outputText value="Id:" />
+					<h:outputText value="#{pedidoVendaBean.peca.id}"/>
+
+					<h:outputText value="Descrição:" />
+					<h:outputText value="#{pedidoVendaBean.peca.descricao}"/>
+
+
+					<h:outputText value="Adicional:" />
+					<h:outputText value="#{pedidoVendaBean.peca.adicional}" />
+
+
+					<h:outputText value="Aplicação:" />
+					<h:outputText value="#{pedidoVendaBean.peca.aplicacao.descricao}" />
+					
+					<!-- 
+					<h:outputText value="Quantidade:"/>
+					<p:spinner id="basic" value="#{pedidoVendaBean.peca.qtdeTotal}" />
+					 -->
+					
+					<f:facet name="footer" >
+						<p:commandButton value="Voltar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+						 onclick="PF('popUpDetalhes').hide()"/>	
+						 <!-- 
+						 <p:commandButton value="Remover" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+						action="#{pedidoVendaBean.tiraItem}" target="#{pedidoVendaBean.peca}" />					
+					 -->
+					</f:facet>
+					
+				</p:panelGrid>
+
+			</p:outputPanel>
+		</p:dialog>
 </p:panel>
 
 </h:form>
