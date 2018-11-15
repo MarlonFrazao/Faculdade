@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+body {
+	margin: 20px;
+	background-color: #ffffff;
+}
+
+#messages {
+	background-color: #F5DA81;
+}

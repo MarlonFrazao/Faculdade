@@ -4,8 +4,10 @@
   xmlns:f="http://java.sun.com/jsf/core"  
   xmlns:p="http://primefaces.org/ui">
 <h:head>
-<title></title>
-<!-- <script src="_js/jquerylib.min.js"></script> -->
+<title>Home</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="_css" name="estilo.css" />
 <script>
 	$(document).ready(function(){
 		$("pecas").on({
@@ -17,7 +19,7 @@
 	});
 </script>
 </h:head>
-<h:body style="background:black">
+<h:body>
 <h:form>  
     <p:growl id="messages" showDetail="true" sticky="true"/> 
     <p:menubar >     	
