@@ -24,14 +24,26 @@
 <p:graphicImage url="_imagen/logo1.png" styleClass="logo"/>
 <h:form styleClass="menu">  
     <p:growl id="messages" showDetail="true" sticky="true"/> 
+<<<<<<< HEAD
     <p:menubar styleClass="barra-do-menu" >     	
         <p:menuitem url="/homefaces.jsf" value="Home" icon="ui-icon-home" styleClass="botoes-menu"/>        
  		<p:menuitem url="/produtos.jsf" value="Produtos" icon="ui-icon-search" styleClass="botoes-menu"/>
  		<p:menuitem url="/carrinho.jsf" value="Carrinho" icon="ui-icon-cart" styleClass="botoes-menu"/>
  		<p:menuitem url="/cadastrousuario.jsf"  value="Novo Usuario" icon="ui-icon-plus" styleClass="botoes-menu"/>
  		<p:menuitem url="/cliente.jsf"  value="Perfil" icon="ui-icon-person" styleClass="botoes-menu"/> 
+=======
+    <p:menubar > 
+    	    	
+        <p:menuitem url="/homefaces.jsf" value="Home" icon="ui-icon-home" />        
+ 		<p:menuitem url="/produtos.jsf" value="Produtos" icon="ui-icon-search"/>
+ 		<p:menuitem url="/carrinho.jsf" value="Carrinho" icon="ui-icon-cart"/>
+ 		<p:menuitem url="/cadastrousuario.jsf"  value="Novo Usuario" icon="ui-icon-plus"/>
+ 		<p:menuitem url="/cliente.jsf"  value="Perfil" icon="ui-icon-person"/>
+ 		 
+>>>>>>> branch 'master' of https://github.com/MarlonFrazao/Faculdade.git
         <f:facet name="options">
-            <h:form>   
+            <h:form>
+               
             <p:outputLabel id="logado" value="Bem vindo #{cadastroClienteBean.login.nome}" style="padding:10px"  />         
     <h:outputLink value="javascript:void(0)" onclick="PF('dlg').show();" title="login">
        <p:commandButton id="btn" value="Login" icon="ui-icon-extlink" styleClass="botoes-menu"/>
@@ -73,9 +85,72 @@
 
 <!--https://www.primefaces.org/showcase/ui/data/carousel.xhtml
 CAROUSEL DO PRIME FACES ARRUMAR-->
+<p:panel style="background-image:url(_imagen/headerPecasL.jpg); background-position: center; width: 90%; hight:50%; padding:5% ">
 
+	   
+</p:panel>
 <h:form id="form">
-    <p:carousel id ="pecas" value="#{pecaBean.pecas}" headerText="Itens em destaque" var="peca" itemStyle="text-align:center" responsive="true">
+    <p:carousel id ="pecas" value="#{pecaBean.pecas}" headerText="Itens em Destaque" var="peca" itemStyle="text-align:center" responsive="true">
+        <p:panelGrid columns="1" style="width:100%; position:relative; min-height:60%;" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+        	
+            <f:facet name="header">
+            	<h:graphicImage value="_imagen/#{peca.foto}"
+						style="width: 50%; hight: 50%; padding:25px;" />               
+            </f:facet>
+            <p:panelGrid columns="2" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank" > 		
+            <h:outputText value="Id:" />
+            <h:outputText value="#{peca.id}"/>
+            
+            <h:outputText value="Descrição:" />
+            <h:outputText value="#{peca.descricao}"/>
+ 
+            <h:outputText value="Aplicação:" />
+            <h:outputText value="#{peca.aplicacao.descricao}"/>
+            </p:panelGrid>
+            <p:commandLink update=":form:detalhes"
+						oncomplete="PF('popUpDetalhes').show()" title="Informações">
+						<h:outputText styleClass="ui-icon ui-icon-cart"
+							style="margin:0 auto;" />
+						<f:setPropertyActionListener value="#{peca}"
+							target="#{pecaBean.peca}" />
+			</p:commandLink>
+			
+ 		 </p:panelGrid>
+ 		  <f:facet name="footer">  
+ 		              
+        </f:facet>
+    </p:carousel>
+    <p:carousel id ="pecasnovas" value="#{pecaBean.pecas}" headerText="Novidades na Loja" var="peca" itemStyle="text-align:center" responsive="true">
+        <p:panelGrid columns="1" style="width:100%; position:relative; min-height:60%;" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
+        	
+            <f:facet name="header">
+            	<h:graphicImage value="_imagen/#{peca.foto}"
+						style="width: 50%; hight: 50%; padding:25px;" />               
+            </f:facet>
+            <p:panelGrid columns="2" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank" > 		
+            <h:outputText value="Id:" />
+            <h:outputText value="#{peca.id}"/>
+            
+            <h:outputText value="Descrição:" />
+            <h:outputText value="#{peca.descricao}"/>
+ 
+            <h:outputText value="Aplicação:" />
+            <h:outputText value="#{peca.aplicacao.descricao}"/>
+            </p:panelGrid>
+            <p:commandLink update=":form:detalhes"
+						oncomplete="PF('popUpDetalhes').show()" title="Informações">
+						<h:outputText styleClass="ui-icon ui-icon-cart"
+							style="margin:0 auto;" />
+						<f:setPropertyActionListener value="#{peca}"
+							target="#{pecaBean.peca}" />
+			</p:commandLink>
+			
+ 		 </p:panelGrid>
+ 		  <f:facet name="footer">  
+ 		              
+        </f:facet>
+    </p:carousel>
+    <p:carousel id ="pecasmaisvendidas" value="#{pecaBean.pecas}" headerText="Peças mais pedidas" var="peca" itemStyle="text-align:center" responsive="true">
         <p:panelGrid columns="1" style="width:100%; position:relative; min-height:60%;" columnClasses="label,value" layout="grid" styleClass="ui-panelgrid-blank">
         	
             <f:facet name="header">
@@ -158,7 +233,7 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
   </h:form>
 <hr/>
 <p:panel header="Contato"> 
-<p:panelGrid columns="4" >
+<p:panelGrid columns="8" >
 	<h:outputLabel value="Telefone:"/>
 	<h:outputLabel value="(41)3643-6666"/>
 	

@@ -47,6 +47,7 @@
 								<p:commandButton value="Login" update="growl logado"
 									action="#{cadastroClienteBean.login}"
 									oncomplete="handleLoginRequest(xhr, status, args)" />
+								
 							</f:facet>
 						</h:panelGrid>
 					</p:dialog>
@@ -72,7 +73,10 @@
 
 
 	<!-- <h:form id="form"> -->
+<p:panel style="background-image:url(_imagen/headerPecasL.jpg); background-position: center; width: 90%; hight:50%; padding:5% ">
 
+	   
+</p:panel>
 	<h:form id="filtro">
 		<p:panel header="Filtro de Peças" size="20">
 
@@ -188,7 +192,7 @@
 	</h:form>
 <hr/>
 <p:panel header="Contato"> 
-<p:panelGrid columns="4" >
+<p:panelGrid columns="8" >
 	<h:outputLabel value="Telefone:"/>
 	<h:outputLabel value="(41)3643-6666"/>
 	

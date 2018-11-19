@@ -55,16 +55,21 @@
         </f:facet>
     </p:menubar>
 </h:form>
+<p:panel style="background-image:url(_imagen/headerPecasL.jpg); background-position: center; width: 90%; hight:50%; padding:5% ">
+
+	   
+</p:panel>
 
 		<div class="title" align="center">
-            <span class="title_icon"></span><h1>Perfil</h1>
+            <span class="title_icon"></span>
         </div>
         
         <div class="feat_prod_box_details">
             
-            <p:panel header="Bem vindo #{cadastroClienteBean.login.nome}">
+            <p:panel header="Bem vindo #{cadastroClienteBean.login.nome}" >
                 <h:form id="cadastro">
-                    
+                   <p:panelGrid columns="3">
+                    <p:panel header="Perfil">
                     <p:panelGrid columns="2" id="panelGrid" type="reset" styleClass="ui-noborder;">
                     
                     	<h:outputText value="Cpf:" for="cpf"/>
@@ -142,6 +147,14 @@
 
 
                     </p:panelGrid>
+                    </p:panel>
+                    <p:panel></p:panel>
+                    <p:panel  header="Meus Pedidos">
+                    <p:panelGrid columns="1">
+                    
+                    </p:panelGrid>
+                    </p:panel>
+                   </p:panelGrid>
                 </h:form>
            
             </p:panel> 

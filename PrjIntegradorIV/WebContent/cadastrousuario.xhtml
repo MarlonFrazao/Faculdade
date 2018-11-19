@@ -15,7 +15,7 @@
         <p:menuitem url="/homefaces.jsf" value="Home" icon="ui-icon-home" />        
  		<p:menuitem url="/produtos.jsf" value="Produtos" icon="ui-icon-search"/>
  		<p:menuitem url="/carrinho.jsf" value="Carrinho" icon="ui-icon-cart"/>
- 		<p:menuitem url="/cadastrousuario.jsf"  value="Novo Usuario" icon="ui-icon-plus"/>
+ 		<p:menuitem url="/cadastrousuario.jsf"  value="Realize seu cadastro" icon="ui-icon-plus"/>
  		<p:menuitem url="/cliente.jsf"  value="Perfil" icon="ui-icon-person"/> 
         <f:facet name="options">
             <h:form>   
@@ -37,6 +37,7 @@
             <f:facet name="footer" style="align: center">
                 <p:commandButton value="Login" update="growl logado" action="#{cadastroClienteBean.login}"
                                  oncomplete="handleLoginRequest(xhr, status, args)" />
+                
             </f:facet>  
         </h:panelGrid>
     </p:dialog>
@@ -55,16 +56,21 @@
 </script>
  
         </f:facet>
+        
     </p:menubar>
 </h:form>
+<p:panel style="background-image:url(_imagen/headerPecasL.jpg); background-position: center; width: 90%; hight:50%; padding:5% ">
+
+	   
+</p:panel>
 
 		<div class="title" align="center">
-            <span class="title_icon"></span><h1>CADASTRE-SE</h1>
+            <span class="title_icon"></span>
         </div>
         
         <div class="feat_prod_box_details" align="center">
             
-            <p:panel header="INFORME SEUS DADOS">
+            <p:panel header="Cadastro Novo Cliente - Informe seus dados">
                 <h:form id="cadastro">
                     
                     <p:panelGrid columns="2" id="panelGrid" type="reset">
@@ -151,7 +157,7 @@
         
  <hr/>
 <p:panel header="Contato"> 
-<p:panelGrid columns="4" >
+<p:panelGrid columns="8" >
 	<h:outputLabel value="Telefone:"/>
 	<h:outputLabel value="(41)3643-6666"/>
 	
