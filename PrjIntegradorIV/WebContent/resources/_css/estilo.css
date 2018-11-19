@@ -2,5 +2,31 @@
 
 .corpo {
 	
-	background-color: #dddddd;
+	background-color: #fafea7;
+}
+
+.logo {
+	width: 120px;
+	height: 120px;
+}
+
+/*formatação do menu*/
+.menu {
+	position: absolute;
+	left: 85pt;
+	top: 10pt;
+	right: 10pt;
+}
+
+.barra-do-menu {
+	background-color: #02fdfd;
+	height: 90px;
+}
+
+.botoes-menu {
+	height: 70px;
+}
+
+.botoes-menu:hover {
+	background-color: #06a6b3;
 }
