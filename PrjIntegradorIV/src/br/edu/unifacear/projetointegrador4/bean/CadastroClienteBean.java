@@ -128,6 +128,8 @@ public class CadastroClienteBean {
 	}
 	public void logout() {
 		login = new Cliente();
+		telefone2 = new Telefone();
+		
 	}
 	public void login() {
 

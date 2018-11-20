@@ -2,10 +2,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	lang="pt-br">
+	xmlns:p="http://primefaces.org/ui" lang="pt-br">
 <h:head>
-<meta charset="UTF-8"/>
+	<meta charset="UTF-8" />
 	<title></title>
 </h:head>
 <h:body style="background:black">
@@ -28,16 +27,35 @@
 						onclick="PF('dlg').show();" title="login">
 						<p:commandButton id="btn" value="Login" icon="ui-icon-extlink" />
 					</h:outputLink>
+					<h:outputLink value="javascript:void(0)"
+						onclick="PF('logout').show();" title="login">
+						<p:commandButton id="btn2" value="Logout" icon="ui-icon-extlink"
+							styleClass="botoes-menu" />
+					</h:outputLink>
 
 					<p:growl id="growl" sticky="true" showDetail="true" life="300" />
 
+					<p:dialog header="Logout" widgetVar="logout" resizable="false">
+
+						<f:facet name="footer">
+							<p:commandButton id="logout" value="Realizar Logout"
+								action="#{cadastroClienteBean.logout}"
+								oncomplete="PF('logout').hide()" update="logado" />
+							<p:commandButton value="Cancelar" type="button"
+								styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+								onclick="PF('logout').hide()" />
+
+						</f:facet>
+					</p:dialog>
+
+
 					<p:dialog header="Login" widgetVar="dlg" resizable="false">
 						<h:panelGrid columns="2" cellpadding="5">
-							<h:outputLabel for="cpf" value="CPF:" style="color:#ffffff"/>
+							<h:outputLabel for="cpf" value="CPF:" style="color:#ffffff" />
 							<p:inputText id="cpf" value="#{cadastroClienteBean.cliente.cpf}"
 								required="true" label="cpf" />
 
-							<h:outputLabel for="senha" value="Senha:" style="color:#ffffff"/>
+							<h:outputLabel for="senha" value="Senha:" style="color:#ffffff" />
 							<p:password id="senha"
 								value="#{cadastroClienteBean.cliente.senha}" required="true"
 								label="senha" />
@@ -78,34 +96,36 @@
 
 		<p:panel header="INFORME OS DADOS DA PEÇA">
 			<h:form id="cadastro">
-				<p:growl id="salvoSucesso" sticky="true" showDetail="true" life="300" />
-				<p:panelGrid columns="3" id="panelGrid" type="reset" style="border: none !important;">
-					
+				<p:growl id="salvoSucesso" sticky="true" showDetail="true"
+					life="300" />
+				<p:panelGrid columns="3" id="panelGrid" type="reset"
+					style="border: none !important;">
+
 					<h:outputText value="Descrição:" for="descricao" />
-					<p:inputText id="descricao" var="descricao" value="#{pecaBean.peca.descricao}"
-						size="35" />
+					<p:inputText id="descricao" var="descricao"
+						value="#{pecaBean.peca.descricao}" size="35" />
 					<h:outputText value="" for="" />
-					
-					
+
+
 					<h:outputText value="Modelo:" for="modelo" />
-					<p:selectOneMenu id="combomodelo" value="#{pecaBean.modelo.id}" 
+					<p:selectOneMenu id="combomodelo" value="#{pecaBean.modelo.id}"
 						converter="omnifaces.SelectItemsConverter">
 						<f:selectItem itemLabel="Escolha um modelo" />
 						<f:selectItems value="#{pecaBean.modelos}" var="modelo"
 							itemValue="#{modelo.id}" itemLabel="#{modelo.descricao}" />
 					</p:selectOneMenu>
-					
-					<p:commandButton value="Novo"
-						onclick="PF('popCadastroMod').show()" />
-				
-					
-					
-					
-					
+
+					<p:commandButton value="Novo" onclick="PF('popCadastroMod').show()" />
+
+
+
+
+
 					<h:outputText value="Aplicação:" for="aplicacao" />
-					
-					
-					<p:selectOneMenu id="comboaplicacao" value="#{pecaBean.peca.aplicacao.id}" 
+
+
+					<p:selectOneMenu id="comboaplicacao"
+						value="#{pecaBean.peca.aplicacao.id}"
 						converter="omnifaces.SelectItemsConverter">
 						<f:selectItem itemLabel="Escolha uma aplicação" />
 						<f:selectItems value="#{pecaBean.aplicacoes}" var="aplicacao"
@@ -116,116 +136,117 @@
 
 
 					<h:outputText value="Adicional:" for="adicional" />
-					<p:inputText id="adicional" var="adicional" value="#{pecaBean.peca.adicional}"
-						size="35" />
+					<p:inputText id="adicional" var="adicional"
+						value="#{pecaBean.peca.adicional}" size="35" />
 					<h:outputText value="" for="" />
-					
-				
+
+
 					<h:outputText value="Quantidade:" />
 					<p:inputText id="qtdeTotal" label="qtdTotal"
 						value="#{pecaBean.peca.qtdeTotal}" size="35" required="true" />
 					<h:outputText value="" for="" />
-					
+
 					<h:outputText value="foto:" />
-					<p:fileUpload fileUploadListener="#{pecaBean.upload}" mode ="advanced"
-        			allowTypes="/(\.|\/)(gif|jpe?g|png)$/" 
-        			sizeLimit="100000"
-        			multiple="true" 
-        			dragDropSupport="true"
-        			description="Selecione Imagens"/>
+					<p:fileUpload fileUploadListener="#{pecaBean.upload}"
+						mode="advanced" allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+						sizeLimit="100000" multiple="true" dragDropSupport="true"
+						description="Selecione Imagens" />
 					<h:outputText value="" for="" />
-					
-					
-					
+
+
+
 					<h:outputText value="" for="" />
 					<h:commandButton id="botao" value="Salvar"
-						action="#{pecaBean.inserir}" update="messages panelGrid"/>
-					
+						action="#{pecaBean.inserir}" update="messages panelGrid" />
+
 					<h:outputText value="" for="" />
 
 
 				</p:panelGrid>
 			</h:form>
-			
+
 			<p:dialog header="Cadastro de Modelo" widgetVar="popCadastroMod"
-								global="true" showEffect="fade" hideEffect="fade" resizable="false">
-								
-								<h:form id="cadastroMod">
-								<p:panelGrid columns="2" columnClasses="label,value">
-								
-								<h:outputText value="Descricao: " for="descricaoMod"/>
-								<p:inputText id="descricaoMod" var="descricaoMod" value="#{modeloBean.modelo.descricao}"
-								size="35" />
-								
-								<h:outputText value="Ano: " for="ano"/>
-								<p:inputText id="ano" var="ano" value="#{modeloBean.modelo.ano}"
-								size="35" />
-								
-								<h:outputText value="Montadora:" for="montadora" />
-									<p:selectOneMenu id="combomontadora" value="#{modeloBean.modelo.montadora.id}" 
-									converter="omnifaces.SelectItemsConverter">
-									<f:selectItem itemLabel="Escolha uma montadora" />
-									<f:selectItems value="#{modeloBean.montadoras}" var="montadora"
-									itemValue="#{montadora.id}" itemLabel="#{montadora.descricao}" />
-								</p:selectOneMenu>
-								
-								<h:outputText value="Linha do veiculo:" for="ldv" />
-									<p:selectOneMenu id="comboldv" value="#{modeloBean.modelo.linha.id}" 
-									converter="omnifaces.SelectItemsConverter">
-									<f:selectItem itemLabel="Escolha uma linha" />
-									<f:selectItems value="#{modeloBean.linhas}" var="linha"
-									itemValue="#{linha.id}" itemLabel="#{linha.descricao}" />
-								</p:selectOneMenu>
-								
-								<h:outputText value="" for="" />
-								<h:commandButton id="botaoModelo" value="Salvar"
-								action="#{modeloBean.inserir}" update="combomodelo cadastroMod" />
-								
-								</p:panelGrid>
-								</h:form>
-								
-							</p:dialog>
-							
-							<p:dialog header="Cadastro de Aplicação" widgetVar="popCadastroApli"
-								global="true" showEffect="fade" hideEffect="fade" resizable="false">
-								
-								<h:form id="cadastroApli">
-								<p:panelGrid columns="2" columnClasses="label,value">
-								
-								<h:outputText value="Descricao: " for="descricaoApli"/>
-								<p:inputText id="descricaoApli" var="descricaoApli" value="#{aplicacaoBean.aplicacao.descricao}"
-								size="35" />
-								
-								
-								<h:outputText value="" for="" />
-								<h:commandButton id="botaoAplicacao" value="Salvar"
-								action="#{aplicacaoBean.inserir}" update="comboaplicacao cadastroApli" />
-								
-								</p:panelGrid>
-								</h:form>
-								
-							</p:dialog>
+				global="true" showEffect="fade" hideEffect="fade" resizable="false">
+
+				<h:form id="cadastroMod">
+					<p:panelGrid columns="2" columnClasses="label,value">
+
+						<h:outputText value="Descricao: " for="descricaoMod" />
+						<p:inputText id="descricaoMod" var="descricaoMod"
+							value="#{modeloBean.modelo.descricao}" size="35" />
+
+						<h:outputText value="Ano: " for="ano" />
+						<p:inputText id="ano" var="ano" value="#{modeloBean.modelo.ano}"
+							size="35" />
+
+						<h:outputText value="Montadora:" for="montadora" />
+						<p:selectOneMenu id="combomontadora"
+							value="#{modeloBean.modelo.montadora.id}"
+							converter="omnifaces.SelectItemsConverter">
+							<f:selectItem itemLabel="Escolha uma montadora" />
+							<f:selectItems value="#{modeloBean.montadoras}" var="montadora"
+								itemValue="#{montadora.id}" itemLabel="#{montadora.descricao}" />
+						</p:selectOneMenu>
+
+						<h:outputText value="Linha do veiculo:" for="ldv" />
+						<p:selectOneMenu id="comboldv"
+							value="#{modeloBean.modelo.linha.id}"
+							converter="omnifaces.SelectItemsConverter">
+							<f:selectItem itemLabel="Escolha uma linha" />
+							<f:selectItems value="#{modeloBean.linhas}" var="linha"
+								itemValue="#{linha.id}" itemLabel="#{linha.descricao}" />
+						</p:selectOneMenu>
+
+						<h:outputText value="" for="" />
+						<h:commandButton id="botaoModelo" value="Salvar"
+							action="#{modeloBean.inserir}" update="combomodelo cadastroMod" />
+
+					</p:panelGrid>
+				</h:form>
+
+			</p:dialog>
+
+			<p:dialog header="Cadastro de Aplicação" widgetVar="popCadastroApli"
+				global="true" showEffect="fade" hideEffect="fade" resizable="false">
+
+				<h:form id="cadastroApli">
+					<p:panelGrid columns="2" columnClasses="label,value">
+
+						<h:outputText value="Descricao: " for="descricaoApli" />
+						<p:inputText id="descricaoApli" var="descricaoApli"
+							value="#{aplicacaoBean.aplicacao.descricao}" size="35" />
+
+
+						<h:outputText value="" for="" />
+						<h:commandButton id="botaoAplicacao" value="Salvar"
+							action="#{aplicacaoBean.inserir}"
+							update="comboaplicacao cadastroApli" />
+
+					</p:panelGrid>
+				</h:form>
+
+			</p:dialog>
 
 		</p:panel>
 	</div>
-	
-	
-<hr/>
-<p:panel header="Contato"> 
-<p:panelGrid columns="8" >
-	<h:outputLabel value="Telefone:"/>
-	<h:outputLabel value="(41)3643-6666"/>
-	
-	<h:outputLabel value="Celular:"/>
-	<h:outputLabel value="(41)9999-9999"/>
-	
-	<h:outputLabel value="E-Mail:"/>
-	<h:outputLabel value="VendaPecas@Hotmail.com"/>
-	
-	<h:outputLabel value="Web Site:"/>
-	<h:outputLabel value="www.vendapecas.com.br"/>
-</p:panelGrid>
-</p:panel>	
+
+
+	<hr />
+	<p:panel header="Contato">
+		<p:panelGrid columns="8">
+			<h:outputLabel value="Telefone:" />
+			<h:outputLabel value="(41)3643-6666" />
+
+			<h:outputLabel value="Celular:" />
+			<h:outputLabel value="(41)9999-9999" />
+
+			<h:outputLabel value="E-Mail:" />
+			<h:outputLabel value="VendaPecas@Hotmail.com" />
+
+			<h:outputLabel value="Web Site:" />
+			<h:outputLabel value="www.vendapecas.com.br" />
+		</p:panelGrid>
+	</p:panel>
 
 </h:body>
 </html>

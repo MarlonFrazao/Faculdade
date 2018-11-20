@@ -10,7 +10,7 @@
 <h:body style="background:black">
 	<h:form>
 		<p:growl id="messages" showDetail="true" sticky="true" />
-		<p:menubar >
+		<p:menubar>
 			<p:menuitem url="/homefaces.jsf" value="Home" icon="ui-icon-home" />
 			<p:menuitem url="/produtos.jsf" value="Produtos"
 				icon="ui-icon-search" />
@@ -24,21 +24,38 @@
 						value="Bem vindo #{cadastroClienteBean.login.nome}"
 						style="padding:10px" update="logado" />
 					<h:outputLink value="javascript:void(0)"
-						onclick="PF('dlg').show(); " title="login" >
-						<p:commandButton id="btnLogin" value="Login" icon="ui-icon-extlink" />						
+						onclick="PF('dlg').show(); " title="login">
+						<p:commandButton id="btnLogin" value="Login"
+							icon="ui-icon-extlink" />
 					</h:outputLink>
-					
-				
+					<h:outputLink value="javascript:void(0)"
+						onclick="PF('logout').show();" title="login">
+						<p:commandButton id="btn2" value="Logout" icon="ui-icon-extlink"
+							styleClass="botoes-menu" />
+					</h:outputLink>
 
 					<p:growl id="growl" sticky="true" showDetail="true" life="300" />
 
+					<p:dialog header="Logout" widgetVar="logout" resizable="false">
+
+						<f:facet name="footer">
+							<p:commandButton id="logout" value="Realizar Logout"
+								action="#{cadastroClienteBean.logout}"
+								oncomplete="PF('logout').hide()" update="logado" />
+							<p:commandButton value="Cancelar" type="button"
+								styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+								onclick="PF('logout').hide()" />
+
+						</f:facet>
+					</p:dialog>
+
 					<p:dialog header="Login" widgetVar="dlg" resizable="false">
 						<h:panelGrid columns="2" cellpadding="5">
-							<h:outputLabel for="cpf" value="CPF:" style="color:#ffffff"/>
+							<h:outputLabel for="cpf" value="CPF:" style="color:#ffffff" />
 							<p:inputText id="cpf" value="#{cadastroClienteBean.cliente.cpf}"
 								required="true" label="cpf" />
 
-							<h:outputLabel for="senha" value="Senha:" style="color:#ffffff"/>
+							<h:outputLabel for="senha" value="Senha:" style="color:#ffffff" />
 							<p:password id="senha"
 								value="#{cadastroClienteBean.cliente.senha}" required="true"
 								label="senha" />
@@ -47,7 +64,7 @@
 								<p:commandButton value="Login" update="growl logado"
 									action="#{cadastroClienteBean.login}"
 									oncomplete="handleLoginRequest(xhr, status, args)" />
-								
+
 							</f:facet>
 						</h:panelGrid>
 					</p:dialog>
@@ -62,7 +79,7 @@
 						} else {
 							PF('dlg').hide();
 							$('#loginLink').fadeOut();
-							
+
 						}
 					}
 				</script>
@@ -73,10 +90,11 @@
 
 
 	<!-- <h:form id="form"> -->
-<p:panel style="background-image:url(_imagen/headerPecasL.jpg); background-position: center; width: 90%; hight:50%; padding:5% ">
+	<p:panel
+		style="background-image:url(_imagen/headerPecasL.jpg); background-position: center; width: 90%; hight:50%; padding:5% ">
 
-	   
-</p:panel>
+
+	</p:panel>
 	<h:form id="filtro">
 		<p:panel header="Filtro de Peças" size="20">
 
@@ -123,12 +141,14 @@
 
 			<p:panel header="#{peca.descricao}" style="text-align:center;"
 				id="pnlProdutos">
-				<h:panelGrid columns="1" style="width:100%; position:relative; min-height:40%;">
+				<h:panelGrid columns="1"
+					style="width:100%; position:relative; min-height:40%;">
 					<!-- A extensão das fotos está sendo salva no banco de dados -->
 					<h:graphicImage value="_imagen/#{peca.foto}"
 						style="width: 200px; hight: 200px; position:relative; left:25%; rigth:25%;" />
 
-					<h:outputText value="#{peca.descricao}" style="position:relative; left:38%; color:#ffffff"/>
+					<h:outputText value="#{peca.descricao}"
+						style="position:relative; left:38%; color:#ffffff" />
 
 					<p:commandLink update=":form2:detalhes"
 						oncomplete="PF('popUpDetalhes').show()" title="Informações">
@@ -157,10 +177,10 @@
 					</f:facet>
 
 					<h:outputText value="Id:" />
-					<h:outputText value="#{pecaBean.peca.id}"/>
+					<h:outputText value="#{pecaBean.peca.id}" />
 
 					<h:outputText value="Descrição:" />
-					<h:outputText value="#{pecaBean.peca.descricao}"/>
+					<h:outputText value="#{pecaBean.peca.descricao}" />
 
 
 					<h:outputText value="Adicional:" />
@@ -169,42 +189,44 @@
 
 					<h:outputText value="Aplicação:" />
 					<h:outputText value="#{pecaBean.peca.aplicacao.descricao}" />
-					
-					<h:outputText value="Quantidade:"/>
+
+					<h:outputText value="Quantidade:" />
 					<p:spinner id="basic" value="#{pecaBean.peca.qtdeTotal}" />
-					
-					
-					<f:facet name="footer" >
-				
-						<p:commandButton id="addCarrinho" value="Adicionar ao Carrinho" action="#{pecaBean.addCarrinho}"
-						 oncomplete="PF('popUpDetalhes').hide()" target="#{pecaBean.peca}"/>
-						
-						<p:commandButton value="Cancelar" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"
-						 onclick="PF('popUpDetalhes').hide()"/>						
-					
+
+
+					<f:facet name="footer">
+
+						<p:commandButton id="addCarrinho" value="Adicionar ao Carrinho"
+							action="#{pecaBean.addCarrinho}"
+							oncomplete="PF('popUpDetalhes').hide()" target="#{pecaBean.peca}" />
+
+						<p:commandButton value="Cancelar" type="button"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+							onclick="PF('popUpDetalhes').hide()" />
+
 					</f:facet>
-					
+
 				</p:panelGrid>
 
 			</p:outputPanel>
 		</p:dialog>
 
 	</h:form>
-<hr/>
-<p:panel header="Contato"> 
-<p:panelGrid columns="8" >
-	<h:outputLabel value="Telefone:"/>
-	<h:outputLabel value="(41)3643-6666"/>
-	
-	<h:outputLabel value="Celular:"/>
-	<h:outputLabel value="(41)9999-9999"/>
-	
-	<h:outputLabel value="E-Mail:"/>
-	<h:outputLabel value="VendaPecas@Hotmail.com"/>
-	
-	<h:outputLabel value="Web Site:"/>
-	<h:outputLabel value="www.vendapecas.com.br"/>
-</p:panelGrid>
-</p:panel>
+	<hr />
+	<p:panel header="Contato">
+		<p:panelGrid columns="8">
+			<h:outputLabel value="Telefone:" />
+			<h:outputLabel value="(41)3643-6666" />
+
+			<h:outputLabel value="Celular:" />
+			<h:outputLabel value="(41)9999-9999" />
+
+			<h:outputLabel value="E-Mail:" />
+			<h:outputLabel value="VendaPecas@Hotmail.com" />
+
+			<h:outputLabel value="Web Site:" />
+			<h:outputLabel value="www.vendapecas.com.br" />
+		</p:panelGrid>
+	</p:panel>
 </h:body>
 </html>

@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import br.edu.unifacear.projetointegrador4.model.business.BusinessException;
 import br.edu.unifacear.projetointegrador4.model.business.FacadeBusiness;
@@ -16,7 +18,7 @@ import br.edu.unifacear.projetointegrador4.model.entity.PedidoDeVenda;
 import br.edu.unifacear.projetointegrador4.model.entity.StatusPV;
 
 @ManagedBean(name = "pedidoVendaBean")
-@ViewScoped
+@RequestScoped
 public class PedidoDeVendaBean {
 	private static PedidoDeVenda pdv= new PedidoDeVenda();;
 	private List<PedidoDeVenda> listapdv;
@@ -55,10 +57,14 @@ public class PedidoDeVendaBean {
 		
 		
 	}
+	
 	public String tiraItem() {
-		listaPeca.remove(peca);
-		return "tira";
+		
+		this.listaPeca.remove(peca);
+		
+		return "nada";
 	}
+	
 	public String limparCarrinho() {
 		this.listaPeca = new ArrayList<Peca>();
 		return "limpou";
