@@ -14,6 +14,7 @@ import br.edu.unifacear.projetointegrador4.model.business.BusinessException;
 import br.edu.unifacear.projetointegrador4.model.business.FacadeBusiness;
 import br.edu.unifacear.projetointegrador4.model.entity.Cliente;
 import br.edu.unifacear.projetointegrador4.model.entity.Peca;
+import br.edu.unifacear.projetointegrador4.model.entity.PecasDoPedido;
 import br.edu.unifacear.projetointegrador4.model.entity.PedidoDeVenda;
 import br.edu.unifacear.projetointegrador4.model.entity.StatusPV;
 
@@ -27,6 +28,7 @@ public class PedidoDeVendaBean {
 	private FacadeBusiness facade;
 	private Cliente cliente;
 	private StatusPV stpv;
+	private PecasDoPedido pecasPdv;
 	
 
 	public PedidoDeVendaBean() {
@@ -34,6 +36,7 @@ public class PedidoDeVendaBean {
 		listapdv = new ArrayList<PedidoDeVenda>();
 		facade = new FacadeBusiness();
 		stpv = new StatusPV();
+		pecasPdv = new PecasDoPedido();
 		//listaPeca = new ArrayList<Peca>();
 		//peca = new Peca();
 		cliente = new Cliente();
@@ -58,6 +61,14 @@ public class PedidoDeVendaBean {
 		
 	}
 	
+	public PecasDoPedido getPecasPdv() {
+		return pecasPdv;
+	}
+
+	public void setPecasPdv(PecasDoPedido pecasPdv) {
+		this.pecasPdv = pecasPdv;
+	}
+
 	public String tiraItem() {
 		
 		this.listaPeca.remove(peca);
@@ -80,9 +91,12 @@ public class PedidoDeVendaBean {
 			System.out.println("Status do pedido: "+stpv.getDescricao());
 			if ((listaPeca.size() != 0 || listaPeca != null)&&(cliente.getId()!=null)) {
 				System.out.println("Inseriu pedido de venda");
+				pecasPdv.setId_pdv(pdv);
+				pecasPdv.setId_peca(peca);
 				pdv.setStatusPV(stpv);
 				pdv.setPeca(listaPeca);
 				pdv.setCliente(cliente);
+				peca.adicionarPecasDoPedido(pecasPdv);
 				System.out.println("pdv lista: "+pdv.getPeca().size());
 				facade.inserirPedidoDeVenda(pdv);
 				return "sucesso";

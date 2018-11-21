@@ -24,9 +24,11 @@ public class Peca implements DAO{
 	private Long id;
 	private String descricao;
 	
+	@OneToMany(mappedBy = "id_peca", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
+	private List<PecasDoPedido> pecasPdv = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "id_peca", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
-	private List<Peca_Modelo> peca_modelo = new ArrayList<>();;
+	private List<Peca_Modelo> peca_modelo = new ArrayList<>();
 	@ManyToOne
 	private Aplicacao aplicacao;
 	private Long qtdeTotal;
@@ -48,7 +50,16 @@ public class Peca implements DAO{
 				+ mediaAvaliacao + ", numVisualizacao=" + numVisualizacao + ", foto=" + foto + ", status=" + status
 				+ "]";
 	}
-
+	
+	public void adicionarPecasDoPedido(PecasDoPedido pecasPdv) {			
+		pecasPdv.setId_peca(this);		
+		this.pecasPdv.add(pecasPdv);		
+	}
+	public void removerPecasDoPedido(int index) {
+		PecasDoPedido pecasPdv = this.pecasPdv.get(index);
+		this.pecasPdv.remove(index);
+	}
+	
 	public void adicionarPeca_Modelo(Peca_Modelo peca_modelo) {			
 		peca_modelo.setPeca(this);		
 		this.peca_modelo.add(peca_modelo);		
@@ -59,17 +70,22 @@ public class Peca implements DAO{
 		this.peca_modelo.remove(index);
 	}
 	
+	
 	public Peca() {
 		aplicacao = new Aplicacao();
+		pecasPdv = new ArrayList<PecasDoPedido>();
 		
 	}
 
-	public Peca(Long id, String descricao, List<Peca_Modelo> peca_modelo, Aplicacao aplicacao, Long qtdeTotal, String adicional,
-			Date dataCadastro, Long totalAvaliacao, Float mediaAvaliacao, Long numVisualizacao, String foto,
-			Boolean status) {
+	
+
+	public Peca(Long id, String descricao, List<PecasDoPedido> pecasPdv, List<Peca_Modelo> peca_modelo,
+			Aplicacao aplicacao, Long qtdeTotal, String adicional, Date dataCadastro, Long totalAvaliacao,
+			Float mediaAvaliacao, Long numVisualizacao, String foto, Boolean status) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
+		this.pecasPdv = pecasPdv;
 		this.peca_modelo = peca_modelo;
 		this.aplicacao = aplicacao;
 		this.qtdeTotal = qtdeTotal;
@@ -81,6 +97,7 @@ public class Peca implements DAO{
 		this.foto = foto;
 		this.status = status;
 	}
+
 	@Override
 	public Long getId() {
 		return id;

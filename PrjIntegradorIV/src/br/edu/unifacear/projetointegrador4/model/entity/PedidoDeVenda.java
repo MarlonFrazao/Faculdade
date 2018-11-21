@@ -4,7 +4,9 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,14 +32,20 @@ public class PedidoDeVenda implements DAO{
 	private StatusPV statusPV;
 	private Boolean status;
 	
+	@OneToMany(mappedBy = "id_pdv", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
+	private List<PecasDoPedido> pecaspdv;
+	
 	public PedidoDeVenda() {
 		cliente = new Cliente();
 		peca = new ArrayList<Peca>();
 		statusPV = new StatusPV();
 		
+		
 	}
 
-	public PedidoDeVenda(Long id, Cliente cliente, List<Peca> peca, Date data, StatusPV statusPV, Boolean status) {
+	
+	public PedidoDeVenda(Long id, Cliente cliente, List<Peca> peca, Date data, StatusPV statusPV, Boolean status,
+			List<PecasDoPedido> pecaspdv) {
 		super();
 		this.id = id;
 		this.cliente = cliente;
@@ -45,9 +53,12 @@ public class PedidoDeVenda implements DAO{
 		this.data = data;
 		this.statusPV = statusPV;
 		this.status = status;
+		this.pecaspdv = pecaspdv;
 	}
-	
-	
+
+
+
+
 	@Override
 	public String toString() {
 		return "PedidoDeVenda [id=" + id + ", data=" + data + ", status=" + status + "]";
