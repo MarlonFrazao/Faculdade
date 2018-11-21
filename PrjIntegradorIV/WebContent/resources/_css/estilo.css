@@ -2,7 +2,7 @@
 
 .corpo {
 	
-	background-color: #fafea7;
+	background-color: #fdce60;
 }
 
 .logo {
@@ -24,9 +24,13 @@
 }
 
 .botoes-menu {
-	height: 70px;
+	height: 70px !important;
+	background-color: rgba(0,0,0,0)
 }
 
 .botoes-menu:hover {
 	background-color: #06a6b3;
+	color: #ffffff;
+	text-decoration: underline;
+	transition: 1s;
 }

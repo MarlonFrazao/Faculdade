@@ -4,19 +4,27 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title></title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="_css" name="estilo.css" />
+	<title>Carrinho</title>
 </h:head>
-<h:body style="background:black">
-	<h:form>
+<h:body styleClass="corpo">
+
+	<a href="homefaces.jsf"><p:graphicImage url="_imagen/logo1.png" styleClass="logo" /></a>
+	<h:form styleClass="menu">
 		<p:growl id="messages" showDetail="true" sticky="true" />
-		<p:menubar>
-			<p:menuitem url="/homefaces.jsf" value="Home" icon="ui-icon-home" />
+		<p:menubar styleClass="barra-do-menu">
+			<p:menuitem url="/homefaces.jsf" value="Home" icon="ui-icon-home" 
+				styleClass="botoes-menu"/>
 			<p:menuitem url="/produtos.jsf" value="Produtos"
-				icon="ui-icon-search" />
-			<p:menuitem url="/carrinho.jsf" value="Carrinho" icon="ui-icon-cart" />
+				icon="ui-icon-search" styleClass="botoes-menu" />
+			<p:menuitem url="/carrinho.jsf" value="Carrinho" icon="ui-icon-cart" 
+			 	styleClass="botoes-menu"/>
 			<p:menuitem url="/cadastrousuario.jsf" value="Novo Usuario"
-				icon="ui-icon-plus" />
-			<p:menuitem url="/cliente.jsf" value="Perfil" icon="ui-icon-person" />
+				icon="ui-icon-plus" styleClass="botoes-menu" />
+			<p:menuitem url="/cliente.jsf" value="Perfil" icon="ui-icon-person" 
+				styleClass="botoes-menu"/>
 			<f:facet name="options">
 				<h:form>
 					<p:outputLabel id="logado"
@@ -24,7 +32,8 @@
 						style="padding:10px" update="logado" />
 					<h:outputLink value="javascript:void(0)"
 						onclick="PF('dlg').show();" title="login">
-						<p:commandButton id="btn" value="Login" icon="ui-icon-extlink" />
+						<p:commandButton id="btn" value="Login" icon="ui-icon-extlink" 
+							styleClass="botoes-menu"/>
 					</h:outputLink>
 					<h:outputLink value="javascript:void(0)"
 						onclick="PF('logout').show();" title="login">

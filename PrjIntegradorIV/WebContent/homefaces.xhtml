@@ -21,7 +21,7 @@
 </h:head>
 <h:body styleClass="corpo">
 
-	<p:graphicImage url="_imagen/logo1.png" styleClass="logo" />
+	<a href="homefaces.jsf"><p:graphicImage url="_imagen/logo1.png" styleClass="logo" /></a>
 	<h:form styleClass="menu">
 		<p:growl id="messages" showDetail="true" sticky="true" />
 
@@ -70,8 +70,8 @@
 						</f:facet>
 					</p:dialog>
 
-					<p:dialog header="Login" widgetVar="dlg" resizable="false">
-						<h:panelGrid columns="2" cellpadding="5">
+					<p:dialog header="Login" widgetVar="dlg" resizable="false" >
+						<h:panelGrid columns="2" cellpadding="5" >
 							<h:outputLabel for="cpf" value="CPF:" style="color:#ffffff" />
 							<p:inputText id="cpf" value="#{cadastroClienteBean.cliente.cpf}"
 								required="true" label="cpf" />
@@ -116,7 +116,7 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
 	<h:form id="form">
 		<p:carousel id="pecas" value="#{pecaBean.pecas}"
 			headerText="Itens em Destaque" var="peca"
-			itemStyle="text-align:center" responsive="true">
+			itemStyle="text-align:center" responsive="true" >
 			<p:panelGrid columns="1"
 				style="width:100%; position:relative; min-height:60%;"
 				columnClasses="label,value" layout="grid"
