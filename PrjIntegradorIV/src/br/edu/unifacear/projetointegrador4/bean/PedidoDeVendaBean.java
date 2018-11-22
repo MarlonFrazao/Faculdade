@@ -91,14 +91,30 @@ public class PedidoDeVendaBean {
 			System.out.println("Status do pedido: "+stpv.getDescricao());
 			if ((listaPeca.size() != 0 || listaPeca != null)&&(cliente.getId()!=null)) {
 				System.out.println("Inseriu pedido de venda");
-				pecasPdv.setId_pdv(pdv);
-				pecasPdv.setId_peca(peca);
+				
+				List<PecasDoPedido> listapdv = new ArrayList<PecasDoPedido>();
+				for(int i = 0; i<listaPeca.size();i++) {
+					
+					pecasPdv.setId_pdv(pdv);
+					pecasPdv.setId_peca(listaPeca.get(i));
+					System.out.println("pecasPdv for: "+pecasPdv.getId());
+					System.out.println("pecasPdv for: "+pecasPdv.getId_peca().getDescricao());
+					listapdv.add(pecasPdv);
+					System.out.println("listapdv for iuadsfiuefHUF: "+listapdv.get(i).getId_peca().getDescricao());
+					
+				}
+				
 				pdv.setStatusPV(stpv);
-				pdv.setPeca(listaPeca);
 				pdv.setCliente(cliente);
-				peca.adicionarPecasDoPedido(pecasPdv);
-				System.out.println("pdv lista: "+pdv.getPeca().size());
+				pdv.setPecaspdv(listapdv);				
+				for(int i = 0; i< pdv.getPecaspdv().size();i++) {
+					
+				System.out.println("pdv lista: "+pdv.getPecaspdv().get(i).getId_peca().getDescricao());
+				System.out.println("=======================");
+				System.out.println("listapdv: "+listapdv.get(i).getId_peca().getDescricao());
+				}
 				facade.inserirPedidoDeVenda(pdv);
+			
 				return "sucesso";
 			}
 		} catch (BusinessException e) {

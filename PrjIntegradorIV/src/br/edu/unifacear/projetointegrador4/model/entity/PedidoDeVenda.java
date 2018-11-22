@@ -25,8 +25,8 @@ public class PedidoDeVenda implements DAO{
 	private Long id;	
 	@ManyToOne
 	private Cliente cliente;
-	@OneToMany
-	private List<Peca> peca;
+	//@OneToMany
+	//private List<Peca> peca;
 	private Date data;
 	@ManyToOne
 	private StatusPV statusPV;
@@ -37,7 +37,7 @@ public class PedidoDeVenda implements DAO{
 	
 	public PedidoDeVenda() {
 		cliente = new Cliente();
-		peca = new ArrayList<Peca>();
+		//peca = new ArrayList<Peca>();
 		statusPV = new StatusPV();
 		
 		
@@ -49,7 +49,7 @@ public class PedidoDeVenda implements DAO{
 		super();
 		this.id = id;
 		this.cliente = cliente;
-		this.peca = peca;
+		//this.peca = peca;
 		this.data = data;
 		this.statusPV = statusPV;
 		this.status = status;
@@ -63,6 +63,25 @@ public class PedidoDeVenda implements DAO{
 	public String toString() {
 		return "PedidoDeVenda [id=" + id + ", data=" + data + ", status=" + status + "]";
 	}
+	
+	public void adicionarPecasDoPedido(PecasDoPedido pecasPdv) {			
+		pecasPdv.setId_pdv(this);		
+		this.pecaspdv.add(pecasPdv);		
+	}
+	public void removerPecasDoPedido(int index) {
+		PecasDoPedido pecasPdv = this.pecaspdv.get(index);
+		this.pecaspdv.remove(index);
+	}
+
+	public List<PecasDoPedido> getPecaspdv() {
+		return pecaspdv;
+	}
+
+
+	public void setPecaspdv(List<PecasDoPedido> pecasPdv2) {
+		this.pecaspdv = pecasPdv2;
+	}
+
 
 	@Override
 	public Long getId() {
@@ -89,6 +108,7 @@ public class PedidoDeVenda implements DAO{
 		this.cliente = cliente;
 	}
 
+	/*
 	public List<Peca> getPeca() {
 		return peca;
 	}
@@ -96,7 +116,7 @@ public class PedidoDeVenda implements DAO{
 	public void setPeca(List<Peca> peca) {
 		this.peca = peca;
 	}
-
+*/
 	public Date getData() {
 		return data;
 	}
