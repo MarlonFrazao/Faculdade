@@ -39,12 +39,14 @@ public class PedidoDeVenda implements DAO{
 		cliente = new Cliente();
 		//peca = new ArrayList<Peca>();
 		statusPV = new StatusPV();
+		pecaspdv = new ArrayList<PecasDoPedido>();
+		
 		
 		
 	}
 
 	
-	public PedidoDeVenda(Long id, Cliente cliente, List<Peca> peca, Date data, StatusPV statusPV, Boolean status,
+	public PedidoDeVenda(Long id, Cliente cliente, Date data, StatusPV statusPV, Boolean status,
 			List<PecasDoPedido> pecaspdv) {
 		super();
 		this.id = id;
@@ -64,21 +66,42 @@ public class PedidoDeVenda implements DAO{
 		return "PedidoDeVenda [id=" + id + ", data=" + data + ", status=" + status + "]";
 	}
 	
-	public void adicionarPecasDoPedido(PecasDoPedido pecasPdv) {			
-		pecasPdv.setId_pdv(this);		
-		this.pecaspdv.add(pecasPdv);		
+	public void adicionarPecasDoPedido(Peca peca) {			
+		PecasDoPedido pecasPdv = new PecasDoPedido();
+		pecasPdv.setId_peca(peca);		
+		this.pecaspdv.add(pecasPdv);
+		System.out.println("adicionar pecas do pedido entity: "+pecasPdv.getId_peca().getDescricao());
 	}
 	public void removerPecasDoPedido(int index) {
 		PecasDoPedido pecasPdv = this.pecaspdv.get(index);
 		this.pecaspdv.remove(index);
 	}
-
 	public List<PecasDoPedido> getPecaspdv() {
 		return pecaspdv;
 	}
-
+	public void setPecaspdv2(List<Peca> listaPeca) {
+		for(int i =0; i<listaPeca.size();i++) {
+			System.out.println("pecinhas boladas: "+listaPeca.get(i).getDescricao());
+			
+		}
+		PecasDoPedido pecasPdv = new PecasDoPedido();
+		for(int i=0; i< listaPeca.size();i++) {
+			pecasPdv.setId_peca(listaPeca.get(i));
+			System.out.println("set Prca 2: "+pecasPdv.getId_peca().getDescricao());
+			this.pecaspdv.add(pecasPdv);
+			System.out.println("lista de pecas que veio da bean: "+pecasPdv.getId_peca().getDescricao());
+		}
+		
+		for(int i =0; i< pecaspdv.size();i++) {
+			System.out.println("------------ "+pecaspdv.get(i).getId_peca().getDescricao()+" -----------");
+		}
+		
+	}
 
 	public void setPecaspdv(List<PecasDoPedido> pecasPdv2) {
+		for(int i = 0; i<pecasPdv2.size();i++) {
+			System.out.println("lista que vem da bean para entity: "+pecasPdv2.get(i).getId_peca().getDescricao());
+		}
 		this.pecaspdv = pecasPdv2;
 	}
 
@@ -132,5 +155,8 @@ public class PedidoDeVenda implements DAO{
 	public void setStatusPV(StatusPV statusPV) {
 		this.statusPV = statusPV;
 	}
+
+
+	
 	
 }
