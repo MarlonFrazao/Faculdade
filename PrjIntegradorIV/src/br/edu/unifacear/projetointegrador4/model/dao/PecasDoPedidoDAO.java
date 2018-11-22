@@ -27,4 +27,6 @@ public class PecasDoPedidoDAO extends DAOGenerico<PecasDoPedido>{
 		}
 		return lista;	
 	}
+		
+	
 }

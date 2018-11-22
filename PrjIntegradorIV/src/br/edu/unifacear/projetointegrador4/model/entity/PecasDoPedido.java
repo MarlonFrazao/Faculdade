@@ -15,12 +15,10 @@ public class PecasDoPedido implements DAO{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name = "id",unique=true, nullable = false)
 	private Long id;
 	@ManyToOne
 	@JoinColumn(name="peca_id", referencedColumnName = "id")
 	private Peca id_peca;
-	//@Id
 	@ManyToOne
 	@JoinColumn(name="pdv_id", referencedColumnName = "id")
 	private PedidoDeVenda id_pdv;

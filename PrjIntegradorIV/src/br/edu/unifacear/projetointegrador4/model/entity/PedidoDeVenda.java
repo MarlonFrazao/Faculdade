@@ -66,11 +66,11 @@ public class PedidoDeVenda implements DAO{
 		return "PedidoDeVenda [id=" + id + ", data=" + data + ", status=" + status + "]";
 	}
 	
-	public void adicionarPecasDoPedido(Peca peca) {			
-		PecasDoPedido pecasPdv = new PecasDoPedido();
-		pecasPdv.setId_peca(peca);		
-		this.pecaspdv.add(pecasPdv);
-		System.out.println("adicionar pecas do pedido entity: "+pecasPdv.getId_peca().getDescricao());
+	public void adicionarPecasDoPedido(PecasDoPedido pdv) {	
+		
+		pdv.setId_pdv(this);		
+		this.pecaspdv.add(pdv);
+		
 	}
 	public void removerPecasDoPedido(int index) {
 		PecasDoPedido pecasPdv = this.pecaspdv.get(index);

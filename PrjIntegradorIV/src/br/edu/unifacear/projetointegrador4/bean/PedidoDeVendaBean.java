@@ -102,10 +102,17 @@ public class PedidoDeVendaBean {
 				
 				facade.inserirPedidoDeVenda(pdv);
 				
+				
+				//peca.adicionarPecasDoPedido(pecasPdv);
+				//pdv.adicionarPecasDoPedido(pecasPdv);
+				
+			
+				
+				
 				for(int i = 0; i< listaPeca.size();i++) {
-				pecasPdv.setId_pdv(pdv);
-				pecasPdv.setId_peca(listaPeca.get(i));
-				pdvDAO.inserir(pecasPdv);
+					//peca.adicionarPecasDoPedido(pecasPdv);
+					//pdv.adicionarPecasDoPedido(pecasPdv);
+				
 				} 
 				
 				return "sucesso";

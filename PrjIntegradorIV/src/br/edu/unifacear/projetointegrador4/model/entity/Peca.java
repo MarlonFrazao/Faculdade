@@ -10,8 +10,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import br.edu.unifacear.projetointegrador4.model.dao.DAO;
 
@@ -53,7 +55,8 @@ public class Peca implements DAO{
 	
 	public void adicionarPecasDoPedido(PecasDoPedido pecasPdv) {			
 		pecasPdv.setId_peca(this);		
-		this.pecasPdv.add(pecasPdv);		
+		this.pecasPdv.add(pecasPdv);
+		System.out.println("this peca: "+this.getDescricao());
 	}
 	public void removerPecasDoPedido(int index) {
 		PecasDoPedido pecasPdv = this.pecasPdv.get(index);
