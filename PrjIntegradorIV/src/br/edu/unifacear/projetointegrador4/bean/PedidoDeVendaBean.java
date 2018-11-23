@@ -32,6 +32,7 @@ public class PedidoDeVendaBean {
 	private PecasDoPedido pecasPdv;
 	private PecasDoPedidoDAO pdvDAO;
 	
+	
 
 	public PedidoDeVendaBean() {
 		System.out.println("entrou PDV Bean");
@@ -41,12 +42,14 @@ public class PedidoDeVendaBean {
 		pecasPdv = new PecasDoPedido();
 		pdv= new PedidoDeVenda();
 		pdvDAO = new PecasDoPedidoDAO();
+		
 		//listaPeca = new ArrayList<Peca>();
 		//peca = new Peca();
 		cliente = new Cliente();
 		//listarPecas();
 		//pBean = new PecaBean();
 		//peca = pBean.getPeca();
+		listarPedidos();
 		System.out.println("Loucura Loucura Loucura: "+peca.getDescricao()); 
 		System.out.println("Tamanho lista: "+listaPeca.size());
 		for(int i =0; i<listaPeca.size();i++) {
@@ -55,16 +58,22 @@ public class PedidoDeVendaBean {
 		
 	}
 
-	public PedidoDeVendaBean(PedidoDeVenda pdv, List<PedidoDeVenda> listapdv, List<Peca> listaPeca, Peca peca) {
+
+	
+	public PedidoDeVendaBean(PedidoDeVenda pdv, List<PedidoDeVenda> listapdv, FacadeBusiness facade, Cliente cliente,
+			StatusPV stpv, PecasDoPedido pecasPdv, PecasDoPedidoDAO pdvDAO) {
 		super();
 		this.pdv = pdv;
 		this.listapdv = listapdv;
-		this.listaPeca = listaPeca;
-		this.peca = peca;
-		
-		
+		this.facade = facade;
+		this.cliente = cliente;
+		this.stpv = stpv;
+		this.pecasPdv = pecasPdv;
+		this.pdvDAO = pdvDAO;
 	}
-	
+
+
+
 	public PecasDoPedido getPecasPdv() {
 		return pecasPdv;
 	}
@@ -87,7 +96,7 @@ public class PedidoDeVendaBean {
 	public String adicionarCarrinho() {
 		Long aux = new CadastroClienteBean().getLogin().getId();
 		List<StatusPV> auxSPV = new ArrayList<StatusPV>();
-		
+		List<PecasDoPedido> pecasPedido = new ArrayList<PecasDoPedido>();
 		try {
 			setCliente(facade.obterCliente(aux));
 			System.out.println("cliente addCarrinho: "+this.cliente.getNome());
@@ -96,24 +105,21 @@ public class PedidoDeVendaBean {
 			System.out.println("Status do pedido: "+stpv.getDescricao());
 			if ((listaPeca.size() != 0 || listaPeca != null)&&(cliente.getId()!=null)) {
 			
-				//pdv.setPecaspdv2(listaPeca);
+				
 				pdv.setStatusPV(stpv);
 				pdv.setCliente(cliente);
+				for(int i = 0; i< listaPeca.size();i++) {
+					pecasPdv.setId_pdv(pdv);
+					pecasPdv.setId_peca(listaPeca.get(i));
+					pecasPedido.add(i,pecasPdv);
+					pecasPdv = new PecasDoPedido();
+				} 
+				
+				pdv.setPecaspdv(pecasPedido);
 				
 				facade.inserirPedidoDeVenda(pdv);
-				
-				
-				//peca.adicionarPecasDoPedido(pecasPdv);
-				//pdv.adicionarPecasDoPedido(pecasPdv);
-				
 			
 				
-				
-				for(int i = 0; i< listaPeca.size();i++) {
-					//peca.adicionarPecasDoPedido(pecasPdv);
-					//pdv.adicionarPecasDoPedido(pecasPdv);
-				
-				} 
 				
 				return "sucesso";
 			}
@@ -146,11 +152,38 @@ public class PedidoDeVendaBean {
 		}
 		return "addPeca";
 	}
+	
+	public void listarPedidos() {
+		Long aux = new CadastroClienteBean().getLogin().getId();
+		
+		try {
+			if (aux != null ) {
+				System.out.println("Trouxe pedido de venda");
+				listapdv = facade.obterPedidoDeCliente(aux);
+				System.out.println("listar pedido: "+listapdv.get(0).getId());
+				if(listapdv.size()!=0 || listapdv != null) {
+					
+				}else {
+					
+					listapdv = new ArrayList<PedidoDeVenda>();
+					
+				}
+			} else {
+				pdv = new PedidoDeVenda();
+				
+			}
+			
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 
 	public void listarPecas() {
 		Long aux = new CadastroClienteBean().getLogin().getId();
 		try {
-			if (aux != null) {
+			if (aux != null ) {
 				System.out.println("Trouxe pedido de venda");
 				pdv = facade.obterPedidoDeVenda(aux);
 			} else {
@@ -211,5 +244,6 @@ public class PedidoDeVendaBean {
 	public void setListaPeca(List<Peca> listaPeca) {
 		this.listaPeca = listaPeca;
 	}
+	
 
 }

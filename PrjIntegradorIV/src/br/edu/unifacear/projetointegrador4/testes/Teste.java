@@ -4,8 +4,17 @@ package br.edu.unifacear.projetointegrador4.testes;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.edu.unifacear.projetointegrador4.model.dao.CargoDAO;
-import br.edu.unifacear.projetointegrador4.model.entity.Cargo;
+import br.edu.unifacear.projetointegrador4.model.business.BusinessException;
+import br.edu.unifacear.projetointegrador4.model.business.FacadeBusiness;
+import br.edu.unifacear.projetointegrador4.model.dao.ClienteDAO;
+import br.edu.unifacear.projetointegrador4.model.dao.PecaDAO;
+import br.edu.unifacear.projetointegrador4.model.dao.PecasDoPedidoDAO;
+import br.edu.unifacear.projetointegrador4.model.dao.PedidoDeVendaDAO;
+import br.edu.unifacear.projetointegrador4.model.entity.Cliente;
+import br.edu.unifacear.projetointegrador4.model.entity.Peca;
+import br.edu.unifacear.projetointegrador4.model.entity.PecasDoPedido;
+import br.edu.unifacear.projetointegrador4.model.entity.PedidoDeVenda;
+import br.edu.unifacear.projetointegrador4.model.entity.StatusPV;
 
 
 
@@ -228,6 +237,75 @@ public class Teste {
 		for(int i = 0; i< cargo.size(); i++) {
 			System.out.println("Descricao cargo: "+cargo.get(i).getDescricao());
 		}
+		*/
+		
+		/*
+		PedidoDeVenda pdv = new PedidoDeVenda();
+		PedidoDeVendaDAO dao = new PedidoDeVendaDAO();
+		PecasDoPedido pecas = new PecasDoPedido();
+		PecasDoPedido pecas1 = new PecasDoPedido();
+		PecasDoPedidoDAO pecasDAO = new PecasDoPedidoDAO();
+		
+		List<PecasDoPedido> listaPecasPdv = new ArrayList<PecasDoPedido>();
+		Peca p = new Peca();
+		Peca p1 = new Peca();
+		List<Cliente> cli = new ArrayList<Cliente>();
+		ClienteDAO cliDAO = new ClienteDAO();
+		List<PedidoDeVenda> listaPdv = new ArrayList<PedidoDeVenda>();
+		List<Peca> listaPeca = new ArrayList<Peca>();
+		List<StatusPV> stpv = new ArrayList<StatusPV>();
+		FacadeBusiness facade = new FacadeBusiness();
+		PecaDAO pDAO = new PecaDAO();
+		listaPeca = pDAO.obter("Farol");
+		for(int i = 0; i< listaPeca.size();i++) {
+			System.out.println("lista de pecas: "+listaPeca.get(i).getDescricao());
+		}
+		cli = cliDAO.obter("999999", (long) 123456);
+		System.out.println("cliente: "+cli.get(0).getNome());
+		
+		try {
+			stpv = facade.obterStatusPV("Pedido Realizado");
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		p = listaPeca.get(0);
+		p1 = listaPeca.get(1);
+		pdv.setCliente(cli.get(0));
+		pdv.setStatus(true);
+		pdv.setStatusPV(stpv.get(0));
+		
+		pecas.setId_pdv(pdv);
+		pecas.setId_peca(p);
+		listaPecasPdv.add(0,pecas);
+		//pecasDAO.inserir(pecas);
+		//pecasDAO = new PecasDoPedidoDAO()
+		//listaPecasPdv.add(pecas);
+		// pdv.adicionarPecasDoPedido(pecas,p);
+		 pecas1.setId_pdv(pdv);
+		 pecas1.setId_peca(p1);
+		// pecasDAO.inserir(pecas);
+		 listaPecasPdv.add(1,pecas1);
+		 //pdv.adicionarPecasDoPedido(pecas,p1);
+		 
+		 for(int i = 0; i< listaPecasPdv.size();i++) {
+			 
+				System.out.println("lista de pecas do pedido-----:"+listaPecasPdv.get(i).getId_peca().getDescricao());
+			}
+		 
+		// pdv.adicionarPecasDoPedido(pecas);
+		pdv.setPecaspdv(listaPecasPdv);
+		System.out.println("tamnho lista de peças pdv: "+pdv.getPecaspdv().size());
+		for(int i = 0; i< pdv.getPecaspdv().size();i++) {
+			System.out.println("for pdv pecas:"+pdv.getPecaspdv().get(i).getId_peca().getDescricao());
+		}
+		try {
+			facade.inserirPedidoDeVenda(pdv);
+		} catch (BusinessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		*/
 
 	}

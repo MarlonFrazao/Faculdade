@@ -14,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import br.edu.unifacear.projetointegrador4.model.dao.DAO;
+import br.edu.unifacear.projetointegrador4.model.dao.PecasDoPedidoDAO;
 
 
 
@@ -33,7 +34,7 @@ public class PedidoDeVenda implements DAO{
 	private Boolean status;
 	
 	@OneToMany(mappedBy = "id_pdv", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
-	private List<PecasDoPedido> pecaspdv;
+	private List<PecasDoPedido> pecaspdv = new ArrayList<PecasDoPedido>();
 	
 	public PedidoDeVenda() {
 		cliente = new Cliente();
@@ -66,10 +67,17 @@ public class PedidoDeVenda implements DAO{
 		return "PedidoDeVenda [id=" + id + ", data=" + data + ", status=" + status + "]";
 	}
 	
-	public void adicionarPecasDoPedido(PecasDoPedido pdv) {	
-		
-		pdv.setId_pdv(this);		
+	public void adicionarPecasDoPedido(PecasDoPedido pdv, Peca peca) {	
+		PecasDoPedidoDAO pdvDAO = new PecasDoPedidoDAO();
+		pdv.setId_pdv(this);
+		System.out.println("id pdv: "+pdv.getId_pdv().getId());
+		pdv.setId_peca(peca);
+		//pdvDAO.inserir(pdv);
 		this.pecaspdv.add(pdv);
+		pdv = new PecasDoPedido();
+		for (int i = 0; i< pecaspdv.size();i++) {
+			System.out.println("adicionarPecasDoPedido em pdv: "+pecaspdv.get(i).getId_peca().getDescricao());
+		}
 		
 	}
 	public void removerPecasDoPedido(int index) {
@@ -155,6 +163,7 @@ public class PedidoDeVenda implements DAO{
 	public void setStatusPV(StatusPV statusPV) {
 		this.statusPV = statusPV;
 	}
+	
 
 
 	

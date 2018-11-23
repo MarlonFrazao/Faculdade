@@ -295,7 +295,7 @@ public class FacadeBusiness {
 		new PedidoDeVendaBusiness().atualizar(pdv);
 	}
 
-	public List<PedidoDeVenda> listarPedidoDeVenda() {
+	public List<PedidoDeVenda> listarPedidoDeVenda()  throws BusinessException {
 		return new PedidoDeVendaBusiness().listar();
 	}
 

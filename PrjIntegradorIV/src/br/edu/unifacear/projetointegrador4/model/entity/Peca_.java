@@ -6,11 +6,12 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="Dali", date="2018-11-22T20:01:01.322-0200")
+@Generated(value="Dali", date="2018-11-23T10:59:21.636-0200")
 @StaticMetamodel(Peca.class)
 public class Peca_ {
 	public static volatile SingularAttribute<Peca, Long> id;
 	public static volatile SingularAttribute<Peca, String> descricao;
+	public static volatile ListAttribute<Peca, PecasDoPedido> pecasPdv;
 	public static volatile ListAttribute<Peca, Peca_Modelo> peca_modelo;
 	public static volatile SingularAttribute<Peca, Aplicacao> aplicacao;
 	public static volatile SingularAttribute<Peca, Long> qtdeTotal;
@@ -21,5 +22,4 @@ public class Peca_ {
 	public static volatile SingularAttribute<Peca, Long> numVisualizacao;
 	public static volatile SingularAttribute<Peca, String> foto;
 	public static volatile SingularAttribute<Peca, Boolean> status;
-	public static volatile ListAttribute<Peca, PecasDoPedido> pecasPdv;
 }

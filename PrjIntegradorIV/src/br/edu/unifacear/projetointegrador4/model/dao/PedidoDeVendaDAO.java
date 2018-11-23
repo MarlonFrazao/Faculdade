@@ -30,7 +30,7 @@ public class PedidoDeVendaDAO extends DAOGenerico<PedidoDeVenda>{
 		//Cliente c = new Cliente();
 		//c = daoc.obter(Cliente.class, id_cliente);
 		try {
-			lista = em.createQuery("from PedidoDeVenda Where id_cliente ="+id_cliente).getResultList();
+			lista = em.createQuery("from PedidoDeVenda Where cliente_id ="+id_cliente).getResultList();
 		}catch(Exception e) {
 			System.err.println(e);
 		}finally {

@@ -14,7 +14,7 @@ public class PecasDoPedido implements DAO{
 
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@ManyToOne
 	@JoinColumn(name="peca_id", referencedColumnName = "id")
@@ -30,7 +30,8 @@ public class PecasDoPedido implements DAO{
 		return "PecasDoPedido [id=" + id + ", id_peca=" + id_peca + ", id_pdv=" + id_pdv + "]";
 	}
 	public PecasDoPedido() {
-		super();
+		id_peca = new Peca();
+		id_pdv = new PedidoDeVenda();
 	}
 	public PecasDoPedido(Long id, Peca id_peca, PedidoDeVenda id_pdv) {
 		super();
@@ -63,4 +64,5 @@ public class PecasDoPedido implements DAO{
 		// TODO Auto-generated method stub
 		
 	}
+	
 }

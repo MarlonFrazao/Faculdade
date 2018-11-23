@@ -167,10 +167,11 @@
 
 						</p:panelGrid>
 					</p:panel>
-					<p:outputLabel></p:outputLabel>
-					<p:panel header="Meus Pedidos">
-						<p:panelGrid columns="1">
-
+					
+					<p:panel id="pedidos" header="Meus Pedidos" value="#{pedidoVendaBean.listarPedidos}" var="pedido">
+						<p:panelGrid columns="2">
+							<h:outputText value="Pedido de compra nº "/>
+							<h:inputText value="#{pedido.id}"/>
 						</p:panelGrid>
 					</p:panel>
 				</p:panelGrid>

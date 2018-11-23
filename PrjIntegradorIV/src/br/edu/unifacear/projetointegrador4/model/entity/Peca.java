@@ -205,6 +205,15 @@ public class Peca implements DAO{
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
+
+	public List<PecasDoPedido> getPecasPdv() {
+		return pecasPdv;
+	}
+
+	public void setPecasPdv(List<PecasDoPedido> pecasPdv) {
+		this.pecasPdv = pecasPdv;
+	}
+	
 	
 	
 }
