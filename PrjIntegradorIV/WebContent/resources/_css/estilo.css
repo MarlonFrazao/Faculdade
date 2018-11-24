@@ -2,35 +2,39 @@
 
 .corpo {
 	
-	background-color: #fdce60;
+	background-color: #feefcb!important;
+	font-family: Arial !important;
 }
 
 .logo {
-	width: 120px;
-	height: 120px;
+	width: 120px !important;
+	height: 120px !important;
 }
 
 /*formatação do menu*/
 .menu {
-	position: absolute;
-	left: 85pt;
-	top: 10pt;
-	right: 10pt;
+	position: absolute !important;
+	left: 85pt !important;
+	top: 10pt !important;
+	right: 10pt !important;
 }
 
 .barra-do-menu {
-	background-color: #02fdfd;
-	height: 90px;
+	/*background-color: #02fdfd !important;*/
+	height: 90px !important;
+	font-family: Arial !important;
 }
 
 .botoes-menu {
 	height: 70px !important;
-	background-color: rgba(0,0,0,0)
+	background-color: rgba(0,0,0,0) !important;
+	color: #16c0d3!important;
+	font-family: Arial !important;
 }
 
 .botoes-menu:hover {
-	background-color: #06a6b3;
-	color: #ffffff;
-	text-decoration: underline;
-	transition: 1s;
+	background-color: #06a6b3 !important;
+	color: #ff8000!important;
+	text-decoration: underline !important;
+	transition: 1s !important;
 }
