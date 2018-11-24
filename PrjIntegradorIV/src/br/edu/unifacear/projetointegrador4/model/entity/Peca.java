@@ -41,18 +41,20 @@ public class Peca implements DAO{
 	private Long numVisualizacao;
 	private String foto;
 	private Boolean status;
+	private Double valorPeca;
+	
+	
 	
 	
 	
 	
 	@Override
 	public String toString() {
-		return "Peca [id=" + id + ", descricao=" + descricao + ", qtdeTotal=" + qtdeTotal + ", adicional=" + adicional
-				+ ", dataCadastro=" + dataCadastro + ", totalAvaliacao=" + totalAvaliacao + ", mediaAvaliacao="
-				+ mediaAvaliacao + ", numVisualizacao=" + numVisualizacao + ", foto=" + foto + ", status=" + status
-				+ "]";
+		return "Peca [id=" + id + ", descricao=" + descricao + ", aplicacao=" + aplicacao + ", qtdeTotal=" + qtdeTotal
+				+ ", adicional=" + adicional + ", dataCadastro=" + dataCadastro + ", totalAvaliacao=" + totalAvaliacao
+				+ ", mediaAvaliacao=" + mediaAvaliacao + ", numVisualizacao=" + numVisualizacao + ", foto=" + foto
+				+ ", status=" + status + ", valorPeca=" + valorPeca + "]";
 	}
-	
 	public void adicionarPecasDoPedido(PecasDoPedido pecasPdv) {			
 		pecasPdv.setId_peca(this);		
 		this.pecasPdv.add(pecasPdv);
@@ -80,11 +82,9 @@ public class Peca implements DAO{
 		
 	}
 
-	
-
 	public Peca(Long id, String descricao, List<PecasDoPedido> pecasPdv, List<Peca_Modelo> peca_modelo,
 			Aplicacao aplicacao, Long qtdeTotal, String adicional, Date dataCadastro, Long totalAvaliacao,
-			Float mediaAvaliacao, Long numVisualizacao, String foto, Boolean status) {
+			Float mediaAvaliacao, Long numVisualizacao, String foto, Boolean status, Double valorPeca) {
 		super();
 		this.id = id;
 		this.descricao = descricao;
@@ -99,8 +99,16 @@ public class Peca implements DAO{
 		this.numVisualizacao = numVisualizacao;
 		this.foto = foto;
 		this.status = status;
+		this.valorPeca = valorPeca;
 	}
-
+	
+	
+	public Double getValorPeca() {
+		return valorPeca;
+	}
+	public void setValorPeca(Double valorPeca) {
+		this.valorPeca = valorPeca;
+	}
 	@Override
 	public Long getId() {
 		return id;

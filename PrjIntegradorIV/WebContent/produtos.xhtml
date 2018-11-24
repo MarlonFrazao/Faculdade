@@ -20,7 +20,7 @@
 				icon="ui-icon-search" styleClass="botoes-menu"/>
 			<p:menuitem url="/carrinho.jsf" value="Carrinho" icon="ui-icon-cart" 
 				styleClass="botoes-menu"/>
-			<p:menuitem url="/cadastrousuario.jsf" value="Novo Usuario"
+			<p:menuitem url="/cadastrousuario.jsf" value="Realize seu cadastro"
 				icon="ui-icon-plus" styleClass="botoes-menu"/>
 			<p:menuitem url="/cliente.jsf" value="Perfil" icon="ui-icon-person" 
 				styleClass="botoes-menu"/>
@@ -43,7 +43,7 @@
 					<p:growl id="growl" sticky="true" showDetail="true" life="300" />
 
 					<p:dialog header="Logout" widgetVar="logout" resizable="false">
-
+						<h:outputLabel value="Deseja realmente Sair ?" />
 						<f:facet name="footer">
 							<p:commandButton id="logout" value="Realizar Logout"
 								action="#{cadastroClienteBean.logout}"
@@ -57,11 +57,11 @@
 
 					<p:dialog header="Login" widgetVar="dlg" resizable="false">
 						<h:panelGrid columns="2" cellpadding="5">
-							<h:outputLabel for="cpf" value="CPF:" style="color:#ffffff" />
+							<h:outputLabel for="cpf" value="CPF:"/>
 							<p:inputText id="cpf" value="#{cadastroClienteBean.cliente.cpf}"
 								required="true" label="cpf" />
 
-							<h:outputLabel for="senha" value="Senha:" style="color:#ffffff" />
+							<h:outputLabel for="senha" value="Senha:"/>
 							<p:password id="senha"
 								value="#{cadastroClienteBean.cliente.senha}" required="true"
 								label="senha" />
@@ -154,7 +154,7 @@
 						style="width: 200px; hight: 200px; position:relative; left:25%; rigth:25%;" />
 
 					<h:outputText value="#{peca.descricao}"
-						style="position:relative; left:38%; color:#ffffff" />
+						style="position:relative; left:38%" />
 
 					<p:commandLink update=":form2:detalhes"
 						oncomplete="PF('popUpDetalhes').show()" title="Informações">

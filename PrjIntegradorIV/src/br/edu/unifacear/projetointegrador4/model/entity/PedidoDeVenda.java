@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import br.edu.unifacear.projetointegrador4.bean.CadastroClienteBean;
 import br.edu.unifacear.projetointegrador4.model.dao.DAO;
 import br.edu.unifacear.projetointegrador4.model.dao.PecasDoPedidoDAO;
 
@@ -32,6 +33,7 @@ public class PedidoDeVenda implements DAO{
 	@ManyToOne
 	private StatusPV statusPV;
 	private Boolean status;
+	private Double totalPedido;
 	
 	@OneToMany(mappedBy = "id_pdv", cascade = CascadeType.ALL, orphanRemoval = false, fetch = FetchType.LAZY)
 	private List<PecasDoPedido> pecaspdv = new ArrayList<PecasDoPedido>();
@@ -44,29 +46,29 @@ public class PedidoDeVenda implements DAO{
 		
 		
 		
+		
 	}
 
-	
-	public PedidoDeVenda(Long id, Cliente cliente, Date data, StatusPV statusPV, Boolean status,
+	public PedidoDeVenda(Long id, Cliente cliente, Date data, StatusPV statusPV, Boolean status, Double totalPedido,
 			List<PecasDoPedido> pecaspdv) {
 		super();
 		this.id = id;
 		this.cliente = cliente;
-		//this.peca = peca;
 		this.data = data;
 		this.statusPV = statusPV;
 		this.status = status;
+		this.totalPedido = totalPedido;
 		this.pecaspdv = pecaspdv;
 	}
 
-
-
+	
 
 	@Override
 	public String toString() {
-		return "PedidoDeVenda [id=" + id + ", data=" + data + ", status=" + status + "]";
+		return "PedidoDeVenda [id=" + id + ", cliente=" + cliente + ", data=" + data + ", statusPV=" + statusPV
+				+ ", status=" + status + ", totalPedido=" + totalPedido + "]";
 	}
-	
+
 	public void adicionarPecasDoPedido(PecasDoPedido pdv, Peca peca) {	
 		PecasDoPedidoDAO pdvDAO = new PecasDoPedidoDAO();
 		pdv.setId_pdv(this);
@@ -113,6 +115,14 @@ public class PedidoDeVenda implements DAO{
 		this.pecaspdv = pecasPdv2;
 	}
 
+	
+	public Double getTotalPedido() {
+		return totalPedido;
+	}
+
+	public void setTotalPedido(Double totalPedido) {
+		this.totalPedido = totalPedido;
+	}
 
 	@Override
 	public Long getId() {

@@ -46,7 +46,7 @@
 					<p:growl id="growl" sticky="true" showDetail="true" life="300" />
 
 					<p:dialog header="Logout" widgetVar="logout" resizable="false">
-
+						<h:outputLabel value="Deseja realmente Sair ?" />
 						<f:facet name="footer">
 							<p:commandButton id="logout" value="Realizar Logout"
 								action="#{cadastroClienteBean.logout}"
@@ -62,11 +62,11 @@
 
 					<p:dialog header="Login" widgetVar="dlg" resizable="false">
 						<h:panelGrid columns="2" cellpadding="5">
-							<h:outputLabel for="cpf" value="CPF:" style="color:#ffffff" />
+							<h:outputLabel for="cpf" value="CPF:"/>
 							<p:inputText id="cpf" value="#{cadastroClienteBean.cliente.cpf}"
 								required="true" label="cpf" />
 
-							<h:outputLabel for="senha" value="Senha:" style="color:#ffffff" />
+							<h:outputLabel for="senha" value="Senha:"/>
 							<p:password id="senha"
 								value="#{cadastroClienteBean.cliente.senha}" required="true"
 								label="senha" />

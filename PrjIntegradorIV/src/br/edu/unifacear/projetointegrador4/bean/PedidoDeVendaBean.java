@@ -23,7 +23,7 @@ import br.edu.unifacear.projetointegrador4.model.entity.StatusPV;
 @RequestScoped
 public class PedidoDeVendaBean {
 	private static PedidoDeVenda pdv;
-	private List<PedidoDeVenda> listapdv;
+	private static List<PedidoDeVenda> listapdv;
 	private static List<Peca> listaPeca = new ArrayList<Peca>();
 	private static Peca peca = new Peca();
 	private FacadeBusiness facade;
@@ -31,6 +31,7 @@ public class PedidoDeVendaBean {
 	private StatusPV stpv;
 	private PecasDoPedido pecasPdv;
 	private PecasDoPedidoDAO pdvDAO;
+	private static Double total;
 	
 	
 
@@ -49,7 +50,9 @@ public class PedidoDeVendaBean {
 		//listarPecas();
 		//pBean = new PecaBean();
 		//peca = pBean.getPeca();
+		new CadastroClienteBean().getLogin();
 		listarPedidos();
+		
 		System.out.println("Loucura Loucura Loucura: "+peca.getDescricao()); 
 		System.out.println("Tamanho lista: "+listaPeca.size());
 		for(int i =0; i<listaPeca.size();i++) {
@@ -60,16 +63,28 @@ public class PedidoDeVendaBean {
 
 
 	
-	public PedidoDeVendaBean(PedidoDeVenda pdv, List<PedidoDeVenda> listapdv, FacadeBusiness facade, Cliente cliente,
-			StatusPV stpv, PecasDoPedido pecasPdv, PecasDoPedidoDAO pdvDAO) {
+	
+
+
+	
+	public PedidoDeVendaBean(FacadeBusiness facade, Cliente cliente, StatusPV stpv, PecasDoPedido pecasPdv,
+			PecasDoPedidoDAO pdvDAO, Double total) {
 		super();
-		this.pdv = pdv;
-		this.listapdv = listapdv;
 		this.facade = facade;
 		this.cliente = cliente;
 		this.stpv = stpv;
 		this.pecasPdv = pecasPdv;
 		this.pdvDAO = pdvDAO;
+		this.total = total;
+	}
+	public Double getTotal() {
+		return total;
+	}
+
+
+
+	public void setTotal(Double total) {
+		this.total = total;
 	}
 
 
@@ -115,6 +130,7 @@ public class PedidoDeVendaBean {
 					pecasPdv = new PecasDoPedido();
 				} 
 				
+				pdv.setTotalPedido(total);
 				pdv.setPecaspdv(pecasPedido);
 				
 				facade.inserirPedidoDeVenda(pdv);
@@ -142,7 +158,16 @@ public class PedidoDeVendaBean {
 			listaPeca.add(peca);
 			System.out.println("ADD peca: "+peca.getId());
 			for(int i =0; i<listaPeca.size();i++) {
+				System.out.println("iiiiiii---"+i);
+				Double totalsoma;
+				totalsoma = listaPeca.get(i).getQtdeTotal()*listaPeca.get(i).getValorPeca();
+				if(i==0) {
+					total=totalsoma;
+				}else {
+				total = totalsoma+total;
+				}
 				System.out.println("Lista de Pecas em addPeca: "+listaPeca.get(i).getId());
+				System.out.println("Total do pedido: "+total);
 			}
 		
 		} else {
@@ -162,9 +187,11 @@ public class PedidoDeVendaBean {
 				listapdv = facade.obterPedidoDeCliente(aux);
 				System.out.println("listar pedido: "+listapdv.get(0).getId());
 				if(listapdv.size()!=0 || listapdv != null) {
-					
+					for(int i =0; i<listapdv.size();i++) {
+					System.out.println("lisyou pedidos: "+listapdv.get(i).getId());
+					}
 				}else {
-					
+					System.out.println("lista pedido vazia");
 					listapdv = new ArrayList<PedidoDeVenda>();
 					
 				}

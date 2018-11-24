@@ -30,7 +30,7 @@ import br.edu.unifacear.projetointegrador4.model.entity.Peca;
 import br.edu.unifacear.projetointegrador4.model.entity.Peca_Modelo;
 
 @ManagedBean(name = "pecaBean")
-@ViewScoped
+@RequestScoped
 public class PecaBean {
 
 	private static Peca peca;
@@ -76,6 +76,7 @@ public class PecaBean {
 		diretorioDestino = "C:\\Users\\osval\\Desktop\\Projeto IV\\Faculdade\\PrjIntegradorIV\\WebContent\\_imagen\\";
 		
 		this.listar();
+		new CadastroClienteBean().getLogin();
 		
 	}
 

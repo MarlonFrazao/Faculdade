@@ -36,6 +36,7 @@ public class CadastroClienteBean {
 		facTel = new FacadeTelefone();
 		confirmaSenha = null;
 		telefone = new ArrayList<Telefone>();
+
 		
 	}
 	
@@ -126,9 +127,12 @@ public class CadastroClienteBean {
 	public String retornaFalha() {
 		return "falha";
 	}
-	public void logout() {
+	public String logout() {
 		login = new Cliente();
 		telefone2 = new Telefone();
+		new PedidoDeVendaBean().setListapdv(null);
+		System.out.println("Entrou Logout --------------------");
+		return "logout";
 		
 	}
 	public void login() {
@@ -150,6 +154,7 @@ public class CadastroClienteBean {
 
 				System.out.println("valida senha login retornou login");
 				retornaLogin();
+				new PedidoDeVendaBean().listarPedidos();
 				
 				// return "login";
 			} else {
