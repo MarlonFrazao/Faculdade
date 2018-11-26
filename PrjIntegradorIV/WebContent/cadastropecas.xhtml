@@ -5,26 +5,27 @@
 	xmlns:p="http://primefaces.org/ui" lang="pt-br">
 <h:head>
 	<title>Cadastro de Peças</title>
-	
+
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<h:outputStylesheet library="_css" name="estilo.css" />
 </h:head>
 <h:body styleClass="corpo">
 
-	<a href="homefaces.jsf"><p:graphicImage url="_imagen/logo1.png" styleClass="logo" /></a>
+	<a href="homefaces.jsf"><p:graphicImage url="_imagen/logo1.png"
+			styleClass="logo" /></a>
 	<h:form styleClass="menu">
 		<p:growl id="messages" showDetail="true" sticky="true" />
 		<p:menubar styleClass="barra-do-menu">
-			<p:menuitem url="/homefaces.jsf" value="Home" icon="ui-icon-home" 
-				styleClass="botoes-menu"/>
+			<p:menuitem url="/homefaces.jsf" value="Home" icon="ui-icon-home"
+				styleClass="botoes-menu" />
 			<p:menuitem url="/produtos.jsf" value="Produtos"
-				icon="ui-icon-search" styleClass="botoes-menu"/>
-			<p:menuitem url="/carrinho.jsf" value="Carrinho" icon="ui-icon-cart" 
-				styleClass="botoes-menu"/>
+				icon="ui-icon-search" styleClass="botoes-menu" />
+			<p:menuitem url="/carrinho.jsf" value="Carrinho" icon="ui-icon-cart"
+				styleClass="botoes-menu" />
 			<p:menuitem url="/cadastrousuario.jsf" value="Realize seu cadastro"
-				icon="ui-icon-plus" styleClass="botoes-menu"/>
-			<p:menuitem url="/cliente.jsf" value="Perfil" icon="ui-icon-person" 
-				styleClass="botoes-menu"/>
+				icon="ui-icon-plus" styleClass="botoes-menu" />
+			<p:menuitem url="/cliente.jsf" value="Perfil" icon="ui-icon-person"
+				styleClass="botoes-menu" />
 			<f:facet name="options">
 				<h:form>
 					<p:outputLabel id="logado"
@@ -32,8 +33,8 @@
 						style="padding:10px" update="logado" />
 					<h:outputLink value="javascript:void(0)"
 						onclick="PF('dlg').show();" title="login">
-						<p:commandButton id="btn" value="Login" icon="ui-icon-extlink" 
-							styleClass="botoes-menu"/>
+						<p:commandButton id="btn" value="Login" icon="ui-icon-extlink"
+							styleClass="botoes-menu" />
 					</h:outputLink>
 					<h:outputLink value="javascript:void(0)"
 						onclick="PF('logout').show();" title="login">
@@ -59,11 +60,11 @@
 
 					<p:dialog header="Login" widgetVar="dlg" resizable="false">
 						<h:panelGrid columns="2" cellpadding="5">
-							<h:outputLabel for="cpf" value="CPF:"/>
+							<h:outputLabel for="cpf" value="CPF:" />
 							<p:inputText id="cpf" value="#{cadastroClienteBean.cliente.cpf}"
 								required="true" label="cpf" />
 
-							<h:outputLabel for="senha" value="Senha:"/>
+							<h:outputLabel for="senha" value="Senha:" />
 							<p:password id="senha"
 								value="#{cadastroClienteBean.cliente.senha}" required="true"
 								label="senha" />
@@ -95,14 +96,11 @@
 	</h:form>
 
 
-	<div class="title" align="center">
-		<span class="title_icon"></span>
-		<h1>Cadastro de pecas</h1>
-	</div>
+	
 
 	<div class="feat_prod_box_details" align="center">
 
-		<p:panel header="INFORME OS DADOS DA PEÇA">
+		<p:panel header="CADASTRO DE PEÇAS - INFORME OS DADOS DA PEÇA">
 			<h:form id="cadastro">
 				<p:growl id="salvoSucesso" sticky="true" showDetail="true"
 					life="300" />
@@ -134,7 +132,8 @@
 						<f:selectItems value="#{pecaBean.aplicacoes}" var="aplicacao"
 							itemValue="#{aplicacao.id}" itemLabel="#{aplicacao.descricao}" />
 					</p:selectOneMenu>
-					<p:commandButton value="Novo" onclick="PF('popCadastroApli').show()" />
+					<p:commandButton value="Novo"
+						onclick="PF('popCadastroApli').show()" />
 
 
 					<h:outputText value="Adicional:" for="adicional" />
@@ -147,8 +146,8 @@
 					<p:inputText id="qtdeTotal" label="qtdTotal"
 						value="#{pecaBean.peca.qtdeTotal}" size="35" required="true" />
 					<h:outputText value="" for="" />
-					
-					<h:outputText value="Valor Unitário" for="valorUni"/>
+
+					<h:outputText value="Valor Unitário" for="valorUni" />
 					<p:inputText id="valorUni" label="valorUni"
 						value="#{pecaBean.peca.valorPeca}" size="35" required="true" />
 					<h:outputText value="" for="" />
@@ -236,7 +235,117 @@
 
 		</p:panel>
 	</div>
+	<hr />
+	
+<h:form id="form">	
+	<p:panel>
+		
 
+		<p:dataTable id="listaPeca" value="#{pecaBean.pecas}" var="pecas" rows="12" paginator="true" 
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="6,12,16">
+			
+			<f:facet name="header">
+			<p:outputLabel value="Lista de Peças" />
+		</f:facet>
+		
+		<p:column headerText="Foto">
+			<h:graphicImage value="_imagen/#{pecas.foto}"
+						style="width: 25%; hight: 25%; padding:5px;" />
+		</p:column>		
+		
+		<p:column sortBy="#{pecas.id}" headerText="ID da Peça"
+			update="this">
+			<h:outputText value="#{pecas.id}" />
+		</p:column>
+		<p:column sortBy="#{pecas.descricao}" headerText="Nome da Peça"
+			update="this">
+			<h:outputText value="#{pecas.descricao}" />
+		</p:column>
+		
+		<p:column  headerText="Valor da Peça"
+			update="this">
+			<h:outputText value="#{pecas.valorPeca}" />
+		</p:column>
+		
+		<p:column  headerText="Adicional da Peça"
+			update="this">
+			<h:outputText value="#{pecas.adicional}" />
+		</p:column>
+		
+		
+		
+		
+		<p:column  headerText="Aplicação da Peça"
+			update="this">
+			<h:outputText value="#{pecas.aplicacao.descricao}" />
+		</p:column>
+		
+			<p:column headerText="Detalhes da Peça">
+			<p:commandLink update=":form:detalhes"
+					oncomplete="PF('popUpDetalhes').show()" title="Informações">
+					<h:outputText styleClass="ui-icon ui-icon-search"
+						style="margin:0 auto;" />
+					<f:setPropertyActionListener value="#{peca}"
+						target="#{pecaBean.peca}" />
+				</p:commandLink>
+		
+		</p:column>
+
+		</p:dataTable>
+		
+	</p:panel>
+	
+	<p:dialog header="Informações da peça" widgetVar="popUpDetalhes"
+			global="true" showEffect="fade" hideEffect="fade" resizable="false">
+			<p:outputPanel id="detalhes" style="text-align:center;">
+
+				<p:panelGrid columns="2" rendered="#{not empty pecaBean.pecas}"
+					columnClasses="label,value">
+					
+					<h:outputText value="Em implementação" />
+					<!-- 
+					<f:facet name="header">
+						
+						<h:graphicImage value="_imagen/#{pecaBean.peca.foto}"
+							style="width:30%; hight:30%;" />
+
+					</f:facet>
+
+					<h:outputText value="Id:" />
+					<h:outputText value="#{pecaBean.peca.id}" />
+
+					<h:outputText value="Descrição" />
+					<h:outputText value="#{pecaBean.peca.descricao}" />
+
+
+					<h:outputText value="Adicional" />
+					<h:outputText value="#{pecaBean.peca.adicional}" />
+
+
+					<h:outputText value="Aplicação" />
+					<h:outputText value="#{pecaBean.peca.aplicacao.descricao}" />
+
+					<h:outputText value="Quantidade:" />
+					<p:spinner id="basic" value="#{pecaBean.peca.qtdeTotal}" />
+					 -->
+					<f:facet name="footer">
+
+						<p:commandButton id="addCarrinho" value="Atualizar Peça"
+							
+							oncomplete="PF('popUpDetalhes').hide()" target="#{pecaBean.peca}" />
+
+						<p:commandButton value="Cancelar" type="button"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+							onclick="PF('popUpDetalhes').hide()" />
+
+					</f:facet>
+
+				</p:panelGrid>
+
+			</p:outputPanel>
+		</p:dialog>
+</h:form>
 
 	<hr />
 	<p:panel header="Contato">
