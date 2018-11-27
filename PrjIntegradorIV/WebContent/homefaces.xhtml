@@ -36,6 +36,8 @@
 				icon="ui-icon-plus" styleClass="botoes-menu" />
 			<p:menuitem url="/cliente.jsf" value="Perfil" icon="ui-icon-person"
 				styleClass="botoes-menu" />
+				
+			<p:menuitem url="/cadastropecas.jsf" style="display:none" value="Área do administrador" styleClass="botoes-menu" />
 
 			<f:facet name="options">
 				<h:form>
@@ -73,12 +75,12 @@
 					<p:dialog header="Login" widgetVar="dlg" resizable="false" >
 						<h:panelGrid columns="2" cellpadding="5" >
 							<h:outputLabel for="cpf" value="CPF:"/>
-							<p:inputText id="cpf" value="#{cadastroClienteBean.cliente.cpf}"
+							<p:inputText id="cpf" value="#{cadastroClienteBean.cpf}"
 								required="true" label="cpf" />
 
 							<h:outputLabel for="senha" value="Senha:"/>
 							<p:password id="senha"
-								value="#{cadastroClienteBean.cliente.senha}" required="true"
+								value="#{cadastroClienteBean.senha}" required="true"
 								label="senha" />
 
 							<f:facet name="footer" style="align: center">
@@ -90,7 +92,7 @@
 					</p:dialog>
 				</h:form>
 
-				<script type="text/javascript">
+<script type="text/javascript">
     function handleLoginRequest(xhr, status, args) {
         if(args.validationFailed || !args.loggedIn) {
             PF('dlg').jq.effect("shake", {times:5}, 100);

@@ -23,6 +23,7 @@ public class FabricaDAO {
 	}
 	
 	public static FuncionarioDAO criarFuncionarioDAO() {
+		
 		return new FuncionarioDAO();
 	}
 	

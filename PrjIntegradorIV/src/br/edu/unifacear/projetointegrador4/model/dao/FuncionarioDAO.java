@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import br.edu.unifacear.projetointegrador4.connection.ConnectionFactory;
+import br.edu.unifacear.projetointegrador4.model.entity.Cliente;
 import br.edu.unifacear.projetointegrador4.model.entity.Funcionario;
 import br.edu.unifacear.projetointegrador4.model.entity.Montadora;
 
@@ -36,10 +37,32 @@ public class FuncionarioDAO extends DAOGenerico<Funcionario> {
 			lista = em.createQuery("from Funcionario").getResultList();// busca uma lista
 			
 		}catch (Exception e) {
+			
 			System.err.println(e);//imprimindo o erro no console
 		}finally{
 			em.close();//fechando a conexão
 		}
+		
+		return lista;	
+	}
+	public List<Funcionario> obter(String cpf, Long senha) {
+		EntityManager em = new ConnectionFactory().getConnection();
+		List<Funcionario> lista = new ArrayList<Funcionario>();
+		Funcionario funcionario = null;
+		
+		try {
+			
+			lista = em.createQuery("from Funcionario WHERE cpf="+cpf+" and senha ="+senha+"").getResultList();// busca uma lista
+			
+		}catch (Exception e) {
+			
+			System.err.println(e);//imprimindo o erro no console
+		}finally{
+			
+			em.close();//fechando a conexão
+		}
+		
+		
 		return lista;	
 	}
 

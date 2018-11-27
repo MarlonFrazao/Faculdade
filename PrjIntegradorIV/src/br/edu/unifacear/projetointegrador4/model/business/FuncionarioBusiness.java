@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.edu.unifacear.projetointegrador4.model.dao.FabricaDAO;
 import br.edu.unifacear.projetointegrador4.model.entity.Cargo;
+import br.edu.unifacear.projetointegrador4.model.entity.Cliente;
 import br.edu.unifacear.projetointegrador4.model.entity.Funcionario;
 
 public class FuncionarioBusiness {
@@ -189,5 +190,19 @@ public void inserir(Funcionario f) throws BusinessException {
 		f.setStatus(true);
 		
 		FabricaDAO.criarFuncionarioDAO().atualizar(f);
+	}
+	
+	public List<Funcionario> obter(String cpf, Long senha) throws BusinessException  {
+		
+		List<Funcionario> funcionario = new ArrayList<Funcionario>();
+		if(cpf == null) {
+			throw new BusinessException("Erro: Necessário informar CPF."); 
+		}else if(senha == null) {
+			throw new BusinessException("Erro: Necessário informar SENHA."); 
+		}else {
+			
+			funcionario = FabricaDAO.criarFuncionarioDAO().obter(cpf, senha);
+		}
+		return funcionario;
 	}
 }

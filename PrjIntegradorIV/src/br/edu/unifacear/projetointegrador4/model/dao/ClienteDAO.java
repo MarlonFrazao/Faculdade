@@ -33,11 +33,14 @@ public class ClienteDAO extends DAOGenerico<Cliente>{
 			cliente = em.createQuery("from Cliente WHERE cpf="+cpf+" and senha ="+senha+"").getResultList();
 			
 		}catch(Exception e) {
+			
 			System.err.println(e);
 		}finally {
+			
 			em.close();
 		}
-		System.out.println("Cliente nome DAO: "+cliente.get(0).getNome()+" CPF: "+cliente.get(0).getCpf());
+		
+		
 		return cliente;
 	}
 	

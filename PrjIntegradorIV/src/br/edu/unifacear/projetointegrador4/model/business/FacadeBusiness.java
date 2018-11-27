@@ -228,6 +228,10 @@ public class FacadeBusiness {
 	public void excluirFuncionario(Funcionario f) throws BusinessException {
 		new FuncionarioBusiness().excluir(f);
 	}
+	public List<Funcionario> obterFuncionario(String cpf, Long senha) throws BusinessException  {
+		
+		return new FuncionarioBusiness().obter(cpf, senha);
+	}
 
 	// Modelo
 	public void inserirModelo(Modelo m) throws BusinessException {
