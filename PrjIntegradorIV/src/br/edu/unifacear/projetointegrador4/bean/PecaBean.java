@@ -33,7 +33,7 @@ import br.edu.unifacear.projetointegrador4.model.entity.Peca_Modelo;
 @RequestScoped
 public class PecaBean {
 
-	private static Peca peca;
+	private static Peca peca= new Peca();
 	private FacadeBusiness facade;
 	private List<Peca> pecas;
 	private Aplicacao aplicacao;
@@ -53,9 +53,9 @@ public class PecaBean {
 	
 	public PecaBean() {
 
-		System.out.println("Entrou bean");
+		System.out.println("Entrou bean Peça ----------------------++++++++++++++++++++++");
 
-		peca = new Peca();
+		//peca = new Peca();
 		facade = new FacadeBusiness();
 		pecas = new ArrayList<Peca>();
 		aplicacao = new Aplicacao();
@@ -78,6 +78,7 @@ public class PecaBean {
 		this.listar();
 		new CadastroClienteBean().getLogin();
 		
+		
 	}
 
 	public void listarMod() {
@@ -99,7 +100,8 @@ public class PecaBean {
 	}
 	
 	public String addCarrinho() {
-		pBean.addPeca(getPeca());
+		System.out.println("Peça nullllll------- "+getPeca().getDescricao());
+		pBean.addPeca(this.peca);
 		return "nada";
 	}
 	public PedidoDeVendaBean getpBean() {

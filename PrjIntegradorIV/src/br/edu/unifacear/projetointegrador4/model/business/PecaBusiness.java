@@ -8,6 +8,7 @@ import br.edu.unifacear.projetointegrador4.model.entity.Aplicacao;
 import br.edu.unifacear.projetointegrador4.model.entity.Modelo;
 import br.edu.unifacear.projetointegrador4.model.entity.Peca;
 import br.edu.unifacear.projetointegrador4.model.entity.Peca_Modelo;
+import br.edu.unifacear.projetointegrador4.model.entity.PedidoDeVenda;
 
 public class PecaBusiness {
 	public void inserir(Peca p) throws BusinessException {
@@ -44,6 +45,10 @@ public class PecaBusiness {
 	public List<Peca> listar() {
 		
 		return FabricaDAO.criarPecaDAO().listar();
+	}
+	public List<Peca> listar(PedidoDeVenda pdv) {
+		
+		return FabricaDAO.criarPecaDAO().obterListaPecaPedido(pdv);
 	}
 	
 	public List<Peca> listar(Boolean status) {

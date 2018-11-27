@@ -273,6 +273,9 @@ public class FacadeBusiness {
 	public List<Peca> listarPeca() throws BusinessException {
 		return new PecaBusiness().listar();
 	}
+	public List<Peca> obterListaPecaPedido(PedidoDeVenda pdv) throws BusinessException {
+		return new PecaBusiness().listar();
+	}
 
 	public Peca obterPeca(Long id) throws BusinessException {
 		return new PecaBusiness().obter(id);

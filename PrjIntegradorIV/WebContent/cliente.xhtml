@@ -28,8 +28,7 @@
 				styleClass="botoes-menu" />
 			<f:facet name="options">
 				<h:form>
-					<p:outputLabel id="logado"
-						value="Bem vindo #{cadastroClienteBean.login.nome}"
+					<p:outputLabel id="logado" value="Bem vindo #{loginBean.nome}"
 						style="padding:10px" />
 					<h:outputLink value="javascript:void(0)"
 						onclick="PF('dlg').show();" title="login">
@@ -44,11 +43,12 @@
 
 					<p:growl id="growl" sticky="true" showDetail="true" life="300" />
 
-					<p:dialog header="Logout" widgetVar="logout" resizable="false">
+					<p:dialog header="Logout" widgetVar="logout" resizable="false"
+						style="margin:0;">
 						<h:outputLabel value="Deseja realmente Sair ?" />
 						<f:facet name="footer">
 							<p:commandButton id="logout" value="Realizar Logout"
-								action="#{cadastroClienteBean.logout}"
+								actionListner="#{loginBean.logout}"
 								oncomplete="PF('logout').hide()" update="logado cadastro" />
 							<p:commandButton value="Cancelar" type="button"
 								styleClass="ui-confirmdialog-no" icon="ui-icon-close"
@@ -57,20 +57,20 @@
 						</f:facet>
 					</p:dialog>
 
-					<p:dialog header="Login" widgetVar="dlg" resizable="false">
+					<p:dialog header="Login" widgetVar="dlg" resizable="false"
+						style="margin:0;">
 						<h:panelGrid columns="2" cellpadding="5">
 							<h:outputLabel for="cpf" value="CPF:" />
-							<p:inputText id="cpf" value="#{cadastroClienteBean.cliente.cpf}"
-								required="true" label="cpf" />
+							<p:inputText id="cpf" value="#{loginBean.cpf}" required="true"
+								label="cpf" />
 
 							<h:outputLabel for="senha" value="Senha:" />
-							<p:password id="senha"
-								value="#{cadastroClienteBean.cliente.senha}" required="true"
+							<p:password id="senha" value="#{loginBean.senha}" required="true"
 								label="senha" />
 
 							<f:facet name="footer" style="align: center">
 								<p:commandButton value="Login" update="growl logado cadastro"
-									action="#{cadastroClienteBean.login}"
+									action="#{loginBean.login}"
 									oncomplete="handleLoginRequest(xhr, status, args)" />
 							</f:facet>
 						</h:panelGrid>
@@ -168,37 +168,94 @@
 
 						</p:panelGrid>
 					</p:panel>
-
-					<p:panel>
+					
+					<p:panel id="tabela">
 						<f:facet name="header">
 							<p:outputLabel value="Meus Pedidos" />
 						</f:facet>
-						<p:dataTable id="pedidos" value="#{pedidoVendaBean.listapdv}" var="pedidos" rows="12" paginator="true" 
-			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-			rowsPerPageTemplate="6,12,16">
-							
-							<p:column sortBy="#{listapdv.data}" headerText="Data do Pedido" update="this">
+						
+						<p:dataTable id="pedidos" value="#{pedidoVendaBean.listapdv}"
+							var="pedidos" rows="12" paginator="true"
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							rowsPerPageTemplate="6,12,16">
+
+							<p:column sortBy="#{listapdv.data}" headerText="Data do Pedido"
+								update="tabela">
 								<h:outputText value="Aqui vai a data" />
 							</p:column>
-							
-							<p:column sortBy="#{listapdv.id}" headerText="Numero do Pedido" update="this">
+
+							<p:column sortBy="#{listapdv.id}" headerText="Numero do Pedido"
+								update="tabela">
 								<h:outputText value="#{pedidos.id}" />
 							</p:column>
-							
-							<p:column sortBy="#{listapdv.valorPedido}" headerText="Valor Do Pedido" update="this">
+
+							<p:column sortBy="#{listapdv.valorPedido}"
+								headerText="Valor Do Pedido" update="tabela">
 								<h:outputText value="#{pedidos.totalPedido}" />
 							</p:column>
-							
-							<p:column sortBy="#{listapdv.statusPV}" headerText="Situação do Pedido" update="this">
+
+							<p:column sortBy="#{listapdv.statusPV}"
+								headerText="Situação do Pedido" update="tabela">
 								<h:outputText value="#{pedidos.statusPV.descricao}" />
 							</p:column>
+
+							<p:column headerText="Vizualizar Pedido">
+
+								<p:commandLink oncomplete="PF('pecasPedido').show()"
+									title="Informações" update=":listaPecaPedido">
+									<h:outputText styleClass="ui-icon ui-icon-search"
+										style="margin:0 auto;" />
+									<f:setPropertyActionListener value="#{pecas}"
+										target="#{pedidoVendaBean.pdv}" />
+								</p:commandLink>
+							</p:column>
 						</p:dataTable>
+							
 					</p:panel>
 
 				</p:panelGrid>
 			</h:form>
 
 		</p:panel>
+
+		<p:dialog header="Pecas do Pedido" widgetVar="pecasPedido"
+			resizable="false" style="margin:0;" >
+			<p:dataTable id="listaPecaPedido"
+				value="#{pedidoVendaBean.pedidoEspecifico}" var="pecasPedido">
+
+				<f:facet name="header">
+					<p:outputLabel value="Lista de Peças" />
+				</f:facet>
+
+				<p:column headerText="Foto">
+					<h:graphicImage value="_imagen/#{pecasPedido.foto}"
+						style="width: 25%; hight: 25%; padding:5px;" />
+				</p:column>
+
+				<p:column sortBy="#{pecasPedido.id}" headerText="ID da Peça"
+					update="this">
+					<h:outputText value="#{pecasPedido.id}" />
+				</p:column>
+				<p:column sortBy="#{pecasPedido.descricao}"
+					headerText="Nome da Peça" update="this">
+					<h:outputText value="#{pecasPedido.descricao}" />
+				</p:column>
+
+				<p:column headerText="Valor da Peça" update="this">
+					<h:outputText value="#{pecasPedido.valorPeca}" />
+				</p:column>
+
+				<p:column headerText="Adicional da Peça" update="this">
+					<h:outputText value="#{pecasPedido.adicional}" />
+				</p:column>
+
+				<p:column headerText="Aplicação da Peça" update="this">
+					<h:outputText value="#{pecas.aplicacao.descricao}" />
+				</p:column>
+
+
+			</p:dataTable>
+		</p:dialog>
 	</div>
 
 	<hr />

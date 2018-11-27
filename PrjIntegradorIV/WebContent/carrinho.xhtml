@@ -28,7 +28,7 @@
 			<f:facet name="options">
 				<h:form>
 					<p:outputLabel id="logado"
-						value="Bem vindo #{cadastroClienteBean.login.nome}"
+						value="Bem vindo #{loginBean.nome}"
 						style="padding:10px" update="logado" />
 					<h:outputLink value="javascript:void(0)"
 						onclick="PF('dlg').show();" title="login">
@@ -43,11 +43,11 @@
 
 					<p:growl id="growl" sticky="true" showDetail="true" life="300" />
 
-					<p:dialog header="Logout" widgetVar="logout" resizable="false">
+					<p:dialog header="Logout" widgetVar="logout" resizable="false" style="margin:0;">
 						<h:outputLabel value="Deseja realmente Sair ?" />
 						<f:facet name="footer">
 							<p:commandButton id="logout" value="Realizar Logout" 
-								action="#{cadastroClienteBean.logout}"
+								actionListner="#{loginBean.logout}"
 								oncomplete="PF('logout').hide()" update="logado " />
 							<p:commandButton value="Cancelar" type="button"
 								styleClass="ui-confirmdialog-no" icon="ui-icon-close"
@@ -58,20 +58,20 @@
 
 
 
-					<p:dialog header="Login" widgetVar="dlg" resizable="false">
+					<p:dialog header="Login" widgetVar="dlg" resizable="false" style="margin:0;">
 						<h:panelGrid columns="2" cellpadding="5">
 							<h:outputLabel for="cpf" value="CPF:"/>
-							<p:inputText id="cpf" value="#{cadastroClienteBean.cliente.cpf}"
+							<p:inputText id="cpf" value="#{loginBean.cpf}"
 								required="true" label="cpf" />
 
 							<h:outputLabel for="senha" value="Senha:"/>
 							<p:password id="senha"
-								value="#{cadastroClienteBean.cliente.senha}" required="true"
+								value="#{loginBean.senha}" required="true"
 								label="senha" />
 
 							<f:facet name="footer" style="align: center">
 								<p:commandButton value="Login" update="growl"
-									action="#{cadastroClienteBean.login}"
+									action="#{loginBean.login}"
 									oncomplete="handleLoginRequest(xhr, status, args)" />
 							</f:facet>
 						</h:panelGrid>

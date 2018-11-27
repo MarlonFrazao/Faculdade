@@ -32,6 +32,7 @@ public class PedidoDeVendaBean {
 	private PecasDoPedido pecasPdv;
 	private PecasDoPedidoDAO pdvDAO;
 	private static Double total;
+	private List<Peca> pedidoEspecifico;
 	
 	
 
@@ -43,7 +44,7 @@ public class PedidoDeVendaBean {
 		pecasPdv = new PecasDoPedido();
 		pdv= new PedidoDeVenda();
 		pdvDAO = new PecasDoPedidoDAO();
-		
+		pedidoEspecifico = new ArrayList<Peca>();
 		//listaPeca = new ArrayList<Peca>();
 		//peca = new Peca();
 		cliente = new Cliente();
@@ -53,6 +54,7 @@ public class PedidoDeVendaBean {
 		new CadastroClienteBean().getLogin();
 		listarPedidos();
 		
+		
 		System.out.println("Loucura Loucura Loucura: "+peca.getDescricao()); 
 		System.out.println("Tamanho lista: "+listaPeca.size());
 		for(int i =0; i<listaPeca.size();i++) {
@@ -61,12 +63,6 @@ public class PedidoDeVendaBean {
 		
 	}
 
-
-	
-	
-
-
-	
 	public PedidoDeVendaBean(FacadeBusiness facade, Cliente cliente, StatusPV stpv, PecasDoPedido pecasPdv,
 			PecasDoPedidoDAO pdvDAO, Double total) {
 		super();
@@ -221,7 +217,21 @@ public class PedidoDeVendaBean {
 			e.printStackTrace();
 		}
 	}
+	public String listarPecasPedido() throws BusinessException {
+		System.out.println("Entrou no dialog lista das peças");
+		pedidoEspecifico = facade.obterListaPecaPedido(getPdv());
+		
+		return "pecas";
+	}
 	
+	public List<Peca> getPedidoEspecifico() {
+		return pedidoEspecifico;
+	}
+
+	public void setPedidoEspecifico(List<Peca> pedidoEspecifico) {
+		this.pedidoEspecifico = pedidoEspecifico;
+	}
+
 	public StatusPV getStpv() {
 		return stpv;
 	}
@@ -249,6 +259,7 @@ public class PedidoDeVendaBean {
 	}
 
 	public PedidoDeVenda getPdv() {
+		System.out.println("Get PDV: ");
 		return pdv;
 	}
 

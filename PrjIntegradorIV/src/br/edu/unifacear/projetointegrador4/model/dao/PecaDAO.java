@@ -8,6 +8,7 @@ import br.edu.unifacear.projetointegrador4.connection.ConnectionFactory;
 import br.edu.unifacear.projetointegrador4.model.entity.Aplicacao;
 import br.edu.unifacear.projetointegrador4.model.entity.Modelo;
 import br.edu.unifacear.projetointegrador4.model.entity.Peca;
+import br.edu.unifacear.projetointegrador4.model.entity.PedidoDeVenda;
 
 public class PecaDAO extends DAOGenerico<Peca> {
 	
@@ -75,5 +76,21 @@ public class PecaDAO extends DAOGenerico<Peca> {
 		}
 		return lista;
 	}
+	
+	public List<Peca> obterListaPecaPedido(PedidoDeVenda pdv) {
+		EntityManager em = new ConnectionFactory().getConnection();
+		List<Peca> lista = null;
+
+		try {
+			lista = em.createQuery("from PecasDoPedido WHERE pdv_id =" + pdv.getId()).getResultList();
+		} catch (Exception e) {
+			System.err.println(e);
+		} finally {
+			em.close();
+		}
+		return lista;
+	}
+	
+	
 
 }

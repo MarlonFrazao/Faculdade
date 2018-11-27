@@ -27,7 +27,7 @@
 			<f:facet name="options">
 				<h:form>
 					<p:outputLabel id="logado"
-						value="Bem vindo #{cadastroClienteBean.login.nome}"
+						value="Bem vindo #{loginBean.nome}"
 						style="padding:10px" update="logado" />
 					<h:outputLink value="javascript:void(0)"
 						onclick="PF('dlg').show(); " title="login">
@@ -46,7 +46,7 @@
 						<h:outputLabel value="Deseja realmente Sair ?" />
 						<f:facet name="footer">
 							<p:commandButton id="logout" value="Realizar Logout"
-								action="#{cadastroClienteBean.logout}"
+								action="#{loginBean.logout}"
 								oncomplete="PF('logout').hide()" update="logado" />
 							<p:commandButton value="Cancelar" type="button"
 								styleClass="ui-confirmdialog-no" icon="ui-icon-close"
@@ -58,12 +58,12 @@
 					<p:dialog header="Login" widgetVar="dlg" resizable="false">
 						<h:panelGrid columns="2" cellpadding="5">
 							<h:outputLabel for="cpf" value="CPF:"/>
-							<p:inputText id="cpf" value="#{cadastroClienteBean.cliente.cpf}"
+							<p:inputText id="cpf" value="#{cadastroClienteBean.cpf}"
 								required="true" label="cpf" />
 
 							<h:outputLabel for="senha" value="Senha:"/>
 							<p:password id="senha"
-								value="#{cadastroClienteBean.cliente.senha}" required="true"
+								value="#{cadastroClienteBean.senha}" required="true"
 								label="senha" />
 
 							<f:facet name="footer" style="align: center">
@@ -148,7 +148,7 @@
 			<p:panel header="#{peca.descricao}" style="text-align:center;"
 				id="pnlProdutos">
 				<h:panelGrid columns="1"
-					style="width:100%; position:relative; min-height:40%;">
+					style="width:100%; position:relative; min-height:50%;" >
 					<!-- A extensão das fotos está sendo salva no banco de dados -->
 					<h:graphicImage value="_imagen/#{peca.foto}"
 						style="width: 200px; hight: 200px; position:relative; left:25%; rigth:25%;" />
@@ -158,8 +158,8 @@
 
 					<p:commandLink update=":form2:detalhes"
 						oncomplete="PF('popUpDetalhes').show()" title="Informações">
-						<h:outputText styleClass="ui-icon ui-icon-search"
-							style="margin:0 auto;" />
+						<h:graphicImage value="_imagen/carrinho.jpg"
+							style="width:15%; hight:15%; margin:0 auto;" />
 						<f:setPropertyActionListener value="#{peca}"
 							target="#{pecaBean.peca}" />
 					</p:commandLink>
