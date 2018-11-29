@@ -80,6 +80,8 @@ public class PecaBean {
 		
 		
 	}
+	
+	
 
 	public void listarMod() {
 		try {
@@ -169,6 +171,7 @@ public class PecaBean {
 	}
 
 	public void setPeca(Peca peca) {
+		System.out.println("PecaBean setPeca: "+peca.getDescricao());
 		this.peca = peca;
 	}
 	

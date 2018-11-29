@@ -16,20 +16,20 @@
 	<h:form styleClass="menu">
 		<p:growl id="messages" showDetail="true" sticky="true" />
 		<p:menubar styleClass="barra-do-menu">
-			<p:menuitem url="/homefaces.jsf" value="Home" icon="ui-icon-home"
+			<p:menuitem url="/homefaces2.jsf" value="Home" icon="ui-icon-home"
 				styleClass="botoes-menu" />
-			<p:menuitem url="/produtos.jsf" value="Produtos"
+			<p:menuitem url="/produtos2.jsf" value="Produtos"
 				icon="ui-icon-search" styleClass="botoes-menu" />
-			<p:menuitem url="/carrinho.jsf" value="Carrinho" icon="ui-icon-cart"
-				styleClass="botoes-menu" />
-			<p:menuitem url="/cadastrousuario.jsf" value="Realize seu cadastro"
-				icon="ui-icon-plus" styleClass="botoes-menu" />
-			<p:menuitem url="/cliente.jsf" value="Perfil" icon="ui-icon-person"
-				styleClass="botoes-menu" />
+			<p:menuitem url="/funcionarios.jsf" value="Administrar Funcionários"
+				icon="ui-icon-person" styleClass="botoes-menu" />
+			<p:menuitem url="/cadastropecas.jsf" value="Cadastro de Peças"
+				icon="ui-icon-engine" styleClass="botoes-menu" />
+			<p:menuitem url="/pedidos.jsf" value="Administrar Pedido de Compra"
+				icon="ui-icon-cart" styleClass="botoes-menu" />
+
 			<f:facet name="options">
 				<h:form>
-					<p:outputLabel id="logado"
-						value="Bem vindo #{loginBean.nome}"
+					<p:outputLabel id="logado" value="Bem vindo #{loginBean.nome}"
 						style="padding:10px" update="logado" />
 					<h:outputLink value="javascript:void(0)"
 						onclick="PF('dlg').show();" title="login">
@@ -44,12 +44,13 @@
 
 					<p:growl id="growl" sticky="true" showDetail="true" life="300" />
 
-					<p:dialog header="Logout" widgetVar="logout" resizable="false" style="margin:0;">
+					<p:dialog header="Logout" widgetVar="logout" resizable="false"
+						style="margin:0;">
 						<h:outputLabel value="Deseja realmente Sair ?" />
 						<f:facet name="footer">
 							<p:commandButton id="logout" value="Realizar Logout"
-								action="#{loginBean.logout}"
-								oncomplete="PF('logout').hide()" update="logado" />
+								action="#{loginBean.logout}" oncomplete="PF('logout').hide()"
+								update="logado" />
 							<p:commandButton value="Cancelar" type="button"
 								styleClass="ui-confirmdialog-no" icon="ui-icon-close"
 								onclick="PF('logout').hide()" />
@@ -58,15 +59,15 @@
 					</p:dialog>
 
 
-					<p:dialog header="Login" widgetVar="dlg" resizable="false" style="margin:0;">
+					<p:dialog header="Login" widgetVar="dlg" resizable="false"
+						style="margin:0;">
 						<h:panelGrid columns="2" cellpadding="5">
 							<h:outputLabel for="cpf" value="CPF:" />
-							<p:inputText id="cpf" value="#{loginBean.cpf}"
-								required="true" label="cpf" />
+							<p:inputText id="cpf" value="#{loginBean.cpf}" required="true"
+								label="cpf" />
 
 							<h:outputLabel for="senha" value="Senha:" />
-							<p:password id="senha"
-								value="#{loginBean.senha}" required="true"
+							<p:password id="senha" value="#{loginBean.senha}" required="true"
 								label="senha" />
 
 							<f:facet name="footer" style="align: center">
@@ -96,7 +97,7 @@
 	</h:form>
 
 
-	
+
 
 	<div class="feat_prod_box_details" align="center">
 
@@ -163,7 +164,8 @@
 
 					<h:outputText value="" for="" />
 					<h:commandButton id="botao" value="Salvar"
-						action="#{pecaBean.inserir}" update="messages panelGrid" styleClass="botoes-menu" />
+						action="#{pecaBean.inserir}" update="messages panelGrid"
+						styleClass="botoes-menu" />
 
 					<h:outputText value="" for="" />
 
@@ -205,7 +207,8 @@
 
 						<h:outputText value="" for="" />
 						<h:commandButton id="botaoModelo" value="Salvar"
-							action="#{modeloBean.inserir}" update="combomodelo cadastroMod" styleClass="botoes-menu" />
+							action="#{modeloBean.inserir}" update="combomodelo cadastroMod"
+							styleClass="botoes-menu" />
 
 					</p:panelGrid>
 				</h:form>
@@ -236,75 +239,65 @@
 		</p:panel>
 	</div>
 	<hr />
-	
-<h:form id="form">	
-	<p:panel>
-		
 
-		<p:dataTable id="listaPeca" value="#{pecaBean.pecas}" var="pecas" rows="12" paginator="true" 
-			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-			rowsPerPageTemplate="6,12,16">
-			
-			<f:facet name="header">
-			<p:outputLabel value="Lista de Peças" />
-		</f:facet>
-		
-		<p:column headerText="Foto">
-			<h:graphicImage value="_imagen/#{pecas.foto}"
+	<h:form id="form3">
+		<p:panel>
+
+			<!-- Em Value do comandlink-> setPropertActionListner precisa ter o mesmo nome dessa var -->
+			<p:dataTable id="listaPeca" value="#{pecaBean.pecas}" var="peca"
+				rows="12" paginator="true"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="6,12,16">
+
+				<f:facet name="header">
+					<p:outputLabel value="Lista de Peças" />
+				</f:facet>
+
+				<p:column headerText="Foto">
+					<h:graphicImage value="_imagen/#{peca.foto}"
 						style="width: 25%; hight: 25%; padding:5px;" />
-		</p:column>		
-		
-		<p:column sortBy="#{pecas.id}" headerText="ID da Peça"
-			update="this">
-			<h:outputText value="#{pecas.id}" />
-		</p:column>
-		<p:column sortBy="#{pecas.descricao}" headerText="Nome da Peça"
-			update="this">
-			<h:outputText value="#{pecas.descricao}" />
-		</p:column>
-		
-		<p:column  headerText="Valor da Peça"
-			update="this">
-			<h:outputText value="#{pecas.valorPeca}" />
-		</p:column>
-		
-		<p:column  headerText="Adicional da Peça"
-			update="this">
-			<h:outputText value="#{pecas.adicional}" />
-		</p:column>
-		
-		
-		
-		
-		<p:column  headerText="Aplicação da Peça"
-			update="this">
-			<h:outputText value="#{pecas.aplicacao.descricao}" />
-		</p:column>
-		
-			<p:column headerText="Detalhes da Peça">
-			<p:commandLink update=":form:detalhes"
-					oncomplete="PF('popUpDetalhes').show()" title="Informações">
-					<h:outputText styleClass="ui-icon ui-icon-search"
-						style="margin:0 auto;" />
-					<f:setPropertyActionListener value="#{peca}"
-						target="#{pecaBean.peca}" />
-				</p:commandLink>
-		
-		</p:column>
+				</p:column>
 
-		</p:dataTable>
+				<p:column sortBy="#{peca.id}" headerText="ID da Peça" update="this">
+					<h:outputText value="#{peca.id}" />
+				</p:column>
+				<p:column sortBy="#{peca.descricao}" headerText="Nome da Peça"
+					update="this">
+					<h:outputText value="#{peca.descricao}" />
+				</p:column>
+
+				<p:column headerText="Valor da Peça" update="this">
+					<h:outputText value="R$ #{peca.valorPeca}" />
+				</p:column>
+
+				<p:column headerText="Adicional da Peça" update="this">
+					<h:outputText value="#{peca.adicional}" />
+				</p:column>
+				<p:column headerText="Aplicação da Peça" update="this">
+					<h:outputText value="#{peca.aplicacao.descricao}" />
+				</p:column>
+
+				<p:column headerText="Detalhes da Peça">
+					<p:commandLink update=":form3:detalhes"
+						oncomplete="PF('popUpDetalhes').show()" title="Informações">
+						<h:outputText styleClass="ui-icon ui-icon-search"
+							style="margin:0 auto;" />
+						<f:setPropertyActionListener value="#{peca}"
+						target="#{pecaBean.peca}" />
+					</p:commandLink>
+
+				</p:column>
+
+			</p:dataTable>
+
 		
-	</p:panel>
-	
-	<p:dialog header="Informações da peça" widgetVar="popUpDetalhes"
+
+		<p:dialog header="Informações da peça" widgetVar="popUpDetalhes"
 			global="true" showEffect="fade" hideEffect="fade" resizable="false">
 			<p:outputPanel id="detalhes" style="text-align:center;">
 
 				<p:panelGrid columns="2" rendered="#{not empty pecaBean.pecas}"
 					columnClasses="label,value">
-					
-					<h:outputText value="Em implementação" />
-					<!-- 
 					<f:facet name="header">
 						
 						<h:graphicImage value="_imagen/#{pecaBean.peca.foto}"
@@ -328,11 +321,10 @@
 
 					<h:outputText value="Quantidade:" />
 					<p:spinner id="basic" value="#{pecaBean.peca.qtdeTotal}" />
-					 -->
+					 
 					<f:facet name="footer">
 
-						<p:commandButton id="addCarrinho" value="Atualizar Peça"
-							
+						<p:commandButton id="atualizarPeca" value="Atualizar Peça"
 							oncomplete="PF('popUpDetalhes').hide()" target="#{pecaBean.peca}" />
 
 						<p:commandButton value="Cancelar" type="button"
@@ -345,7 +337,8 @@
 
 			</p:outputPanel>
 		</p:dialog>
-</h:form>
+		</p:panel>
+	</h:form>
 
 	<hr />
 	<p:panel header="Contato">

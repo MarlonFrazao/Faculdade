@@ -49,7 +49,7 @@
 						<f:facet name="footer">
 							<p:commandButton id="logout" value="Realizar Logout"
 								actionListner="#{loginBean.logout}"
-								oncomplete="PF('logout').hide()" update="logado cadastro" />
+								oncomplete="PF('logout').hide()" update="logado cadastro form4" />
 							<p:commandButton value="Cancelar" type="button"
 								styleClass="ui-confirmdialog-no" icon="ui-icon-close"
 								onclick="PF('logout').hide()" />
@@ -69,7 +69,8 @@
 								label="senha" />
 
 							<f:facet name="footer" style="align: center">
-								<p:commandButton value="Login" update="growl logado cadastro"
+								<p:commandButton value="Login"
+									update="growl logado cadastro form4"
 									action="#{loginBean.login}"
 									oncomplete="handleLoginRequest(xhr, status, args)" />
 							</f:facet>
@@ -106,9 +107,10 @@
 	<div class="feat_prod_box_details">
 
 		<p:panel header="Bem vindo #{cadastroClienteBean.login.nome}">
-			<h:form id="cadastro">
-				<p:panelGrid columns="3">
-					<p:panel header="Perfil">
+
+			<p:panelGrid columns="3">
+				<p:panel header="Perfil">
+					<h:form id="cadastro">
 						<p:panelGrid columns="2" id="panelGrid" type="reset"
 							styleClass="ui-noborder;">
 
@@ -163,99 +165,106 @@
 							<h:outputText value=" " />
 							<p:commandButton id="botao" value="Atualizar"
 								action="#{cadastroClienteBean.atualizar}" update="panelGrid" />
-
-
-
 						</p:panelGrid>
-					</p:panel>
-					
+					</h:form>
+				</p:panel>
+				<h:form id="form4">
 					<p:panel id="tabela">
 						<f:facet name="header">
 							<p:outputLabel value="Meus Pedidos" />
 						</f:facet>
-						
+
 						<p:dataTable id="pedidos" value="#{pedidoVendaBean.listapdv}"
-							var="pedidos" rows="12" paginator="true"
-							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+							var="pdv" rows="12" paginator="true"
+							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 							rowsPerPageTemplate="6,12,16">
 
-							<p:column sortBy="#{listapdv.data}" headerText="Data do Pedido"
+							<p:column sortBy="#{pdv.data}" headerText="Data do Pedido"
 								update="tabela">
 								<h:outputText value="Aqui vai a data" />
 							</p:column>
 
-							<p:column sortBy="#{listapdv.id}" headerText="Numero do Pedido"
+							<p:column sortBy="#{pdv.id}" headerText="Numero do Pedido"
 								update="tabela">
-								<h:outputText value="#{pedidos.id}" />
+								<h:outputText value="#{pdv.id}" />
 							</p:column>
 
-							<p:column sortBy="#{listapdv.valorPedido}"
+							<p:column sortBy="#{pdv.valorPedido}"
 								headerText="Valor Do Pedido" update="tabela">
-								<h:outputText value="#{pedidos.totalPedido}" />
+								<h:outputText value="R$ #{pdv.totalPedido}" />
 							</p:column>
 
-							<p:column sortBy="#{listapdv.statusPV}"
+							<p:column sortBy="#{pdv.statusPV}"
 								headerText="Situação do Pedido" update="tabela">
-								<h:outputText value="#{pedidos.statusPV.descricao}" />
+								<h:outputText value="#{pdv.statusPV.descricao}" />
 							</p:column>
 
 							<p:column headerText="Vizualizar Pedido">
 
 								<p:commandLink oncomplete="PF('pecasPedido').show()"
-									title="Informações" update=":listaPecaPedido">
+									title="Informações" update=":form4:listaPecaPedido">
 									<h:outputText styleClass="ui-icon ui-icon-search"
 										style="margin:0 auto;" />
-									<f:setPropertyActionListener value="#{pecas}"
+									<f:setPropertyActionListener value="#{pdv}"
 										target="#{pedidoVendaBean.pdv}" />
 								</p:commandLink>
 							</p:column>
 						</p:dataTable>
-							
 					</p:panel>
+					<p:dialog header="Pecas do Pedido" widgetVar="pecasPedido"
+						resizable="false" style="margin:0;">
+						<p:outputPanel id="listaPecaPedido" style="text-align:center;">
+							<p:dataTable value="#{pedidoVendaBean.pedidoEspecifico}"
+								var="pecasPedido">
 
-				</p:panelGrid>
-			</h:form>
+								<f:facet name="header">
+									<p:outputLabel
+										value="Lista de Peças  - Id do Pedido: #{pedidoVendaBean.pdv.id}" />
+								</f:facet>
 
+								<p:column headerText="Foto">
+									<h:graphicImage value="_imagen/#{pecasPedido.foto}"
+										style="width: 25%; hight: 25%; padding:5px;" />
+								</p:column>
+
+								
+								<p:column 
+									headerText="Nome da Peça" update="this">
+									<h:outputText value="#{pecasPedido.descricao}" />
+								</p:column>
+								
+								<p:column  headerText="Quantidade"
+									update="listaPedidoPeca">
+									<h:outputText value="#{pecasPedido.qtdeTotal}" />
+								</p:column>
+
+								<p:column headerText="Valor da Peça" update="this">
+									<h:outputText value="R$ #{pecasPedido.valorPeca}" />
+								</p:column>
+
+								<p:column headerText="Adicional da Peça" update="this">
+									<h:outputText value="#{pecasPedido.adicional}" />
+								</p:column>
+
+								<p:column headerText="Avaliar Pecas" update="this">
+									<h:panelGrid columns="2" cellpadding="5">										
+										<p:rating value="#{pecasPedido.totalAvaliacao}" stars="5" />
+										<p:commandButton icon="ui-icon-check" action="#{pedidoVendaBean.avaliar}"/>
+									</h:panelGrid>
+								</p:column>
+
+								<f:facet name="footer">
+									<p:outputLabel
+										value="Valor do Pedido: R$ #{pedidoVendaBean.pdv.totalPedido}" />
+								</f:facet>
+
+							</p:dataTable>
+						</p:outputPanel>
+					</p:dialog>
+				</h:form>
+			</p:panelGrid>
 		</p:panel>
 
-		<p:dialog header="Pecas do Pedido" widgetVar="pecasPedido"
-			resizable="false" style="margin:0;" >
-			<p:dataTable id="listaPecaPedido"
-				value="#{pedidoVendaBean.pedidoEspecifico}" var="pecasPedido">
-
-				<f:facet name="header">
-					<p:outputLabel value="Lista de Peças" />
-				</f:facet>
-
-				<p:column headerText="Foto">
-					<h:graphicImage value="_imagen/#{pecasPedido.foto}"
-						style="width: 25%; hight: 25%; padding:5px;" />
-				</p:column>
-
-				<p:column sortBy="#{pecasPedido.id}" headerText="ID da Peça"
-					update="this">
-					<h:outputText value="#{pecasPedido.id}" />
-				</p:column>
-				<p:column sortBy="#{pecasPedido.descricao}"
-					headerText="Nome da Peça" update="this">
-					<h:outputText value="#{pecasPedido.descricao}" />
-				</p:column>
-
-				<p:column headerText="Valor da Peça" update="this">
-					<h:outputText value="#{pecasPedido.valorPeca}" />
-				</p:column>
-
-				<p:column headerText="Adicional da Peça" update="this">
-					<h:outputText value="#{pecasPedido.adicional}" />
-				</p:column>
-
-				<p:column headerText="Aplicação da Peça" update="this">
-					<h:outputText value="#{pecas.aplicacao.descricao}" />
-				</p:column>
-
-
-			</p:dataTable>
-		</p:dialog>
 	</div>
 
 	<hr />

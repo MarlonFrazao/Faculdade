@@ -86,9 +86,12 @@ public class LoginBean {
 
 	}
 	public void loginFun() {
+		//logout();
 		try {
 			System.out.println("-----troca-----");
 			this.loginf = facadeg.obterFuncionario(this.cpf, this.senha).get(0);
+			nome = loginf.getNome();
+			new CadastroClienteBean().setLoginf(loginf);
 			System.out.println("-----troca-----"+loginf.getNome());
 			
 		} catch (BusinessException e) {
@@ -96,14 +99,21 @@ public class LoginBean {
 			
 			e.printStackTrace();
 		}finally {
-			if(loginf.getNome()!=null) {
-				nome = loginf.getNome();
-				new CadastroClienteBean().setLoginf(loginf);
+			if(loginf.getNome() == null ) {
+				System.out.println("1");
+				
+				loginf = new Funcionario();
+			}
+			if(login.getNome() == null) {
+				System.out.println("2");
+				
+				login = new Cliente();
 			}
 			}
 		}	
 	
 	public void loginCli() {
+		//logout();
 		try {
 			System.out.println("-----troca de Cliente-----");
 			this.login = facade.obterCliente(this.cpf, this.senha).get(0);
@@ -141,12 +151,12 @@ public class LoginBean {
 			try {
 			loginFun();
 			}catch(Exception e) {
-				
+				System.out.println("caiu catch loginFun ");
 			}
 			try {
 				loginCli();
 			}catch(Exception e1) {
-				
+				System.out.println("caiu catch loginCli->->->->-> ");
 			}
 			
 			//System.out.println("telefone do cara: " + telefone2.getTelefone());
@@ -159,7 +169,7 @@ public class LoginBean {
 
 				System.out.println("valida senha login retornou login");
 				try {
-					Faces.redirect("./cadastropecas.jsf");
+					Faces.redirect("./homefaces2.jsf");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -179,11 +189,17 @@ public class LoginBean {
 				message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem Vindo ", login.getNome().toString());
 
 				System.out.println("valida senha login retornou login");
+				try {
+					Faces.redirect("./homefaces.jsf");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				retornaLogin();
 				new PedidoDeVendaBean().listarPedidos();
 
 				// return "login";
-			} else if (loginf.getNome() != null){
+			} else if (loginf.getNome() == null && login.getNome() == null){
 				loggedIn = false;
 				message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login inválido", "CPF ou Senha incorretos");
 

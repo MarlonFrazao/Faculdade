@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Home</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="_css" name="estilo.css" />
+	<script>
+	$(document).ready(function(){
+		$("pecas").on({
+			mouseleave: function(){
+				$(this).hide("addCarrinho");
+			}
+		});
+		});
+	});
+</script>
+</h:head>
+<h:body styleClass="corpo">
+
+	<a href="homefaces.jsf"><p:graphicImage url="_imagen/logo1.png" styleClass="logo" /></a>
+	<h:form styleClass="menu">
+		<p:growl id="messages" showDetail="true" sticky="true" />
+
+		<p:menubar styleClass="barra-do-menu">
+			<p:menuitem url="/homefaces2.jsf" value="Home" icon="ui-icon-home"
+				styleClass="botoes-menu" />
+			<p:menuitem url="/produtos2.jsf" value="Produtos"
+				icon="ui-icon-search" styleClass="botoes-menu" />
+			<p:menuitem url="/funcionarios.jsf" value="Administrar Funcionários" icon="ui-icon-person"
+				styleClass="botoes-menu" />
+			<p:menuitem url="/cadastropecas.jsf" value="Cadastro de Peças" icon="ui-icon-engine"
+				styleClass="botoes-menu" />
+			<p:menuitem url="/pedidos.jsf" value="Administrar Pedido de Compra" icon="ui-icon-cart"
+				styleClass="botoes-menu" />
+			<f:facet name="options">
+				<h:form>
+
+					<p:outputLabel id="logado"
+						value="Bem vindo #{loginBean.nome}"
+						style="padding:10px" />
+					<h:outputLink value="javascript:void(0)"
+						onclick="PF('dlg').show();" title="login">
+						<p:commandButton id="btn" value="Login" icon="ui-icon-extlink"
+							styleClass="botoes-menu" />
+					</h:outputLink>
+
+					<h:outputLink value="javascript:void(0)"
+						onclick="PF('logout').show();" title="login">
+						<p:commandButton id="btn2" value="Logout" icon="ui-icon-extlink"
+							styleClass="botoes-menu" />
+					</h:outputLink>
+
+					<p:growl id="growl" sticky="true" showDetail="true" life="300" />
+
+					<p:dialog header="Logout" widgetVar="logout" resizable="false" style="margin:0;">
+						<h:outputLabel value="Deseja realmente Sair ?" />
+						<f:facet name="footer">
+							<p:commandButton id="logout" value="Realizar Logout"
+								actionListner="#{loginBean.logout}"
+								oncomplete="PF('logout').hide()" update="logado" />
+							<p:commandButton value="Cancelar" type="button"
+								styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+								onclick="PF('logout').hide()" />
+
+						</f:facet>
+					</p:dialog>
+
+					<p:dialog header="Login" widgetVar="dlg" resizable="false" style="margin:0;" >
+						<h:panelGrid columns="2" cellpadding="5" >
+							<h:outputLabel for="cpf" value="CPF:"/>
+							<p:inputText id="cpf" value="#{loginBean.cpf}"
+								required="true" label="cpf" />
+
+							<h:outputLabel for="senha" value="Senha:"/>
+							<p:password id="senha"
+								value="#{loginBean.senha}" required="true"
+								label="senha" />
+
+							<f:facet name="footer" style="align: center">
+								<p:commandButton value="Login" update="growl logado"
+									action="#{loginBean.login}"
+									oncomplete="handleLoginRequest(xhr, status, args)" />
+							</f:facet>
+						</h:panelGrid>
+					</p:dialog>
+				</h:form>
+
+<script type="text/javascript">
+    function handleLoginRequest(xhr, status, args) {
+        if(args.validationFailed || !args.loggedIn) {
+            PF('dlg').jq.effect("shake", {times:5}, 100);
+        }
+        else {
+            PF('dlg').hide();
+            $('#loginLink').fadeOut();
+        }
+    }
+</script>
+
+			</f:facet>
+		</p:menubar>
+	</h:form>
+
+	<!--https://www.primefaces.org/showcase/ui/data/carousel.xhtml
+CAROUSEL DO PRIME FACES ARRUMAR-->
+	<p:panel
+		style="background-image:url(_imagen/headerPecasL.jpg); background-position: center; width: 90%; hight:50%; padding:5% ">
+
+
+	</p:panel>
+	<h:form id="form">
+		<p:carousel id="pecas" value="#{pecaBean.pecas}"
+			headerText="Itens em Destaque" var="peca"
+			itemStyle="text-align:center" responsive="true" >
+			<p:panelGrid columns="1"
+				style="width:100%; position:relative; min-height:60%;"
+				columnClasses="label,value" layout="grid"
+				styleClass="ui-panelgrid-blank">
+
+				<f:facet name="header">
+					<h:graphicImage value="_imagen/#{peca.foto}"
+						style="width: 50%; hight: 50%; padding:25px;" />
+				</f:facet>
+				<p:panelGrid columns="2" columnClasses="label,value" layout="grid"
+					styleClass="ui-panelgrid-blank">
+					<h:outputText value="Id:" />
+					<h:outputText value="#{peca.id}" />
+
+					<h:outputText value="Descrição:" />
+					<h:outputText value="#{peca.descricao}" />
+
+					<h:outputText value="Aplicação:" />
+					<h:outputText value="#{peca.aplicacao.descricao}" />
+				</p:panelGrid>
+				<p:commandLink update=":form:detalhes"
+					oncomplete="PF('popUpDetalhes').show()" title="Informações">
+					
+						<h:graphicImage value="_imagen/carrinho.jpg"
+							style="width:15%; hight:15%;" />
+					<f:setPropertyActionListener value="#{peca}"
+						target="#{pecaBean.peca}" />
+				</p:commandLink>
+
+			</p:panelGrid>
+			<f:facet name="footer">
+
+			</f:facet>
+		</p:carousel>
+		<p:carousel id="pecasnovas" value="#{pecaBean.pecas}"
+			headerText="Novidades na Loja" var="peca"
+			itemStyle="text-align:center" responsive="true">
+			<p:panelGrid columns="1"
+				style="width:100%; position:relative; min-height:60%;"
+				columnClasses="label,value" layout="grid"
+				styleClass="ui-panelgrid-blank">
+
+				<f:facet name="header">
+					<h:graphicImage value="_imagen/#{peca.foto}"
+						style="width: 50%; hight: 50%; padding:25px;" />
+				</f:facet>
+				<p:panelGrid columns="2" columnClasses="label,value" layout="grid"
+					styleClass="ui-panelgrid-blank">
+					<h:outputText value="Id:" />
+					<h:outputText value="#{peca.id}" />
+
+					<h:outputText value="Descrição:" />
+					<h:outputText value="#{peca.descricao}" />
+
+					<h:outputText value="Aplicação:" />
+					<h:outputText value="#{peca.aplicacao.descricao}" />
+				</p:panelGrid>
+				<p:commandLink update=":form:detalhes"
+					oncomplete="PF('popUpDetalhes').show()" title="Informações">
+					
+						<h:graphicImage value="_imagen/carrinho.jpg"
+							style="width:15%; hight:15%;" />
+					<f:setPropertyActionListener value="#{peca}"
+						target="#{pecaBean.peca}" />
+				</p:commandLink>
+
+			</p:panelGrid>
+			<f:facet name="footer">
+
+			</f:facet>
+		</p:carousel>
+		<p:carousel id="pecasmaisvendidas" value="#{pecaBean.pecas}"
+			headerText="Peças mais pedidas" var="peca"
+			itemStyle="text-align:center" responsive="true">
+			<p:panelGrid columns="1"
+				style="width:100%; position:relative; min-height:60%;"
+				columnClasses="label,value" layout="grid"
+				styleClass="ui-panelgrid-blank">
+
+				<f:facet name="header">
+					<h:graphicImage value="_imagen/#{peca.foto}"
+						style="width: 50%; hight: 50%; padding:25px;" />
+				</f:facet>
+				<p:panelGrid columns="2" columnClasses="label,value" layout="grid"
+					styleClass="ui-panelgrid-blank">
+					<h:outputText value="Id:" />
+					<h:outputText value="#{peca.id}" />
+
+					<h:outputText value="Descrição:" />
+					<h:outputText value="#{peca.descricao}" />
+
+					<h:outputText value="Aplicação:" />
+					<h:outputText value="#{peca.aplicacao.descricao}" />
+				</p:panelGrid>
+				<p:commandLink update=":form:detalhes"
+					oncomplete="PF('popUpDetalhes').show()" title="Informações">
+					
+						<h:graphicImage value="_imagen/carrinho.jpg"
+							style="width:15%; hight:15%;" />
+						
+						
+					<f:setPropertyActionListener value="#{peca}"
+						target="#{pecaBean.peca}" />
+				</p:commandLink>
+
+			</p:panelGrid>
+			<f:facet name="footer">
+
+			</f:facet>
+		</p:carousel>
+		<p:dialog header="Informações da peça" widgetVar="popUpDetalhes"
+			global="true" showEffect="fade" hideEffect="fade" resizable="false">
+			<p:outputPanel id="detalhes" style="text-align:center;">
+
+				<p:panelGrid columns="2" rendered="#{not empty pecaBean.pecas}"
+					columnClasses="label,value">
+
+					<f:facet name="header">
+						<!-- A extensão das fotos está sendo salva no banco de dados -->
+						<h:graphicImage value="_imagen/#{pecaBean.peca.foto}"
+							style="width:30%; hight:30%;" />
+
+					</f:facet>
+
+					<h:outputText value="Id:" />
+					<h:outputText value="#{pecaBean.peca.id}" />
+
+					<h:outputText value="Descrição" />
+					<h:outputText value="#{pecaBean.peca.descricao}" />
+
+
+					<h:outputText value="Adicional" />
+					<h:outputText value="#{pecaBean.peca.adicional}" />
+
+
+					<h:outputText value="Aplicação" />
+					<h:outputText value="#{pecaBean.peca.aplicacao.descricao}" />
+
+					<h:outputText value="Quantidade:" />
+					<p:spinner id="basic" value="#{pecaBean.peca.qtdeTotal}" />
+
+					<f:facet name="footer">
+
+						<p:commandButton id="addCarrinho" value="Adicionar ao Carrinho"
+							action="#{pecaBean.addCarrinho}"
+							oncomplete="PF('popUpDetalhes').hide()" target="#{pecaBean.peca}" />
+
+						<p:commandButton value="Cancelar" type="button"
+							styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+							onclick="PF('popUpDetalhes').hide()" />
+							
+						
+
+					</f:facet>
+
+				</p:panelGrid>
+
+			</p:outputPanel>
+		</p:dialog>
+
+
+
+
+
+	</h:form>
+	<hr />
+	<p:panel header="Contato" >
+		<p:panelGrid columns="8">
+			<h:outputLabel value="Telefone:" />
+			<h:outputLabel value="(41)3643-6666" />
+
+			<h:outputLabel value="Celular:" />
+			<h:outputLabel value="(41)9999-9999" />
+
+			<h:outputLabel value="E-Mail:" />
+			<h:outputLabel value="VendaPecas@Hotmail.com" />
+
+			<h:outputLabel value="Web Site:" />
+			<h:outputLabel value="www.vendapecas.com.br" />
+		</p:panelGrid>
+	</p:panel>
+</h:body>
+</html>

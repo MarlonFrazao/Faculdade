@@ -47,11 +47,11 @@ public class CadastroClienteBean {
 		telefone = new ArrayList<Telefone>();
 		fun = new Funcionario();
 		facadeg = new FacadeBusiness();
-		System.out.println("login estável de cliente: "+login.getNome());
-		System.out.println("login estável de funcionario: "+loginf.getNome());
-		
+		System.out.println("login estável de cliente: " + login.getNome());
+		System.out.println("login estável de funcionario: " + loginf.getNome());
+
 	}
-	
+
 	public String getNome() {
 		return nome;
 	}
@@ -132,7 +132,6 @@ public class CadastroClienteBean {
 	public void setFun(Funcionario fun) {
 		this.fun = fun;
 	}
-	
 
 	public String inserir() {
 		System.out.println("entra 1");
@@ -145,7 +144,7 @@ public class CadastroClienteBean {
 			cliente.setTelefone(telefone);
 
 			facade.inserirCliente(cliente);
-			
+
 			new LoginBean().setCliente(cliente);
 			new LoginBean().login();
 			return "sucesso";
@@ -172,138 +171,6 @@ public class CadastroClienteBean {
 			return "cadastrarcliente";
 		}
 	}
-/*
-	public String retornaLogin() {
-		return "sucesso";
-	}
-
-	public String retornaFalha() {
-		return "falha";
-	}
-
-	public String logout() {
-		login = new Cliente();
-		telefone2 = new Telefone();
-		loginf = new Funcionario();
-		new PedidoDeVendaBean().setListapdv(null);
-		System.out.println("Entrou Logout --------------------");
-		return "logout";
-
-	}
-	public void loginFun() {
-		try {
-			System.out.println("-----troca-----");
-			this.loginf = facadeg.obterFuncionario(this.cpf, this.senha).get(0);
-			System.out.println("-----troca-----"+loginf.getNome());
-			
-		} catch (BusinessException e) {
-			System.out.println("caiu catch troca");
-			
-			e.printStackTrace();
-		}finally {
-			if(loginf.getNome()!=null) {
-				nome = loginf.getNome();
-			}
-			}
-		}	
-	
-	public void loginCli() {
-		try {
-			System.out.println("-----troca de Cliente-----");
-			this.login = facade.obterCliente(this.cpf, this.senha).get(0);
-			this.telefone = facTel.obterTelefoneCpf(login);
-			nome = login.getNome();
-			
-		} catch (BusinessException e1) {
-			e1.printStackTrace();
-		}finally {
-			if(loginf.getNome() == null ) {
-				System.out.println("1");
-				System.out.println("valida senha login obter nome: " + login.getNome() + " cpf " + login.getCpf());
-				System.out.println("valida senha funcionario obter nome: " + loginf.getNome() + " cpf " + loginf.getCpf());
-				loginf = new Funcionario();
-			}
-			if(login.getNome() == null) {
-				System.out.println("2");
-				System.out.println("valida senha login obter nome: " + login.getNome() + " cpf " + login.getCpf());
-				System.out.println("valida senha funcionario obter nome: " + loginf.getNome() + " cpf " + loginf.getCpf());
-				login = new Cliente();
-			}
-		}
-	}
-
-	public void login() {
-
-		System.out.println("valida senha login");
-		FacesMessage message = null;
-		boolean loggedIn = false;
-
-		//try {
-			System.out.println("valida senha login try");
-			try {
-			loginFun();
-			}catch(Exception e) {
-				
-			}
-			try {
-				loginCli();
-			}catch(Exception e1) {
-				
-			}
-			
-			//System.out.println("telefone do cara: " + telefone2.getTelefone());
-			System.out.println("valida senha login obter nome: " + login.getNome() + " cpf " + login.getCpf());
-			System.out.println("valida senha funcionario obter nome: " + loginf.getNome() + " cpf " + loginf.getCpf());
-
-			if (loginf.getNome() != null) {
-				loggedIn = true;
-				message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem Vindo ", loginf.getNome().toString());
-
-				System.out.println("valida senha login retornou login");
-				try {
-					Faces.redirect("./cadastropecas.jsf");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				retornaLogin();
-			} else {
-				loggedIn = false;
-				message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login inválido", "CPF ou Senha incorretos");
-
-				System.out.println("valida senha login retornou falha");
-				retornaFalha();
-				// return "falha";
-			}
-				if (this.login.getNome() != null) {
-			
-				loggedIn = true;
-				message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bem Vindo ", login.getNome().toString());
-
-				System.out.println("valida senha login retornou login");
-				retornaLogin();
-				new PedidoDeVendaBean().listarPedidos();
-
-				// return "login";
-			} else {
-				loggedIn = false;
-				message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login inválido", "CPF ou Senha incorretos");
-
-				System.out.println("valida senha login retornou falha");
-				retornaFalha();
-				// return "falha";
-
-			}
-			FacesContext.getCurrentInstance().addMessage(null, message);
-			PrimeFaces.current().ajax().addCallbackParam("loggedIn", loggedIn);
-		/*} catch (Exception e) {
-
-			System.out.println("valida senha login exception");
-
-			// return "falha";
-		}*/
-
-	//}
 
 	public String atualizar() {
 		System.out.println("entra 1");
@@ -334,8 +201,6 @@ public class CadastroClienteBean {
 							+ telefone.get(i).getTelefone());
 				}
 			}
-			// telefone.add(telefone2);
-			// cliente.setTelefone(telefone);
 
 			facade.atualizarCliente(cliente);
 

@@ -5,6 +5,7 @@ import java.util.List;
 
 import br.edu.unifacear.projetointegrador4.model.dao.FabricaDAO;
 import br.edu.unifacear.projetointegrador4.model.entity.Cliente;
+import br.edu.unifacear.projetointegrador4.model.entity.Peca;
 import br.edu.unifacear.projetointegrador4.model.entity.PedidoDeVenda;
 
 public class PedidoDeVendaBusiness {
@@ -52,6 +53,11 @@ public class PedidoDeVendaBusiness {
 		}
 
 		return lpdv;
+	}
+	
+	public List<Peca> obterPecas(PedidoDeVenda pdv) {
+		
+		return FabricaDAO.criarPedidoDeVendaDAO().obterPecas(pdv);
 	}
 
 	public void excluir(PedidoDeVenda pdv) {

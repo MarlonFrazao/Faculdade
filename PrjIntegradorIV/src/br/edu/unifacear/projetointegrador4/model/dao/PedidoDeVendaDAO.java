@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 
 import br.edu.unifacear.projetointegrador4.connection.ConnectionFactory;
 import br.edu.unifacear.projetointegrador4.model.entity.Cliente;
+import br.edu.unifacear.projetointegrador4.model.entity.Peca;
 import br.edu.unifacear.projetointegrador4.model.entity.PedidoDeVenda;
 
 public class PedidoDeVendaDAO extends DAOGenerico<PedidoDeVenda>{
@@ -34,6 +35,23 @@ public class PedidoDeVendaDAO extends DAOGenerico<PedidoDeVenda>{
 		}catch(Exception e) {
 			System.err.println(e);
 		}finally {
+			em.close();
+		}
+		return lista;
+	}
+	
+	public List<Peca> obterPecas(PedidoDeVenda pdv){
+		EntityManager em = new ConnectionFactory().getConnection();
+		List<Peca> lista = null;
+		System.out.println("Id do PDVVVVV em PecaDAO:"+pdv.getId());
+		try {
+			lista = em.createQuery("from PedidoDeVenda p join fetch p.pecasdopedido m WHERE pdv_id = " + pdv.getId()).getResultList();
+			for(int i = 0; i<lista.size();i++) {
+				System.out.println("Lista das pecinhas no DAO: "+lista.get(i).getDescricao());
+			}
+		} catch (Exception e) {
+			System.err.println(e);
+		} finally {
 			em.close();
 		}
 		return lista;

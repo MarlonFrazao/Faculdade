@@ -62,6 +62,23 @@ public class PecaDAO extends DAOGenerico<Peca> {
 		}
 		return lista;
 	}	
+	 
+	public List<Peca> obterListaPecaPedido(PedidoDeVenda pdv) {
+		EntityManager em = new ConnectionFactory().getConnection();
+		List<Peca> lista = null;
+		System.out.println("Id do PDVVVVV em PecaDAO:"+pdv.getId());
+		try {
+			lista = em.createQuery("from Peca p join fetch p.pecasPdv m WHERE pdv_id = " + pdv.getId()).getResultList();
+			for(int i = 0; i<lista.size();i++) {
+				System.out.println("Lista das pecinhas no DAO: "+lista.get(i).getDescricao());
+			}
+		} catch (Exception e) {
+			System.err.println(e);
+		} finally {
+			em.close();
+		}
+		return lista;
+	}
 
 	public List<Modelo> obter(Peca peca) {
 		EntityManager em = new ConnectionFactory().getConnection();
@@ -77,19 +94,7 @@ public class PecaDAO extends DAOGenerico<Peca> {
 		return lista;
 	}
 	
-	public List<Peca> obterListaPecaPedido(PedidoDeVenda pdv) {
-		EntityManager em = new ConnectionFactory().getConnection();
-		List<Peca> lista = null;
-
-		try {
-			lista = em.createQuery("from PecasDoPedido WHERE pdv_id =" + pdv.getId()).getResultList();
-		} catch (Exception e) {
-			System.err.println(e);
-		} finally {
-			em.close();
-		}
-		return lista;
-	}
+	
 	
 	
 

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Cadastro de Usuário</title>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="_css" name="estilo.css" />
+</h:head>
+
+
+<h:body styleClass="corpo">
+
+	<a href="homefaces.jsf"><p:graphicImage url="_imagen/logo1.png" styleClass="logo" /></a>
+	<h:form styleClass="menu">
+		<p:growl id="messages" showDetail="true" sticky="true" />
+		<p:menubar styleClass="barra-do-menu">
+			<p:menuitem url="/homefaces2.jsf" value="Home" icon="ui-icon-home"
+				styleClass="botoes-menu" />
+			<p:menuitem url="/produtos2.jsf" value="Produtos"
+				icon="ui-icon-search" styleClass="botoes-menu" />
+			<p:menuitem url="/funcionarios.jsf" value="Administrar Funcionários" icon="ui-icon-person"
+				styleClass="botoes-menu" />
+			<p:menuitem url="/cadastropecas.jsf" value="Cadastro de Peças" icon="ui-icon-engine"
+				styleClass="botoes-menu" />
+			<p:menuitem url="/pedidos.jsf" value="Administrar Pedido de Compra" icon="ui-icon-cart"
+				styleClass="botoes-menu" />
+			<f:facet name="options">
+				<h:form>
+					<p:outputLabel id="logado"
+						value="Bem vindo #{loginBean.nome}"
+						style="padding:10px" />
+					<h:outputLink value="javascript:void(0)"
+						onclick="PF('dlg').show();" title="login">
+						<p:commandButton id="btn" value="Login" icon="ui-icon-extlink" 
+							styleClass="botoes-menu"/>
+					</h:outputLink>
+					<h:outputLink value="javascript:void(0)"
+						onclick="PF('logout').show();" title="login">
+						<p:commandButton id="btn2" value="Logout" icon="ui-icon-extlink"
+							styleClass="botoes-menu" />
+					</h:outputLink>
+
+					<p:growl id="growl" sticky="true" showDetail="true" life="300" />
+
+					<p:dialog header="Logout" widgetVar="logout" resizable="false" style="margin:0;">
+						<h:outputLabel value="Deseja realmente Sair ?" />
+						<f:facet name="footer">
+							<p:commandButton id="logout" value="Realizar Logout"
+								action="#{loginBean.logout}"
+								oncomplete="PF('logout').hide()" update="logado" />
+							<p:commandButton value="Cancelar" type="button"
+								styleClass="ui-confirmdialog-no" icon="ui-icon-close"
+								onclick="PF('logout').hide()" />
+
+						</f:facet>
+					</p:dialog>
+
+
+
+					<p:dialog header="Login" widgetVar="dlg" resizable="false" style="margin:0;">
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputLabel for="cpf" value="CPF:"/>
+							<p:inputText id="cpf" value="#{loginBean.cpf}"
+								required="true" label="cpf" />
+
+							<h:outputLabel for="senha" value="Senha:"/>
+							<p:password id="senha"
+								value="#{loginBean.senha}" required="true"
+								label="senha" />
+
+							<f:facet name="footer" style="align: center">
+								<p:commandButton value="Login" update="growl logado"
+									action="#{loginBean.login}"
+									oncomplete="handleLoginRequest(xhr, status, args)" />
+
+							</f:facet>
+						</h:panelGrid>
+					</p:dialog>
+				</h:form>
+
+				<script type="text/javascript">
+					function handleLoginRequest(xhr, status, args) {
+						if (args.validationFailed || !args.loggedIn) {
+							PF('dlg').jq.effect("shake", {
+								times : 5
+							}, 100);
+						} else {
+							PF('dlg').hide();
+							$('#loginLink').fadeOut();
+						}
+					}
+				</script>
+
+			</f:facet>
+
+		</p:menubar>
+	</h:form>
+	<p:panel
+		style="background-image:url(_imagen/headerPecasL.jpg); background-position: center; width: 90%; hight:50%; padding:5% ">
+
+
+	</p:panel>
+
+	<div class="title" align="center">
+		<span class="title_icon"></span>
+	</div>
+
+	<div class="feat_prod_box_details" align="center">
+
+		<p:panel header="Cadastrar Novo Funcionários - Informe os Dados">
+			<h:form id="cadastro">
+
+				<p:panelGrid columns="2" id="panelGrid" type="reset">
+
+					<h:outputText value="Cpf:" for="cpf" />
+					<p:inputText id="cpf" var="cpf"
+						value="#{funcionarioBean.fun.cpf}" mask="999.999.999-99"
+						size="35" />
+
+					<h:outputText value="Nome:" />
+					<p:inputText id="nome" label="Nome"
+						value="#{funcionarioBean.fun.nome}" size="35"
+						maxlength="100" required="true">
+						<f:validateLength minimum="3" maximum="50" for="nome" />
+					</p:inputText>
+
+					<h:outputText value="Senha:" />
+					<p:password id="senha" label="Senha"
+						value="#{funcionarioBean.fun.senha}" size="35"
+						maxlength="10" required="true" feedback="true" match="confsenha"
+						validatorMessage="A senha de confirmação está diferente!">
+
+					</p:password>
+					<h:outputText value="Confirma Senha:" />
+					<p:password id="confsenha" label="Confirma Senha"
+						value="#{funcionarioBean.confirmaSenha}" size="35"
+						maxlength="10" required="true">
+
+					</p:password>
+
+					<h:outputText value="Telefone:" />
+					<p:inputText id="telefone"
+						value="#{funcionarioBean.telefone2.telefone}"
+						mask="(99)9999.9999" size="35" />
+						
+					<h:outputText value="Cargo: " />
+					<p:selectOneMenu id="combocargo"
+							value="#{funcionarioBean.cargo.id}"
+							converter="omnifaces.SelectItemsConverter">
+							<f:selectItem itemLabel="Escolha um Cargo" />
+							<f:selectItems value="#{funcionarioBean.listaCargo}" var="cargo"
+								itemValue="#{cargo.id}" itemLabel="#{cargo.descricao}" />
+						</p:selectOneMenu>
+
+					<h:outputText value=" " />
+					<p:commandButton id="botao" value="Salvar"
+						action="#{funcionarioBean.inserir}" update="panelGrid" />
+						
+				</p:panelGrid>
+			</h:form>
+
+		</p:panel>
+	</div>
+		<h:form id="form3">
+		<p:panel id="listinha">
+			<!-- Em Value do comandlink-> setPropertActionListner precisa ter o mesmo nome dessa var -->
+			<p:dataTable id="listaFun" value="#{funcionarioBean.listaFun}" var="fun"
+				rows="12" paginator="true"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="6,12,16">
+
+				<f:facet name="header">
+					<p:outputLabel value="Lista de Funcionários" />
+				</f:facet>
+
+
+				<p:column headerText="Matrícula" update="this">
+					<h:outputText value="#{fun.id}" />
+				</p:column>
+				<p:column headerText="Nome"
+					update="this">
+					<h:outputText value="#{fun.nome}" />
+				</p:column>
+
+				<p:column headerText="CPF" update="this">
+					<h:outputText value="#{fun.cpf}" />
+				</p:column>
+				
+				<p:column headerText="Cargo" update="this">
+					<h:outputText value="#{fun.cargo.descricao}" />
+				</p:column>
+				
+				<!-- 
+				<p:column headerText="Atualizar Funcionário">
+
+								<p:commandLink oncomplete="PF('detalhesFun').show()"
+									title="Informações" update=":form3:detalhesFun">
+									<h:outputText styleClass="ui-icon ui-icon-search"
+										style="margin:0 auto;" />
+									<f:setPropertyActionListener value="#{fun}"
+										target="#{funcionarioBean.fun}" />
+								</p:commandLink>
+							</p:column>
+							 -->
+						</p:dataTable>
+					</p:panel>
+					<p:dialog header="Atualização de funcionário" widgetVar="detalhesFun"
+						resizable="false" style="margin:0;">
+						<p:outputPanel id="detalhesFun" style="text-align:center;">
+							<p:panelGrid columns="2" id="panelGrid" type="reset">
+
+					<h:outputText value="Cpf:" for="cpf" />
+					<p:inputText id="cpf" var="cpf"
+						value="#{funcionarioBean.fun.cpf}" mask="999.999.999-99"
+						size="35" />
+
+					<h:outputText value="Nome:" />
+					<p:inputText id="nome" label="Nome"
+						value="#{funcionarioBean.fun.nome}" size="35"
+						maxlength="100" required="true">
+						<f:validateLength minimum="3" maximum="50" for="nome" />
+					</p:inputText>
+
+
+					<h:outputText value="Telefone:" />
+					<p:inputText id="telefone"
+						value="#{funcionarioBean.telefone2.telefone}"
+						mask="(99)9999.9999" size="35" />
+						
+					<h:outputText value="Cargo: " />
+					<p:selectOneMenu id="combocargo"
+							value="#{funcionarioBean.cargo.id}"
+							converter="omnifaces.SelectItemsConverter">
+							<f:selectItem itemLabel="Escolha um Cargo" />
+							<f:selectItems value="#{funcionarioBean.listaCargo}" var="cargo"
+								itemValue="#{cargo.id}" itemLabel="#{cargo.descricao}" />
+						</p:selectOneMenu>
+
+					<h:outputText value=" " />
+					<p:commandButton id="botao2" value="Atualizar"
+						action="#{funcionarioBean.atualizar}" update="listinha" />
+					
+				</p:panelGrid>
+						</p:outputPanel>
+					</p:dialog>
+			</h:form>
+	<hr />
+	<p:panel header="Contato">
+		<p:panelGrid columns="8">
+			<h:outputLabel value="Telefone:" />
+			<h:outputLabel value="(41)3643-6666" />
+
+			<h:outputLabel value="Celular:" />
+			<h:outputLabel value="(41)9999-9999" />
+
+			<h:outputLabel value="E-Mail:" />
+			<h:outputLabel value="VendaPecas@Hotmail.com" />
+
+			<h:outputLabel value="Web Site:" />
+			<h:outputLabel value="www.vendapecas.com.br" />
+		</p:panelGrid>
+	</p:panel>
+
+</h:body>
+</html>
