@@ -179,22 +179,17 @@
 							paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 							rowsPerPageTemplate="6,12,16">
 
-							<p:column sortBy="#{pdv.data}" headerText="Data do Pedido"
-								update="tabela">
-								<h:outputText value="Aqui vai a data" />
-							</p:column>
-
-							<p:column sortBy="#{pdv.id}" headerText="Numero do Pedido"
+							<p:column  headerText="Numero do Pedido"
 								update="tabela">
 								<h:outputText value="#{pdv.id}" />
 							</p:column>
 
-							<p:column sortBy="#{pdv.valorPedido}"
+							<p:column 
 								headerText="Valor Do Pedido" update="tabela">
 								<h:outputText value="R$ #{pdv.totalPedido}" />
 							</p:column>
 
-							<p:column sortBy="#{pdv.statusPV}"
+							<p:column 
 								headerText="Situação do Pedido" update="tabela">
 								<h:outputText value="#{pdv.statusPV.descricao}" />
 							</p:column>

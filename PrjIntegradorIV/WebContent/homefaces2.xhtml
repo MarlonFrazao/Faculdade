@@ -21,7 +21,8 @@
 </h:head>
 <h:body styleClass="corpo">
 
-	<a href="homefaces.jsf"><p:graphicImage url="_imagen/logo1.png" styleClass="logo" /></a>
+	<a href="homefaces.jsf"><p:graphicImage url="_imagen/logo1.png"
+			styleClass="logo" /></a>
 	<h:form styleClass="menu">
 		<p:growl id="messages" showDetail="true" sticky="true" />
 
@@ -30,17 +31,16 @@
 				styleClass="botoes-menu" />
 			<p:menuitem url="/produtos2.jsf" value="Produtos"
 				icon="ui-icon-search" styleClass="botoes-menu" />
-			<p:menuitem url="/funcionarios.jsf" value="Administrar Funcionários" icon="ui-icon-person"
-				styleClass="botoes-menu" />
-			<p:menuitem url="/cadastropecas.jsf" value="Cadastro de Peças" icon="ui-icon-engine"
-				styleClass="botoes-menu" />
-			<p:menuitem url="/pedidos.jsf" value="Administrar Pedido de Compra" icon="ui-icon-cart"
-				styleClass="botoes-menu" />
+			<p:menuitem url="/funcionarios.jsf" value="Administrar Funcionários"
+				icon="ui-icon-person" styleClass="botoes-menu" />
+			<p:menuitem url="/cadastropecas.jsf" value="Cadastro de Peças"
+				icon="ui-icon-engine" styleClass="botoes-menu" />
+			<p:menuitem url="/pedidos.jsf" value="Administrar Pedido de Compra"
+				icon="ui-icon-cart" styleClass="botoes-menu" />
 			<f:facet name="options">
 				<h:form>
 
-					<p:outputLabel id="logado"
-						value="Bem vindo #{loginBean.nome}"
+					<p:outputLabel id="logado" value="Bem vindo #{loginBean.nome}"
 						style="padding:10px" />
 					<h:outputLink value="javascript:void(0)"
 						onclick="PF('dlg').show();" title="login">
@@ -56,7 +56,8 @@
 
 					<p:growl id="growl" sticky="true" showDetail="true" life="300" />
 
-					<p:dialog header="Logout" widgetVar="logout" resizable="false" style="margin:0;">
+					<p:dialog header="Logout" widgetVar="logout" resizable="false"
+						style="margin:0;">
 						<h:outputLabel value="Deseja realmente Sair ?" />
 						<f:facet name="footer">
 							<p:commandButton id="logout" value="Realizar Logout"
@@ -69,15 +70,15 @@
 						</f:facet>
 					</p:dialog>
 
-					<p:dialog header="Login" widgetVar="dlg" resizable="false" style="margin:0;" >
-						<h:panelGrid columns="2" cellpadding="5" >
-							<h:outputLabel for="cpf" value="CPF:"/>
-							<p:inputText id="cpf" value="#{loginBean.cpf}"
-								required="true" label="cpf" />
+					<p:dialog header="Login" widgetVar="dlg" resizable="false"
+						style="margin:0;">
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputLabel for="cpf" value="CPF:" />
+							<p:inputText id="cpf" value="#{loginBean.cpf}" required="true"
+								label="cpf" />
 
-							<h:outputLabel for="senha" value="Senha:"/>
-							<p:password id="senha"
-								value="#{loginBean.senha}" required="true"
+							<h:outputLabel for="senha" value="Senha:" />
+							<p:password id="senha" value="#{loginBean.senha}" required="true"
 								label="senha" />
 
 							<f:facet name="footer" style="align: center">
@@ -89,7 +90,7 @@
 					</p:dialog>
 				</h:form>
 
-<script type="text/javascript">
+				<script type="text/javascript">
     function handleLoginRequest(xhr, status, args) {
         if(args.validationFailed || !args.loggedIn) {
             PF('dlg').jq.effect("shake", {times:5}, 100);
@@ -115,7 +116,7 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
 	<h:form id="form">
 		<p:carousel id="pecas" value="#{pecaBean.pecas}"
 			headerText="Itens em Destaque" var="peca"
-			itemStyle="text-align:center" responsive="true" >
+			itemStyle="text-align:center" responsive="true">
 			<p:panelGrid columns="1"
 				style="width:100%; position:relative; min-height:60%;"
 				columnClasses="label,value" layout="grid"
@@ -127,20 +128,22 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
 				</f:facet>
 				<p:panelGrid columns="2" columnClasses="label,value" layout="grid"
 					styleClass="ui-panelgrid-blank">
-					<h:outputText value="Id:" />
-					<h:outputText value="#{peca.id}" />
 
 					<h:outputText value="Descrição:" />
 					<h:outputText value="#{peca.descricao}" />
 
 					<h:outputText value="Aplicação:" />
 					<h:outputText value="#{peca.aplicacao.descricao}" />
+
+					<h:outputText value="Valor:" />
+					<h:outputText value="R$ #{peca.valorPeca}" />
+
 				</p:panelGrid>
 				<p:commandLink update=":form:detalhes"
 					oncomplete="PF('popUpDetalhes').show()" title="Informações">
-					
-						<h:graphicImage value="_imagen/carrinho.jpg"
-							style="width:15%; hight:15%;" />
+
+					<h:graphicImage value="_imagen/carrinho.jpg"
+						style="width:15%; hight:15%;" />
 					<f:setPropertyActionListener value="#{peca}"
 						target="#{pecaBean.peca}" />
 				</p:commandLink>
@@ -164,20 +167,22 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
 				</f:facet>
 				<p:panelGrid columns="2" columnClasses="label,value" layout="grid"
 					styleClass="ui-panelgrid-blank">
-					<h:outputText value="Id:" />
-					<h:outputText value="#{peca.id}" />
 
 					<h:outputText value="Descrição:" />
 					<h:outputText value="#{peca.descricao}" />
 
 					<h:outputText value="Aplicação:" />
 					<h:outputText value="#{peca.aplicacao.descricao}" />
+
+					<h:outputText value="Valor:" />
+					<h:outputText value="R$ #{peca.valorPeca}" />
+
 				</p:panelGrid>
 				<p:commandLink update=":form:detalhes"
 					oncomplete="PF('popUpDetalhes').show()" title="Informações">
-					
-						<h:graphicImage value="_imagen/carrinho.jpg"
-							style="width:15%; hight:15%;" />
+
+					<h:graphicImage value="_imagen/carrinho.jpg"
+						style="width:15%; hight:15%;" />
 					<f:setPropertyActionListener value="#{peca}"
 						target="#{pecaBean.peca}" />
 				</p:commandLink>
@@ -201,22 +206,25 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
 				</f:facet>
 				<p:panelGrid columns="2" columnClasses="label,value" layout="grid"
 					styleClass="ui-panelgrid-blank">
-					<h:outputText value="Id:" />
-					<h:outputText value="#{peca.id}" />
+
 
 					<h:outputText value="Descrição:" />
 					<h:outputText value="#{peca.descricao}" />
 
 					<h:outputText value="Aplicação:" />
 					<h:outputText value="#{peca.aplicacao.descricao}" />
+
+					<h:outputText value="Valor:" />
+					<h:outputText value="R$ #{peca.valorPeca}" />
+
 				</p:panelGrid>
 				<p:commandLink update=":form:detalhes"
 					oncomplete="PF('popUpDetalhes').show()" title="Informações">
-					
-						<h:graphicImage value="_imagen/carrinho.jpg"
-							style="width:15%; hight:15%;" />
-						
-						
+
+					<h:graphicImage value="_imagen/carrinho.jpg"
+						style="width:15%; hight:15%;" />
+
+
 					<f:setPropertyActionListener value="#{peca}"
 						target="#{pecaBean.peca}" />
 				</p:commandLink>
@@ -240,8 +248,7 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
 
 					</f:facet>
 
-					<h:outputText value="Id:" />
-					<h:outputText value="#{pecaBean.peca.id}" />
+
 
 					<h:outputText value="Descrição" />
 					<h:outputText value="#{pecaBean.peca.descricao}" />
@@ -253,6 +260,9 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
 
 					<h:outputText value="Aplicação" />
 					<h:outputText value="#{pecaBean.peca.aplicacao.descricao}" />
+
+					<h:outputText value="Valor:" />
+					<h:outputText value="R$ #{pecaBean.peca.valorPeca}" />
 
 					<h:outputText value="Quantidade:" />
 					<p:spinner id="basic" value="#{pecaBean.peca.qtdeTotal}" />
@@ -266,8 +276,8 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
 						<p:commandButton value="Cancelar" type="button"
 							styleClass="ui-confirmdialog-no" icon="ui-icon-close"
 							onclick="PF('popUpDetalhes').hide()" />
-							
-						
+
+
 
 					</f:facet>
 
@@ -282,7 +292,7 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
 
 	</h:form>
 	<hr />
-	<p:panel header="Contato" >
+	<p:panel header="Contato">
 		<p:panelGrid columns="8">
 			<h:outputLabel value="Telefone:" />
 			<h:outputLabel value="(41)3643-6666" />

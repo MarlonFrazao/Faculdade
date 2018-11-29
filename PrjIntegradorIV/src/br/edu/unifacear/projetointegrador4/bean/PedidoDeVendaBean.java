@@ -1,5 +1,6 @@
 package br.edu.unifacear.projetointegrador4.bean;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,8 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+
+import org.omnifaces.util.Faces;
 
 import br.edu.unifacear.projetointegrador4.model.business.BusinessException;
 import br.edu.unifacear.projetointegrador4.model.business.FacadeBusiness;
@@ -94,12 +97,24 @@ public class PedidoDeVendaBean {
 	public String tiraItem() {
 
 		this.listaPeca.remove(peca);
+		
+		for (int i = 0; i < listaPeca.size(); i++) {
+			System.out.println("iiiiiii---" + i);
+			Double totalsoma;
+			totalsoma = listaPeca.get(i).getQtdeTotal() * listaPeca.get(i).getValorPeca();
+			if (i == 0) {
+				total = totalsoma;
+			} else {
+				total = total - totalsoma;
+			}
+		}
 
 		return "nada";
 	}
 
 	public String limparCarrinho() {
 		this.listaPeca = new ArrayList<Peca>();
+		total = (double) 0;
 		return "limpou";
 	}
 	public void listarTodosPedidos() {
@@ -148,6 +163,12 @@ public class PedidoDeVendaBean {
 				pdv.setPecaspdv(pecasPedido);
 
 				facade.inserirPedidoDeVenda(pdv);
+				try {
+					Faces.redirect("./cliente.jsf");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 				return "sucesso";
 			}

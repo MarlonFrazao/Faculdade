@@ -89,6 +89,7 @@ public class FuncionarioBean {
 			fun.setCargo(cargo);
 
 			facadeg.inserirFuncionario(fun);
+			telefone2 = new Telefone();
 			
 			return "sucesso";
 

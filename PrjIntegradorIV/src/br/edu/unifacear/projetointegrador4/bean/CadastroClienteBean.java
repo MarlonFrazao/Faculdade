@@ -145,8 +145,8 @@ public class CadastroClienteBean {
 
 			facade.inserirCliente(cliente);
 
-			new LoginBean().setCliente(cliente);
-			new LoginBean().login();
+			//new LoginBean().setCliente(cliente);
+			//new LoginBean().login();
 			return "sucesso";
 
 		} catch (Exception e) {
@@ -204,8 +204,8 @@ public class CadastroClienteBean {
 
 			facade.atualizarCliente(cliente);
 
-			new LoginBean().setCliente(cliente);
-			new LoginBean().login();
+			//new LoginBean().setCliente(cliente);
+			//new LoginBean().login();
 			return "sucesso";
 
 		} catch (Exception e) {

@@ -172,6 +172,24 @@ public class PecaBean {
 
 	public void setPeca(Peca peca) {
 		System.out.println("PecaBean setPeca: "+peca.getDescricao());
+		if(peca.getNumVisualizacao()==null) {
+			peca.setNumVisualizacao((long) 1);
+			try {
+				facade.atualizarPeca(peca);
+			} catch (BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else {
+			peca.setNumVisualizacao(peca.getNumVisualizacao()+1);
+			try {
+				facade.atualizarPeca(peca);
+			} catch (BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		this.peca = peca;
 	}
 	

@@ -130,14 +130,16 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
 				</f:facet>
 				<p:panelGrid columns="2" columnClasses="label,value" layout="grid"
 					styleClass="ui-panelgrid-blank">
-					<h:outputText value="Id:" />
-					<h:outputText value="#{peca.id}" />
 
 					<h:outputText value="Descrição:" />
 					<h:outputText value="#{peca.descricao}" />
 
 					<h:outputText value="Aplicação:" />
 					<h:outputText value="#{peca.aplicacao.descricao}" />
+					
+					<h:outputText value="Valor:" />
+					<h:outputText value="R$ #{peca.valorPeca}" />
+					
 				</p:panelGrid>
 				<p:commandLink update=":form:detalhes"
 					oncomplete="PF('popUpDetalhes').show()" title="Informações">
@@ -167,14 +169,16 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
 				</f:facet>
 				<p:panelGrid columns="2" columnClasses="label,value" layout="grid"
 					styleClass="ui-panelgrid-blank">
-					<h:outputText value="Id:" />
-					<h:outputText value="#{peca.id}" />
 
 					<h:outputText value="Descrição:" />
 					<h:outputText value="#{peca.descricao}" />
 
 					<h:outputText value="Aplicação:" />
 					<h:outputText value="#{peca.aplicacao.descricao}" />
+					
+					<h:outputText value="Valor:" />
+					<h:outputText value="R$ #{peca.valorPeca}" />
+					
 				</p:panelGrid>
 				<p:commandLink update=":form:detalhes"
 					oncomplete="PF('popUpDetalhes').show()" title="Informações">
@@ -204,14 +208,17 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
 				</f:facet>
 				<p:panelGrid columns="2" columnClasses="label,value" layout="grid"
 					styleClass="ui-panelgrid-blank">
-					<h:outputText value="Id:" />
-					<h:outputText value="#{peca.id}" />
+					
 
 					<h:outputText value="Descrição:" />
 					<h:outputText value="#{peca.descricao}" />
 
 					<h:outputText value="Aplicação:" />
 					<h:outputText value="#{peca.aplicacao.descricao}" />
+					
+					<h:outputText value="Valor:" />
+					<h:outputText value="R$ #{peca.valorPeca}" />
+					
 				</p:panelGrid>
 				<p:commandLink update=":form:detalhes"
 					oncomplete="PF('popUpDetalhes').show()" title="Informações">
@@ -243,8 +250,7 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
 
 					</f:facet>
 
-					<h:outputText value="Id:" />
-					<h:outputText value="#{pecaBean.peca.id}" />
+					
 
 					<h:outputText value="Descrição" />
 					<h:outputText value="#{pecaBean.peca.descricao}" />
@@ -256,6 +262,9 @@ CAROUSEL DO PRIME FACES ARRUMAR-->
 
 					<h:outputText value="Aplicação" />
 					<h:outputText value="#{pecaBean.peca.aplicacao.descricao}" />
+					
+					<h:outputText value="Valor:" />
+					<h:outputText value="R$ #{pecaBean.peca.valorPeca}" />
 
 					<h:outputText value="Quantidade:" />
 					<p:spinner id="basic" value="#{pecaBean.peca.qtdeTotal}" />

@@ -147,15 +147,31 @@
 
 			<p:panel header="#{peca.descricao}" style="text-align:center;"
 				id="pnlProdutos">
-				<h:panelGrid columns="1"
-					style="width:100%; position:relative; min-height:50%;" >
+				<p:panelGrid columns="1"
+				style="width:100%; position:relative; min-height:60%;"
+				columnClasses="label,value" layout="grid"
+				styleClass="ui-panelgrid-blank">
 					<!-- A extensão das fotos está sendo salva no banco de dados -->
+					
+				<f:facet name="header">
 					<h:graphicImage value="_imagen/#{peca.foto}"
-						style="width: 200px; hight: 200px; position:relative; left:25%; rigth:25%;" />
+						style="width: 50%; hight: 50%; padding:25px;" />
+				</f:facet>
+				<p:panelGrid columns="2" columnClasses="label,value" layout="grid"
+					styleClass="ui-panelgrid-blank">
+					
 
-					<h:outputText value="#{peca.descricao}"
-						style="position:relative; left:38%" />
+					<h:outputText value="Descrição:" />
+					<h:outputText value="#{peca.descricao}" />
 
+					<h:outputText value="Aplicação:" />
+					<h:outputText value="#{peca.aplicacao.descricao}" />
+					
+					<h:outputText value="Valor:" />
+					<h:outputText value="R$ #{peca.valorPeca}" />
+					
+				</p:panelGrid>
+				
 					<p:commandLink update=":form2:detalhes"
 						oncomplete="PF('popUpDetalhes').show()" title="Informações">
 						<h:graphicImage value="_imagen/carrinho.jpg"
@@ -163,7 +179,7 @@
 						<f:setPropertyActionListener value="#{peca}"
 							target="#{pecaBean.peca}" />
 					</p:commandLink>
-				</h:panelGrid>
+				</p:panelGrid>
 			</p:panel>
 			<!-- </h:form> -->
 		</p:dataGrid>
@@ -195,6 +211,10 @@
 
 					<h:outputText value="Aplicação:" />
 					<h:outputText value="#{pecaBean.peca.aplicacao.descricao}" />
+					
+					<h:outputText value="Valor:" />
+					<h:outputText value="R$ #{pecaBean.peca.valorPeca}" />
+					
 
 					<h:outputText value="Quantidade:" />
 					<p:spinner id="basic" value="#{pecaBean.peca.qtdeTotal}" />
